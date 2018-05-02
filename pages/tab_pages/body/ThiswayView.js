@@ -10,6 +10,8 @@ import {
 import Accordion from "react-native-collapsible/Accordion";
 import { Button } from "react-native";
 import PropTypes from "prop-types";
+import { Font, AppLoading } from 'expo';
+import { MaterialIcons } from "@expo/vector-icons";
 import { List, ListItem } from "react-native-elements";
 
 //const str_welcome ='Welcome to Big Fashion';
@@ -47,10 +49,13 @@ export default class ThiswayView extends Component<{}> {
     super(props);
   }
 
+
   _renderHeader(section) {
     return (
       <View style={styles.header}>
+      {/*<ListItem></ListItem>*/}
         <Text style={styles.headerText}>{section.title}</Text>
+        <View style={styles.separator}></View>
       </View>
     );
   }
@@ -58,8 +63,6 @@ export default class ThiswayView extends Component<{}> {
   _renderContent(section) {
     return (
       <View style={styles.content}>
-      
-
         <Text>zzz{section.content}</Text>
       </View>
     );
@@ -131,5 +134,9 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     marginRight: 20,
     marginLeft: 20
+  },
+  separator: {
+    height: 0.5,
+    backgroundColor: "#CCCCCC"
   }
 });

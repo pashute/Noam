@@ -13,6 +13,7 @@ import ActionBar from "react-native-action-bar";
 import PropTypes from "prop-types";
 import { TabNavigator } from "react-navigation";
 import DrawerLayout from "react-native-drawer-layout";
+//import { Font, AppLoading } from 'expo';
 import Menu from "../Menu";
 import Bottom from "./Bottom";
 import NoBeacon from "./body/NoBeacon";

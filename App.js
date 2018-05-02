@@ -3,6 +3,14 @@ import { Platform, StyleSheet, Text, View, Alert } from "react-native";
 
 //x import { TabNavigator } from 'react-navigation'; // 1.5.11
 import { StackNavigator } from "react-navigation";
+
+import { ButtonGroup } from "react-native-elements";
+//import ObjectPath from "object-path";
+import "@expo/vector-icons";
+import { Constants, AppLoading } from "expo";
+
+import { YellowBox } from "react-native";
+
 import Splash from "./pages/Splash";
 import Main from "./pages/Main";
 import Tab from "./pages/Tab";
@@ -14,12 +22,6 @@ import SetHome from "./pages/setting_pages/SetHome";
 import Voice from "./pages/setting_pages/Voice";
 import Help from "./pages/Help";
 
-import { ButtonGroup } from "react-native-elements";
-//import ObjectPath from "object-path";
-import "@expo/vector-icons";
-import { Constants } from "expo";
-
-import { YellowBox } from "react-native";
 
 YellowBox.ignoreWarnings([
   "Warning: componentWillMount is deprecated",
@@ -118,11 +120,12 @@ export default class App extends React.Component {
     this.state = {};
   }
 
-  // componentDidMount async () {
-  //   const data = await fetch("noamdata.json");
-  //   console.log({data});
-  //   this.setState(data);
-  // }
+  async componentDidMount () {
+    console.log("up");
+    //const data = await fetch("noamdata.json");
+    //console.log({data});
+    //this.setState(data);
+  }
 
   setWelcomeColor = color => {
     let newState = { ...this.state };
