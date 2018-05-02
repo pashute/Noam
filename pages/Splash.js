@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#F5FCFF"
   },
   actbar: {
-    //backgroundColor: "#0000FF",
+    backgroundColor: "#0000FF",
     color: "#FF0000"
   },
   welcome: {

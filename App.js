@@ -105,7 +105,7 @@ const Nav = StackNavigator({
 // this will be removed
 const instructions = Platform.select({
   ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
-  android: "R to reload shake or menu for dev"
+  android: "b to reload shake or menu for dev"
 });
 
 // this too will be removed
