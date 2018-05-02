@@ -119,7 +119,7 @@ export default class Splash extends Component<{}> {
             <Button
               onPress={this._turnOnBluetooth}
               title="Press here to turn bluetooth on"
-              color="#0000F3"
+              color="#242424"
               accessibilityLabel="Tap on Me"
             />
           </View>
@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#F5FCFF"
   },
   actbar: {
-    backgroundColor: "#0000FF",
+    backgroundColor: "#FF00FF",
     color: "#FF00FF" // hi
   },
   welcome: {
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
     fontSize: 20
   },
   buttonContainer: {
-    backgroundColor: "#0000FF", // colorBgDark,//'#454545', // '#2E9298',
+    backgroundColor: "#444444", // colorBgDark,//'#454545', // '#2E9298',
     borderRadius: 10,
     padding: 10,
     shadowColor: colorBgDark, //'#454545', // '#000000'
