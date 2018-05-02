@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   },
 
   listMenu: {
-    color: "white",
+    color: "#1F1F1F",
     fontSize: 16,
     paddingLeft: 20,
     paddingTop: 12,
