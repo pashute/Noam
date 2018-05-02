@@ -118,11 +118,11 @@ export default class App extends React.Component {
     this.state = {};
   }
 
-  //   componentDidMount async () {
-  //       const data = await fetch("noamdata.json");
-  //       console.log({data});
-  //       this.setState(data);
-  //   }
+  // componentDidMount async () {
+  //   const data = await fetch("noamdata.json");
+  //   console.log({data});
+  //   this.setState(data);
+  // }
 
   setWelcomeColor = color => {
     let newState = { ...this.state };

@@ -26,6 +26,7 @@
     "react-native-scripts": "^1.14.0",
     "react-native-simple-radio-button": "^2.7.1",
     "react-native-tab-view": "0.0.77",
+    "react-native-vector-icons": "^4.6.0",
     "react-navigation": "^1.5.11",
     "rn-stack-router": "^1.0.0"
   },

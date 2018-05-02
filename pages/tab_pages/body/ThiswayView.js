@@ -10,11 +10,12 @@ import {
 import Accordion from "react-native-collapsible/Accordion";
 import { Button } from "react-native";
 import PropTypes from "prop-types";
+import { List, ListItem } from "react-native-elements";
 
 //const str_welcome ='Welcome to Big Fashion';
 //const str_open= 'Opening hours:\n' + 'Sunday - Thursday 8:30 - 21:00\n' + 'Friday 8:30 - 13:00';
 //const str_pos = 'You are at the main gate \n' + 'There is an ATM outside';
-const str_title = "towards North East:";
+const str_towards = "Towards North East:";
 const str_des =
   "You are on the first floor \n" + "near the south gate \n" + "and bank Leumi";
 const SECTIONS = [
@@ -41,7 +42,7 @@ const SECTIONS = [
   }
 ];
 
-export default class Elevator extends Component<{}> {
+export default class ThiswayView extends Component<{}> {
   constructor(props) {
     super(props);
   }
@@ -57,7 +58,9 @@ export default class Elevator extends Component<{}> {
   _renderContent(section) {
     return (
       <View style={styles.content}>
-        <Text>{section.content}</Text>
+      
+
+        <Text>zzz{section.content}</Text>
       </View>
     );
   }
@@ -67,7 +70,7 @@ export default class Elevator extends Component<{}> {
       <View style={styles.container}>
         <Text style={styles.assistant}>{str_des}</Text>
 
-        <Text style={styles.dirtitle}>{str_title}</Text>
+        <Text style={styles.dirtowards}>{str_towards}</Text>
         <Accordion
           sections={SECTIONS}
           renderHeader={this._renderHeader}
@@ -92,8 +95,8 @@ const styles = StyleSheet.create({
     fontWeight: "300",
     marginBottom: 20
   },
-  dirtitle: {
-    fontSize: 20,
+  dirtowards: {
+    fontSize: 24,
     textAlign: "left"
   },
   header: {

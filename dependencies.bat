@@ -44,6 +44,8 @@ call npm install react-native-tab-view
 call npm install react-navigation
 @echo 15. ---------
 call npm install react-native-elements
+@echo 16. ---------
+call npm install react-native-vector-icons
 
 
 @echo DONE -------

@@ -8,7 +8,7 @@ import {
   ScrollView
 } from "react-native";
 import { Button } from "react-native";
-import { List, ListItem } from "react-native-elements";
+//import { List, ListItem } from "react-native-elements";
 import ActionBar from "react-native-action-bar";
 import PropTypes from "prop-types";
 import { TabNavigator } from "react-navigation";
@@ -16,7 +16,7 @@ import DrawerLayout from "react-native-drawer-layout";
 import Menu from "../Menu";
 import Bottom from "./Bottom";
 import NoBeacon from "./body/NoBeacon";
-import Elevator from "./body/Elevator";
+import ThiswayView from "./body/ThiswayView";
 
 export default class ThisWay extends Component<{}> {
   constructor(props) {
@@ -66,7 +66,7 @@ export default class ThisWay extends Component<{}> {
         >
           <ScrollView contentContainerStyle={styles.contentContainer}>
             {/* // <NoBeacon/> */}
-            <Elevator />
+            <ThiswayView />
           </ScrollView>
         </View>
         <View style={{ flex: 2 }}>
