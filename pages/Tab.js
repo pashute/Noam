@@ -100,22 +100,14 @@ export default class Tab extends Component<{}> {
               }
             ]}
           />
-          <View
-            style={{
-              flexDirection: "row",
-              marginTop: 10,
-              marginLeft: 40,
-              marginRight: 40
-            }}
-          >
-            <Text style={styles.placemsg}>
-              {str_place}
-              {"\n"}
-            </Text>
+          <View style={styles.topmsgView}>
+            <View style={styles.placebar}>
+              <Text style={styles.placemsg}>{str_place}</Text>
+              <Text style={{ fontSize: 24, color: "#111145", marginLeft: 5 }}>
+                BiG
+              </Text>
+            </View>
             <Text style={styles.beaconloc}>{str_beaconloc}</Text>
-            <Text style={{ fontSize: 24, color: "#111145", marginLeft: 5 }}>
-              BiG
-            </Text>
           </View>
           <ButtonGroup
             selectedBackgroundColor="pink"
@@ -189,6 +181,19 @@ const styles = StyleSheet.create({
   },
   tabText: {
     fontSize: 14
+  },
+  topmsgView: {
+    flexDirection: "column",
+    justifyContent: "center"
+  },
+  placebar: {
+    flexDirection: "row",
+    marginTop: 10,
+    marginLeft: 40,
+    marginRight: 40
+  },
+  beaconloc: {
+    justifyContent: "center"
   },
   placemsg: {
     lineHeight: 20,
