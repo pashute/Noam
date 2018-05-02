@@ -22,6 +22,15 @@ import SetHome from "./pages/setting_pages/SetHome";
 import Voice from "./pages/setting_pages/Voice";
 import Help from "./pages/Help";
 
+//import data from "./noamdata";
+const data = {
+  styles: {
+    stylesSplash: {
+      noamColor: "6600FF",
+      noamFont: "TBD"
+    }
+  }
+};
 
 YellowBox.ignoreWarnings([
   "Warning: componentWillMount is deprecated",
@@ -110,24 +119,19 @@ const instructions = Platform.select({
   android: "b to reload shake or menu for dev"
 });
 
-// this too will be removed
-type Props = {};
-
 export default class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = { 
+      data, 
+      pointingTo: "North West" 
+    };
   }
 
-  async componentDidMount () {
-    console.log("up");
-    //const data = await fetch("noamdata.json");
-    //console.log({data});
-    //this.setState(data);
-  }
+  onCompassUpdate = pointingTo => this.setState({ pointingTo });
 
-  setWelcomeColor = color => {
+  setNoamColor = color => {
     let newState = { ...this.state };
     ObjectPath.set(newState, "styles.welcomeStyles.welcomeColor", color);
     this.setState(newState);
@@ -142,7 +146,17 @@ export default class App extends React.Component {
     //     }}
     //   />
     // );
-    return <Nav screenProps={{ welcomeColor: "#FF9900" }} />;
+    return (
+      <Nav
+        screenProps={{
+          pointingTo: this.state.pointingTo,
+          noamColor:
+            this.state.data && this.state.data.styles
+              ? this.state.data.styles.stylesSplash.noamColor
+              : "#FF0000"
+        }}
+      />
+    );
   }
 }
 
@@ -151,7 +165,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#F5FCFF"
+    backgroundColor: "#FFFFFF"
   },
   welcome: {
     fontSize: 20,

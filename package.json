@@ -13,6 +13,7 @@
   "dependencies": {
     "eslint": "^4.19.1",
     "expo": "^27.0.0",
+    "jsonloader": "^1.0.1",
     "object-path": "^0.11.4",
     "react": "16.3.1",
     "react-native": "0.55.3",

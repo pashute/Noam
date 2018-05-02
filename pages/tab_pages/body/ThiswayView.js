@@ -10,7 +10,7 @@ import {
 import Accordion from "react-native-collapsible/Accordion";
 import { Button } from "react-native";
 import PropTypes from "prop-types";
-import { Font, AppLoading } from 'expo';
+import { Font, AppLoading } from "expo";
 import { MaterialIcons } from "@expo/vector-icons";
 import { List, ListItem } from "react-native-elements";
 
@@ -49,13 +49,12 @@ export default class ThiswayView extends Component<{}> {
     super(props);
   }
 
-
   _renderHeader(section) {
     return (
       <View style={styles.header}>
-      {/*<ListItem></ListItem>*/}
+        {/*<ListItem></ListItem>*/}
         <Text style={styles.headerText}>{section.title}</Text>
-        <View style={styles.separator}></View>
+        <View style={styles.separator} />
       </View>
     );
   }
@@ -63,6 +62,7 @@ export default class ThiswayView extends Component<{}> {
   _renderContent(section) {
     return (
       <View style={styles.content}>
+        {/*<ListItem></ListItem>*/}
         <Text>zzz{section.content}</Text>
       </View>
     );

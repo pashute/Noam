@@ -49,6 +49,16 @@ export default class Splash extends Component<{}> {
     this.setDrawerState = this.setDrawerState.bind(this);
   }
 
+  // componentDidMount() {
+  //   console.log("up");
+  //   setTimeout(function() {
+  //     fetch("noamdata.json").then(data => {
+  //       console.log({ data });
+  //       //this.setState(data);
+  //     });
+  //   }, 500);
+  // }
+
   setDrawerState() {
     this.setState({
       drawerClosed: !this.state.drawerClosed
@@ -105,8 +115,20 @@ export default class Splash extends Component<{}> {
 
           <Text style={(styles.assistant, styles.textCentered)}>
             {"\n\n\n\n"}
-            <FontAwesome name={"arrow-up"} size={25} color={"#6600FF"} />
-            <Text style={[styles.welcome]}> {this.state.titleText}</Text>
+            <FontAwesome
+              name={"arrow-up"}
+              size={25}
+              color={this.props.screenProps.welcomeColor}
+            />
+            <Text
+              style={[
+                styles.welcome,
+                { color: this.props.screenProps.welcomeColor }
+              ]}
+            >
+              {" "}
+              {this.state.titleText}
+            </Text>
             <Text onPress={() => navigate("TabPage")}>
               {this.state.bodyText}
             </Text>

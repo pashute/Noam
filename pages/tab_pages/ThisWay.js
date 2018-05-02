@@ -47,7 +47,7 @@ export default class ThisWay extends Component<{}> {
     return (
       <View style={styles.container}>
         <Text style={{ margin: 10, fontSize: 16, textAlign: "center" }}>
-          Pointing: North East
+          {`Pointing: ${this.props.screenProps.pointingDirection}`}
         </Text>
         <View
           style={{

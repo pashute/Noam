@@ -22,7 +22,7 @@ const str_beaconloc = "South gate (Bank Leumi)";
 const icon_Place = <Icon name="adjust" size={30} color="#900" />;
 const thatwayButton = () => (
   <View style={styles.tabView}>
-    <Text style={styles.tabText}>That </Text>
+    <Text style={styles.tabText}>This </Text>
     <FontAwesome name={"arrow-up"} size={12} color={"#6600FF"} />
     <Text style={styles.tabText}> way</Text>
   </View>
@@ -43,6 +43,7 @@ export default class Tab extends Component<{}> {
   }
 
   updateTabIndex = tabIndex => {
+    console.log(tabIndex);
     this.setState({ tabIndex });
   };
 
@@ -110,14 +111,19 @@ export default class Tab extends Component<{}> {
             <Text style={styles.beaconloc}>{str_beaconloc}</Text>
           </View>
           <ButtonGroup
+            containerBorderRadius={40}
             selectedBackgroundColor="pink"
-            onPress={this.updateIndex}
+            onPress={this.updateTabIndex}
             selectedIndex={this.state.tabIndex}
             buttons={["Nearby", { element: thatwayButton }, "In Building"]}
             containerStyle={{ height: 30 }}
           />
 
-          <Tabpage />
+          <Tabpage
+            screenProps={{
+              pointingDirection: this.props.screenProps.pointingDirection
+            }}
+          />
         </DrawerLayout>
       </View>
     );
