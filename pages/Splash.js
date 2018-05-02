@@ -77,7 +77,7 @@ export default class Splash extends Component<{}> {
   render() {
     const { navigate } = this.props.navigation;
     return (
-      <View style={styles.container}>
+      <View style={styles.mainContainer}>
         <DrawerLayout
           drawerWidth={200}
           ref={drawerElement => {
@@ -103,9 +103,10 @@ export default class Splash extends Component<{}> {
             ]}
           />
 
-          <Text style={styles.assistant}>
-            <FontAwesome name={"adjust"} size={25} color={"#FF0000"} />
-            <Text style={[styles.welcome]}>{this.state.titleText}</Text>
+          <Text style={(styles.assistant, styles.textCentered)}>
+            {"\n\n\n\n"}
+            <FontAwesome name={"arrow-up"} size={25} color={"#6600FF"} />
+            <Text style={[styles.welcome]}> {this.state.titleText}</Text>
             <Text onPress={() => navigate("TabPage")}>
               {this.state.bodyText}
             </Text>
@@ -129,18 +130,18 @@ export default class Splash extends Component<{}> {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  mainContainer: {
     flex: 1,
     marginTop: Platform.OS === "ios" ? 0 : Expo.Constants.statusBarHeight,
     backgroundColor: "#F5FCFF"
   },
   actbar: {
     backgroundColor: "#0000FF",
-    color: "#FF0000"
+    color: "#FF00FF" // hi
   },
   welcome: {
     fontSize: 35,
-    color: "#6600FF"
+    color: "#6600FF" // purple
   },
   instructions: {
     marginTop: 40,
@@ -154,6 +155,9 @@ const styles = StyleSheet.create({
     marginTop: 60,
     marginLeft: 20,
     marginRight: 20
+  },
+  textCentered: {
+    textAlign: "center"
   },
   title: {
     textAlign: "center",
