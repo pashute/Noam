@@ -1,0 +1,30 @@
+Data:
+ Styles
+ Settings
+    general
+      language
+        currentLanguage
+        stylePath
+        dataLocation
+    styles
+        x? styleid, stylepath // two for beginners
+
+    screentexts
+      welcome: splash1, splash2, inplace, 
+      maintabs: direction, 
+      nearby: 
+      thisway: 
+      inplace: 
+
+    
+ Places
+   * place:  id, txtid, type, title, shortname, msg1stTime
+    Nearby: 
+      * beacon: id, txtid, beaconId, title, points: 
+        * point: id, txtid, direction, title, instruc
+    ThatWay: 
+      * beacon: id, txtid, beaconId, title, points: 
+        * point: id, txtid, direction, title, instruc
+    InPlace:
+      * point: id, txtid, title, desc.
+

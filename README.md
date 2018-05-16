@@ -43,10 +43,27 @@ signed apk https://facebook.github.io/react-native/docs/signed-apk-android.html
 problem with listitem https://github.com/react-native-training/react-native-elements/issues/490#issuecomment-318164502
 
 native kontakt.io
-react native elements tut https://www.youtube.com/watch?v=LdKtugH-sb8
+
+react native elements tut (youtube utube) 
+https://www.youtube.com/watch?v=LdKtugH-sb8
 
 The beacons have finally been listed.
 https://panel.kontakt.io/signin
 danny@reisspn.co.il נגישתשעז
 
-native bluetooth 
+native bluetooth https://www.npmjs.com/package/react-native-bluetooth-status
+
+react native compass:
+https://github.com/yonahforst/react-native-heading 
+other compass:
+https://www.npmjs.com/package/react-native-simple-compass 
+https://www.npmjs.com/package/react-native-compass
+https://github.com/yonahforst/react-native-heading 
+and this in windows about calibration: https://docs.microsoft.com/en-us/uwp/api/Windows.Devices.Sensors.MagnetometerAccuracy
+
+
+react-native log-android
+
+redux explained:
+https://medium.com/@imranhishaam/react-native-with-redux-for-beginners-6281959a2899 
+

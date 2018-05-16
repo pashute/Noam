@@ -1,0 +1,87 @@
+{
+  "places": [
+    {
+      "place": {
+        "id": 1,
+        "txtId": "bigbs",
+        "placeType": "building",
+        "fullName": "Big Bet Shemesh",
+        "shortName": "Big BS",
+        "nearby": [
+          {
+            "beacon": {
+              "id": 11,
+              "txtId": "mainGate",
+              "beaconID": "12345",
+              "fullName": "Main Gate (South)",
+              "shortName": "Main gate",
+              "points": [
+                {
+                  "point": {
+                    "id": 12,
+                    "txtId": "toilets",
+                    "icon": "toilet",
+                    "direction": 125,
+                    "instruc": "bla bla bla"
+                  }
+                },
+                {
+                  "point": {
+                    "id": 13,
+                    "txtId": "Elevators",
+                    "icon": "elevator",
+                    "direction": 343,
+                    "instruc": "blu blu blu"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "beacon": {
+              "id": 12,
+              "txtId": "toilets",
+              "beaconID": "12346",
+              "fullName": "Toilets south flr 1",
+              "shortName": "Toilets f1.S",
+              "points": [
+                {
+                  "point": {
+                    "id": 11,
+                    "txtId": "maingate",
+                    "icon": "gate",
+                    "direction": 32,
+                    "instruc": "bli bli bli"
+                  }
+                },
+                {
+                  "point": {
+                    "id": 13,
+                    "txtId": "Elevators",
+                    "icon": "elevator",
+                    "direction": 311,
+                    "instruc": "blu blu blu"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "thisWay": [{}, {}],
+        "in place": [{}, {}, {}]
+      }
+    },
+    {
+      "place": {
+        "id": 2,
+        "txtId": "bigbs",
+        "placeType": "building",
+        "fullName": "Big Bet Shemesh",
+        "shortName": "Big BS",
+        "nearby": [{}],
+        "thisWay": [{}],
+        "in place": [{}, {}, {}]
+      }
+    }
+  ]
+}

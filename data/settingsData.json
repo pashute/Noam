@@ -1,0 +1,17 @@
+{   
+    "settings": {
+        "general": {
+            "txtPointingTo": "Pointing to"
+        },
+        "scrnWelcome": {
+            "txtWelcomeTitle": "Welcome to",
+            "txtWelcomeDetails1": "This application \n bla bla"
+        }, 
+        "scrnMainTabs": {
+
+        },
+        "scrnSettings": {
+
+        }
+    }
+}
