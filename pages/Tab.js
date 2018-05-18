@@ -1,29 +1,29 @@
-import React, { Component } from "react";
-import { Platform, StyleSheet, Text, View, Alert } from "react-native";
-import { TabNavigator } from "react-navigation";
-import NearBy from "./tab_pages/NearBy";
-import ThisWay from "./tab_pages/ThisWay";
-import InBuilding from "./tab_pages/InBuilding";
-import DrawerLayout from "react-native-drawer-layout";
-import Menu from "./Menu";
-import ActionBar from "react-native-action-bar";
-import PropTypes from "prop-types";
-import Icon from "react-native-vector-icons/FontAwesome";
-import { ButtonGroup } from "react-native-elements";
-import "@expo/vector-icons";
-import { FontAwesome } from "@expo/vector-icons";
+import React, { Component } from 'react';
+import { Platform, StyleSheet, Text, View, Alert } from 'react-native';
+import { TabNavigator } from 'react-navigation';
+import NearBy from './tab_pages/NearBy';
+import ThisWay from './tab_pages/ThisWay';
+import InBuilding from './tab_pages/InBuilding';
+import DrawerLayout from 'react-native-drawer-layout';
+import Menu from './Menu';
+import ActionBar from 'react-native-action-bar';
+import PropTypes from 'prop-types';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { ButtonGroup } from 'react-native-elements';
+import '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
 
-const str_exit = "Exits";
-const str_call = "Call";
-const ear_icon = require("../assets/icons/ear1.png");
-const str_place = "Big Fashion";
-const str_beaconloc = "South gate (Bank Leumi)";
+const str_exit = 'Exits';
+const str_call = 'Call';
+const ear_icon = require('../assets/icons/ear1.png');
+const str_place = 'Big Fashion';
+const str_beaconloc = 'South gate (Bank Leumi)';
 
 const icon_Place = <Icon name="adjust" size={30} color="#900" />;
 const thatwayButton = () => (
   <View style={styles.tabView}>
     <Text style={styles.tabText}>This </Text>
-    <FontAwesome name={"arrow-up"} size={12} color={"#6600FF"} />
+    <FontAwesome name={'arrow-up'} size={12} color={'#6600FF'} />
     <Text style={styles.tabText}> way</Text>
   </View>
 );
@@ -31,9 +31,10 @@ const thatwayButton = () => (
 export default class Tab extends Component<{}> {
   constructor(props) {
     super(props);
+    // fix: txt from constants and then from data
     this.state = {
-      titleText: "noam ",
-      bodyText: "You're indoor assistant",
+      titleText: 'noam ',
+      bodyText: 'Your indoor assistant',
       drawerClosed: true,
       tabIndex: 1
     };
@@ -64,13 +65,13 @@ export default class Tab extends Component<{}> {
   _positionDecide() {
     _positionDetect();
     if (isBigFashion == true) {
-      return "Big Fashion-Main Gate";
+      return 'Big Fashion-Main Gate';
     }
     if (isElevator == true) {
-      return "Big Fashion: Elevator C3 ";
+      return 'Big Fashion: Elevator C3 ';
     }
     if (isPark == true) {
-      return "Park Harova";
+      return 'Park Harova';
     }
   }
   render() {
@@ -91,12 +92,12 @@ export default class Tab extends Component<{}> {
           <ActionBar
             containerStyle={styles.bar}
             titleStyle={styles.title}
-            title={"noam"}
-            leftIconName={"location"}
-            onLeftPress={() => console.log("Left!")}
+            title={'noam'}
+            leftIconName={'location'}
+            onLeftPress={() => console.log('Left!')}
             rightIcons={[
               {
-                name: "menu",
+                name: 'menu',
                 onPress: this.toggleDrawer
               }
             ]}
@@ -104,7 +105,7 @@ export default class Tab extends Component<{}> {
           <View style={styles.topmsgView}>
             <View style={styles.placebar}>
               <Text style={styles.placemsg}>{str_place}</Text>
-              <Text style={{ fontSize: 24, color: "#111145", marginLeft: 5 }}>
+              <Text style={{ fontSize: 24, color: '#111145', marginLeft: 5 }}>
                 BiG
               </Text>
             </View>
@@ -115,7 +116,7 @@ export default class Tab extends Component<{}> {
             selectedBackgroundColor="pink"
             onPress={this.updateTabIndex}
             selectedIndex={this.state.tabIndex}
-            buttons={["Nearby", { element: thatwayButton }, "In Building"]}
+            buttons={['Nearby', { element: thatwayButton }, 'In Building']}
             containerStyle={{ height: 30 }}
           />
 
@@ -136,30 +137,30 @@ const Tabpage = TabNavigator(
       screen: NearBy,
       navigationOptions: {
         tabBarVisible: false,
-        tabBarLabel: "NearBy"
+        tabBarLabel: 'NearBy'
       }
     },
     ThisWayPage: {
       screen: ThisWay,
       navigationOptions: {
         tabBarVisible: false,
-        tabBarLabel: "ThisWay"
+        tabBarLabel: 'ThisWay'
       }
     },
     InBuildingPage: {
       screen: InBuilding,
       navigationOptions: {
         tabBarVisible: false,
-        tabBarLabel: "In Building"
+        tabBarLabel: 'In Building'
       }
     }
   },
   {
-    initialRouteName: "ThisWayPage",
-    tabBarPosition: "top",
+    initialRouteName: 'ThisWayPage',
+    tabBarPosition: 'top',
     tabBarOptions: {
-      backgroundColor: "#FFFFFF",
-      activeTintColor: "#555555",
+      backgroundColor: '#FFFFFF',
+      activeTintColor: '#555555',
       labelStyle: {
         fontSize: 10
       }
@@ -170,12 +171,12 @@ const Tabpage = TabNavigator(
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: Platform.OS === "ios" ? 0 : Expo.Constants.statusBarHeight,
-    backgroundColor: "#F5F1FF"
+    marginTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight,
+    backgroundColor: '#F5F1FF'
   },
   welcome: {
     fontSize: 35,
-    color: "#6600ff"
+    color: '#6600ff'
   },
   assistant: {
     lineHeight: 30,
@@ -183,23 +184,23 @@ const styles = StyleSheet.create({
     fontSize: 24
   },
   tabView: {
-    flexDirection: "row"
+    flexDirection: 'row'
   },
   tabText: {
     fontSize: 14
   },
   topmsgView: {
-    flexDirection: "column",
-    justifyContent: "center"
+    flexDirection: 'column',
+    justifyContent: 'center'
   },
   placebar: {
-    flexDirection: "row",
+    flexDirection: 'row',
     marginTop: 10,
     marginLeft: 40,
     marginRight: 40
   },
   beaconloc: {
-    justifyContent: "center"
+    justifyContent: 'center'
   },
   placemsg: {
     lineHeight: 20,
@@ -208,20 +209,20 @@ const styles = StyleSheet.create({
   },
   instructions: {
     marginTop: 40,
-    textAlign: "left",
-    color: "#333333",
+    textAlign: 'left',
+    color: '#333333',
     marginBottom: 80,
     fontSize: 20
   },
   title: {
-    textAlign: "center",
+    textAlign: 'center',
     fontSize: 20
   },
   buttonContainer: {
-    backgroundColor: "#2E9298",
+    backgroundColor: '#2E9298',
     borderRadius: 10,
     padding: 10,
-    shadowColor: "#000000",
+    shadowColor: '#000000',
     shadowOffset: {
       width: 0,
       height: 3

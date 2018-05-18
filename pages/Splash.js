@@ -1,47 +1,50 @@
-import React, { Component } from "react";
-import { Platform, StyleSheet, Text, View, Alert } from "react-native";
-import { Button } from "react-native";
-import ActionBar from "react-native-action-bar";
-import PropTypes from "prop-types";
-import { StackNavigator } from "react-navigation";
-import Main from "./Main";
-import DrawerLayout from "react-native-drawer-layout";
-import Menu from "./Menu";
-import Tab from "./Tab";
-import { FontAwesome } from "@expo/vector-icons";
+/* cSpell:disable */
+
+import React, { Component } from 'react';
+import { Platform, StyleSheet, Text, View, Alert } from 'react-native';
+import { Button } from 'react-native';
+import ActionBar from 'react-native-action-bar';
+import PropTypes from 'prop-types';
+import { StackNavigator } from 'react-navigation';
+import Main from './Main';
+import DrawerLayout from 'react-native-drawer-layout';
+import Menu from './Menu';
+import Tab from './Tab';
+import { FontAwesome } from '@expo/vector-icons';
 
 const txtIosinstruct =
-  "Welcome to Noam,\n" +
-  "your indoor assistant\n" +
-  "for accessible buildings\n\n" +
+  'Welcome to Noam,\n' +
+  'your indoor assistant\n' +
+  'for accessible buildings\n\n' +
   "We can tell you what's in\n" +
-  "the building and where";
+  'the building and where';
 
 const txtAndroinstruct =
-  "Welcome to Noam,\n" +
-  "your indoor assistant\n" +
-  "for accessible buildings\n\n" +
+  'Welcome to Noam,\n' +
+  'your indoor assistant\n' +
+  'for accessible buildings\n\n' +
   "We can tell you what's in\n" +
-  "the building and where";
+  'the building and where';
 
-const txtSplashTitle = "noam";
+const txtSplashTitle = 'noam';
 
-const txtSplashBody = " you're indoor assistant";
+const txtSplashDescription = ' your indoor assistant';
 
-const colorBgDark = "#181818"; // was '#00000F'
+const colorBgDark = '#181818'; // was '#00000F'
 
 const instructions = Platform.select({
   ios: txtIosinstruct,
   android: txtAndroinstruct
 });
 
-export default class Splash extends Component<{}> {
+export default class Splash extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       titleText: txtSplashTitle,
-      bodyText: txtSplashBody,
-      drawerClosed: true
+      bodyText: txtSplashDescription,
+      drawerClosed: true,
+      continueEnabled: false
     };
     // in text style array...
     // { color: this.props.screenProps.welcomeColor }
@@ -80,9 +83,14 @@ export default class Splash extends Component<{}> {
     // real:  return compassAPI.hasBlootooth() // or something like this
     return false; // for wireframe  version
   }
+  // _continue() {
+  //   //onPress={() => navigate('TabPage')}
+  //   this.props.navigation.navigate('TabPage');
+  // }
   _turnOnBluetooth() {
-    console.log("bluetooth");
-    Alert.alert("Please turn on your bluetooth!");
+    console.log('bluetooth');
+    Alert.alert('Turning blootooth on!');
+    this.state.continueEnabled = true;
   }
   render() {
     const { navigate } = this.props.navigation;
@@ -102,21 +110,21 @@ export default class Splash extends Component<{}> {
             headerStyle={styles.actbar}
             containerStyle={styles.bar}
             titleStyle={styles.title}
-            title={"noam"}
-            leftIconName={"location"}
-            onLeftPress={() => console.log("Left!")}
+            title={'noam'}
+            leftIconName={'location'}
+            onLeftPress={() => console.log('Left!')}
             rightIcons={[
               {
-                name: "menu",
+                name: 'menu',
                 onPress: this.toggleDrawer
               }
             ]}
           />
 
           <Text style={(styles.assistant, styles.textCentered)}>
-            {"\n\n\n\n"}
+            {'\n\n\n\n'}
             <FontAwesome
-              name={"arrow-up"}
+              name={'arrow-up'}
               size={25}
               color={this.props.screenProps.welcomeColor}
             />
@@ -126,12 +134,10 @@ export default class Splash extends Component<{}> {
                 { color: this.props.screenProps.welcomeColor }
               ]}
             >
-              {" "}
+              {' '}
               {this.state.titleText}
             </Text>
-            <Text onPress={() => navigate("TabPage")}>
-              {this.state.bodyText}
-            </Text>
+            <Text>{this.state.bodyText}</Text>
           </Text>
 
           <Text style={styles.instructions}>{instructions}</Text>
@@ -145,6 +151,19 @@ export default class Splash extends Component<{}> {
               accessibilityLabel="Tap on Me"
             />
           </View>
+          <View>
+            <Text> </Text>
+          </View>
+          <View style={styles.buttonContainer}>
+            {/* the bluetooth button */}
+            <Button
+              onPress={() => navigate('TabPage')}
+              title="Continue"
+              color="#242424"
+              disabled={this.state.continueEnabled}
+              accessibilityLabel="Tap on Me"
+            />
+          </View>
         </DrawerLayout>
       </View>
     );
@@ -154,21 +173,21 @@ export default class Splash extends Component<{}> {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    marginTop: Platform.OS === "ios" ? 0 : Expo.Constants.statusBarHeight,
-    backgroundColor: "#F5FCFF"
+    marginTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight,
+    backgroundColor: '#F5FCFF'
   },
   actbar: {
-    backgroundColor: "#FF00FF",
-    color: "#FF00FF" // hi
+    backgroundColor: '#FF00FF',
+    color: '#FF00FF' // hi
   },
   welcome: {
     fontSize: 35,
-    color: "#6600FF" // purple
+    color: '#6600FF' // purple
   },
   instructions: {
     marginTop: 40,
-    textAlign: "center",
-    color: "#333333",
+    textAlign: 'center',
+    color: '#333333',
     marginBottom: 80,
     fontSize: 20
   },
@@ -179,14 +198,14 @@ const styles = StyleSheet.create({
     marginRight: 20
   },
   textCentered: {
-    textAlign: "center"
+    textAlign: 'center'
   },
   title: {
-    textAlign: "center",
+    textAlign: 'center',
     fontSize: 20
   },
   buttonContainer: {
-    backgroundColor: "#444444", // colorBgDark,//'#454545', // '#2E9298',
+    backgroundColor: '#444444', // colorBgDark,//'#454545', // '#2E9298',
     borderRadius: 10,
     padding: 10,
     shadowColor: colorBgDark, //'#454545', // '#000000'

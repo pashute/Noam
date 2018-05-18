@@ -46,7 +46,7 @@ call npm install react-navigation
 call npm install react-native-elements
 @echo 16. ---------
 call npm install react-native-vector-icons
-
+@echo choose  airbnb, 
 
 @echo DONE -------
 @echo off
