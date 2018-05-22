@@ -1,7 +1,14 @@
-a. trying npm
-b. returning splash
-c. adding in colors and icons
-d. adding in data, state and props
+Todo:
+c. bt api
+  installed for android
+  todo: ios
+d. compass api
+(next in a fast iteration and then complete)
+d. redux state
+e. read data into redux
+f. read data components
+g. Accordion: with list item and toggled state
+
 Environment:
 OS: Windows 10
 Node: 8.11.1
@@ -51,7 +58,8 @@ The beacons have finally been listed.
 https://panel.kontakt.io/signin
 danny@reisspn.co.il נגישתשעז
 
-native bluetooth https://www.npmjs.com/package/react-native-bluetooth-status
+native bluetooth status
+https://www.npmjs.com/package/react-native-bluetooth-status
 
 react native compass:
 https://github.com/yonahforst/react-native-heading
@@ -68,3 +76,6 @@ https://medium.com/@imranhishaam/react-native-with-redux-for-beginners-6281959a2
 
 Fixed problem with Flow ([js] error ... can only be used in a .ts file)
 https://stackoverflow.com/questions/48852007/type-aliases-can-only-be-used-in-a-ts-file/50392975#50392975 second answer is mine
+
+How to make smart looking accordion (tutorial)
+https://moduscreate.com/blog/expanding-and-collapsing-elements-using-animations-in-react-native/

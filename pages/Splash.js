@@ -87,10 +87,10 @@ export default class Splash extends React.Component {
   //   //onPress={() => navigate('TabPage')}
   //   this.props.navigation.navigate('TabPage');
   // }
-  _turnOnBluetooth() {
+  _turnOnBluetooth  = () => {
     console.log('bluetooth');
     Alert.alert('Turning blootooth on!');
-    this.state.continueEnabled = true;
+    this.setState({ continueEnabled: true });
   }
   render() {
     const { navigate } = this.props.navigation;
@@ -155,7 +155,7 @@ export default class Splash extends React.Component {
             <Text> </Text>
           </View>
           <View style={styles.buttonContainer}>
-            {/* the bluetooth button */}
+            {/* the CONTINUE button */}
             <Button
               onPress={() => navigate('TabPage')}
               title="Continue"
