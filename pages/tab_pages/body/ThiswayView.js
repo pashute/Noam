@@ -1,4 +1,6 @@
-import React, { Component } from "react";
+/* cSpell:disable */
+
+import React, { Component } from 'react';
 import {
   Platform,
   StyleSheet,
@@ -6,41 +8,41 @@ import {
   View,
   Alert,
   ScrollView
-} from "react-native";
-import Accordion from "react-native-collapsible/Accordion";
-import { Button } from "react-native";
-import PropTypes from "prop-types";
-import { Font, AppLoading } from "expo";
-import { MaterialIcons } from "@expo/vector-icons";
-import { List, ListItem } from "react-native-elements";
+} from 'react-native';
+import Accordion from 'react-native-collapsible/Accordion';
+import { Button } from 'react-native';
+import PropTypes from 'prop-types';
+import { Font, AppLoading } from 'expo';
+import { MaterialIcons } from '@expo/vector-icons';
+import { List, ListItem } from 'react-native-elements';
 
 //const str_welcome ='Welcome to Big Fashion';
 //const str_open= 'Opening hours:\n' + 'Sunday - Thursday 8:30 - 21:00\n' + 'Friday 8:30 - 13:00';
 //const str_pos = 'You are at the main gate \n' + 'There is an ATM outside';
-const str_towards = "Towards North East:";
+const str_towards = 'Towards North East:';
 const str_des =
-  "You are on the first floor \n" + "near the south gate \n" + "and bank Leumi";
+  'You are on the first floor \n' + 'near the south gate \n' + 'and bank Leumi';
 const SECTIONS = [
   {
-    title: "Superpharm",
-    content: "10 meters ahead Entrance is 2 meters to your right."
+    title: 'Superpharm',
+    content: '10 meters ahead Entrance is 2 meters to your right.'
   },
   {
-    title: "Stairs",
-    content: "Lorem ipsum 1..."
+    title: 'Stairs',
+    content: 'Lorem ipsum 1...'
   },
   {
-    title: "Toilets",
+    title: 'Toilets',
     content:
-      "Walk ahead 30 meters  \n" +
-      "turn half left and another 20 meters \n" +
-      "the first door to the right is for disabled \n" +
-      "the second door is the womens \n" +
+      'Walk ahead 30 meters  \n' +
+      'turn half left and another 20 meters \n' +
+      'the first door to the right is for disabled \n' +
+      'the second door is the womens \n' +
       "and the third is the men's room"
   },
   {
-    title: "To bus station",
-    content: "Lorem ipsum 3..."
+    title: 'To bus station',
+    content: 'Lorem ipsum 3...'
   }
 ];
 
@@ -87,45 +89,45 @@ export default class ThiswayView extends Component<{}> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F5FCFF",
+    backgroundColor: '#F5FCFF',
 
     marginLeft: 20,
     marginRight: 20
   },
   title: {
-    textAlign: "center",
+    textAlign: 'center',
     fontSize: 14,
-    fontWeight: "300",
+    fontWeight: '300',
     marginBottom: 20
   },
   dirtowards: {
     fontSize: 24,
-    textAlign: "left"
+    textAlign: 'left'
   },
   header: {
-    backgroundColor: "#F5FCFF",
+    backgroundColor: '#F5FCFF',
     padding: 10
   },
   headerText: {
-    textAlign: "center",
+    textAlign: 'center',
     fontSize: 14,
-    fontWeight: "500",
-    fontStyle: "normal"
+    fontWeight: '500',
+    fontStyle: 'normal'
   },
   content: {
     padding: 20,
-    backgroundColor: "#fff"
+    backgroundColor: '#fff'
   },
   assistant: {
     marginBottom: 20,
     fontSize: 20,
-    textAlign: "center"
+    textAlign: 'center'
   },
   buttonContainer: {
-    backgroundColor: "#2E9298",
+    backgroundColor: '#2E9298',
     borderRadius: 10,
     padding: 10,
-    shadowColor: "#000000",
+    shadowColor: '#000000',
     shadowOffset: {
       width: 0,
       height: 3
@@ -137,6 +139,6 @@ const styles = StyleSheet.create({
   },
   separator: {
     height: 0.5,
-    backgroundColor: "#CCCCCC"
+    backgroundColor: '#CCCCCC'
   }
 });
