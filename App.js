@@ -24,8 +24,10 @@ import SetHome from './pages/setting_pages/SetHome';
 import Voice from './pages/setting_pages/Voice';
 import Help from './pages/Help';
 
+//import placesData from "./data/placesData.json";
+//import settingsData from "./data/settingsData.json";
+//import stylesData from "./data/stylesData.json";
 
-//import data from "./noamdata";
 const data = {
   styles: {
     stylesSplash: {
@@ -116,23 +118,17 @@ const Nav = StackNavigator({
   }
 });
 
-// this will be removed
-//const instructions = Platform.select({
-//  ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
-//  android: "b to reload shake or menu for dev"
-//});
-
 export default class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      data,
+      data: {},
       pointingTo: 'North West'
     };
   }
 
-  //onCompassUpdate = pointingTo => this.setState({ pointingTo });
+  // onCompassUpdate = pointingTo => this.setState({ pointingTo });
 
   setNoamColor = color => {
     let newState = { ...this.state };

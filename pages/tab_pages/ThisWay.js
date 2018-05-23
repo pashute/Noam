@@ -19,7 +19,15 @@ import Bottom from "./Bottom";
 import NoBeacon from "./body/NoBeacon";
 import ThiswayView from "./body/ThiswayView";
 
-export default class ThisWay extends Component<{}> {
+// import { YellowBox } from 'react-native';
+// YellowBox.ignoreWarnings([
+//   'Warning: componentWillMount is deprecated',
+//   'Warning: componentWillReceiveProps is deprecated',
+//   'Warning: componentWillUpdate is deprecated'
+// ]);
+
+
+export default class ThisWay extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

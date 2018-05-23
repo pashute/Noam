@@ -12,6 +12,8 @@ import Menu from './Menu';
 import Tab from './Tab';
 import { FontAwesome } from '@expo/vector-icons';
 
+import { BluetoothStatus } from 'react-native-bluetooth-status';
+
 const txtIosinstruct =
   'Welcome to Noam,\n' +
   'your indoor assistant\n' +
@@ -44,14 +46,29 @@ export default class Splash extends React.Component {
       titleText: txtSplashTitle,
       bodyText: txtSplashDescription,
       drawerClosed: true,
-      continueDisabled: true
+      continueDisabled: true,
+      bluetoothState: ''
     };
+
     // in text style array...
     // { color: this.props.screenProps.welcomeColor }
     this.toggleDrawer = this.toggleDrawer.bind(this);
     this.setDrawerState = this.setDrawerState.bind(this);
   }
 
+  componentDidMount() {
+    this.checkInitialBluetoothState();
+  }
+
+  // onMount - function
+  async checkInitialBluetoothState() {
+    console.log("Problem: Cannot get Bluetooth status.")
+    //const isEnabled = await BluetoothStatus.state();
+    //this.setState({ bluetoothState: (isEnabled) ? 'On' : 'Off'});
+    //console.log(this.state.bluetoothState);
+  }
+
+  // ctor functions   
   setDrawerState() {
     this.setState({
       drawerClosed: !this.state.drawerClosed
@@ -65,6 +82,8 @@ export default class Splash extends React.Component {
       this.DRAWER.closeDrawer();
     }
   };
+
+  // Noam splash screen specifics
   isLastUserplace() {
     // real:  return( userLastPlaceID  == currentPlaceID)
     return true; // for wireframe  version
@@ -73,12 +92,17 @@ export default class Splash extends React.Component {
     // real:  return compassAPI.hasBlootooth() // or something like this
     return false; // for wireframe  version
   }
+
+
   // _continue() {
   //   //onPress={() => navigate('TabPage')}
   //   this.props.navigation.navigate('TabPage');
   // }
   _turnOnBluetooth = () => {
     console.log('bluetooth');
+    if (Platform.OS === 'android')
+
+      
     Alert.alert('Turning blootooth on!');
     this.setState({ continueDisabled: false });
   };
@@ -196,8 +220,8 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     backgroundColor: '#444444', // colorBgDark,//'#454545', // '#2E9298',
-    borderRadius: 2,
-    padding: 10,
+    borderRadius: 10,
+    padding: 3,
     shadowColor: colorBgDark, //'#454545', // '#000000'
     shadowOffset: {
       width: 0,
