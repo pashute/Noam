@@ -44,23 +44,13 @@ export default class Splash extends React.Component {
       titleText: txtSplashTitle,
       bodyText: txtSplashDescription,
       drawerClosed: true,
-      continueEnabled: false
+      continueDisabled: true
     };
     // in text style array...
     // { color: this.props.screenProps.welcomeColor }
     this.toggleDrawer = this.toggleDrawer.bind(this);
     this.setDrawerState = this.setDrawerState.bind(this);
   }
-
-  // componentDidMount() {
-  //   console.log("up");
-  //   setTimeout(function() {
-  //     fetch("noamdata.json").then(data => {
-  //       console.log({ data });
-  //       //this.setState(data);
-  //     });
-  //   }, 500);
-  // }
 
   setDrawerState() {
     this.setState({
@@ -87,11 +77,11 @@ export default class Splash extends React.Component {
   //   //onPress={() => navigate('TabPage')}
   //   this.props.navigation.navigate('TabPage');
   // }
-  _turnOnBluetooth  = () => {
+  _turnOnBluetooth = () => {
     console.log('bluetooth');
     Alert.alert('Turning blootooth on!');
-    this.setState({ continueEnabled: true });
-  }
+    this.setState({ continueDisabled: false });
+  };
   render() {
     const { navigate } = this.props.navigation;
     return (
@@ -148,7 +138,7 @@ export default class Splash extends React.Component {
               onPress={this._turnOnBluetooth}
               title="Press here to turn bluetooth on"
               color="#242424"
-              accessibilityLabel="Tap on Me"
+              accessibilityLabel="Press to turn bluetooth on"
             />
           </View>
           <View>
@@ -160,8 +150,8 @@ export default class Splash extends React.Component {
               onPress={() => navigate('TabPage')}
               title="Continue"
               color="#242424"
-              disabled={this.state.continueEnabled}
-              accessibilityLabel="Tap on Me"
+              disabled={this.state.continueDisabled}
+              accessibilityLabel="Continue"
             />
           </View>
         </DrawerLayout>
@@ -206,12 +196,12 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     backgroundColor: '#444444', // colorBgDark,//'#454545', // '#2E9298',
-    borderRadius: 10,
+    borderRadius: 2,
     padding: 10,
     shadowColor: colorBgDark, //'#454545', // '#000000'
     shadowOffset: {
       width: 0,
-      height: 3
+      height: 1
     },
     shadowRadius: 3, //10,
     shadowOpacity: 0.25,
