@@ -1,3 +1,5 @@
+/* cSpell:disable */
+
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, Alert } from 'react-native';
 import { TabNavigator } from 'react-navigation';
@@ -13,13 +15,25 @@ import { ButtonGroup } from 'react-native-elements';
 import '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 
+// taken from settings
 const str_exit = 'Exits';
 const str_call = 'Call';
 const ear_icon = require('../assets/icons/ear1.png');
 const str_place = 'Big Fashion';
 const str_beaconloc = 'South gate (Bank Leumi)';
 
+const str_this = 'This';
+const str_way = 'way';
+const str_nearby = 'Nearby';
+const str_inplace = 'In building';
 const icon_Place = <Icon name="adjust" size={30} color="#900" />;
+
+// tab texts and icons:
+const nearbyButton = () => (
+  <View style={styles.tabView}>
+    <Text style={styles.tabText}>{str_nearby}</Text>
+  </View>
+);
 const thatwayButton = () => (
   <View style={styles.tabView}>
     <Text style={styles.tabText}>This </Text>
@@ -27,8 +41,13 @@ const thatwayButton = () => (
     <Text style={styles.tabText}> way</Text>
   </View>
 );
+const inplaceButton = () => (
+  <View style={styles.tabView}>
+    <Text style={styles.tabText}>{str_inplace}</Text>
+  </View>
+);
 
-export default class Tab extends Component<{}> {
+export default class Tab extends React.Component {
   constructor(props) {
     super(props);
     // fix: txt from constants and then from data
@@ -36,16 +55,32 @@ export default class Tab extends Component<{}> {
       titleText: 'noam ',
       bodyText: 'Your indoor assistant',
       drawerClosed: true,
-      tabIndex: 1
+      tabIndex: 2
     };
 
     this.toggleDrawer = this.toggleDrawer.bind(this);
     this.setDrawerState = this.setDrawerState.bind(this);
+    this.updateTabIndex = this.updateTabIndex.bind(this);
   }
 
   updateTabIndex = tabIndex => {
     console.log(tabIndex);
     this.setState({ tabIndex });
+    switch (tabIndex) {
+      case 0:
+        console.log('nearby chosen');
+        this.props.navigation.navigate('NearByPage');
+        break;
+      case 1:
+        console.log('that way chosen');
+        this.props.navigation.navigate('ThisWayPage');
+        break;
+      case 2:
+        console.log('in place chosen');
+        this.props.navigation.navigate('InPlacePage');
+        break;
+      default: // do nothing
+    }
   };
 
   setDrawerState() {
@@ -61,9 +96,11 @@ export default class Tab extends Component<{}> {
       this.DRAWER.closeDrawer();
     }
   };
+
   _positionDetect() {}
   _positionDecide() {
     _positionDetect();
+    // simulation
     if (isBigFashion == true) {
       return 'Big Fashion-Main Gate';
     }
@@ -74,6 +111,7 @@ export default class Tab extends Component<{}> {
       return 'Park Harova';
     }
   }
+
   render() {
     const { navigate } = this.props.navigation;
 
@@ -113,10 +151,14 @@ export default class Tab extends Component<{}> {
           </View>
           <ButtonGroup
             containerBorderRadius={40}
-            selectedBackgroundColor="pink"
+            selectedBackgroundColor="#FF0000"
             onPress={this.updateTabIndex}
             selectedIndex={this.state.tabIndex}
-            buttons={['Nearby', { element: thatwayButton }, 'In Building']}
+            buttons={[
+              { element: nearbyButton },
+              { element: thatwayButton },
+              { element: inplaceButton }
+            ]}
             containerStyle={{ height: 30 }}
           />
 
@@ -156,7 +198,7 @@ const Tabpage = TabNavigator(
     }
   },
   {
-    initialRouteName: 'ThisWayPage',
+    initialRouteName: 'InBuildingPage',
     tabBarPosition: 'top',
     tabBarOptions: {
       backgroundColor: '#FFFFFF',

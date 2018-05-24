@@ -162,6 +162,7 @@ export default class Splash extends React.Component {
               onPress={this._turnOnBluetooth}
               title="Press here to turn bluetooth on"
               color="#242424"
+              disabled={ !this.state.continueDisabled }
               accessibilityLabel="Press to turn bluetooth on"
             />
           </View>

@@ -33,7 +33,7 @@ const SECTIONS = [
 
   ];
 
-export default class Body extends Component<{}> {
+export default class Body extends React.Component {
     constructor(props) {
         super(props);
       }
