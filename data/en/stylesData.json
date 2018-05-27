@@ -7,6 +7,10 @@
       "accordHead": {},
       "accordDetails": {},
       "accordSep": {}
+    },
+    "thisWayStyles": {
+      "color": "red",
+      "fontWeight": "bold"
     }
   }
 }

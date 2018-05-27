@@ -18,6 +18,7 @@ import Menu from "../Menu";
 import Bottom from "./Bottom";
 import NoBeacon from "./body/NoBeacon";
 import ThiswayView from "./body/ThiswayView";
+import { stylesData, placesData, settingsData } from "../../data/en";
 
 // import { YellowBox } from 'react-native';
 // YellowBox.ignoreWarnings([
@@ -51,9 +52,21 @@ export default class ThisWay extends React.Component {
   };
 
   render() {
+    console.log({ placesData, settingsData });
+
+    const thisWayStyles = stylesData.styles.thisWayStyles;
+
     return (
       <View style={styles.container}>
-        <Text style={{ margin: 10, fontSize: 16, textAlign: "center" }}>
+        <Text
+          style={{
+            margin: 10,
+            fontSize: 16,
+            textAlign: "center",
+            color: thisWayStyles.color,
+            fontWeight: thisWayStyles.fontWeight
+          }}
+        >
           {`Pointing: ${this.props.pointingDirection}`}
         </Text>
         <View
@@ -91,10 +104,7 @@ const styles = StyleSheet.create({
 
     backgroundColor: "#F5FCFF"
   },
-
-  contentContainer: {
-    padding: 0
-  },
+  contentContainer: { padding: 0 },
   welcome: {
     fontSize: 30,
     color: "#6600ff",
