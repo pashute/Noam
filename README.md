@@ -1,7 +1,7 @@
 Todo:
 c. bt api
-  installed for android
-  todo: ios
+installed for android
+todo: ios
 d. compass api
 (next in a fast iteration and then complete)
 d. redux state
@@ -33,6 +33,9 @@ CN=Danny Reiss, OU=Accessability development, O=Pashute Negishut, L=Netanya, ST=
 pws: jkjkjk1bcd tehilit dinar vechu, noam1bcd cannal.
 privacy": "unlisted",
 
+email: danny@reisspn.co.il
+user: dannyreiss    pw: jkjkjk12 Tehilit suldinar
+
 "name": "Noam",
 rem"icon": "./icons/icon.png",
 "version": "0.0.1",
@@ -51,7 +54,7 @@ problem with listitem https://github.com/react-native-training/react-native-elem
 
 native kontakt.io
 
-react native elements tut (youtube utube)
+react native elements tut (youtube utube) ui
 https://www.youtube.com/watch?v=LdKtugH-sb8
 
 The beacons have finally been listed.
