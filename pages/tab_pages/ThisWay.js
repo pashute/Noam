@@ -67,7 +67,8 @@ export default class ThisWay extends React.Component {
             fontWeight: thisWayStyles.fontWeight
           }}
         >
-          {`Pointing: ${this.props.pointingDirection}`}
+          {/* {`Pointing: ${this.props.pointingDirection}`} */}
+          {`Heading: ${this.props.heading.trueHeading}`}
         </Text>
         <View
           style={{

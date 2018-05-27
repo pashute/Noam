@@ -165,6 +165,7 @@ export default class Tab extends React.Component {
           <Tabpage
             selectedIndex={this.state.tabIndex}
             pointingDirection={this.props.screenProps.pointingDirection}
+            heading={this.props.screenProps.heading}
           />
         </DrawerLayout>
       </View>
@@ -172,13 +173,15 @@ export default class Tab extends React.Component {
   }
 }
 
-const Tabpage = ({ selectedIndex, pointingDirection }) => {
+const Tabpage = ({ selectedIndex, pointingDirection, heading }) => {
   switch (selectedIndex) {
     case 0:
       return <NearBy pointingDirection={pointingDirection} />;
       break;
     case 1:
-      return <ThisWay pointingDirection={pointingDirection} />;
+      return (
+        <ThisWay pointingDirection={pointingDirection} heading={heading} />
+      );
       break;
     case 2:
     default:
