@@ -26,7 +26,6 @@ import ThiswayView from "./body/ThiswayView";
 //   'Warning: componentWillUpdate is deprecated'
 // ]);
 
-
 export default class ThisWay extends React.Component {
   constructor(props) {
     super(props);
@@ -55,7 +54,7 @@ export default class ThisWay extends React.Component {
     return (
       <View style={styles.container}>
         <Text style={{ margin: 10, fontSize: 16, textAlign: "center" }}>
-          {`Pointing: ${this.props.screenProps.pointingDirection}`}
+          {`Pointing: ${this.props.pointingDirection}`}
         </Text>
         <View
           style={{
