@@ -9,6 +9,7 @@ import {
   // Button
 } from 'react-native';
 import Accordion from 'react-native-collapsible/Accordion';
+import { MaterialDesign } from 'react-native-vector-icons';
 import { List, ListItem } from 'react-native-elements';
 //import PropTypes from 'prop-types';
 import { Dropdown } from 'react-native-material-dropdown';
@@ -24,6 +25,7 @@ const SECTIONS = [
   {
     id: 1,
     title: 'Amanda matchmaker',
+    subtitle: 'office',
     content:
       '2nd floor \nNear elevator C3 (south)\n' +
       'Staff specializes in disabilities\n' +
@@ -32,15 +34,18 @@ const SECTIONS = [
   {
     id: 2,
     title: 'Brake out room',
+    subtitle: 'activity',
     content: '2nd floor\n' + ' near elevator C3'
   },
   {
     id: 3,
     title: 'Cazino',
+    subtitle: 'activity',
     content: 'Lorem ipsum...'
   },
   {
     title: 'Dahan driving school',
+    subtitle: 'ofice',
     content: 'Lorem ipsum...'
   }
 ];
@@ -55,7 +60,15 @@ export default class Elevator extends Component<{}> {
     // rightIcon={{ name: 'arrow-right', type: 'font-awesome', style: { marginRight: 10, fontSize: 15 } }}
     return (
       <View style={styles.header}>
-        <Text style={styles.headerText}>{section.title}</Text>
+        <List>
+          <ListItem
+            roundAvatar
+            key={section.id}
+            title={section.title}
+            subtitle={section.subtitle}
+          />
+        </List>
+        {/*<Text style={styles.headerText}>{section.title}</Text>*/}
       </View>
     );
   }

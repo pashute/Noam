@@ -1,15 +1,15 @@
 /* cSpell:disable */
 
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, Alert } from 'react-native';
+import { StyleSheet /*Platform, Text, View, Alert*/ } from 'react-native';
 
 //x import { TabNavigator } from 'react-navigation'; // 1.5.11
 import { StackNavigator } from 'react-navigation';
 
-import { ButtonGroup } from 'react-native-elements';
+// import { ButtonGroup } from 'react-native-elements';
 import ObjectPath from 'object-path';
 import '@expo/vector-icons';
-import { Constants, AppLoading } from 'expo';
+// import { Constants, AppLoading } from 'expo';
 
 import { YellowBox } from 'react-native';
 

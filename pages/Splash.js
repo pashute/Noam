@@ -12,7 +12,7 @@ import Menu from './Menu';
 import Tab from './Tab';
 import { FontAwesome } from '@expo/vector-icons';
 
-import { BluetoothStatus } from 'react-native-bluetooth-status';
+// import { BluetoothStatus } from 'react-native-bluetooth-status';
 
 const txtIosinstruct =
   'Welcome to Noam,\n' +
@@ -62,7 +62,14 @@ export default class Splash extends React.Component {
 
   // onMount - function
   async checkInitialBluetoothState() {
-    console.log("Problem: Cannot get Bluetooth status.")
+    try {
+      // fix: add bluetooth
+    } catch (error) {
+      console.log("Problem: Cannot get Bluetooth status.")  
+    }
+
+    
+
     //const isEnabled = await BluetoothStatus.state();
     //this.setState({ bluetoothState: (isEnabled) ? 'On' : 'Off'});
     //console.log(this.state.bluetoothState);
