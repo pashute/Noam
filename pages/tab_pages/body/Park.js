@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import Accordion from 'react-native-collapsible/Accordion';
 import { MaterialDesign } from 'react-native-vector-icons';
-import { List, ListItem } from 'react-native-elements';
+// import { List, ListItem } from 'react-native-elements';
 //import PropTypes from 'prop-types';
 import { Dropdown } from 'react-native-material-dropdown';
 
@@ -61,15 +61,15 @@ export default class Elevator extends Component<{}> {
     // rightIcon={{ name: 'arrow-right', type: 'font-awesome', style: { marginRight: 10, fontSize: 15 } }}
     return (
       <View style={styles.header}>
-        <List>
+       {/* <List>
           <ListItem
             roundAvatar
             key={section.id}
             title={section.title}
             subtitle={section.subtitle}
           />
-        </List>
-        {/*<Text style={styles.headerText}>{section.title}</Text>*/}
+        </List>*/}
+        <Text style={styles.headerText}>{section.title}</Text>
       </View>
     );
   }
