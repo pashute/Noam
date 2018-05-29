@@ -20,7 +20,6 @@ import Menu from './Menu';
 import Tab from './Tab';
 
 // import { BluetoothStatus } from 'react-native-bluetooth-status';
-
 const txtIosinstruct =
   'Welcome to Noam,\n' +
   'your indoor assistant\n' +
@@ -39,6 +38,7 @@ const txtSplashTitle = 'noam';
 
 const txtSplashDescription = ' your indoor assistant';
 
+const splashAppnameColor = '#440077';
 const colorBgDark = '#181818'; // was '#00000F'
 
 const instructions = Platform.select({
@@ -62,6 +62,8 @@ export default class Splash extends React.Component {
     // { color: this.props.screenProps.welcomeColor }
     this.toggleDrawer = this.toggleDrawer.bind(this);
     this.setDrawerState = this.setDrawerState.bind(this);
+
+    console.log('ready');
   }
 
   async componentDidMount() {
@@ -69,7 +71,7 @@ export default class Splash extends React.Component {
     await Font.loadAsync({
       'Bauhaus 93': require('../assets/fonts/Bauhaus-93.ttf')
     });
-    this.setState({ fontLoaded: true});
+    this.setState({ fontLoaded: true });
   }
 
   // onMount - function
@@ -137,9 +139,7 @@ export default class Splash extends React.Component {
           <ActionBar
             headerStyle={styles.actionBarHead}
             containerStyle={styles.actionBar}
-            titleStyle={
-              this.state.fontsLoaded ? (styles.actionTitleBau) : (styles.actionTitle)
-          }
+            titleStyle={styles.actionTitle}
             title={'noam'}
             leftIconName={'location'}
             onLeftPress={() => console.log('Left!')}
@@ -151,14 +151,27 @@ export default class Splash extends React.Component {
             ]}
           />
 
-          <Text style={(styles.assistant, styles.textCentered)}>
+          <Text style={(styles.splashMsg, styles.textCentered)}>
             {'\n\n\n\n'}
-            <FontAwesome name={'arrow-up'} size={25} color={'#330077'} />
-            <Text style={[styles.welcome, { color: '#330077' }]}>
-              {'   '}
+            <FontAwesome
+              name={'arrow-up'}
+              size={25}
+              color={splashAppnameColor}
+            />
+            <Text
+              style={[
+                this.state.fontLoaded
+                  ? styles.splashAppNameBau
+                  : styles.splashAppName
+                , {color: splashAppnameColor}]}
+            >
+              {' '}
               {this.state.titleText}
             </Text>
-            <Text>{this.state.bodyText}</Text>
+            <Text>
+              {'  '}
+              {this.state.bodyText}
+            </Text>
           </Text>
 
           <Text style={styles.instructions}>{instructions}</Text>
@@ -202,19 +215,16 @@ const styles = StyleSheet.create({
   actionBar: {
     backgroundColor: '#330077'
   },
-  actionTitleBau: {
-    textAlign: 'center',
-    fontSize: 20
-  },
   actionTitle: {
     textAlign: 'center',
-    // fontFamily: 'Bauhaus 93',
     fontSize: 20
   },
-  
-  welcome: {
-    fontSize: 35,
-    color: '#6600FF' // purple
+  splashAppName: {
+    fontSize: 35
+  },
+  splashAppNameBau: {
+    fontFamily: 'Bauhaus 93',
+    fontSize: 35
   },
   instructions: {
     marginTop: 40,
@@ -223,7 +233,7 @@ const styles = StyleSheet.create({
     marginBottom: 80,
     fontSize: 20
   },
-  assistant: {
+  splashMsg: {
     fontSize: 22,
     marginTop: 60,
     marginLeft: 20,
