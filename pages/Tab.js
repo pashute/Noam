@@ -1,7 +1,7 @@
 /* cSpell:disable */
 
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, Alert } from 'react-native';
+import { Platform, StyleSheet, Text, View /*, Alert*/ } from 'react-native';
 import { TabNavigator } from 'react-navigation';
 import NearBy from './tab_pages/NearBy';
 import ThisWay from './tab_pages/ThisWay';
@@ -10,41 +10,43 @@ import DrawerLayout from 'react-native-drawer-layout';
 import Menu from './Menu';
 import ActionBar from 'react-native-action-bar';
 import PropTypes from 'prop-types';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { FontAwesome } from '@expo/vector-icons';
+// import Icon from 'react-native-vector-icons/FontAwesome';
 import { ButtonGroup } from 'react-native-elements';
 import '@expo/vector-icons';
 import { Constants } from 'expo';
-import { FontAwesome } from '@expo/vector-icons';
 
 // taken from settings
-const str_exit = 'Exits';
-const str_call = 'Call';
-const ear_icon = require('../assets/icons/ear1.png');
-const str_place = 'Big Fashion';
-const str_beaconloc = 'South gate (Bank Leumi)';
+// const strExit = 'Exits';
+// const strCall = 'Call';
 
-const str_this = 'This';
-const str_way = 'way';
-const str_nearby = 'Nearby';
-const str_inplace = 'In building';
-const icon_Place = <Icon name="adjust" size={30} color="#900" />;
+const ear_icon = require('../assets/icons/ear1.png');
+const pointPlaceName = 'Big Fashion';
+//const icon_Place = <Icon name="adjust" size={30} color="#900" />;
+const pointBeaconLocation = 'South gate (Bank Leumi)';
+const pointPlaceIconName = 'bold';
+
+const strThis = 'This';
+const strWay = 'way';
+const strNearby = 'Nearby';
+const strInplace = 'In building';
 
 // tab texts and icons:
 const nearbyButton = () => (
-  <View style={styles.tabView}>
-    <Text style={styles.tabText}>{str_nearby}</Text>
+  <View style={styles.tabButton}>
+    <Text style={styles.tabText}>{strNearby}</Text>
   </View>
 );
 const thatwayButton = () => (
-  <View style={styles.tabView}>
+  <View style={styles.tabButton}>
     <Text style={styles.tabText}>This </Text>
-    <FontAwesome name={'arrow-up'} size={12} color={'#6600FF'} />
+    <FontAwesome name="arrow-up" size={14} />
     <Text style={styles.tabText}> way</Text>
   </View>
 );
 const inplaceButton = () => (
-  <View style={styles.tabView}>
-    <Text style={styles.tabText}>{str_inplace}</Text>
+  <View style={styles.tabButton}>
+    <Text style={styles.tabText}>{strInplace}</Text>
   </View>
 );
 
@@ -53,8 +55,6 @@ export default class Tab extends React.Component {
     super(props);
     // fix: txt from constants and then from data
     this.state = {
-      titleText: 'noam ',
-      bodyText: 'Your indoor assistant',
       drawerClosed: true,
       tabIndex: 2,
       beaconUid: 12
@@ -84,33 +84,11 @@ export default class Tab extends React.Component {
     }
   };
 
-  _positionDetect() {}
-  _positionDecide() {
-    _positionDetect();
-    // simulation
-    let placeName = 'no beacon information';
-    switch (this.state.beaconUid) {
-      case 1:
-        placeName = 'Big Fashion-Main Gate';
-        break;
-      case 12:
-        placeName = 'Big Fashion: Elevator C3';
-        break;
-      case 33:
-        placeName = 'Park Harova';
-        break;
-
-      default:
-        break;
-    }
-    return placeName;
-  }
-
   render() {
     const { navigate } = this.props.navigation;
 
     return (
-      <View style={styles.container}>
+      <View style={styles.topContainer}>
         <DrawerLayout
           drawerWidth={200}
           ref={drawerElement => {
@@ -122,8 +100,8 @@ export default class Tab extends React.Component {
           renderNavigationView={() => <Menu nav={navigate} />}
         >
           <ActionBar
-            containerStyle={styles.bar}
-            titleStyle={styles.title}
+            containerStyle={styles.actionBar}
+            titleStyle={styles.actionTitle}
             title={'noam'}
             leftIconName={'location'}
             onLeftPress={() => console.log('Left!')}
@@ -134,20 +112,20 @@ export default class Tab extends React.Component {
               }
             ]}
           />
-          <View style={styles.topmsgView}>
-            <View style={styles.placebar}>
-              <Text style={styles.placemsg}>{str_place}</Text>
-              <Text style={{ fontSize: 24, color: '#111145', marginLeft: 5 }}>
-                BiG
-              </Text>
+          <View style={styles.topPlaceRow}>
+            <View style={styles.placeBar}>
+              <Text style={styles.placeMsg}>{pointPlaceName}</Text>
+              <FontAwesome name={pointPlaceIconName} size={30} color="black" />
+              {/*<Text style={styles.placeIcon}>BiG</Text>*/}
             </View>
-            <Text style={styles.beaconloc}>{str_beaconloc}</Text>
+            <Text style={styles.beaconLocTxt}>{pointBeaconLocation}</Text>
           </View>
+          <View style={styles.separator} />
           <ButtonGroup
             containerBorderRadius={40}
-            selectedBackgroundColor="#FF0000"
             onPress={this.updateTabIndex}
             selectedIndex={this.state.tabIndex}
+            selectedButtonStyle={styles.tabSelected}
             buttons={[
               { element: nearbyButton },
               { element: thatwayButton },
@@ -181,57 +159,58 @@ const Tabpage = ({ selectedIndex, pointingDirection }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
+  topContainer: {
+    /* place and tabs */
     flex: 1,
     marginTop: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight,
     backgroundColor: '#F5F1FF'
   },
-  welcome: {
-    fontSize: 35,
-    color: '#6600ff'
+  actionBar: {
+    /* ear appname and menu */
+    backgroundColor: '#330077'
   },
-  assistant: {
-    lineHeight: 30,
-    flex: 1,
-    fontSize: 24
+  actionTitle: {
+    textAlign: 'center',
+    fontSize: 20
   },
-  tabView: {
+  /* tabs */
+  tabButton: {
     flexDirection: 'row'
   },
   tabText: {
-    fontSize: 14
+    fontSize: 16
   },
-  topmsgView: {
+  /* tabSelecteButtonStyle:{}, */
+  tabSelected: {
+    backgroundColor: 'white'
+  },
+  topPlaceRow: {
+    /* */
     flexDirection: 'column',
     justifyContent: 'center'
   },
-  placebar: {
+  placeBar: {
     flexDirection: 'row',
     marginTop: 10,
     marginLeft: 40,
     marginRight: 40
   },
-  beaconloc: {
-    justifyContent: 'center'
-  },
-  placemsg: {
+  placeMsg: {
     lineHeight: 20,
     flex: 1,
-    fontSize: 20
+    fontSize: 18,
+    textAlignVertical: 'center'
   },
-  instructions: {
-    marginTop: 40,
-    textAlign: 'left',
-    color: '#333333',
-    marginBottom: 80,
-    fontSize: 20
+  placeIcon: {
+    fontSize: 24,
+    color: '#111145',
+    marginLeft: 5
   },
-  title: {
+  beaconLocTxt: {
     textAlign: 'center',
     fontSize: 20
   },
   buttonContainer: {
-    backgroundColor: '#2E9298',
     borderRadius: 10,
     padding: 10,
     shadowColor: '#000000',
@@ -243,5 +222,9 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     marginRight: 20,
     marginLeft: 20
+  },
+  separator: {
+    borderBottomColor: 'lightgray',
+    borderBottomWidth: 1
   }
 });
