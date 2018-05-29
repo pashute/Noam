@@ -1,16 +1,23 @@
 /* cSpell:disable */
+/* global require */
 
-import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, Alert } from 'react-native';
-import { Button } from 'react-native';
+import React from 'react';
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+  Button /*, Alert*/
+} from 'react-native';
 import ActionBar from 'react-native-action-bar';
-import PropTypes from 'prop-types';
-import { StackNavigator } from 'react-navigation';
-import Main from './Main';
+// import { StackNavigator } from 'react-navigation';
 import DrawerLayout from 'react-native-drawer-layout';
+import { FontAwesome } from '@expo/vector-icons';
+import PropTypes from 'prop-types';
+import { Font } from 'expo';
+import Main from './Main';
 import Menu from './Menu';
 import Tab from './Tab';
-import { FontAwesome } from '@expo/vector-icons';
 
 // import { BluetoothStatus } from 'react-native-bluetooth-status';
 
@@ -47,7 +54,8 @@ export default class Splash extends React.Component {
       bodyText: txtSplashDescription,
       drawerClosed: true,
       continueDisabled: true,
-      bluetoothState: ''
+      bluetoothState: '',
+      fontLoaded: false
     };
 
     // in text style array...
@@ -56,8 +64,12 @@ export default class Splash extends React.Component {
     this.setDrawerState = this.setDrawerState.bind(this);
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     this.checkInitialBluetoothState();
+    await Font.loadAsync({
+      'Bauhaus 93': require('../assets/fonts/Bauhaus-93.ttf')
+    });
+    this.setState({ fontLoaded: true});
   }
 
   // onMount - function
@@ -67,10 +79,9 @@ export default class Splash extends React.Component {
       // const isEnabled = await BluetoothStatus.state();
       // this.setState({ bluetoothState: (isEnabled) ? 'On' : 'Off'});
       // console.log(this.state.bluetoothState);
-  } catch (error) {
+    } catch (error) {
       console.log('Problem: Cannot get Bluetooth status.');
     }
-
   }
 
   // ctor functions
@@ -124,9 +135,11 @@ export default class Splash extends React.Component {
           renderNavigationView={() => <Menu nav={navigate} />}
         >
           <ActionBar
-            headerStyle={styles.actbar}
-            containerStyle={styles.bar}
-            titleStyle={styles.title}
+            headerStyle={styles.actionBarHead}
+            containerStyle={styles.actionBar}
+            titleStyle={
+              this.state.fontsLoaded ? (styles.actionTitleBau) : (styles.actionTitle)
+          }
             title={'noam'}
             leftIconName={'location'}
             onLeftPress={() => console.log('Left!')}
@@ -140,18 +153,9 @@ export default class Splash extends React.Component {
 
           <Text style={(styles.assistant, styles.textCentered)}>
             {'\n\n\n\n'}
-            <FontAwesome
-              name={'arrow-up'}
-              size={25}
-              color={this.props.screenProps.welcomeColor}
-            />
-            <Text
-              style={[
-                styles.welcome,
-                { color: this.props.screenProps.welcomeColor }
-              ]}
-            >
-              {' '}
+            <FontAwesome name={'arrow-up'} size={25} color={'#330077'} />
+            <Text style={[styles.welcome, { color: '#330077' }]}>
+              {'   '}
               {this.state.titleText}
             </Text>
             <Text>{this.state.bodyText}</Text>
@@ -194,10 +198,20 @@ const styles = StyleSheet.create({
     marginTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight,
     backgroundColor: '#F5FCFF'
   },
-  actbar: {
-    backgroundColor: '#FF00FF',
-    color: '#FF00FF' // hi
+  actionBarHead: {},
+  actionBar: {
+    backgroundColor: '#330077'
   },
+  actionTitleBau: {
+    textAlign: 'center',
+    fontSize: 20
+  },
+  actionTitle: {
+    textAlign: 'center',
+    // fontFamily: 'Bauhaus 93',
+    fontSize: 20
+  },
+  
   welcome: {
     fontSize: 35,
     color: '#6600FF' // purple
@@ -217,10 +231,6 @@ const styles = StyleSheet.create({
   },
   textCentered: {
     textAlign: 'center'
-  },
-  title: {
-    textAlign: 'center',
-    fontSize: 20
   },
   buttonContainer: {
     backgroundColor: '#444444', // colorBgDark,//'#454545', // '#2E9298',
