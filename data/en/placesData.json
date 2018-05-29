@@ -68,7 +68,51 @@
           }
         ],
         "thisWay": [{}, {}],
-        "in place": [{}, {}, {}]
+        "inPlace": [
+          {
+            "point": {
+              "id": 1,
+              "floor": 1,
+              "title": "Amanda matchmaker",
+              "subtitle": "office",
+              "content": [
+                "2nd floor \nNear elevator C3 (south)\n",
+                "Staff specializes in disabilities\n",
+                "and we are hiring."
+              ]
+            }
+          },
+          {
+            "point": {
+              "id": 2,
+              "floor": 1,
+              "title": "Toilets",
+              "subtitle": "for disabled",
+              "content": [
+                "1st floor \nNear elevator C3 (south)\n",
+                "Third door to right\n"
+              ]
+            }
+          },
+          {
+            "point": {
+              "id": 3,
+              "floor": 2,
+              "title": "Brake out room",
+              "subtitle": "activity place",
+              "content": ["2nd floor \nNear elevator C3 (south)"]
+            }
+          },
+          {
+            "point": {
+              "id": 3,
+              "floor": 2,
+              "title": "Cazino",
+              "subtitle": "activity place",
+              "content": ["Lorem impsum\n lech teda im yesh teshuva"]
+            }
+          }
+        ]
       }
     },
     {
@@ -80,7 +124,63 @@
         "shortName": "Big BS",
         "nearby": [{}],
         "thisWay": [{}],
-        "in place": [{}, {}, {}]
+        "inPlace": [
+          {
+            "point": {
+              "id": 1,
+              "floor": 1,
+              "title": "Bla bla",
+              "subtitle": "office",
+              "content": [
+                "Lorem \nNear ipsum\n",
+                "Quaga\n",
+                "and we are hiring."
+              ]
+            }
+          },
+          {
+            "point": {
+              "id": 2,
+              "floor": 1,
+              "title": "Toilets",
+              "subtitle": "for disabled",
+              "content": [
+                "1st floor \nNear elevator C3 (south)\n",
+                "Third door to right\n"
+              ]
+            }
+          },
+          {
+            "point": {
+              "id": 2,
+              "floor": 2,
+              "title": "Brake out room",
+              "subtitle": "activity place",
+              "content": ["2nd floor \nNear elevator C3 (south)"]
+            }
+          },
+          {
+            "point": {
+              "id": 2,
+              "floor": 2,
+              "title": "Cazino",
+              "subtitle": "activity place",
+              "content": ["Lorem impsum\n lech teda im yesh teshuva"]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "place": {
+        "id": 3,
+        "txtId": "tbd",
+        "placeType": "building",
+        "fullName": "tbd",
+        "shortName": "tbd",
+        "nearby": [{}],
+        "thisWay": [{}],
+        "inPlace": [{}, {}, {}]
       }
     }
   ]

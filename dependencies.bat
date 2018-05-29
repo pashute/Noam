@@ -42,8 +42,8 @@ call npm install react-native-drawer-layout
 call npm install react-native-tab-view
 @echo 14. ---------
 call npm install react-navigation
-@echo 15. ---------
-call npm install react-native-elements
+rem @echo 15. ---------
+rem call npm install react-native-elements
 @echo 16. ---------
 call npm install react-native-vector-icons
 @echo choose  airbnb, 
