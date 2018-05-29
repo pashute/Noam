@@ -52,7 +52,7 @@ export default class ThisWay extends React.Component {
   };
 
   render() {
-    console.log({ placesData, settingsData });
+    // console.log({ placesData, settingsData });
 
     const thisWayStyles = stylesData.styles.thisWayStyles;
 

@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { StackNavigator } from "react-navigation";
-import Main from "./Main";
+// import Main from "./Main";
 import Splash from "./Splash";
 const menuList = require("./MenuList");
 

@@ -9,7 +9,8 @@ import {
   // Button
 } from 'react-native';
 import Accordion from 'react-native-collapsible/Accordion';
-import { List, ListItem } from 'react-native-elements';
+import { MaterialDesign } from 'react-native-vector-icons';
+// import { List, ListItem } from 'react-native-elements';
 //import PropTypes from 'prop-types';
 import { Dropdown } from 'react-native-material-dropdown';
 
@@ -23,7 +24,8 @@ const strTitle = '';
 const SECTIONS = [
   {
     id: 1,
-    title: 'Amanda matchmaker',
+    title: 'Amanda the matchmaker',
+    subtitle: 'office',
     content:
       '2nd floor \nNear elevator C3 (south)\n' +
       'Staff specializes in disabilities\n' +
@@ -32,20 +34,24 @@ const SECTIONS = [
   {
     id: 2,
     title: 'Brake out room',
+    subtitle: 'activity',
     content: '2nd floor\n' + ' near elevator C3'
   },
   {
     id: 3,
     title: 'Cazino',
+    subtitle: 'activity',
     content: 'Lorem ipsum...'
   },
   {
+    id: 4,
     title: 'Dahan driving school',
+    subtitle: 'ofice',
     content: 'Lorem ipsum...'
   }
 ];
 
-export default class Elevator extends Component<{}> {
+export default class Place extends Component {
   constructor(props) {
     super(props);
   }
@@ -54,8 +60,24 @@ export default class Elevator extends Component<{}> {
     // for rn elements listitem:
     // rightIcon={{ name: 'arrow-right', type: 'font-awesome', style: { marginRight: 10, fontSize: 15 } }}
     return (
-      <View style={styles.header}>
-        <Text style={styles.headerText}>{section.title}</Text>
+      <View style={styles.accordArea}>
+        {/* style={styles.header} <List>
+          <ListItem
+            roundAvatar
+            key={section.id}
+            title={section.title}
+            subtitle={section.subtitle}
+          />
+        </List>*/}
+        <View style={{backgroundColor: '#FF8989' }}>
+          <Text style={styles.itemHeaderText}>{section.title}</Text>
+        </View>
+        <View
+          style={{
+            borderBottomColor: 'black',
+            borderBottomWidth: 1,
+          }}
+        />
       </View>
     );
   }
@@ -71,14 +93,7 @@ export default class Elevator extends Component<{}> {
   render() {
     return (
       <View style={styles.container}>
-        <View
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            marginLeft: 20
-          }}
-        >
+        <View style={styles.floorView}>
           <Text style={styles.assistant}>Floor</Text>
           <Dropdown
             containerStyle={{ marginLeft: 30, width: 100 }}
@@ -101,7 +116,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F5FCFF',
-
     marginLeft: 20,
     marginRight: 20
   },
@@ -111,14 +125,14 @@ const styles = StyleSheet.create({
     fontWeight: '300',
     marginBottom: 20
   },
-  header: {
-    backgroundColor: '#F5FCFF',
-    padding: 10
+  accordArea: {
+    backgroundColor: '#006600', // '#F5FCFF'
+    padding: 3
   },
-  headerText: {
-    textAlign: 'center',
-    fontSize: 20,
-    fontWeight: '500',
+  itemHeaderText: {
+    // textAlign: 'center',
+    fontSize: 18,
+    fontWeight: '300',
     fontStyle: 'normal'
   },
   content: {
@@ -149,7 +163,7 @@ const styles = StyleSheet.create({
     marginRight: 20,
     marginLeft: 20
   },
-  floornumContainer: {
+  floorView: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',

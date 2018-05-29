@@ -2,25 +2,23 @@
 
 import React, { Component } from 'react';
 import {
-  Platform,
   StyleSheet,
-  Text,
   View,
-  Alert,
-  ScrollView
+  ScrollView, 
+  /* Button,   Platform,   Text,   Alert */
 } from 'react-native';
-import { Button } from 'react-native';
-import ActionBar from 'react-native-action-bar';
+
+// import ActionBar from 'react-native-action-bar';
 import PropTypes from 'prop-types';
-import { TabNavigator } from 'react-navigation';
-import DrawerLayout from 'react-native-drawer-layout';
+// import { TabNavigator } from 'react-navigation';
+// import DrawerLayout from 'react-native-drawer-layout';
 import Menu from '../Menu';
 import Bottom from './Bottom';
-import NoBeacon from './body/NoBeacon';
-import Body from './body/Body';
-import Park from './body/Park';
+// import NoBeacon from './body/NoBeacon';
+// import Body from './body/Body';
+import Place from './body/Place';
 
-export default class NearBy extends Component<{}> {
+export default class InPlace extends Component<{}> {
   constructor(props) {
     super(props);
     this.state = {
@@ -65,7 +63,7 @@ export default class NearBy extends Component<{}> {
         >
           <ScrollView contentContainerStyle={styles.contentContainer}>
             {/* // <NoBeacon/> */}
-            <Park />
+            <Place />
           </ScrollView>
         </View>
         <View style={{ flex: 2 }}>

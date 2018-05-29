@@ -30,3 +30,34 @@
   subtitle={section.subtitle}
 />
 </List> */}
+
+ // _positionDetect() {}
+  // _positionDecide() {
+  //   _positionDetect();
+  //   // simulation
+  //   let placeName = 'no beacon information';
+  //   switch (this.state.beaconUid) {
+  //     case 1:
+  //       placeName = 'Big Fashion-Main Gate';
+  //       break;
+  //     case 12:
+  //       placeName = 'Big Fashion: Elevator C3';
+  //       break;
+  //     case 33:
+  //       placeName = 'Park Harova';
+  //       break;
+
+  //     default:
+  //       break;
+  //   }
+  //   return placeName;
+  // }
+
+//   <View
+//   style={{
+//     borderBottomColor: 'black',
+//     borderBottomWidth: 1,
+//   }}
+// />
+
+// buttongroup  selectedBackgroundColor='#FF0000'
