@@ -64,18 +64,16 @@ export default class Splash extends React.Component {
   async checkInitialBluetoothState() {
     try {
       // fix: add bluetooth
-    } catch (error) {
-      console.log("Problem: Cannot get Bluetooth status.")  
+      // const isEnabled = await BluetoothStatus.state();
+      // this.setState({ bluetoothState: (isEnabled) ? 'On' : 'Off'});
+      // console.log(this.state.bluetoothState);
+  } catch (error) {
+      console.log('Problem: Cannot get Bluetooth status.');
     }
 
-    
-
-    //const isEnabled = await BluetoothStatus.state();
-    //this.setState({ bluetoothState: (isEnabled) ? 'On' : 'Off'});
-    //console.log(this.state.bluetoothState);
   }
 
-  // ctor functions   
+  // ctor functions
   setDrawerState() {
     this.setState({
       drawerClosed: !this.state.drawerClosed
@@ -100,21 +98,19 @@ export default class Splash extends React.Component {
     return false; // for wireframe  version
   }
 
-
   // _continue() {
   //   //onPress={() => navigate('TabPage')}
   //   this.props.navigation.navigate('TabPage');
   // }
-  _turnOnBluetooth = () => {
+  _turnBluetoothOn = () => {
     console.log('bluetooth');
     if (Platform.OS === 'android')
-
-      
-    Alert.alert('Turning blootooth on!');
+      console.log('todo: android. turn bluetooth on');
+    else console.log('todo: ios. open bluetooth console');
     this.setState({ continueDisabled: false });
   };
   render() {
-    const { navigate } = this.props.navigation;
+    const { navigate } = this.props.navigation; // todo: fix validation warning
     return (
       <View style={styles.mainContainer}>
         <DrawerLayout
@@ -166,10 +162,10 @@ export default class Splash extends React.Component {
           <View style={styles.buttonContainer}>
             {/* the bluetooth button */}
             <Button
-              onPress={this._turnOnBluetooth}
+              onPress={this._turnBluetoothOn}
               title="Press here to turn bluetooth on"
               color="#242424"
-              disabled={ !this.state.continueDisabled }
+              disabled={!this.state.continueDisabled}
               accessibilityLabel="Press to turn bluetooth on"
             />
           </View>
