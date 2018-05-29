@@ -105,7 +105,7 @@ export default class Personal extends Component<{}> {
                    <Text onPress={() => navigate('AutoUpdate')}style={styles.navbtn}>
                        {str_back}
                    </Text>
-                   <Text onPress={() => navigate('TabPage')}style={styles.navbtn}>
+                   <Text onPress={() => navigate('MainPage')}style={styles.navbtn}>
                        {str_toc}
                    </Text>
                    <Text onPress={() => navigate('Profile')}style={styles.navbtn}>

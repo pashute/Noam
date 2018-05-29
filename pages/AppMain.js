@@ -5,7 +5,7 @@ import { Platform, StyleSheet, Text, View /*, Alert*/ } from 'react-native';
 import { TabNavigator } from 'react-navigation';
 import NearBy from './tab_pages/NearBy';
 import ThisWay from './tab_pages/ThisWay';
-import InBuilding from './tab_pages/InBuilding';
+import InPlace from './tab_pages/InPlace';
 import DrawerLayout from 'react-native-drawer-layout';
 import Menu from './Menu';
 import ActionBar from 'react-native-action-bar';
@@ -50,7 +50,7 @@ const inplaceButton = () => (
   </View>
 );
 
-export default class Tab extends React.Component {
+export default class AppMain extends React.Component {
   constructor(props) {
     super(props);
     // fix: txt from constants and then from data
@@ -134,7 +134,7 @@ export default class Tab extends React.Component {
             containerStyle={{ height: 30 }}
           />
 
-          <Tabpage
+          <Mainpage
             selectedIndex={this.state.tabIndex}
             pointingDirection={this.props.screenProps.pointingDirection}
           />
@@ -144,7 +144,7 @@ export default class Tab extends React.Component {
   }
 }
 
-const Tabpage = ({ selectedIndex, pointingDirection }) => {
+const Mainpage = ({ selectedIndex, pointingDirection }) => {
   switch (selectedIndex) {
     case 0:
       return <NearBy pointingDirection={pointingDirection} />;
@@ -154,7 +154,7 @@ const Tabpage = ({ selectedIndex, pointingDirection }) => {
 
     case 2:
     default:
-      return <InBuilding pointingDirection={pointingDirection} />;
+      return <InPlace pointingDirection={pointingDirection} />;
   }
 };
 

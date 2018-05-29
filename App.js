@@ -14,8 +14,7 @@ import '@expo/vector-icons';
 import { YellowBox } from 'react-native';
 
 import Splash from './pages/Splash';
-import Main from './pages/Main';
-import Tab from './pages/Tab';
+import AppMain from './pages/AppMain';
 import AutoUpdate from './pages/setting_pages/AutoUpdate';
 import Calibrate from './pages/setting_pages/Calibrate';
 import Personal from './pages/setting_pages/Personal';
@@ -52,20 +51,12 @@ const Nav = StackNavigator({
     }
   },
   MainPage: {
-    screen: Main,
+    screen: AppMain,
     navigationOptions: {
       headermode: 'screen',
       header: null
     }
   },
-  TabPage: {
-    screen: Tab,
-    navigationOptions: {
-      headermode: 'screen',
-      header: null
-    }
-  },
-
   AutoUpdate: {
     screen: AutoUpdate,
     navigationOptions: {

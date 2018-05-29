@@ -15,9 +15,8 @@ import DrawerLayout from 'react-native-drawer-layout';
 import { FontAwesome } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
 import { Font } from 'expo';
-import Main from './Main';
+import AppMain from './AppMain';
 import Menu from './Menu';
-import Tab from './Tab';
 
 // import { BluetoothStatus } from 'react-native-bluetooth-status';
 const txtIosinstruct =
@@ -111,10 +110,6 @@ export default class Splash extends React.Component {
     return false; // for wireframe  version
   }
 
-  // _continue() {
-  //   //onPress={() => navigate('TabPage')}
-  //   this.props.navigation.navigate('TabPage');
-  // }
   _turnBluetoothOn = () => {
     console.log('bluetooth');
     if (Platform.OS === 'android')
@@ -162,8 +157,9 @@ export default class Splash extends React.Component {
               style={[
                 this.state.fontLoaded
                   ? styles.splashAppNameBau
-                  : styles.splashAppName
-                , {color: splashAppnameColor}]}
+                  : styles.splashAppName,
+                { color: splashAppnameColor }
+              ]}
             >
               {' '}
               {this.state.titleText}
@@ -192,7 +188,7 @@ export default class Splash extends React.Component {
           <View style={styles.buttonContainer}>
             {/* the CONTINUE button */}
             <Button
-              onPress={() => navigate('TabPage')}
+              onPress={() => navigate('MainPage')}
               title="Continue"
               color="#242424"
               disabled={this.state.continueDisabled}
