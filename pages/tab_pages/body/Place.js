@@ -69,13 +69,16 @@ export default class Place extends Component {
             subtitle={section.subtitle}
           />
         </List>*/}
-        <View style={{backgroundColor: '#FF8989' }}>
-          <Text style={styles.itemHeaderText}>{section.title}</Text>
+        <View style={styles.itemHeader}>
+          {/* if (this.props.useIcons)
+              <Text>here goes icon</Text>
+          */}
+          <Text style={styles.itemHeaderText}>{'  '}{section.title}</Text>
         </View>
         <View
           style={{
             borderBottomColor: 'black',
-            borderBottomWidth: 1,
+            borderBottomWidth: 3
           }}
         />
       </View>
@@ -84,7 +87,7 @@ export default class Place extends Component {
 
   _renderContent(section) {
     return (
-      <View style={styles.content}>
+      <View style={styles.itemDetails}>
         <Text>{section.content}</Text>
       </View>
     );
@@ -119,15 +122,15 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginRight: 20
   },
-  title: {
-    textAlign: 'center',
-    fontSize: 22,
-    fontWeight: '300',
-    marginBottom: 20
-  },
   accordArea: {
     backgroundColor: '#006600', // '#F5FCFF'
     padding: 3
+  },
+  itemHeader: {
+    backgroundColor: '#FF8989',
+    paddingTop: 5,
+    paddingBottom: 5,
+    borderRadius: 20
   },
   itemHeaderText: {
     // textAlign: 'center',
@@ -135,7 +138,7 @@ const styles = StyleSheet.create({
     fontWeight: '300',
     fontStyle: 'normal'
   },
-  content: {
+  itemDetails: {
     padding: 20,
     backgroundColor: '#fff'
   },
@@ -151,7 +154,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     backgroundColor: '#2E9298',
-    borderRadius: 10,
+    borderRadius: 5,
     padding: 10,
     shadowColor: '#000000',
     shadowOffset: {
