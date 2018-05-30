@@ -14,11 +14,12 @@ import { FontAwesome } from "@expo/vector-icons";
 import { List, ListItem } from "react-native-elements";
 //import PropTypes from 'prop-types';
 import { Dropdown } from "react-native-material-dropdown";
+import { placeDataCtx } from "../../AppMain";
 
 //const str_welcome ='Last place: South Elevators floor 1';
 //const str_open= 'Opening hours:\n' + 'Sunday - Thursday 8:30-21:00\n';
 //const str_pos = 'You are at the main gate \nThere is an ATM outside';
-const floorNumbers = [{ value: "1" }, { value: "2" }];
+const floorNumbers = [{ value: "1" }, { value: "2" }, { value: "All Floors" }];
 
 const strTitle = "";
 // const strDes = 'Opening hours\n' + 'Sunday-Thursday 8:15-17:30';
@@ -55,12 +56,32 @@ const SECTIONS = [
 export default class Place extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      floorFilter: floorNumbers[2].value
+    };
+    this._renderHeader = this._renderHeader.bind(this);
+    this._onChangeFilter = this._onChangeFilter.bind(this);
+  }
+
+  _onChangeFilter(text) {
+    console.log(text);
+    this.setState({ floorFilter: text });
   }
 
   _renderHeader(content, index, isActive, sections) {
     let iconName = "angle-down";
     if (isActive === true) {
       iconName = "angle-up";
+    }
+
+    let canRender = true;
+    if (this.state.floorFilter !== floorNumbers[2].value) {
+      if (content.point.floor.toString() !== this.state.floorFilter) {
+        canRender = false;
+      }
+    }
+    if (canRender === false) {
+      return <View />;
     }
     // for rn elements listitem:
     // rightIcon={{ name: 'arrow-right', type: 'font-awesome', style: { marginRight: 10, fontSize: 15 } }}
@@ -79,20 +100,13 @@ export default class Place extends Component {
           <View>
             <Text style={styles.itemHeaderText}>
               {"  "}
-              {content.title}
+              {content.point.title}
             </Text>
           </View>
           <View style={styles.iconItem}>
             <FontAwesome name={iconName} size={20} color="gray" />
           </View>
         </View>
-        <View
-          style={{
-            width: "100%",
-            borderBottomColor: "#F5FCFF",
-            borderBottomWidth: 2
-          }}
-        />
       </View>
     );
   }
@@ -100,29 +114,47 @@ export default class Place extends Component {
   _renderContent(section) {
     return (
       <View style={styles.itemDetails}>
-        <Text>{section.content}</Text>
+        <Text>{section.point.content}</Text>
       </View>
     );
   }
 
   render() {
     return (
-      <View style={styles.container}>
-        <View style={styles.floorView}>
-          <Text style={styles.assistant}>Floor</Text>
-          <Dropdown
-            containerStyle={{ marginLeft: 30, width: 100 }}
-            label="Floor"
-            data={floorNumbers}
-          />
-        </View>
-        <Text style={{ fontSize: 28 }}>{strTitle}</Text>
-        <Accordion
-          sections={SECTIONS}
-          renderHeader={this._renderHeader}
-          renderContent={this._renderContent}
-        />
-      </View>
+      <placeDataCtx.Consumer>
+        {({ currentPlace }) => {
+          //console.log(currentPlace);
+          return (
+            <View style={styles.container}>
+              <View style={styles.floorView}>
+                <View style={styles.floorTitleView}>
+                  <Text style={styles.assistant}>Floor</Text>
+                </View>
+                <View style={styles.floorDropdownView}>
+                  <Dropdown
+                    label={""}
+                    labelFontSize={0}
+                    containerStyle={{
+                      marginBottom: 20,
+                      marginLeft: 30,
+                      width: 100
+                    }}
+                    value={floorNumbers[2].value}
+                    data={floorNumbers}
+                    onChangeText={this._onChangeFilter}
+                  />
+                </View>
+              </View>
+              <Text style={{ fontSize: 28 }}>{strTitle}</Text>
+              <Accordion
+                sections={currentPlace.inPlace}
+                renderHeader={this._renderHeader}
+                renderContent={this._renderContent}
+              />
+            </View>
+          );
+        }}
+      </placeDataCtx.Consumer>
     );
   }
 }
@@ -136,7 +168,9 @@ const styles = StyleSheet.create({
   accordArea: {
     width: "100%",
     backgroundColor: "#FFFFFF", // '#F5FCFF'
-    padding: 3
+    padding: 3,
+    borderBottomColor: "#EEEEEF",
+    borderBottomWidth: 2
   },
   itemHeader: {
     flex: 1,
@@ -171,7 +205,6 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   assistant: {
-    marginBottom: 20,
     fontSize: 24,
     textAlign: "left"
   },
@@ -190,9 +223,17 @@ const styles = StyleSheet.create({
     marginLeft: 20
   },
   floorView: {
-    display: "flex",
+    flex: 1,
+    width: "100%",
     flexDirection: "row",
-    alignItems: "center",
     marginLeft: 20
+  },
+  floorTitleView: {
+    height: "100%",
+    justifyContent: "center"
+  },
+  floorDropdownView: {
+    height: "100%",
+    justifyContent: "center"
   }
 });

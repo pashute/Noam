@@ -31,7 +31,7 @@ import Voice from "./pages/setting_pages/Voice";
 import Help from "./pages/Help";
 import Languages from "./data";
 
-export const placeDataCtx = React.createContext(Languages.en.data);
+export const languageDataCtx = React.createContext(Languages.en.data);
 
 //import placesData from "./data/placesData.json";
 //import settingsData from "./data/settingsData.json";
@@ -126,6 +126,7 @@ export default class App extends React.Component {
     this.state = {
       fontLoaded: false,
       data: {},
+      currentLanguage: Languages.en.data,
       pointingTo: "North West",
       heading: {}
     };
@@ -182,16 +183,18 @@ export default class App extends React.Component {
     //   />
     // );
     return (
-      <Nav
-        screenProps={{
-          pointingTo: this.state.pointingTo,
-          heading: this.state.heading,
-          noamColor:
-            this.state.data && this.state.data.styles
-              ? this.state.data.styles.stylesSplash.noamColor
-              : "#FF0000"
-        }}
-      />
+      <languageDataCtx.Provider value={this.state.currentLanguage}>
+        <Nav
+          screenProps={{
+            pointingTo: this.state.pointingTo,
+            heading: this.state.heading,
+            noamColor:
+              this.state.data && this.state.data.styles
+                ? this.state.data.styles.stylesSplash.noamColor
+                : "#FF0000"
+          }}
+        />
+      </languageDataCtx.Provider>
     );
   }
 }

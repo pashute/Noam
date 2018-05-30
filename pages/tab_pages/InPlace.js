@@ -1,22 +1,22 @@
 /* cSpell:disable */
 
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   StyleSheet,
   View,
   ScrollView
   /* Button,   Platform,   Text,   Alert */
-} from 'react-native';
+} from "react-native";
 
 // import ActionBar from 'react-native-action-bar';
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 // import { TabNavigator } from 'react-navigation';
 // import DrawerLayout from 'react-native-drawer-layout';
-import Menu from '../Menu';
-import Bottom from './Bottom';
+import Menu from "../Menu";
+import Bottom from "./Bottom";
 // import NoBeacon from './body/NoBeacon';
 // import Body from './body/Body';
-import Place from './body/Place';
+import Place from "./body/Place";
 
 export default class InPlace extends Component<{}> {
   constructor(props) {
@@ -61,32 +61,32 @@ export default class InPlace extends Component<{}> {
 
 const styles = StyleSheet.create({
   mainContainer: {
-    backgroundColor: '#770000', // '#F5FCFF',
+    backgroundColor: "#770000", // '#F5FCFF',
     flex: 1
   },
   floorContainer: {
-    backgroundColor: '#000077', // '#F5FCFF',
+    backgroundColor: "#000077", // '#F5FCFF',
     borderLeftWidth: 1,
-    borderLeftColor: '#000000',
+    borderLeftColor: "#000000",
     borderRightWidth: 1,
-    borderRightColor: '#000000',
+    borderRightColor: "#000000",
     borderTopWidth: 1.0,
-    borderTopColor: '#000000',
+    borderTopColor: "#000000",
     borderBottomWidth: 1,
-    borderBottomColor: '#000000',
+    borderBottomColor: "#000000",
     margin: 10,
     padding: 0,
     flex: 18
   },
   contentContainer: {
-    backgroundColor: '#00FC00', // remove?
+    backgroundColor: "#00FC00", // remove?
     padding: 0
   },
   buttonContainer: {
-    backgroundColor: '#2E9298', // remove?
+    backgroundColor: "#2E9298", // remove?
     borderRadius: 10,
     padding: 10,
-    shadowColor: '#000000',
+    shadowColor: "#000000",
     shadowOffset: {
       width: 0,
       height: 3
