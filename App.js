@@ -1,27 +1,34 @@
 /* cSpell:disable */
 
-import React from 'react';
-import { StyleSheet /*Platform, Text, View, Alert*/ } from 'react-native';
+import React from "react";
+import { StyleSheet /*Platform, Text, View, Alert*/ } from "react-native";
 
 //x import { TabNavigator } from 'react-navigation'; // 1.5.11
-import { StackNavigator } from 'react-navigation';
+import { StackNavigator } from "react-navigation";
 
 // import { ButtonGroup } from 'react-native-elements';
-import ObjectPath from 'object-path';
-import '@expo/vector-icons';
-import { /* Constants, AppLoading, */ Permissions, Location } from "expo";
+import ObjectPath from "object-path";
+import "@expo/vector-icons";
+import {
+  /* Constants, AppLoading, */ AppLoading,
+  Font,
+  Permissions,
+  Location
+} from "expo";
 
-import { YellowBox } from 'react-native';
+import { YellowBox } from "react-native";
 
-import Splash from './pages/Splash';
-import AppMain from './pages/AppMain';
-import AutoUpdate from './pages/setting_pages/AutoUpdate';
-import Calibrate from './pages/setting_pages/Calibrate';
-import Personal from './pages/setting_pages/Personal';
-import Profile from './pages/setting_pages/Profile';
-import SetHome from './pages/setting_pages/SetHome';
-import Voice from './pages/setting_pages/Voice';
-import Help from './pages/Help';
+import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
+
+import Splash from "./pages/Splash";
+import AppMain from "./pages/AppMain";
+import AutoUpdate from "./pages/setting_pages/AutoUpdate";
+import Calibrate from "./pages/setting_pages/Calibrate";
+import Personal from "./pages/setting_pages/Personal";
+import Profile from "./pages/setting_pages/Profile";
+import SetHome from "./pages/setting_pages/SetHome";
+import Voice from "./pages/setting_pages/Voice";
+import Help from "./pages/Help";
 
 //import placesData from "./data/placesData.json";
 //import settingsData from "./data/settingsData.json";
@@ -37,58 +44,58 @@ import Help from './pages/Help';
 // };
 
 YellowBox.ignoreWarnings([
-  'Warning: componentWillMount is deprecated',
-  'Warning: componentWillReceiveProps is deprecated',
-  'Warning: componentWillUpdate is deprecated'
+  "Warning: componentWillMount is deprecated",
+  "Warning: componentWillReceiveProps is deprecated",
+  "Warning: componentWillUpdate is deprecated"
 ]);
 
 const Nav = StackNavigator({
   SplashPage: {
     screen: Splash,
     navigationOptions: {
-      headermode: 'screen',
+      headermode: "screen",
       header: null
     }
   },
   MainPage: {
     screen: AppMain,
     navigationOptions: {
-      headermode: 'screen',
+      headermode: "screen",
       header: null
     }
   },
   AutoUpdate: {
     screen: AutoUpdate,
     navigationOptions: {
-      headermode: 'screen',
+      headermode: "screen",
       header: null
     }
   },
   Calibrate: {
     screen: Calibrate,
     navigationOptions: {
-      headermode: 'screen',
+      headermode: "screen",
       header: null
     }
   },
   Personal: {
     screen: Personal,
     navigationOptions: {
-      headermode: 'screen',
+      headermode: "screen",
       header: null
     }
   },
   Profile: {
     screen: Profile,
     navigationOptions: {
-      headermode: 'screen',
+      headermode: "screen",
       header: null
     }
   },
   SetHome: {
     screen: SetHome,
     navigationOptions: {
-      headermode: 'screen',
+      headermode: "screen",
       header: null
     }
   },
@@ -96,14 +103,14 @@ const Nav = StackNavigator({
   Voice: {
     screen: Voice,
     navigationOptions: {
-      headermode: 'screen',
+      headermode: "screen",
       header: null
     }
   },
   Help: {
     screen: Help,
     navigationOptions: {
-      headermode: 'screen',
+      headermode: "screen",
       header: null
     }
   }
@@ -114,21 +121,32 @@ export default class App extends React.Component {
     super(props);
 
     this.state = {
+      fontLoaded: false,
       data: {},
-      pointingTo: 'North West',
+      pointingTo: "North West",
       heading: {}
     };
   }
 
-  UNSAFE_ComponentWillMount() {
-    this._getHeadingAsync();
+  componentDidMount() {
+    this._asyncFonts();
   }
+
+  _asyncFonts = async () => {
+    try {
+      await Font.loadAsync(MaterialIcons.font, FontAwesome.font);
+      this.setState({ fontLoaded: true });
+      this._getHeadingAsync();
+    } catch (error) {
+      console.log("error loading icon fonts", error);
+    }
+  };
 
   _getHeadingAsync = async () => {
     let { status } = await Permissions.askAsync(Permissions.LOCATION);
-    if (status !== 'granted') {
+    if (status !== "granted") {
       this.setState({
-        errorMessage: 'Permission to access location was denied'
+        errorMessage: "Permission to access location was denied"
       });
     }
 
@@ -143,11 +161,15 @@ export default class App extends React.Component {
 
   setNoamColor = color => {
     let newState = { ...this.state };
-    ObjectPath.set(newState, 'styles.welcomeStyles.welcomeColor', color);
+    ObjectPath.set(newState, "styles.welcomeStyles.welcomeColor", color);
     this.setState(newState);
   };
 
   render() {
+    if (!this.state.fontLoaded) {
+      return <AppLoading />;
+    }
+
     // return (
     //   <Nav
     //     screenProps={{
@@ -164,7 +186,7 @@ export default class App extends React.Component {
           noamColor:
             this.state.data && this.state.data.styles
               ? this.state.data.styles.stylesSplash.noamColor
-              : '#FF0000'
+              : "#FF0000"
         }}
       />
     );
@@ -174,18 +196,18 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#FFFFFF'
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#FFFFFF"
   },
   welcome: {
     fontSize: 20,
-    textAlign: 'center',
+    textAlign: "center",
     margin: 10
   },
   instructions: {
-    textAlign: 'center',
-    color: '#333333',
+    textAlign: "center",
+    color: "#333333",
     marginBottom: 5
   }
 });
