@@ -106,7 +106,7 @@ export default class Place extends Component {
                   />
                 </View>
               </View>
-              <Text style={{ fontSize: 20 }}>{strFirstTimeData}</Text>
+              <Text style={styles.firstTimeData}>{strFirstTimeData}</Text>
               <Accordion
                 sections={currentPlace.inPlace}
                 renderHeader={this._renderHeader}
@@ -150,6 +150,10 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginLeft: 30,
     width: 100
+  },
+  firstTimeData: { 
+    fontSize: 20, 
+    marginLeft: 20
   },
   accordArea: {
     width: '100%',
