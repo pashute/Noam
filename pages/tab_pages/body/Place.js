@@ -176,7 +176,6 @@ const styles = StyleSheet.create({
     textAlign: "left"
   },
   buttonContainer: {
-    backgroundColor: "#2E9298",
     borderRadius: 5,
     padding: 10,
     shadowColor: "#000000",
