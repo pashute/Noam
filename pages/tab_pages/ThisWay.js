@@ -1,33 +1,17 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
-  Platform,
+  /* Platform,*/
   StyleSheet,
   Text,
   View,
-  Alert,
+  /* Alert, Button */
   ScrollView
-} from "react-native";
-import { Button } from "react-native";
-//import { List, ListItem } from "react-native-elements";
-import ActionBar from "react-native-action-bar";
-import PropTypes from "prop-types";
-import { TabNavigator } from "react-navigation";
-import DrawerLayout from "react-native-drawer-layout";
+} from 'react-native';
 //import { Font, AppLoading } from 'expo';
-import Menu from "../Menu";
-import Bottom from "./Bottom";
-import NoBeacon from "./body/NoBeacon";
-import ThiswayView from "./body/ThiswayView";
-import { stylesData, placesData, settingsData } from "../../data/en";
+import ThiswayView from './body/ThiswayView';
+import Bottom from './Bottom';
 
-// import { YellowBox } from 'react-native';
-// YellowBox.ignoreWarnings([
-//   'Warning: componentWillMount is deprecated',
-//   'Warning: componentWillReceiveProps is deprecated',
-//   'Warning: componentWillUpdate is deprecated'
-// ]);
-
-export default class ThisWay extends React.Component {
+export default class ThisWay extends Component<{}> {
   constructor(props) {
     super(props);
     this.state = {
@@ -53,45 +37,21 @@ export default class ThisWay extends React.Component {
 
   render() {
     // console.log({ placesData, settingsData });
-
-    const thisWayStyles = stylesData.styles.thisWayStyles;
+    // const thisWayStyles = stylesData.styles.thisWayStyles;
 
     return (
-      <View style={styles.container}>
-        <Text
-          style={{
-            margin: 10,
-            fontSize: 16,
-            textAlign: "center",
-            color: thisWayStyles.color,
-            fontWeight: thisWayStyles.fontWeight
-          }}
-        >
+      <View style={styles.mainContainer}>
+        <Text style={styles.pointingTo}>
           {/* {`Pointing: ${this.props.pointingDirection}`} */}
           {`Heading: ${this.props.heading.trueHeading}`}
         </Text>
-        <View
-          style={{
-            borderLeftWidth: 1,
-            borderLeftColor: "#000000",
-            borderRightWidth: 1,
-            borderRightColor: "#000000",
-            borderTopWidth: 1.0,
-            borderTopColor: "#000000",
-            borderBottomWidth: 1,
-            borderBottomColor: "#000000",
-            margin: 10,
-            padding: 0,
-            backgroundColor: "#F5FCFF",
-            flex: 18
-          }}
-        >
+        <View style={styles.places}>
           <ScrollView contentContainerStyle={styles.contentContainer}>
             {/* // <NoBeacon/> */}
             <ThiswayView />
           </ScrollView>
         </View>
-        <View style={{ flex: 2 }}>
+        <View style={styles.bottomRow}>
           <Bottom />
         </View>
       </View>
@@ -100,23 +60,43 @@ export default class ThisWay extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-
-    backgroundColor: "#F5FCFF"
+  mainContainer: {
+    backgroundColor: '#F5FCFF',
+    flex: 1
   },
   contentContainer: { padding: 0 },
+  pointingTo: {
+    margin: 10,
+    fontSize: 16,
+    textAlign: 'center',
+    color: '#0000FF', /*thisWayStyles.color,*/
+    fontWeight: '500' /*thisWayStyles.fontWeight*/
+  },
+  places: {
+    backgroundColor: '#0000FF', /* '#F5FCFF', */
+    borderLeftWidth: 1,
+    borderLeftColor: '#000000',
+    borderRightWidth: 1,
+    borderRightColor: '#000000',
+    borderTopWidth: 1.0,
+    borderTopColor: '#000000',
+    borderBottomWidth: 1,
+    borderBottomColor: '#000000',
+    margin: 10,
+    padding: 0,
+    flex: 18
+  },
   welcome: {
     fontSize: 30,
-    color: "#6600ff",
+    color: '#6600ff',
     marginTop: 20,
     paddingRight: 30,
-    textAlign: "right"
+    textAlign: 'right'
   },
   instructions: {
     marginTop: 40,
-    textAlign: "center",
-    color: "#333333",
+    textAlign: 'center',
+    color: '#333333',
     marginBottom: 80,
     fontSize: 20
   },
@@ -125,13 +105,13 @@ const styles = StyleSheet.create({
     marginTop: 60,
     marginLeft: 20,
     marginRight: 20,
-    textAlign: "center"
+    textAlign: 'center'
   },
   buttonContainer: {
-    backgroundColor: "#2E9298",
+    backgroundColor: '#2E9298',
     borderRadius: 10,
     padding: 10,
-    shadowColor: "#000000",
+    shadowColor: '#000000',
     shadowOffset: {
       width: 0,
       height: 3
@@ -140,5 +120,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     marginRight: 20,
     marginLeft: 20
+  },
+  bottomRow: {
+    flex: 2
   }
 });

@@ -1,21 +1,24 @@
 /* cSpell:disable */
 
-import React, { Component } from "react";
-import { Platform, StyleSheet, Text, View /*, Alert*/ } from "react-native";
-import { TabNavigator } from "react-navigation";
-import NearBy from "./tab_pages/NearBy";
-import ThisWay from "./tab_pages/ThisWay";
-import InPlace from "./tab_pages/InPlace";
-import DrawerLayout from "react-native-drawer-layout";
-import Menu from "./Menu";
-import ActionBar from "react-native-action-bar";
-import PropTypes from "prop-types";
-import { FontAwesome } from "@expo/vector-icons";
+import React, { Component } from 'react';
+import { Platform, StyleSheet, Text, View /*, Alert*/ } from 'react-native';
+
+import DrawerLayout from 'react-native-drawer-layout';
+import ActionBar from 'react-native-action-bar';
+// import PropTypes from 'prop-types';
+
+import { Constants } from 'expo';
 // import Icon from 'react-native-vector-icons/FontAwesome';
-import { ButtonGroup } from "react-native-elements";
-import "@expo/vector-icons";
-import { Constants } from "expo";
-import { languageDataCtx } from "../App";
+import { FontAwesome } from '@expo/vector-icons';
+import '@expo/vector-icons';
+import { ButtonGroup } from 'react-native-elements';
+
+import NearBy from './tab_pages/NearBy';
+import ThisWay from './tab_pages/ThisWay';
+import InPlace from './tab_pages/InPlace';
+import Menu from './Menu';
+
+import { languageDataCtx } from '../App';
 
 export const placeDataCtx = React.createContext(languageDataCtx);
 
@@ -23,16 +26,15 @@ export const placeDataCtx = React.createContext(languageDataCtx);
 // const strExit = 'Exits';
 // const strCall = 'Call';
 
-const ear_icon = require("../assets/icons/ear1.png");
-const pointPlaceName = "Big Fashion";
-//const icon_Place = <Icon name="adjust" size={30} color="#900" />;
-const pointBeaconLocation = "South gate (Bank Leumi)";
-const pointPlaceIconName = "bold";
+// const ear_icon = require('../assets/icons/ear1.png');
+const pointPlaceName = 'Big Fashion';
+const pointBeaconLocation = 'South gate (Bank Leumi)';
+const pointPlaceIconName = 'bold';
 
-const strThis = "This";
-const strWay = "way";
-const strNearby = "Nearby";
-const strInplace = "In building";
+const strThis = 'This';
+const strWay = 'way';
+const strNearby = 'Nearby';
+const strInplace = 'In building';
 
 // tab texts and icons:
 const nearbyButton = () => (
@@ -42,9 +44,9 @@ const nearbyButton = () => (
 );
 const thatwayButton = () => (
   <View style={styles.tabButton}>
-    <Text style={styles.tabText}>This </Text>
+    <Text style={styles.tabText}>{strThis} </Text>
     <FontAwesome name="arrow-up" size={14} />
-    <Text style={styles.tabText}> way</Text>
+    <Text style={styles.tabText}>{strWay}</Text>
   </View>
 );
 const inplaceButton = () => (
@@ -53,7 +55,7 @@ const inplaceButton = () => (
   </View>
 );
 
-export default class AppMain extends React.Component {
+export default class AppMain extends Component<{}> {
   constructor(props) {
     super(props);
     // fix: txt from constants and then from data
@@ -70,7 +72,7 @@ export default class AppMain extends React.Component {
   }
 
   updateTabIndex = tabIndex => {
-    console.log("tab index: " + tabIndex);
+    console.log('tab index: ' + tabIndex);
     this.setState({ tabIndex });
   };
 
@@ -115,12 +117,12 @@ export default class AppMain extends React.Component {
                   <ActionBar
                     containerStyle={styles.actionBar}
                     titleStyle={styles.actionTitle}
-                    title={"noam"}
-                    leftIconName={"location"}
-                    onLeftPress={() => console.log("Left!")}
+                    title={'noam'}
+                    leftIconName={'location'}
+                    onLeftPress={() => console.log('Talk Icon pressed.')}
                     rightIcons={[
                       {
-                        name: "menu",
+                        name: 'menu',
                         onPress: this.toggleDrawer
                       }
                     ]}
@@ -131,9 +133,8 @@ export default class AppMain extends React.Component {
                       <FontAwesome
                         name={pointPlaceIconName}
                         size={30}
-                        color="black"
+                        color="#000000"
                       />
-                      {/*<Text style={styles.placeIcon}>BiG</Text>*/}
                     </View>
                     <Text style={styles.beaconLocTxt}>
                       {pointBeaconLocation}
@@ -169,7 +170,7 @@ export default class AppMain extends React.Component {
 }
 
 const TabbedPage = ({ selectedIndex, pointingDirection, heading }) => {
-  console.log("tab: ");
+  console.log('tab: ' + selectedIndex);
   switch (selectedIndex) {
     case 0:
       return <NearBy pointingDirection={pointingDirection} />;
@@ -189,35 +190,36 @@ const styles = StyleSheet.create({
   topContainer: {
     /* place and tabs */
     flex: 1,
-    marginTop: Platform.OS === "ios" ? 0 : Constants.statusBarHeight,
-    backgroundColor: "#F5F1FF"
+    marginTop: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight,
+    backgroundColor: '#F5F5F5'
   },
   actionBar: {
     /* ear appname and menu */
-    backgroundColor: "#330077"
+    backgroundColor: '#330077'
   },
   actionTitle: {
-    textAlign: "center",
+    textAlign: 'center',
     fontSize: 20
   },
   /* tabs */
   tabButton: {
-    flexDirection: "row"
+    flexDirection: 'row'
   },
   tabText: {
     fontSize: 16
   },
   /* tabSelecteButtonStyle:{}, */
   tabSelected: {
-    backgroundColor: "#FFFFFF"
+    backgroundColor: '#FFFFFF'
   },
   topPlaceRow: {
     /* */
-    flexDirection: "column",
-    justifyContent: "center"
+    flexDirection: 'column',
+    justifyContent: 'center',
+    marginBottom: 5
   },
   placeBar: {
-    flexDirection: "row",
+    flexDirection: 'row',
     marginTop: 10,
     marginLeft: 40,
     marginRight: 40
@@ -226,21 +228,21 @@ const styles = StyleSheet.create({
     lineHeight: 20,
     flex: 1,
     fontSize: 18,
-    textAlignVertical: "center"
+    textAlignVertical: 'center'
   },
   placeIcon: {
     fontSize: 24,
-    color: "#111145",
+    color: '#111145',
     marginLeft: 5
   },
   beaconLocTxt: {
-    textAlign: "center",
+    textAlign: 'center',
     fontSize: 20
   },
   buttonContainer: {
     borderRadius: 10,
     padding: 10,
-    shadowColor: "#000000",
+    shadowColor: '#000000',
     shadowOffset: {
       width: 0,
       height: 3
@@ -251,7 +253,7 @@ const styles = StyleSheet.create({
     marginLeft: 20
   },
   separator: {
-    borderBottomColor: "lightgray",
+    borderBottomColor: 'lightgray',
     borderBottomWidth: 1
   }
 });

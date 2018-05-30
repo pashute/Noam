@@ -27,17 +27,17 @@ https://hackernoon.com/configure-eslint-prettier-and-flow-in-vs-code-for-react-d
 ---
 
 had to install java jdk8 jse-sdk (standard edition)
- from here: http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+from here: http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 then set %JAVA_HOME% to the directory of the jdk under program files/java
 then added to the PATH %Java_Home%/bin;
- keytool -genkey -v -keystore noam-release-key.keystore -alias noam-key -keyalg RSA -keysize 2048 -validity 10000
+keytool -genkey -v -keystore noam-release-key.keystore -alias noam-key -keyalg RSA -keysize 2048 -validity 10000
 
 CN=Danny Reiss, OU=Accessability development, O=Pashute Negishut, L=Netanya, ST=Israel, C=IL correct?
 pws: jkjkjk1bcd tehilit dinar vechu, noam1bcd cannal.
 privacy": "unlisted",
 
 email: danny@reisspn.co.il
-user: dannyreiss    pw: jkjkjk12 Tehilit suldinar
+user: dannyreiss pw: jkjkjk12 Tehilit suldinar
 
 "name": "Noam",
 rem"icon": "./icons/icon.png",
@@ -76,7 +76,7 @@ https://www.npmjs.com/package/react-native-compass
 https://github.com/yonahforst/react-native-heading
 and this in windows about calibration: https://docs.microsoft.com/en-us/uwp/api/Windows.Devices.Sensors.MagnetometerAccuracy
 
-react-native log-android
+to see log use: `react-native log-android`
 
 expo vector icons for react-native-elements
 https://www.npmjs.com/package/@expo/vector-icons

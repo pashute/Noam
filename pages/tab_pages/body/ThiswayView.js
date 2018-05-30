@@ -2,19 +2,17 @@
 
 import React, { Component } from 'react';
 import {
-  Platform,
   StyleSheet,
   Text,
-  View,
-  Alert,
-  ScrollView
+  View
+  /* Platform, Alert, ScrollView, Button  */
 } from 'react-native';
 import Accordion from 'react-native-collapsible/Accordion';
-import { Button } from 'react-native';
-import PropTypes from 'prop-types';
-import { Font, AppLoading } from 'expo';
-import { MaterialIcons } from '@expo/vector-icons';
-import { List, ListItem } from 'react-native-elements';
+// import PropTypes from 'prop-types';
+// import { Font, AppLoading } from 'expo';
+// import { FontAwesome } from '@expo/vector-icons';
+// import { Dropdown } from 'react-native-material-dropdown';
+// import { placeDataCtx } from '../../AppMain';
 
 //const str_welcome ='Welcome to Big Fashion';
 //const str_open= 'Opening hours:\n' + 'Sunday - Thursday 8:30 - 21:00\n' + 'Friday 8:30 - 13:00';

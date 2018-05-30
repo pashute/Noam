@@ -1,18 +1,15 @@
+/* cSpell:disable */
+
 import React, { Component } from 'react';
 import {
-  // Platform,
   StyleSheet,
   Text,
-  View //,
-  // Alert,
-  // ScrollView,
-  // Button
+  View
+  /* Platform, Alert, ScrollView, Button */
 } from 'react-native';
 import Accordion from 'react-native-collapsible/Accordion';
-// import { MaterialDesign } from "react-native-vector-icons";
-import { FontAwesome } from '@expo/vector-icons';
-// import { List, ListItem } from "react-native-elements";
 //import PropTypes from 'prop-types';
+import { FontAwesome } from '@expo/vector-icons';
 import { Dropdown } from 'react-native-material-dropdown';
 import { placeDataCtx } from '../../AppMain';
 
@@ -24,7 +21,7 @@ const floorNumbers = [{ value: '1' }, { value: '2' }, { value: 'All Floors' }];
 const strFirstTimeData = '';
 // const strDes = 'Opening hours\n' + 'Sunday-Thursday 8:15-17:30';
 
-export default class Place extends Component {
+export default class Place extends Component<{}> {
   constructor(props) {
     super(props);
     this.state = {
@@ -54,8 +51,6 @@ export default class Place extends Component {
     if (canRender === false) {
       return <View />;
     }
-    // for rn elements listitem:
-    // rightIcon={{ name: 'arrow-right', type: 'font-awesome', style: { marginRight: 10, fontSize: 15 } }}
     return (
       <View style={styles.accordArea}>
         <View style={styles.itemHeader}>
@@ -85,10 +80,11 @@ export default class Place extends Component {
   }
 
   render() {
+    console.log('rendering placePoints');
     return (
       <placeDataCtx.Consumer>
         {({ currentPlace }) => {
-          //console.log(currentPlace);
+          // console.log(currentPlace);
           return (
             <View style={styles.container}>
               <View style={styles.floorViewContainer}>
@@ -140,7 +136,7 @@ const styles = StyleSheet.create({
   floorLabel: {
     marginTop: 35,
     fontSize: 18,
-    textAlign: 'left',
+    textAlign: 'left'
   },
   floorDropdownView: {
     height: '100%',
@@ -151,8 +147,8 @@ const styles = StyleSheet.create({
     marginLeft: 30,
     width: 100
   },
-  firstTimeData: { 
-    fontSize: 20, 
+  firstTimeData: {
+    fontSize: 20,
     marginLeft: 20
   },
   accordArea: {
