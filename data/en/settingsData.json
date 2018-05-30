@@ -1,0 +1,29 @@
+{
+  "settings": {
+    "general": {
+      "txtPointingTo": "Pointing to"
+    },
+    "scrnWelcome": {
+      "txtSplashTitle": "noam",
+      "txtSplashDescription": "your indoor assistant",
+      "txtIosInstruct": [
+        "Welcome to Noam",
+        "your indoor assistant",
+        "for accessible buildings",
+        "",
+        "We can tell you what's in",
+        "the building and where"
+      ],
+      "txtAndrInstruct": [
+        "Welcome to Noam",
+        "your indoor assistant",
+        "for accessible buildings",
+        "",
+        "We can tell you what's in",
+        "the building and where"
+      ]
+    },
+    "scrnMainTabs": {},
+    "scrnSettings": {}
+  }
+}

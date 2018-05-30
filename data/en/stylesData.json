@@ -1,0 +1,16 @@
+{
+  "styles": {
+    "accordStyles": {
+      "accordStyle": {
+        "backgroundColor": "#FF9900"
+      },
+      "accordHead": {},
+      "accordDetails": {},
+      "accordSep": {}
+    },
+    "thisWayStyles": {
+      "color": "red",
+      "fontWeight": "bold"
+    }
+  }
+}

@@ -1,29 +1,32 @@
-import React, { Component, PropTypes } from 'react';
-import { View, ScrollView, Text, TouchableOpacity, Image, StyleSheet,Alert, Navigator } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import { StackNavigator } from 'react-navigation';
-import Main from './Main'
-import Splash from './Splash'
-const menuList = require('./MenuList');
+import React, { Component, PropTypes } from "react";
+import {
+  View,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  Image,
+  StyleSheet,
+  Alert,
+  Navigator
+} from "react-native";
+import Icon from "react-native-vector-icons/MaterialIcons";
+import { StackNavigator } from "react-navigation";
+// import Main from "./Main";
+import Splash from "./Splash";
+const menuList = require("./MenuList");
 
 export default class Menu extends Component {
-  
   constructor(props) {
     super(props);
   }
 
-  goPage(name)
-  {
+  goPage(name) {
     const { navigate } = this.props.nav;
-    if(name == "Settings")
-    {
-     
-      console.log(this.props.nav)
-      this.props.nav('SetHome');
-    }
-    else
-    {
-      this.props.nav('Help');
+    if (name == "Settings") {
+      console.log(this.props.nav);
+      this.props.nav("SetHome");
+    } else {
+      this.props.nav("Help");
     }
   }
 
@@ -47,17 +50,15 @@ export default class Menu extends Component {
 
 const styles = StyleSheet.create({
   wrapper: {
-    backgroundColor: '#33cc33',
-    marginTop: 60,
-
+    backgroundColor: "#F5FCFF", // appbackground
+    marginTop: 60
   },
 
   listMenu: {
-    color: 'white', 
-    fontSize: 16, 
-    paddingLeft: 20, 
+    color: "#1F1F1F",
+    fontSize: 16,
+    paddingLeft: 20,
     paddingTop: 12,
-    paddingBottom: 12,
+    paddingBottom: 12
   }
-
 });

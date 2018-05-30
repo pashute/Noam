@@ -1,5 +1,11 @@
 {
   "name": "noam",
   "displayName": "noam",
-  "expo": { "sdkVersion": "27.0.0" }
+  "expo": {
+    "sdkVersion": "27.0.0",
+    "privacy": "unlisted",
+    "version": "1.0.0",
+    "slug": "noam",
+    "platforms": ["android", "ios"]
+  }
 }

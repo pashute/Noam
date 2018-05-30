@@ -11,8 +11,10 @@
     "test": "jest"
   },
   "dependencies": {
+    "babel-eslint": "^8.2.3",
     "eslint": "^4.19.1",
     "expo": "^27.0.0",
+    "jsonloader": "^1.0.1",
     "object-path": "^0.11.4",
     "react": "16.3.1",
     "react-native": "0.55.3",
@@ -26,16 +28,27 @@
     "react-native-scripts": "^1.14.0",
     "react-native-simple-radio-button": "^2.7.1",
     "react-native-tab-view": "0.0.77",
+    "react-native-vector-icons": "^4.6.0",
     "react-navigation": "^1.5.11",
     "rn-stack-router": "^1.0.0"
   },
   "devDependencies": {
     "babel-jest": "22.4.3",
     "babel-preset-react-native": "4.0.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.8.2",
+    "is-arrayish": "^0.3.1",
     "jest": "22.4.3",
     "react-test-renderer": "16.3.1"
   },
   "jest": {
     "preset": "react-native"
+  },
+  "rnpm": {
+    "assets": [
+      "./assets/fonts/"
+    ]
   }
 }

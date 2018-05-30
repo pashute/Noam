@@ -1,11 +1,27 @@
-import React, { Component } from "react";
-import { Platform, StyleSheet, Text, View, Alert } from "react-native";
+/* cSpell:disable */
+
+import React from "react";
+import { StyleSheet /*Platform, Text, View, Alert*/ } from "react-native";
 
 //x import { TabNavigator } from 'react-navigation'; // 1.5.11
 import { StackNavigator } from "react-navigation";
+
+// import { ButtonGroup } from 'react-native-elements';
+import ObjectPath from "object-path";
+import "@expo/vector-icons";
+import {
+  /* Constants, AppLoading, */ AppLoading,
+  Font,
+  Permissions,
+  Location
+} from "expo";
+
+import { YellowBox } from "react-native";
+
+import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
+
 import Splash from "./pages/Splash";
-import Main from "./pages/Main";
-import Tab from "./pages/Tab";
+import AppMain from "./pages/AppMain";
 import AutoUpdate from "./pages/setting_pages/AutoUpdate";
 import Calibrate from "./pages/setting_pages/Calibrate";
 import Personal from "./pages/setting_pages/Personal";
@@ -14,12 +30,18 @@ import SetHome from "./pages/setting_pages/SetHome";
 import Voice from "./pages/setting_pages/Voice";
 import Help from "./pages/Help";
 
-import { ButtonGroup } from "react-native-elements";
-//import ObjectPath from "object-path";
-import "@expo/vector-icons";
-import { Constants } from "expo";
+//import placesData from "./data/placesData.json";
+//import settingsData from "./data/settingsData.json";
+//import stylesData from "./data/stylesData.json";
 
-import { YellowBox } from "react-native";
+// const data = {
+//   styles: {
+//     stylesSplash: {
+//       noamColor: '6600FF',
+//       noamFont: 'TBD'
+//     }
+//   }
+// };
 
 YellowBox.ignoreWarnings([
   "Warning: componentWillMount is deprecated",
@@ -36,20 +58,12 @@ const Nav = StackNavigator({
     }
   },
   MainPage: {
-    screen: Main,
+    screen: AppMain,
     navigationOptions: {
       headermode: "screen",
       header: null
     }
   },
-  TabPage: {
-    screen: Tab,
-    navigationOptions: {
-      headermode: "screen",
-      header: null
-    }
-  },
-
   AutoUpdate: {
     screen: AutoUpdate,
     navigationOptions: {
@@ -102,35 +116,60 @@ const Nav = StackNavigator({
   }
 });
 
-// this will be removed
-const instructions = Platform.select({
-  ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
-  android: "R to reload shake or menu for dev"
-});
-
-// this too will be removed
-type Props = {};
-
 export default class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      fontLoaded: false,
+      data: {},
+      pointingTo: "North West",
+      heading: {}
+    };
   }
 
-  //   componentDidMount async () {
-  //       const data = await fetch("noamdata.json");
-  //       console.log({data});
-  //       this.setState(data);
-  //   }
+  componentDidMount() {
+    this._asyncFonts();
+  }
 
-  setWelcomeColor = color => {
+  _asyncFonts = async () => {
+    try {
+      await Font.loadAsync(MaterialIcons.font, FontAwesome.font);
+      this.setState({ fontLoaded: true });
+      this._getHeadingAsync();
+    } catch (error) {
+      console.log("error loading icon fonts", error);
+    }
+  };
+
+  _getHeadingAsync = async () => {
+    let { status } = await Permissions.askAsync(Permissions.LOCATION);
+    if (status !== "granted") {
+      this.setState({
+        errorMessage: "Permission to access location was denied"
+      });
+    }
+
+    Location.watchHeadingAsync(this.onHeadingChange);
+  };
+
+  onHeadingChange = heading => {
+    this.setState({ heading });
+  };
+
+  // onCompassUpdate = pointingTo => this.setState({ pointingTo });
+
+  setNoamColor = color => {
     let newState = { ...this.state };
     ObjectPath.set(newState, "styles.welcomeStyles.welcomeColor", color);
     this.setState(newState);
   };
 
   render() {
+    if (!this.state.fontLoaded) {
+      return <AppLoading />;
+    }
+
     // return (
     //   <Nav
     //     screenProps={{
@@ -139,7 +178,18 @@ export default class App extends React.Component {
     //     }}
     //   />
     // );
-    return <Nav screenProps={{ welcomeColor: "#FF9900" }} />;
+    return (
+      <Nav
+        screenProps={{
+          pointingTo: this.state.pointingTo,
+          heading: this.state.heading,
+          noamColor:
+            this.state.data && this.state.data.styles
+              ? this.state.data.styles.stylesSplash.noamColor
+              : "#FF0000"
+        }}
+      />
+    );
   }
 }
 
@@ -148,7 +198,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#F5FCFF"
+    backgroundColor: "#FFFFFF"
   },
   welcome: {
     fontSize: 20,
