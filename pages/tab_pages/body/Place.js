@@ -21,7 +21,7 @@ import { placeDataCtx } from '../../AppMain';
 //const str_pos = 'You are at the main gate \nThere is an ATM outside';
 const floorNumbers = [{ value: '1' }, { value: '2' }, { value: 'All Floors' }];
 
-const strFirstTimeData = ''; 
+const strFirstTimeData = '';
 // const strDes = 'Opening hours\n' + 'Sunday-Thursday 8:15-17:30';
 
 export default class Place extends Component {
@@ -91,17 +91,15 @@ export default class Place extends Component {
           //console.log(currentPlace);
           return (
             <View style={styles.container}>
-              <View style={styles.floorView}>
-                <Text style={styles.floorLabel}>Floor:</Text>
+              <View style={styles.floorViewContainer}>
+                <View style={styles.floorView}>
+                  <Text style={styles.floorLabel}>Floor:</Text>
+                </View>
                 <View style={styles.floorDropdownView}>
                   <Dropdown
                     label={''}
                     labelFontSize={0}
-                    containerStyle={{
-                      marginBottom: 20,
-                      marginLeft: 30,
-                      width: 100
-                    }}
+                    containerStyle={styles.floorDropdown}
                     value={floorNumbers[2].value}
                     data={floorNumbers}
                     onChangeText={this._onChangeFilter}
@@ -126,13 +124,38 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
-    backgroundColor: '#F5FCFF'
+    backgroundColor: '#FDFDFD'
+  },
+  floorViewContainer: {
+    flex: 1,
+    width: '100%',
+    flexDirection: 'row',
+    marginLeft: 20
+  },
+  floorLabelView: {
+    height: '100%',
+    justifyContent: 'center',
+    marginTop: 10
+  },
+  floorLabel: {
+    marginBottom: 10,
+    fontSize: 18,
+    textAlign: 'left'
+  },
+  floorDropdownView: {
+    height: '100%',
+    justifyContent: 'center'
+  },
+  floorDropdown: {
+    marginBottom: 5,
+    marginLeft: 30,
+    width: 100
   },
   accordArea: {
     width: '100%',
     backgroundColor: '#FFFFFF', // '#F5FCFF'
     padding: 3,
-    borderBottomColor: '#EEEEEF',
+    borderBottomColor: '#E7E7E7',
     borderBottomWidth: 2
   },
   itemHeader: {
@@ -167,11 +190,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     textAlign: 'center'
   },
-  floorLabel: {
-    marginBottom: 10,
-    fontSize: 18,
-    textAlign: 'left'
-  },
   buttonContainer: {
     borderRadius: 5,
     padding: 10,
@@ -184,19 +202,5 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     marginRight: 20,
     marginLeft: 20
-  },
-  floorView: {
-    flex: 1,
-    width: '100%',
-    flexDirection: 'row',
-    marginLeft: 20
-  },
-  floorTitleView: {
-    height: '100%',
-    justifyContent: 'center'
-  },
-  floorDropdownView: {
-    height: '100%',
-    justifyContent: 'center'
   }
 });

@@ -61,11 +61,11 @@ export default class InPlace extends Component<{}> {
 
 const styles = StyleSheet.create({
   mainContainer: {
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#FDFDFD',
     flex: 1
   },
   floorContainer: {
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#FDFDFD',
     borderLeftWidth: 1,
     borderLeftColor: "#000000",
     borderRightWidth: 1,

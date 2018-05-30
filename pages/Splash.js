@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     marginTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight,
-    backgroundColor: '#F5FCFF'
+    backgroundColor: '#FDFDFD'
   },
   actionBarHead: {},
   actionBar: {

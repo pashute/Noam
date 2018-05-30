@@ -209,7 +209,7 @@ const styles = StyleSheet.create({
   },
   /* tabSelecteButtonStyle:{}, */
   tabSelected: {
-    backgroundColor: "white"
+    backgroundColor: "#FFFFFF"
   },
   topPlaceRow: {
     /* */
