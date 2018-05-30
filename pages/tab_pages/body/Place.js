@@ -90,7 +90,7 @@ export default class Place extends Component {
           style={{
             width: "100%",
             borderBottomColor: "#F5FCFF",
-            borderBottomWidth: 1
+            borderBottomWidth: 2
           }}
         />
       </View>

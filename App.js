@@ -29,6 +29,9 @@ import Profile from "./pages/setting_pages/Profile";
 import SetHome from "./pages/setting_pages/SetHome";
 import Voice from "./pages/setting_pages/Voice";
 import Help from "./pages/Help";
+import Languages from "./data";
+
+export const placeDataCtx = React.createContext(Languages.en.data);
 
 //import placesData from "./data/placesData.json";
 //import settingsData from "./data/settingsData.json";
