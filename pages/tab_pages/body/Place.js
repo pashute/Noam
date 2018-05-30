@@ -133,21 +133,21 @@ const styles = StyleSheet.create({
     marginLeft: 20
   },
   floorLabelView: {
+    marginTop: 5,
     height: '100%',
-    justifyContent: 'center',
-    marginTop: 10
+    justifyContent: 'center'
   },
   floorLabel: {
-    marginBottom: 10,
+    marginTop: 35,
     fontSize: 18,
-    textAlign: 'left'
+    textAlign: 'left',
   },
   floorDropdownView: {
     height: '100%',
     justifyContent: 'center'
   },
   floorDropdown: {
-    marginBottom: 5,
+    marginTop: 5,
     marginLeft: 30,
     width: 100
   },
