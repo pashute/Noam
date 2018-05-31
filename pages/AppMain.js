@@ -119,7 +119,7 @@ export default class AppMain extends Component<{}> {
                     containerStyle={styles.actionBar}
                     titleStyle={styles.actionTitle}
                     title={'noam'}
-                    leftIconName={'location'}
+                    leftIconImage={earIcon}
                     onLeftPress={() => console.log('Talk Icon pressed.')}
                     rightIcons={[
                       {
@@ -137,9 +137,7 @@ export default class AppMain extends Component<{}> {
                         color="#000000"
                       />
                     </View>
-                    <Text style={styles.beaconTxt}>
-                      {pointBeaconLocation}
-                    </Text>
+                    <Text style={styles.beaconTxt}>{pointBeaconLocation}</Text>
                   </View>
                   <View style={styles.separator} />
                   <ButtonGroup
