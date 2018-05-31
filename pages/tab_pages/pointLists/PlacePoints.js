@@ -21,7 +21,7 @@ const floorNumbers = [{ value: '1' }, { value: '2' }, { value: 'All Floors' }];
 const strFirstTimeData = '';
 // const strDes = 'Opening hours\n' + 'Sunday-Thursday 8:15-17:30';
 
-export default class Place extends Component<{}> {
+export default class extends Component<{}> {
   constructor(props) {
     super(props);
     this.state = {
@@ -36,7 +36,7 @@ export default class Place extends Component<{}> {
     this.setState({ floorFilter: text });
   }
 
-  _renderHeader(content, index, isActive, dummy) {
+  _renderHeader(section, index, isActive, dummy) {
     let iconName = 'angle-down';
     if (isActive === true) {
       iconName = 'angle-up';
@@ -44,7 +44,7 @@ export default class Place extends Component<{}> {
 
     let canRender = true;
     if (this.state.floorFilter !== floorNumbers[2].value) {
-      if (content.point.floor.toString() !== this.state.floorFilter) {
+      if (section.point.floor.toString() !== this.state.floorFilter) {
         canRender = false;
       }
     }
@@ -60,7 +60,7 @@ export default class Place extends Component<{}> {
           <View>
             <Text style={styles.itemHeaderText}>
               {'  '}
-              {content.point.title}
+              {section.point.title}
             </Text>
           </View>
           <View style={styles.iconOpenColapse}>
@@ -184,23 +184,5 @@ const styles = StyleSheet.create({
   itemDetails: {
     padding: 20,
     backgroundColor: '#fff'
-  },
-  desc: {
-    marginBottom: 5,
-    fontSize: 14,
-    textAlign: 'center'
-  },
-  buttonContainer: {
-    borderRadius: 5,
-    padding: 10,
-    shadowColor: '#000000',
-    shadowOffset: {
-      width: 0,
-      height: 3
-    },
-    shadowRadius: 10,
-    shadowOpacity: 0.25,
-    marginRight: 20,
-    marginLeft: 20
   }
 });

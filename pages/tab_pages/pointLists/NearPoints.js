@@ -33,7 +33,7 @@ const SECTIONS = [
 
   ];
 
-export default class Body extends React.Component {
+export default class NearPoints extends React.Component {
     constructor(props) {
         super(props);
       }

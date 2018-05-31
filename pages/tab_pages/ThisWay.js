@@ -8,7 +8,7 @@ import {
   ScrollView
 } from 'react-native';
 //import { Font, AppLoading } from 'expo';
-import ThiswayView from './body/ThiswayView';
+import WayPoints from './pointLists/WayPoints';
 import Bottom from './Bottom';
 
 export default class ThisWay extends Component<{}> {
@@ -38,17 +38,17 @@ export default class ThisWay extends Component<{}> {
   render() {
     // console.log({ placesData, settingsData });
     // const thisWayStyles = stylesData.styles.thisWayStyles;
-
+    console.log('thisway.props.curbe: ' + this.props.beaconIndex);
     return (
       <View style={styles.mainContainer}>
         <Text style={styles.pointingTo}>
           {/* {`Pointing: ${this.props.pointingDirection}`} */}
           {`Heading: ${this.props.heading.trueHeading}`}
         </Text>
-        <View style={styles.places}>
-          <ScrollView contentContainerStyle={styles.contentContainer}>
+        <View style={styles.pointsContainer}>
+          <ScrollView contentContainerStyle={styles.scrollView}>
             {/* // <NoBeacon/> */}
-            <ThiswayView />
+            <WayPoints beaconIndex={this.props.beaconIndex} />
           </ScrollView>
         </View>
         <View style={styles.bottomRow}>
@@ -61,19 +61,11 @@ export default class ThisWay extends Component<{}> {
 
 const styles = StyleSheet.create({
   mainContainer: {
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#FDFDFD',
     flex: 1
   },
-  contentContainer: { padding: 0 },
-  pointingTo: {
-    margin: 10,
-    fontSize: 16,
-    textAlign: 'center',
-    color: '#0000FF', /*thisWayStyles.color,*/
-    fontWeight: '500' /*thisWayStyles.fontWeight*/
-  },
-  places: {
-    backgroundColor: '#0000FF', /* '#F5FCFF', */
+  pointsContainer: {
+    backgroundColor: '#FDFDFD',
     borderLeftWidth: 1,
     borderLeftColor: '#000000',
     borderRightWidth: 1,
@@ -86,40 +78,13 @@ const styles = StyleSheet.create({
     padding: 0,
     flex: 18
   },
-  welcome: {
-    fontSize: 30,
-    color: '#6600ff',
-    marginTop: 20,
-    paddingRight: 30,
-    textAlign: 'right'
-  },
-  instructions: {
-    marginTop: 40,
+  scrollView: { padding: 0 },
+  pointingTo: {
+    margin: 10,
+    fontSize: 16,
     textAlign: 'center',
-    color: '#333333',
-    marginBottom: 80,
-    fontSize: 20
-  },
-  assistant: {
-    fontSize: 24,
-    marginTop: 60,
-    marginLeft: 20,
-    marginRight: 20,
-    textAlign: 'center'
-  },
-  buttonContainer: {
-    backgroundColor: '#2E9298',
-    borderRadius: 10,
-    padding: 10,
-    shadowColor: '#000000',
-    shadowOffset: {
-      width: 0,
-      height: 3
-    },
-    shadowRadius: 10,
-    shadowOpacity: 0.25,
-    marginRight: 20,
-    marginLeft: 20
+    color: '#0000FF' /*thisWayStyles.color,*/,
+    fontWeight: '500' /*thisWayStyles.fontWeight*/
   },
   bottomRow: {
     flex: 2

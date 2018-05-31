@@ -16,8 +16,8 @@ import { TabNavigator } from 'react-navigation';
 import DrawerLayout from 'react-native-drawer-layout';
 import Menu from '../Menu';
 import Bottom from './Bottom';
-import NoBeacon from './body/NoBeacon';
-import Body from './body/Body';
+import NoBeacon from './pointLists/NoBeacon';
+import Body from './pointLists/NearPoints';
 
 export default class NearBy extends Component<{}> {
   constructor(props) {

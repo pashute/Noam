@@ -46,7 +46,7 @@ const thatwayButton = () => (
   <View style={styles.tabButton}>
     <Text style={styles.tabText}>{strThis} </Text>
     <FontAwesome name="arrow-up" size={14} />
-    <Text style={styles.tabText}>{strWay}</Text>
+    <Text style={styles.tabText}>{' ' + strWay}</Text>
   </View>
 );
 const inplaceButton = () => (
@@ -60,10 +60,11 @@ export default class AppMain extends Component<{}> {
     super(props);
     // fix: txt from constants and then from data
     this.state = {
-      indexPlace: 0,
-      drawerClosed: true,
+      placeIndex: 0,
+      beaconIndex: 0,
+      beaconUid: 12,
       tabIndex: 2,
-      beaconUid: 12
+      drawerClosed: true
     };
 
     this.toggleDrawer = this.toggleDrawer.bind(this);
@@ -96,11 +97,11 @@ export default class AppMain extends Component<{}> {
     return (
       <languageDataCtx.Consumer>
         {({ placesData }) => {
-          //console.log(placesData);
+          //console.log(placesData.places[0].place.thisWay[0].beacon);
           return (
             <placeDataCtx.Provider
               value={{
-                currentPlace: placesData.places[this.state.indexPlace].place
+                currentPlace: placesData.places[this.state.placeIndex].place
               }}
             >
               <View style={styles.topContainer}>
@@ -158,6 +159,7 @@ export default class AppMain extends Component<{}> {
                     selectedIndex={this.state.tabIndex}
                     pointingDirection={this.props.screenProps.pointingDirection}
                     heading={this.props.screenProps.heading}
+                    beaconIndex={this.state.beaconIndex}
                   />
                 </DrawerLayout>
               </View>
@@ -169,20 +171,34 @@ export default class AppMain extends Component<{}> {
   }
 }
 
-const TabbedPage = ({ selectedIndex, pointingDirection, heading }) => {
-  console.log('tab: ' + selectedIndex);
+const TabbedPage = ({
+  selectedIndex,
+  pointingDirection,
+  heading,
+  beaconIndex
+}) => {
+  console.log('tab: ' + selectedIndex + '  beaconIndex:' + beaconIndex);
   switch (selectedIndex) {
     case 0:
-      return <NearBy pointingDirection={pointingDirection} />;
+      return (
+        <NearBy
+          pointingDirection={pointingDirection}
+          beaconIndex={beaconIndex}
+        />
+      );
 
     case 1:
       return (
-        <ThisWay pointingDirection={pointingDirection} heading={heading} />
+        <ThisWay
+          pointingDirection={pointingDirection}
+          heading={heading}
+          beaconIndex={beaconIndex}
+        />
       );
 
     case 2:
     default:
-      return <InPlace pointingDirection={pointingDirection} />;
+      return <InPlace />;
   }
 };
 
@@ -206,7 +222,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   tabText: {
-    fontSize: 16
+    fontSize: 14
   },
   /* tabSelecteButtonStyle:{}, */
   tabSelected: {

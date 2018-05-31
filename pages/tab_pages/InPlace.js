@@ -8,12 +8,7 @@ import {
   /* Button,   Platform,   Text,   Alert */
 } from 'react-native';
 
-// import ActionBar from 'react-native-action-bar';
-// import PropTypes from "prop-types";
-// import { TabNavigator } from 'react-navigation';
-// import DrawerLayout from 'react-native-drawer-layout';
-// import Menu from "../Menu";
-import Place from './body/Place';
+import PlacePoints from './pointLists/PlacePoints';
 import Bottom from './Bottom';
 
 export default class InPlace extends Component<{}> {
@@ -41,13 +36,13 @@ export default class InPlace extends Component<{}> {
   };
 
   render() {
-    console.log('render inplace');
+    // console.log('render inplace');
     return (
       <View style={styles.mainContainer}>
-        <View style={styles.floorContainer}>
-          <ScrollView contentContainerStyle={styles.contentContainer}>
+        <View style={styles.pointsContainer}>
+          <ScrollView contentContainerStyle={styles.scrollView}>
             {/* // <NoBeacon/> */}
-            <Place />
+            <PlacePoints />
           </ScrollView>
         </View>
         <View style={styles.bottomRow}>
@@ -63,7 +58,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FDFDFD',
     flex: 1
   },
-  floorContainer: {
+  pointsContainer: {
     backgroundColor: '#FDFDFD',
     borderLeftWidth: 1,
     borderLeftColor: '#000000',
@@ -77,9 +72,7 @@ const styles = StyleSheet.create({
     padding: 0,
     flex: 18
   },
-  contentContainer: {
-    padding: 0
-  },
+  scrollView: { padding: 0 },
   buttonContainer: {
     borderRadius: 10,
     padding: 10,

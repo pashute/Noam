@@ -68,3 +68,28 @@
 // />
 
 // buttongroup  selectedBackgroundColor='#FF0000'
+
+/* const SECTIONS = [
+  {
+    title: 'Superpharm',
+    content: '10 meters ahead Entrance is 2 meters to your right.'
+  },
+  {
+    title: 'Stairs',
+    content: 'Lorem ipsum 1...'
+  },
+  {
+    title: 'Toilets',
+    content:
+      'Walk ahead 30 meters  \n' +
+      'turn half left and another 20 meters \n' +
+      'the first door to the right is for disabled \n' +
+      'the second door is the womens \n' +
+      "and the third is the men's room"
+  },
+  {
+    title: 'To bus station',
+    content: 'Lorem ipsum 3...'
+  }
+];
+*/
