@@ -1,11 +1,12 @@
+/* cSpell:disable */
+
 import React, { Component } from 'react';
 import {
-  /* Platform,*/
   StyleSheet,
   Text,
   View,
-  /* Alert, Button */
   ScrollView
+  /* Platform, Alert, Button */
 } from 'react-native';
 //import { Font, AppLoading } from 'expo';
 import WayPoints from './pointLists/WayPoints';
@@ -37,17 +38,13 @@ export default class ThisWay extends Component<{}> {
 
   render() {
     // console.log({ placesData, settingsData });
-    // const thisWayStyles = stylesData.styles.thisWayStyles;
-    console.log('thisway.props.curbe: ' + this.props.beaconIndex);
     return (
       <View style={styles.mainContainer}>
         <Text style={styles.pointingTo}>
-          {/* {`Pointing: ${this.props.pointingDirection}`} */}
-          {`Heading: ${this.props.heading.trueHeading}`}
+          {`Now facing: ${this.props.heading.trueHeading}`}
         </Text>
         <View style={styles.pointsContainer}>
           <ScrollView contentContainerStyle={styles.scrollView}>
-            {/* // <NoBeacon/> */}
             <WayPoints beaconIndex={this.props.beaconIndex} />
           </ScrollView>
         </View>

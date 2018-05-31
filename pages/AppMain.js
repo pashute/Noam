@@ -177,12 +177,13 @@ const TabbedPage = ({
   heading,
   beaconIndex
 }) => {
-  console.log('tab: ' + selectedIndex + '  beaconIndex:' + beaconIndex);
+  // console.log('tab: ' + selectedIndex + '  beaconIndex:' + beaconIndex);
   switch (selectedIndex) {
     case 0:
       return (
         <NearBy
           pointingDirection={pointingDirection}
+          heading={heading}
           beaconIndex={beaconIndex}
         />
       );
