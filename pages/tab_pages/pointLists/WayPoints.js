@@ -32,7 +32,7 @@ export default class WayPoints extends Component<{}> {
     if (isActive === true) {
       iconName = 'angle-up';
     }
-    console.log(section.point.title);
+    // console.log(section.point.title);
     return (
       <View style={styles.accordArea}>
         <View style={styles.itemHeader}>
@@ -56,7 +56,7 @@ export default class WayPoints extends Component<{}> {
   _renderContent(section) {
     return (
       <View style={styles.itemDetails}>
-        <Text>{section.point.content}</Text>
+        <Text>{section.point.instructions}</Text>
       </View>
     );
   }
@@ -95,9 +95,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#FDFDFD'
   },
   atPointDesc: {
+    marginLeft: 10,
     marginBottom: 20,
     fontSize: 20,
-    textAlign: 'center'
+    /* textAlign: 'center'*/
   },
   // headingTo: {
   //   fontSize: 24,

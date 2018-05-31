@@ -22,7 +22,7 @@
                     "txtId": "toilets",
                     "icon": "toilet",
                     "direction": 125,
-                    "instruc": "bla bla bla"
+                    "instructions": "bla bla bla"
                   }
                 },
                 {
@@ -31,7 +31,7 @@
                     "txtId": "Elevators",
                     "icon": "elevator",
                     "direction": 343,
-                    "instruc": "blu blu blu"
+                    "instructions": "blu blu blu"
                   }
                 }
               ]
@@ -51,7 +51,7 @@
                     "txtId": "maingate",
                     "icon": "gate",
                     "direction": 32,
-                    "instruc": "bli bli bli"
+                    "instructions": "bli bli bli"
                   }
                 },
                 {
@@ -60,7 +60,7 @@
                     "txtId": "Elevators",
                     "icon": "elevator",
                     "direction": 311,
-                    "instruc": "blu blu blu"
+                    "instructions": "blu blu blu"
                   }
                 }
               ]
@@ -83,8 +83,9 @@
                     "title": "Superpharm",
                     "icon": "pharmacy",
                     "direction": 125,
-                    "instruc":
-                      "10 meters ahead Entrance is 2 meters to your right."
+                    "instructions": [
+                      "10 meters ahead\n","Entrance is 7 meters to your right."
+                    ]
                   }
                 },
                 {
@@ -94,7 +95,7 @@
                     "title": "North stairs",
                     "icon": "stairs",
                     "direction": 150,
-                    "instruc": "Lorem ipsum 1"
+                    "instructions": ["Lorem ipsum 1"]
                   }
                 },
                 {
@@ -104,8 +105,9 @@
                     "title": "North toilets 33",
                     "icon": "men",
                     "direction": 150,
-                    "instruc":
+                    "instructions": [
                       "No accssiblity. \nUse 2nd floor toilets for this"
+                    ]
                   }
                 }
               ]
@@ -126,7 +128,7 @@
                     "title": "The main gate (south)",
                     "icon": "gate",
                     "direction": 32,
-                    "instruc": "bli bli bli"
+                    "instructions": ["bli bli bli"]
                   }
                 },
                 {
@@ -136,7 +138,8 @@
                     "title": "Elevators Middle of Building",
                     "icon": "elevator",
                     "direction": 311,
-                    "instruc": "4 elevators. \nTwo to your right \nand Two to your left "
+                    "instructions":
+                      "4 elevators. \nTwo to your right \nand Two to your left "
                   }
                 }
               ]
@@ -198,35 +201,42 @@
         "fullName": "United Israel Hospitals",
         "shortName": "iHospital",
         "nearby": [{}],
-        "thisWay": [{
-          "beacon": {
-            "id": 11,
-            "txtId": "mainGate",
-            "beaconID": "12345",
-            "fullName": "Main Gate (West)",
-            "shortName": "Gate (new)",
-            "points": [
-              {
-                "point": {
-                  "id": 12,
-                  "txtId": "Cardio",
-                  "title": "Emergency Cardiology",
-                  "icon": "pharmacy",
-                  "direction": 125,
-                  "instruc": "10 meters ahead Entrance is 2 meters to your right."
+        "thisWay": [
+          {
+            "beacon": {
+              "id": 11,
+              "txtId": "mainGate",
+              "beaconID": "12345",
+              "fullName": "Main Gate (West)",
+              "shortName": "Gate (new)",
+              "points": [
+                {
+                  "point": {
+                    "id": 12,
+                    "txtId": "Cardio",
+                    "title": "Emergency Cardiology",
+                    "icon": "pharmacy",
+                    "direction": 125,
+                    "instructions": [
+                      "10 meters ahead\n",
+                      "Entrance is 2 meters to your right."
+                    ]
+                  }
+                },
+                {
+                  "point": {
+                    "id": 13,
+                    "txtId": "stairs35",
+                    "title": "Emergency stairway (south)",
+                    "icon": "stairs (south)",
+                    "direction": 150,
+                    "instructions": ["Lorem ipsum 2"]
+                  }
                 }
-              },{
-                "point": {
-                  "id": 13,
-                  "txtId": "stairs35",
-                  "title": "Emergency stairway (south)",
-                  "icon": "stairs (south)",
-                  "direction": 150,
-                  "instruc": "Lorem ipsum 2"
-                }
-              }
-            ]
-          }}],
+              ]
+            }
+          }
+        ],
         "inPlace": [
           {
             "point": {
