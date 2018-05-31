@@ -1,17 +1,12 @@
 /* cSpell:disable */
 
 import React, { Component } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View
-  /* Platform, Alert, ScrollView, Button  */
-} from 'react-native';
+import { StyleSheet, Text, View} from 'react-native';
 import Accordion from 'react-native-collapsible/Accordion';
 // import PropTypes from 'prop-types';
 // import { Font, AppLoading } from 'expo';
 import { FontAwesome } from '@expo/vector-icons';
-import { Dropdown } from 'react-native-material-dropdown';
+// import { Dropdown } from 'react-native-material-dropdown';
 import { placeDataCtx } from '../../AppMain';
 
 //const str_welcome ='Welcome to Big Fashion';
@@ -56,22 +51,23 @@ export default class WayPoints extends Component<{}> {
   _renderContent(section) {
     return (
       <View style={styles.itemDetails}>
-        <Text>{section.point.instructions}</Text>
+        <Text style={styles.itemDetailsText}>{section.point.instructions}</Text>
       </View>
     );
   }
 
   render() {
-    console.log('rendering placePoints');
+    // console.log('rendering placePoints');
     return (
       <placeDataCtx.Consumer>
         {({ currentPlace }) => {
           let curBcnIdx = this.props.beaconIndex;
-          console.log('beacon index: ' + curBcnIdx);
-          let points = currentPlace.thisWay[curBcnIdx].beacon.points;
-          console.log('thisway points ' + points);
+          // console.log('beacon index: ' + curBcnIdx);
+          // let points = currentPlace.thisWay[curBcnIdx].beacon.points;
+          // console.log('thisway points ' + points);
           return (
             <View style={styles.container}>
+              {/* <Text style={styles.firstTimeMsg}>{getFirstTimeMsg()}</Text> */}
               <Text style={styles.atPointDesc}>{atPointDesc}</Text>
 
               {/*<Text style={styles.headingTo}>{getTextFromCurHeading()}</Text>*/}
@@ -104,7 +100,11 @@ const styles = StyleSheet.create({
   //   fontSize: 24,
   //   textAlign: 'left'
   // },
-  firstTimeData: {
+  firstTimeMessage: {
+    fontSize: 20,
+    marginLeft: 20
+  },
+  nearbyMessage:  {
     fontSize: 20,
     marginLeft: 20
   },
@@ -141,5 +141,10 @@ const styles = StyleSheet.create({
   itemDetails: {
     padding: 20,
     backgroundColor: '#fff'
+  },
+  itemDetailsText: {
+    fontSize: 16,
+    fontWeight: '200',
+    fontStyle: 'normal'
   }
 });

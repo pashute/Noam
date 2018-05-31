@@ -137,7 +137,7 @@ export default class AppMain extends Component<{}> {
                         color="#000000"
                       />
                     </View>
-                    <Text style={styles.beaconLocTxt}>
+                    <Text style={styles.beaconTxt}>
                       {pointBeaconLocation}
                     </Text>
                   </View>
@@ -252,9 +252,9 @@ const styles = StyleSheet.create({
     color: '#111145',
     marginLeft: 5
   },
-  beaconLocTxt: {
+  beaconTxt: {
     textAlign: 'center',
-    fontSize: 20
+    fontSize: 18
   },
   buttonContainer: {
     borderRadius: 10,

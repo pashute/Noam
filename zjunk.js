@@ -92,4 +92,25 @@
     content: 'Lorem ipsum 3...'
   }
 ];
+
+
+const SECTIONS = [
+    {
+      title: 'Accessible Toilets',
+      content: '10 meters ahead Entrance is 2 meters to your right.'
+    },
+    {
+      title: 'Bank Discount',
+      content: 'Lorem ipsum a...'
+    },
+    {
+        title: 'ATM',
+        content: 'Lorem ipsum b...'
+    },
+    {
+        title: 'To Parking Lot',
+        content: 'Lorem ipsum c...'
+     },
+
+  ];
 */

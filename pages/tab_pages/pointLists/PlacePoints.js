@@ -74,7 +74,7 @@ export default class extends Component<{}> {
   _renderContent(section) {
     return (
       <View style={styles.itemDetails}>
-        <Text>{section.point.content}</Text>
+        <Text style={styles.itemDetailsText}>{section.point.content}</Text>
       </View>
     );
   }
@@ -184,5 +184,10 @@ const styles = StyleSheet.create({
   itemDetails: {
     padding: 20,
     backgroundColor: '#fff'
+  },
+  itemDetailsText: {
+    fontSize: 16,
+    fontWeight: '200',
+    fontStyle: 'normal'
   }
 });
