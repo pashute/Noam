@@ -17,6 +17,7 @@ import NearBy from './tab_pages/NearBy';
 import ThisWay from './tab_pages/ThisWay';
 import InPlace from './tab_pages/InPlace';
 import Menu from './Menu';
+const earIcon = require('../assets/icons/ear1.png');
 
 import { languageDataCtx } from '../App';
 
@@ -26,7 +27,6 @@ export const placeDataCtx = React.createContext(languageDataCtx);
 // const strExit = 'Exits';
 // const strCall = 'Call';
 
-// const ear_icon = require('../assets/icons/ear1.png');
 const pointPlaceName = 'Big Fashion';
 const pointBeaconLocation = 'South gate (Bank Leumi)';
 const pointPlaceIconName = 'bold';

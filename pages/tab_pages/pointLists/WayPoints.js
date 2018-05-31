@@ -30,12 +30,12 @@ export default class WayPoints extends Component<{}> {
     // console.log(section.point.title);
     return (
       <View style={styles.accordArea}>
-        <View style={styles.itemHeader}>
+        <View style={styles.itemTitle}>
           {/* if (this.props.useIcons)
               <Text>here goes icon</Text>
           */}
           <View>
-            <Text style={styles.itemHeaderText}>
+            <Text style={styles.itemTitleText}>
               {'  '}
               {section.point.title} 
             </Text>
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     borderBottomColor: '#E7E7E7',
     borderBottomWidth: 2
   },
-  itemHeader: {
+  itemTitle: {
     flex: 1,
     width: '100%',
     height: 35,
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     paddingBottom: 5,
     borderRadius: 20
   },
-  itemHeaderText: {
+  itemTitleText: {
     // textAlign: 'center',
     fontSize: 18,
     fontWeight: '300',

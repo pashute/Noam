@@ -6,7 +6,7 @@
         "txtId": "bigbs",
         "placeType": "building",
         "fullName": "Big Bet Shemesh",
-        "shortName": "Big BS",
+        "msg": "Big BS",
         "nearby": [
           {
             "beacon": {
@@ -14,24 +14,26 @@
               "txtId": "mainGate",
               "beaconID": "12345",
               "fullName": "Main Gate (South)",
-              "shortName": "Main gate",
+              "msg": "Main gate",
               "points": [
                 {
                   "point": {
                     "id": 12,
-                    "txtId": "toilets",
+                    "txtId": "aToilets3",
+                    "title": "Accesible toilets",
                     "icon": "toilet",
                     "direction": 125,
-                    "instructions": "bla bla bla"
+                    "instructions": ["Call 051-222-333 for assistance"]
                   }
                 },
                 {
                   "point": {
                     "id": 13,
                     "txtId": "Elevators",
+                    "title": "Elevators 4a",
                     "icon": "elevator",
                     "direction": 343,
-                    "instructions": "blu blu blu"
+                    "instructions": ["To all floors\n", "You are on floor 1"]
                   }
                 }
               ]
@@ -43,24 +45,29 @@
               "txtId": "toilets",
               "beaconID": "12346",
               "fullName": "Toilets south flr 1",
-              "shortName": "Toilets f1.S",
+              "msg": "Toilets f1.S",
               "points": [
                 {
                   "point": {
                     "id": 11,
-                    "txtId": "maingate",
+                    "txtId": "sidegate",
+                    "title": "The side gate (Ben Ze'ev)",
                     "icon": "gate",
                     "direction": 32,
-                    "instructions": "bli bli bli"
+                    "instructions": ["Follow the smell of the smoke"]
                   }
                 },
                 {
                   "point": {
                     "id": 13,
-                    "txtId": "Elevators",
+                    "txtId": "Elevators14b",
+                    "title": "Elevators 14b",
                     "icon": "elevator",
                     "direction": 311,
-                    "instructions": "blu blu blu"
+                    "instructions": [
+                      "Only 2 elevators in this entrance\n",
+                      "Does not reach 3rd floor"
+                    ]
                   }
                 }
               ]
@@ -74,7 +81,7 @@
               "txtId": "mainGate",
               "beaconID": "12345",
               "fullName": "Main Gate (South)",
-              "shortName": "Main gate",
+              "msg": "Main gate",
               "points": [
                 {
                   "point": {
@@ -84,7 +91,8 @@
                     "icon": "pharmacy",
                     "direction": 125,
                     "instructions": [
-                      "10 meters ahead\n","Entrance is 7 meters to your right."
+                      "10 meters ahead\n",
+                      "Entrance is 7 meters to your right."
                     ]
                   }
                 },
@@ -119,7 +127,7 @@
               "txtId": "toilets",
               "beaconID": "12346",
               "fullName": "Toilets south flr 1",
-              "shortName": "Toilets f1.S",
+              "msg": "Toilets f1.S",
               "points": [
                 {
                   "point": {
@@ -199,8 +207,43 @@
         "txtId": "hosp",
         "placeType": "building",
         "fullName": "United Israel Hospitals",
-        "shortName": "iHospital",
-        "nearby": [{}],
+        "msg": "iHospital",
+        "nearby": [
+          {
+            "beacon": {
+              "id": 11,
+              "txtId": "mainGate",
+              "beaconID": "12345",
+              "fullName": "Main Gate (West)",
+              "msg": ["Gate (new)"],
+              "points": [
+                {
+                  "point": {
+                    "id": 12,
+                    "txtId": "Cardio",
+                    "title": "Emergency Cardiology",
+                    "icon": "pharmacy",
+                    "direction": 125,
+                    "instructions": [
+                      "10 meters ahead\n",
+                      "Entrance is 2 meters to your right."
+                    ]
+                  }
+                },
+                {
+                  "point": {
+                    "id": 13,
+                    "txtId": "stairs35",
+                    "title": "Emergency stairway (south)",
+                    "icon": "stairs (south)",
+                    "direction": 150,
+                    "instructions": ["Lorem ipsum 2"]
+                  }
+                }
+              ]
+            }
+          }
+        ],
         "thisWay": [
           {
             "beacon": {
@@ -208,7 +251,7 @@
               "txtId": "mainGate",
               "beaconID": "12345",
               "fullName": "Main Gate (West)",
-              "shortName": "Gate (new)",
+              "msg": "Gate (new)",
               "points": [
                 {
                   "point": {
@@ -290,7 +333,7 @@
         "txtId": "tbd",
         "placeType": "building",
         "fullName": "tbd",
-        "shortName": "tbd",
+        "msg": "tbd",
         "nearby": [{}],
         "thisWay": [{}],
         "inPlace": [{}, {}, {}]
