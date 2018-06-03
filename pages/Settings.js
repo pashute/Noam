@@ -13,7 +13,8 @@ import Personal from './setting_pages/Personal';
 import Profile from './setting_pages/Profile';
 import SetHome from './setting_pages/SetHome';
 import Voice from './setting_pages/Voice';
-const Setting = StackNavigator(
+
+const Settings = StackNavigator(
     {
         AutoUpdate: {
             screen: AutoUpdate,
@@ -68,5 +69,5 @@ const Setting = StackNavigator(
       }
 );
 
-export default Setting;
+export default Settings;
 

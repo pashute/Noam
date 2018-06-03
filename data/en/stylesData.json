@@ -1,5 +1,21 @@
 {
   "styles": {
+    "sharedStyles": {
+      "topContainer": {
+        "style_comment": "place and tabs",
+        "flex": 1,
+        "marginTop": "Platform.OS === 'ios' ? 0 : Constants.statusBarHeight",
+        "backgroundColor": "#F5F5F5"
+      },
+      "actionBarContainer": {
+        "style_comment": "ear appname and menu",
+        "backgroundColor": "#330077"
+      },
+      "actionTitle": {
+        "textAlign": "center",
+        "fontSize": 20
+      }
+    },
     "accordStyles": {
       "accordStyle": {
         "backgroundColor": "#FF9900"

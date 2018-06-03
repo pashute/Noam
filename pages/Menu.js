@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from "react";
+import React, { Component, PropTypes } from 'react';
 import {
   View,
   ScrollView,
@@ -8,12 +8,12 @@ import {
   StyleSheet,
   Alert,
   Navigator
-} from "react-native";
-import Icon from "react-native-vector-icons/MaterialIcons";
-import { StackNavigator } from "react-navigation";
+} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import { StackNavigator } from 'react-navigation';
 // import Main from "./Main";
-import Splash from "./Splash";
-const menuList = require("./MenuList");
+import Splash from './Splash';
+const menuList = require('./MenuList');
 
 export default class Menu extends Component {
   constructor(props) {
@@ -22,11 +22,10 @@ export default class Menu extends Component {
 
   goPage(name) {
     const { navigate } = this.props.nav;
-    if (name == "Settings") {
-      console.log(this.props.nav);
-      this.props.nav("SetHome");
+    if (name == 'Settings') {
+      this.props.nav('SetHome');
     } else {
-      this.props.nav("Help");
+      this.props.nav('Help');
     }
   }
 
@@ -50,12 +49,12 @@ export default class Menu extends Component {
 
 const styles = StyleSheet.create({
   wrapper: {
-    backgroundColor: "#F5FCFF", // appbackground
+    backgroundColor: '#F5FCFF', // appbackground
     marginTop: 60
   },
 
   listMenu: {
-    color: "#1F1F1F",
+    color: '#1F1F1F',
     fontSize: 16,
     paddingLeft: 20,
     paddingTop: 12,

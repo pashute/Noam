@@ -7,7 +7,7 @@ import DrawerLayout from 'react-native-drawer-layout';
 import ActionBar from 'react-native-action-bar';
 // import PropTypes from 'prop-types';
 
-import { Constants } from 'expo';
+// import { Constants } from 'expo';
 // import Icon from 'react-native-vector-icons/FontAwesome';
 import { FontAwesome } from '@expo/vector-icons';
 import '@expo/vector-icons';
@@ -104,7 +104,7 @@ export default class AppMain extends Component<{}> {
                 currentPlace: placesData.places[this.state.placeIndex].place
               }}
             >
-              <View style={styles.topContainer}>
+              <View style={styles.mainContainer}>
                 <DrawerLayout
                   drawerWidth={200}
                   ref={drawerElement => {
@@ -116,7 +116,7 @@ export default class AppMain extends Component<{}> {
                   renderNavigationView={() => <Menu nav={navigate} />}
                 >
                   <ActionBar
-                    containerStyle={styles.actionBar}
+                    containerStyle={styles.actionBarContainer}
                     titleStyle={styles.actionTitle}
                     title={'noam'}
                     leftIconImage={earIcon}
@@ -202,14 +202,12 @@ const TabbedPage = ({
 };
 
 const styles = StyleSheet.create({
-  topContainer: {
-    /* place and tabs */
+  mainContainer: {
     flex: 1,
-    marginTop: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight,
-    backgroundColor: '#F5F5F5'
+    marginTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight,
+    backgroundColor: '#FDFDFD'
   },
-  actionBar: {
-    /* ear appname and menu */
+  actionBarContainer: {
     backgroundColor: '#330077'
   },
   actionTitle: {

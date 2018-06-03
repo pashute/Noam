@@ -142,7 +142,7 @@ export default class App extends React.Component {
       this.setState({ fontLoaded: true });
       this._getHeadingAsync();
     } catch (error) {
-      console.log("error loading icon fonts", error);
+      console.error("error loading icon fonts", error);
     }
   };
 

@@ -4,13 +4,13 @@ import {
   StyleSheet,
   Text,
   View,
-  Alert,
   TextInput,
+  /*   Alert, */
 } from 'react-native';
 import { Button } from 'react-native';
 import ActionBar from 'react-native-action-bar';
 import PropTypes from 'prop-types';
-import {StackNavigator,} from 'react-navigation';
+// import {StackNavigator,} from 'react-navigation';
 import  CheckBox  from 'react-native-checkbox';
 import { Dropdown } from 'react-native-material-dropdown';
 const str_back = '< Back';
@@ -153,53 +153,70 @@ export default class Profile extends Component<{}> {
 }
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
+  mainContainer: {
+    flex: 1,
+    marginTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight,
+    backgroundColor: '#FDFDFD'
+  },
+  actionBarContainer: {
+    backgroundColor: '#330077'
+  },
+  actionTitle: {
+    textAlign: 'center',
+    fontSize: 20
+  },
+  contentContainer: {
+    flex: 18
+  },
+  titleText: {
+    fontSize: 30,
+    marginTop: 50,
+    marginLeft: 20,
+    marginRight: 20,
+    marginBottom: 30
+  },
+  navbtn: {
+      marginTop: 35,
+      textAlign: 'left',
+      color: '#333333',
+      marginBottom: 10,
+      fontSize: 20,
+      marginLeft: 25,
+      marginRight: 25,
       
-      backgroundColor: '#F5FCFF',
     },
-    navbtn: {
-        marginTop: 35,
-        textAlign: 'left',
-        color: '#333333',
-        marginBottom: 10,
-        fontSize: 20,
-        marginLeft: 25,
-        marginRight: 25,
-        
-      },
-      instructions: {
-        marginTop: 25,
-        textAlign: 'left',
-        color: '#333333',
-        marginBottom: 10,
-        fontSize: 20,
-        marginLeft: 25,
-        marginRight: 25,
-      },
-    assistant:{
-      fontSize: 24,
-      marginTop: 60,
-      marginLeft: 20,
-      marginRight: 20,
-  
+    instructions: {
+      marginTop: 25,
+      textAlign: 'left',
+      color: '#333333',
+      marginBottom: 10,
+      fontSize: 20,
+      marginLeft: 25,
+      marginRight: 25,
     },
-    title:{
-        textAlign: 'center',
-        fontSize: 20,
-      },
-    buttonContainer: {
-      backgroundColor: '#2E9298',
-      borderRadius: 10,
-      padding: 10,
-      shadowColor: '#000000',
-      shadowOffset: {
-        width: 0,
-        height: 3
-      },
-      shadowRadius: 10,
-      shadowOpacity: 0.25,
-      marginRight: 20,
-      marginLeft: 20,
+  assistant:{
+    fontSize: 24,
+    marginTop: 60,
+    marginLeft: 20,
+    marginRight: 20,
+
+  },
+  title:{
+      textAlign: 'center',
+      fontSize: 20,
     },
+  buttonContainer: {
+    backgroundColor: '#2E9298',
+    borderRadius: 10,
+    padding: 10,
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 0,
+      height: 3
+    },
+    shadowRadius: 10,
+    shadowOpacity: 0.25,
+    marginRight: 20,
+    marginLeft: 20,
+  },
   });

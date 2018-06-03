@@ -89,3 +89,6 @@ https://stackoverflow.com/questions/48852007/type-aliases-can-only-be-used-in-a-
 
 How to make smart looking accordion (tutorial)
 https://moduscreate.com/blog/expanding-and-collapsing-elements-using-animations-in-react-native/
+
+json online editor
+https://jsoneditoronline.or

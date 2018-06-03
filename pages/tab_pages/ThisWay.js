@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     margin: 10,
     fontSize: 16,
     textAlign: 'center',
-    color: '#0000FF' /*thisWayStyles.color,*/,
+    color: '#111111' /*thisWayStyles.color,*/,
     fontWeight: '500' /*thisWayStyles.fontWeight*/
   },
   bottomRow: {

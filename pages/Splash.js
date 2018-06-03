@@ -7,7 +7,7 @@ import {
   StyleSheet,
   Text,
   View,
-  Button /*, Alert*/
+  Button, Alert
 } from 'react-native';
 import ActionBar from 'react-native-action-bar';
 // import { StackNavigator } from 'react-navigation';
@@ -62,7 +62,7 @@ export default class Splash extends React.Component {
     this.toggleDrawer = this.toggleDrawer.bind(this);
     this.setDrawerState = this.setDrawerState.bind(this);
 
-    console.log('ready');
+    // console.log('ready');
   }
 
   async componentDidMount() {
@@ -81,7 +81,7 @@ export default class Splash extends React.Component {
       // this.setState({ bluetoothState: (isEnabled) ? 'On' : 'Off'});
       // console.log(this.state.bluetoothState);
     } catch (error) {
-      console.log('Problem: Cannot get Bluetooth status.');
+      console.error('Problem: Cannot get Bluetooth status.');
     }
   }
 
@@ -111,11 +111,16 @@ export default class Splash extends React.Component {
   }
 
   _turnBluetoothOn = () => {
-    console.log('bluetooth');
-    if (Platform.OS === 'android')
-      console.log('todo: android. turn bluetooth on');
-    else console.log('todo: ios. open bluetooth console');
-    this.setState({ continueDisabled: false });
+    try {
+      console.log('bluetooth');
+      if (Platform.OS === 'android')
+        console.log('todo: android. turn bluetooth on');
+      else console.log('todo: ios. open bluetooth console');
+      
+      this.setState({ continueDisabled: false });
+    }  catch(err) {
+      console.error("turn bluetooth on failed" + err)
+    }
   };
   render() {
     const { navigate } = this.props.navigation; // todo: fix validation warning
@@ -132,8 +137,7 @@ export default class Splash extends React.Component {
           renderNavigationView={() => <Menu nav={navigate} />}
         >
           <ActionBar
-            headerStyle={styles.actionBarHead}
-            containerStyle={styles.actionBar}
+            containerStyle={styles.actionBarContainer}
             titleStyle={styles.actionTitle}
             title={'noam'}
             leftIconName={'location'}
@@ -207,8 +211,7 @@ const styles = StyleSheet.create({
     marginTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight,
     backgroundColor: '#FDFDFD'
   },
-  actionBarHead: {},
-  actionBar: {
+  actionBarContainer: {
     backgroundColor: '#330077'
   },
   actionTitle: {
