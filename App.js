@@ -34,7 +34,7 @@ import Languages from "./data";
 export const languageDataCtx = React.createContext(Languages.en.data);
 
 //import placesData from "./data/placesData.json";
-//import settingsData from "./data/settingsData.json";
+//import appData from "./data/appData.json";
 //import stylesData from "./data/stylesData.json";
 
 // const data = {

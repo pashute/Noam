@@ -14,6 +14,30 @@
       "actionTitle": {
         "textAlign": "center",
         "fontSize": 20
+      },
+      "instructionsHeader": {
+        "marginTop": 10,
+        "textAlign": "left",
+        "color": "#333333",
+        "marginBottom": 10,
+        "fontSize": 25,
+        "fontWeight": "400",
+        "marginLeft": 25,
+        "marginRight": 25
+      },
+      "instructions": {
+        "flex": 1,
+        "flexDirection": "column"
+      },
+      "bottomNavRow": {
+        "flex": 2,
+        "flexDirection": "row",
+        "marginLeft": 5,
+        "justifyContent": "space-between"
+      },
+      "navButton": {
+        "textDecorationLine": "underline",
+        "fontSize": 14
       }
     },
     "accordStyles": {

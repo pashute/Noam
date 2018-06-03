@@ -1,4 +1,4 @@
-// import { stylesData, placesData, settingsData } from '../../data/en';
+// import { stylesData, placesData, appData } from '../../data/en';
 
 // import { YellowBox } from 'react-native';
 // YellowBox.ignoreWarnings([
@@ -114,3 +114,8 @@ const SECTIONS = [
 
   ];
 */
+
+// _exitApp() {
+//   RNExitApp.exitApp(); // this doesn't work on the emulator but does on the real app
+//   //Alert.alert("How are you?");
+// }

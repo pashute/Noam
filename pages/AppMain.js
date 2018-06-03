@@ -23,7 +23,7 @@ import { languageDataCtx } from '../App';
 
 export const placeDataCtx = React.createContext(languageDataCtx);
 
-// taken from settings
+// taken from appData
 // const strExit = 'Exits';
 // const strCall = 'Call';
 

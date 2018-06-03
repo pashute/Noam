@@ -9,23 +9,23 @@ import {
 import ActionBar from 'react-native-action-bar';
 // import PropTypes from 'prop-types';
 // import {StackNavigator,} from 'react-navigation';
-import RNExitApp from 'react-native-exit-app';
+// import RNExitApp from 'react-native-exit-app';
 import Bottom from '../tab_pages/Bottom.js';
 
-const calibrate = '1. Calibrate Compass';
-const autoUpdate = '2. Auto Update when pointing';
-const voiceAssist = '3. Voice Assistant (Disabled)';
-const preferences = '4. Preferences';
-const profile = '5. Profile';
+// todo data: take from AppData.json
+const txtToCalibrate = '1. Calibrate Compass';
+const txtToAutoUpdate = '2. Auto Update when pointing';
+const txtToVoiceAssist = '3. Voice Assistant (Disabled)';
+const txtToPreferences = '4. Preferences';
+const txtToProfile = '5. Profile';
+
+const txtDone = 'Done';
 
 export default class SetHome extends Component<{}> {
   constructor(props) {
     super(props);
   }
-  _exitApp() {
-    RNExitApp.exitApp(); // this doesn't work on the emulator but does on the real app
-    //Alert.alert("How are you?");
-  }
+
   render() {
     const { navigate } = this.props.navigation;
     return (
@@ -43,7 +43,7 @@ export default class SetHome extends Component<{}> {
           <View style={styles.buttonContainer}>
             <Button
               onPress={() => navigate('Calibrate')}
-              title={calibrate}
+              title={txtToCalibrate}
               color="#111111"
               accessibilityLabel="Tap to calibrate compass"
             />
@@ -51,7 +51,7 @@ export default class SetHome extends Component<{}> {
           <View style={styles.buttonContainer}>
             <Button
               onPress={() => navigate('AutoUpdate')}
-              title={autoUpdate}
+              title={txtToAutoUpdate}
               color="#111111"
               accessibilityLabel="Tap for auto-update settings"
             />
@@ -59,7 +59,7 @@ export default class SetHome extends Component<{}> {
           <View style={styles.buttonContainer}>
             <Button
               onPress={() => navigate('Voice')}
-              title={voiceAssist}
+              title={txtToVoiceAssist}
               color="#111111"
               accessibilityLabel="Tap on Me"
             />
@@ -67,7 +67,7 @@ export default class SetHome extends Component<{}> {
           <View style={styles.buttonContainer}>
             <Button
               onPress={() => navigate('Personal')}
-              title={preferences}
+              title={txtToPreferences}
               color="#111111"
               accessibilityLabel="Tap on Me"
             />
@@ -75,11 +75,16 @@ export default class SetHome extends Component<{}> {
           <View style={styles.buttonContainer}>
             <Button
               onPress={() => navigate('Profile')}
-              title={profile}
+              title={txtToProfile}
               color="#111111"
               accessibilityLabel="Tap on Me"
             />
           </View>
+        </View>
+        <View style={styles.bottomNavRow}>
+          <Text onPress={() => navigate('MainPage')} style={styles.navButton}>
+            {txtDone}
+          </Text>
         </View>
         <View style={styles.bottomRow}>
           <Bottom />
@@ -103,14 +108,14 @@ const styles = StyleSheet.create({
     fontSize: 20
   },
   contentContainer: {
-    flex: 18
+    flex: 16
   },
   titleText: {
     fontSize: 30,
-    marginTop: 50,
+    marginTop: 30,
     marginLeft: 20,
     marginRight: 20,
-    marginBottom: 30
+    marginBottom: 10
   },
   buttonContainer: {
     backgroundColor: '#2E9298',
@@ -124,6 +129,16 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     shadowOpacity: 0.25,
     margin: 10
+  },
+  bottomNavRow: {
+    flex: 2,
+    flexDirection: 'row',
+    marginLeft: 15,
+    justifyContent: 'space-between'
+  },
+  navButton: {
+    textDecorationLine: 'underline',
+    fontSize: 22
   },
   bottomRow: {
     flex: 2

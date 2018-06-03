@@ -1,0 +1,48 @@
+{
+  "appData": {
+    "general": {
+      "actionbarAppTitle": "Noam",
+      "txtNext": "Next",
+      "txtTOC": "TOC",
+      "txtBack": "Back"
+    },
+    "menu": {
+      "txtMenuSettings": "Settings",
+      "txtMenuHelp": "Help"
+    },
+    "screenMainApp": {
+      "txtPointingTo": "Pointing to"
+    },
+    "screenSplash": {
+      "txtSplashTitle": "noam",
+      "txtSplashDescription": "your indoor assistant",
+      "txtIosInstruct": [
+        "Welcome to Noam\n",
+        "your indoor assistant\n",
+        "for accessible buildings\n",
+        "\n",
+        "We can tell you what's in\n",
+        "the building and where.\n",
+        "\n",
+        "This app needs Bluetooth"
+      ],
+      "txtAndroidInstruct": [
+        "Welcome to Noam",
+        "your indoor assistant\n",
+        "for accessible buildings\n",
+        "\n",
+        "We can tell you what's in\n",
+        "the building and where."
+      ],
+      "txtButtonIosBluetooth": "Go to Bluetooth settings",
+      "txtButtonAndroidBluetooth": "Press here to turn Bluetooth on"
+    },
+    "screensSettings":{
+      "txtToCalibrate": "1. Calibrate Compass",
+      "txtToAutoUpdate": "2. Auto Update",
+      "txtToVoiceAssist": "3. Voice Assist",
+      "txtToPreferences": "4. Preferences", 
+      "txtToProfile": "5. Profile"
+    }
+  }
+}

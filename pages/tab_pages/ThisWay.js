@@ -37,7 +37,7 @@ export default class ThisWay extends Component<{}> {
   };
 
   render() {
-    // console.log({ placesData, settingsData });
+    // console.log({ placesData, appData });
     return (
       <View style={styles.mainContainer}>
         <Text style={styles.pointingTo}>
