@@ -7,18 +7,19 @@ import {
   StyleSheet,
   Text,
   View,
-  Button /*, Alert*/
+  Button /* , Alert */
 } from 'react-native';
 import ActionBar from 'react-native-action-bar';
-// import { StackNavigator } from 'react-navigation';
 import DrawerLayout from 'react-native-drawer-layout';
 import { FontAwesome } from '@expo/vector-icons';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Font } from 'expo';
-import AppMain from './AppMain';
+// import AppMain from './AppMain';
 import Menu from './Menu';
 
 // import { BluetoothStatus } from 'react-native-bluetooth-status';
+
+// todo data: get from appData
 const txtIosinstruct =
   'Welcome to Noam,\n' +
   'your indoor assistant\n' +
@@ -38,7 +39,7 @@ const txtSplashTitle = 'noam';
 const txtSplashDescription = ' your indoor assistant';
 
 const splashAppnameColor = '#440077';
-const colorBgDark = '#181818'; // was '#00000F'
+const colorButtonShadow = '#181818'; // was '#00000F' 181818 is dark
 
 const instructions = Platform.select({
   ios: txtIosinstruct,
@@ -62,7 +63,7 @@ export default class Splash extends React.Component {
     this.toggleDrawer = this.toggleDrawer.bind(this);
     this.setDrawerState = this.setDrawerState.bind(this);
 
-    console.log('ready');
+    // console.log('ready');
   }
 
   async componentDidMount() {
@@ -81,7 +82,7 @@ export default class Splash extends React.Component {
       // this.setState({ bluetoothState: (isEnabled) ? 'On' : 'Off'});
       // console.log(this.state.bluetoothState);
     } catch (error) {
-      console.log('Problem: Cannot get Bluetooth status.');
+      console.error('Problem: Cannot get Bluetooth status.');
     }
   }
 
@@ -111,11 +112,16 @@ export default class Splash extends React.Component {
   }
 
   _turnBluetoothOn = () => {
-    console.log('bluetooth');
-    if (Platform.OS === 'android')
-      console.log('todo: android. turn bluetooth on');
-    else console.log('todo: ios. open bluetooth console');
-    this.setState({ continueDisabled: false });
+    try {
+      console.log('bluetooth');
+      if (Platform.OS === 'android')
+        console.log('todo: android. turn bluetooth on');
+      else console.log('todo: ios. open bluetooth console');
+
+      this.setState({ continueDisabled: false });
+    } catch (err) {
+      console.error('turn bluetooth on failed' + err);
+    }
   };
   render() {
     const { navigate } = this.props.navigation; // todo: fix validation warning
@@ -132,8 +138,7 @@ export default class Splash extends React.Component {
           renderNavigationView={() => <Menu nav={navigate} />}
         >
           <ActionBar
-            headerStyle={styles.actionBarHead}
-            containerStyle={styles.actionBar}
+            containerStyle={styles.actionBarContainer}
             titleStyle={styles.actionTitle}
             title={'noam'}
             leftIconName={'location'}
@@ -172,7 +177,7 @@ export default class Splash extends React.Component {
 
           <Text style={styles.instructions}>{instructions}</Text>
 
-          <View style={styles.buttonContainer}>
+          <View style={styles.buttonDecorator}>
             {/* the bluetooth button */}
             <Button
               onPress={this._turnBluetoothOn}
@@ -185,7 +190,7 @@ export default class Splash extends React.Component {
           <View>
             <Text> </Text>
           </View>
-          <View style={styles.buttonContainer}>
+          <View style={styles.buttonDecorator}>
             {/* the CONTINUE button */}
             <Button
               onPress={() => navigate('MainPage')}
@@ -207,8 +212,7 @@ const styles = StyleSheet.create({
     marginTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight,
     backgroundColor: '#FDFDFD'
   },
-  actionBarHead: {},
-  actionBar: {
+  actionBarContainer: {
     backgroundColor: '#330077'
   },
   actionTitle: {
@@ -238,11 +242,11 @@ const styles = StyleSheet.create({
   textCentered: {
     textAlign: 'center'
   },
-  buttonContainer: {
+  buttonDecorator: {
     backgroundColor: '#444444', // colorBgDark,//'#454545', // '#2E9298',
     borderRadius: 10,
     padding: 3,
-    shadowColor: colorBgDark, //'#454545', // '#000000'
+    shadowColor: colorButtonShadow, //'#454545', // '#000000'
     shadowOffset: {
       width: 0,
       height: 1

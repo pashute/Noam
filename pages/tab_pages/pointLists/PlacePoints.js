@@ -1,18 +1,15 @@
+/* cSpell:disable */
+
 import React, { Component } from 'react';
 import {
-  // Platform,
   StyleSheet,
   Text,
-  View //,
-  // Alert,
-  // ScrollView,
-  // Button
+  View
+  /* Platform, Alert, ScrollView, Button */
 } from 'react-native';
 import Accordion from 'react-native-collapsible/Accordion';
-// import { MaterialDesign } from "react-native-vector-icons";
-import { FontAwesome } from '@expo/vector-icons';
-// import { List, ListItem } from "react-native-elements";
 //import PropTypes from 'prop-types';
+import { FontAwesome } from '@expo/vector-icons';
 import { Dropdown } from 'react-native-material-dropdown';
 import { placeDataCtx } from '../../AppMain';
 
@@ -24,7 +21,7 @@ const floorNumbers = [{ value: '1' }, { value: '2' }, { value: 'All Floors' }];
 const strFirstTimeData = '';
 // const strDes = 'Opening hours\n' + 'Sunday-Thursday 8:15-17:30';
 
-export default class Place extends Component {
+export default class extends Component<{}> {
   constructor(props) {
     super(props);
     this.state = {
@@ -39,7 +36,7 @@ export default class Place extends Component {
     this.setState({ floorFilter: text });
   }
 
-  _renderHeader(content, index, isActive, dummy) {
+  _renderHeader(section, index, isActive, dummy) {
     let iconName = 'angle-down';
     if (isActive === true) {
       iconName = 'angle-up';
@@ -47,25 +44,23 @@ export default class Place extends Component {
 
     let canRender = true;
     if (this.state.floorFilter !== floorNumbers[2].value) {
-      if (content.point.floor.toString() !== this.state.floorFilter) {
+      if (section.point.floor.toString() !== this.state.floorFilter) {
         canRender = false;
       }
     }
     if (canRender === false) {
       return <View />;
     }
-    // for rn elements listitem:
-    // rightIcon={{ name: 'arrow-right', type: 'font-awesome', style: { marginRight: 10, fontSize: 15 } }}
     return (
       <View style={styles.accordArea}>
-        <View style={styles.itemHeader}>
+        <View style={styles.itemTitle}>
           {/* if (this.props.useIcons)
               <Text>here goes icon</Text>
           */}
           <View>
-            <Text style={styles.itemHeaderText}>
+            <Text style={styles.itemTitleText}>
               {'  '}
-              {content.point.title}
+              {section.point.title}
             </Text>
           </View>
           <View style={styles.iconOpenColapse}>
@@ -79,16 +74,17 @@ export default class Place extends Component {
   _renderContent(section) {
     return (
       <View style={styles.itemDetails}>
-        <Text>{section.point.content}</Text>
+        <Text style={styles.itemDetailsText}>{section.point.content}</Text>
       </View>
     );
   }
 
   render() {
+    console.log('rendering placePoints');
     return (
       <placeDataCtx.Consumer>
         {({ currentPlace }) => {
-          //console.log(currentPlace);
+          // console.log(currentPlace);
           return (
             <View style={styles.container}>
               <View style={styles.floorViewContainer}>
@@ -106,7 +102,7 @@ export default class Place extends Component {
                   />
                 </View>
               </View>
-              <Text style={{ fontSize: 20 }}>{strFirstTimeData}</Text>
+              <Text style={styles.firstTimeData}>{strFirstTimeData}</Text>
               <Accordion
                 sections={currentPlace.inPlace}
                 renderHeader={this._renderHeader}
@@ -133,12 +129,12 @@ const styles = StyleSheet.create({
     marginLeft: 20
   },
   floorLabelView: {
+    marginTop: 5,
     height: '100%',
-    justifyContent: 'center',
-    marginTop: 10
+    justifyContent: 'center'
   },
   floorLabel: {
-    marginBottom: 10,
+    marginTop: 35,
     fontSize: 18,
     textAlign: 'left'
   },
@@ -147,9 +143,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   floorDropdown: {
-    marginBottom: 5,
+    marginTop: 5,
     marginLeft: 30,
     width: 100
+  },
+  firstTimeData: {
+    fontSize: 20,
+    marginLeft: 20
   },
   accordArea: {
     width: '100%',
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
     borderBottomColor: '#E7E7E7',
     borderBottomWidth: 2
   },
-  itemHeader: {
+  itemTitle: {
     flex: 1,
     width: '100%',
     height: 35,
@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
     paddingBottom: 5,
     borderRadius: 20
   },
-  itemHeaderText: {
+  itemTitleText: {
     // textAlign: 'center',
     fontSize: 18,
     fontWeight: '300',
@@ -185,22 +185,9 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: '#fff'
   },
-  desc: {
-    marginBottom: 5,
-    fontSize: 14,
-    textAlign: 'center'
-  },
-  buttonContainer: {
-    borderRadius: 5,
-    padding: 10,
-    shadowColor: '#000000',
-    shadowOffset: {
-      width: 0,
-      height: 3
-    },
-    shadowRadius: 10,
-    shadowOpacity: 0.25,
-    marginRight: 20,
-    marginLeft: 20
+  itemDetailsText: {
+    fontSize: 16,
+    fontWeight: '200',
+    fontStyle: 'normal'
   }
 });

@@ -1,38 +1,40 @@
 /* cSpell:disable */
 
-import React, { Component } from "react";
-import { Platform, StyleSheet, Text, View /*, Alert*/ } from "react-native";
-import { TabNavigator } from "react-navigation";
-import NearBy from "./tab_pages/NearBy";
-import ThisWay from "./tab_pages/ThisWay";
-import InPlace from "./tab_pages/InPlace";
-import DrawerLayout from "react-native-drawer-layout";
-import Menu from "./Menu";
-import ActionBar from "react-native-action-bar";
-import PropTypes from "prop-types";
-import { FontAwesome } from "@expo/vector-icons";
+import React, { Component } from 'react';
+import { Platform, StyleSheet, Text, View /*, Alert*/ } from 'react-native';
+
+import DrawerLayout from 'react-native-drawer-layout';
+import ActionBar from 'react-native-action-bar';
+// import PropTypes from 'prop-types';
+
+// import { Constants } from 'expo';
 // import Icon from 'react-native-vector-icons/FontAwesome';
-import { ButtonGroup } from "react-native-elements";
-import "@expo/vector-icons";
-import { Constants } from "expo";
-import { languageDataCtx } from "../App";
+import { FontAwesome } from '@expo/vector-icons';
+import '@expo/vector-icons';
+import { ButtonGroup } from 'react-native-elements';
+
+import NearBy from './tab_pages/NearBy';
+import ThisWay from './tab_pages/ThisWay';
+import InPlace from './tab_pages/InPlace';
+import Menu from './Menu';
+const earIcon = require('../assets/icons/ear1.png');
+
+import { languageDataCtx } from '../App';
 
 export const placeDataCtx = React.createContext(languageDataCtx);
 
-// taken from settings
+// taken from appData
 // const strExit = 'Exits';
 // const strCall = 'Call';
 
-const ear_icon = require("../assets/icons/ear1.png");
-const pointPlaceName = "Big Fashion";
-//const icon_Place = <Icon name="adjust" size={30} color="#900" />;
-const pointBeaconLocation = "South gate (Bank Leumi)";
-const pointPlaceIconName = "bold";
+const pointPlaceName = 'Big Fashion';
+const pointBeaconLocation = 'South gate (Bank Leumi)';
+const pointPlaceIconName = 'bold';
 
-const strThis = "This";
-const strWay = "way";
-const strNearby = "Nearby";
-const strInplace = "In building";
+const strThis = 'This';
+const strWay = 'way';
+const strNearby = 'Nearby';
+const strInplace = 'In building';
 
 // tab texts and icons:
 const nearbyButton = () => (
@@ -42,9 +44,9 @@ const nearbyButton = () => (
 );
 const thatwayButton = () => (
   <View style={styles.tabButton}>
-    <Text style={styles.tabText}>This </Text>
+    <Text style={styles.tabText}>{strThis} </Text>
     <FontAwesome name="arrow-up" size={14} />
-    <Text style={styles.tabText}> way</Text>
+    <Text style={styles.tabText}>{' ' + strWay}</Text>
   </View>
 );
 const inplaceButton = () => (
@@ -53,15 +55,16 @@ const inplaceButton = () => (
   </View>
 );
 
-export default class AppMain extends React.Component {
+export default class AppMain extends Component<{}> {
   constructor(props) {
     super(props);
     // fix: txt from constants and then from data
     this.state = {
-      indexPlace: 0,
-      drawerClosed: true,
+      placeIndex: 0,
+      beaconIndex: 0,
+      beaconUid: 12,
       tabIndex: 2,
-      beaconUid: 12
+      drawerClosed: true
     };
 
     this.toggleDrawer = this.toggleDrawer.bind(this);
@@ -70,7 +73,7 @@ export default class AppMain extends React.Component {
   }
 
   updateTabIndex = tabIndex => {
-    console.log("tab index: " + tabIndex);
+    console.log('tab index: ' + tabIndex);
     this.setState({ tabIndex });
   };
 
@@ -94,14 +97,14 @@ export default class AppMain extends React.Component {
     return (
       <languageDataCtx.Consumer>
         {({ placesData }) => {
-          //console.log(placesData);
+          //console.log(placesData.places[0].place.thisWay[0].beacon);
           return (
             <placeDataCtx.Provider
               value={{
-                currentPlace: placesData.places[this.state.indexPlace].place
+                currentPlace: placesData.places[this.state.placeIndex].place
               }}
             >
-              <View style={styles.topContainer}>
+              <View style={styles.mainContainer}>
                 <DrawerLayout
                   drawerWidth={200}
                   ref={drawerElement => {
@@ -113,14 +116,14 @@ export default class AppMain extends React.Component {
                   renderNavigationView={() => <Menu nav={navigate} />}
                 >
                   <ActionBar
-                    containerStyle={styles.actionBar}
+                    containerStyle={styles.actionBarContainer}
                     titleStyle={styles.actionTitle}
-                    title={"noam"}
-                    leftIconName={"location"}
-                    onLeftPress={() => console.log("Left!")}
+                    title={'noam'}
+                    leftIconImage={earIcon}
+                    onLeftPress={() => console.log('Talk Icon pressed.')}
                     rightIcons={[
                       {
-                        name: "menu",
+                        name: 'menu',
                         onPress: this.toggleDrawer
                       }
                     ]}
@@ -131,13 +134,10 @@ export default class AppMain extends React.Component {
                       <FontAwesome
                         name={pointPlaceIconName}
                         size={30}
-                        color="black"
+                        color="#000000"
                       />
-                      {/*<Text style={styles.placeIcon}>BiG</Text>*/}
                     </View>
-                    <Text style={styles.beaconLocTxt}>
-                      {pointBeaconLocation}
-                    </Text>
+                    <Text style={styles.beaconTxt}>{pointBeaconLocation}</Text>
                   </View>
                   <View style={styles.separator} />
                   <ButtonGroup
@@ -157,6 +157,7 @@ export default class AppMain extends React.Component {
                     selectedIndex={this.state.tabIndex}
                     pointingDirection={this.props.screenProps.pointingDirection}
                     heading={this.props.screenProps.heading}
+                    beaconIndex={this.state.beaconIndex}
                   />
                 </DrawerLayout>
               </View>
@@ -168,56 +169,70 @@ export default class AppMain extends React.Component {
   }
 }
 
-const TabbedPage = ({ selectedIndex, pointingDirection, heading }) => {
-  console.log("tab: ");
+const TabbedPage = ({
+  selectedIndex,
+  pointingDirection,
+  heading,
+  beaconIndex
+}) => {
+  // console.log('tab: ' + selectedIndex + '  beaconIndex:' + beaconIndex);
   switch (selectedIndex) {
     case 0:
-      return <NearBy pointingDirection={pointingDirection} />;
+      return (
+        <NearBy
+          pointingDirection={pointingDirection}
+          heading={heading}
+          beaconIndex={beaconIndex}
+        />
+      );
 
     case 1:
       return (
-        <ThisWay pointingDirection={pointingDirection} heading={heading} />
+        <ThisWay
+          pointingDirection={pointingDirection}
+          heading={heading}
+          beaconIndex={beaconIndex}
+        />
       );
 
     case 2:
     default:
-      return <InPlace pointingDirection={pointingDirection} />;
+      return <InPlace />;
   }
 };
 
 const styles = StyleSheet.create({
-  topContainer: {
-    /* place and tabs */
+  mainContainer: {
     flex: 1,
-    marginTop: Platform.OS === "ios" ? 0 : Constants.statusBarHeight,
-    backgroundColor: "#F5F1FF"
+    marginTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight,
+    backgroundColor: '#FDFDFD'
   },
-  actionBar: {
-    /* ear appname and menu */
-    backgroundColor: "#330077"
+  actionBarContainer: {
+    backgroundColor: '#330077'
   },
   actionTitle: {
-    textAlign: "center",
+    textAlign: 'center',
     fontSize: 20
   },
   /* tabs */
   tabButton: {
-    flexDirection: "row"
+    flexDirection: 'row'
   },
   tabText: {
-    fontSize: 16
+    fontSize: 14
   },
   /* tabSelecteButtonStyle:{}, */
   tabSelected: {
-    backgroundColor: "#FFFFFF"
+    backgroundColor: '#FFFFFF'
   },
   topPlaceRow: {
     /* */
-    flexDirection: "column",
-    justifyContent: "center"
+    flexDirection: 'column',
+    justifyContent: 'center',
+    marginBottom: 5
   },
   placeBar: {
-    flexDirection: "row",
+    flexDirection: 'row',
     marginTop: 10,
     marginLeft: 40,
     marginRight: 40
@@ -226,21 +241,21 @@ const styles = StyleSheet.create({
     lineHeight: 20,
     flex: 1,
     fontSize: 18,
-    textAlignVertical: "center"
+    textAlignVertical: 'center'
   },
   placeIcon: {
     fontSize: 24,
-    color: "#111145",
+    color: '#111145',
     marginLeft: 5
   },
-  beaconLocTxt: {
-    textAlign: "center",
-    fontSize: 20
+  beaconTxt: {
+    textAlign: 'center',
+    fontSize: 18
   },
-  buttonContainer: {
+  buttonDecorator: {
     borderRadius: 10,
     padding: 10,
-    shadowColor: "#000000",
+    shadowColor: '#000000',
     shadowOffset: {
       width: 0,
       height: 3
@@ -251,7 +266,7 @@ const styles = StyleSheet.create({
     marginLeft: 20
   },
   separator: {
-    borderBottomColor: "lightgray",
+    borderBottomColor: 'lightgray',
     borderBottomWidth: 1
   }
 });

@@ -1,5 +1,60 @@
 {
   "styles": {
+    "sharedStyles": {
+      "topContainer": {
+        "style_comment": "place and tabs",
+        "flex": 1,
+        "marginTop": "Platform.OS === 'ios' ? 0 : Constants.statusBarHeight",
+        "backgroundColor": "#F5F5F5"
+      },
+      "actionBarContainer": {
+        "style_comment": "ear appname and menu",
+        "backgroundColor": "#330077"
+      },
+      "actionTitle": {
+        "textAlign": "center",
+        "fontSize": 20
+      },
+      "instructionsHeader": {
+        "marginTop": 10,
+        "textAlign": "left",
+        "color": "#333333",
+        "marginBottom": 10,
+        "fontSize": 25,
+        "fontWeight": "400",
+        "marginLeft": 25,
+        "marginRight": 25
+      },
+      "instructions": {
+        "flex": 1,
+        "flexDirection": "column"
+      },
+      "bottomNavRow": {
+        "marginLeft": 5,
+        "flex": 2,
+        "flexDirection": "row",
+        "justifyContent": "space-between"
+      },
+      "navButton": {
+        "textDecorationLine": "underline",
+        "fontSize": 14
+      }
+    },
+    "buttonDecorator": {
+      "backgroundColor": "#444444",
+      "borderRadius": 10,
+      "padding": 3,
+      "shadowColor": "#181818",
+      "shadowOffset": {
+        "width": 0,
+        "height": 1
+      },
+      "shadowRadius": 3, 
+      "shadowOpacity": 0.25,
+      "marginRight": 20,
+      "marginLeft": 20
+  
+    },
     "accordStyles": {
       "accordStyle": {
         "backgroundColor": "#FF9900"

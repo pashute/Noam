@@ -24,7 +24,7 @@ import Splash from "./pages/Splash";
 import AppMain from "./pages/AppMain";
 import AutoUpdate from "./pages/setting_pages/AutoUpdate";
 import Calibrate from "./pages/setting_pages/Calibrate";
-import Personal from "./pages/setting_pages/Personal";
+import Preferences from "./pages/setting_pages/Preferences";
 import Profile from "./pages/setting_pages/Profile";
 import SetHome from "./pages/setting_pages/SetHome";
 import Voice from "./pages/setting_pages/Voice";
@@ -34,7 +34,7 @@ import Languages from "./data";
 export const languageDataCtx = React.createContext(Languages.en.data);
 
 //import placesData from "./data/placesData.json";
-//import settingsData from "./data/settingsData.json";
+//import appData from "./data/appData.json";
 //import stylesData from "./data/stylesData.json";
 
 // const data = {
@@ -81,8 +81,8 @@ const Nav = StackNavigator({
       header: null
     }
   },
-  Personal: {
-    screen: Personal,
+  Preferences: {
+    screen: Preferences,
     navigationOptions: {
       headermode: "screen",
       header: null
@@ -142,7 +142,7 @@ export default class App extends React.Component {
       this.setState({ fontLoaded: true });
       this._getHeadingAsync();
     } catch (error) {
-      console.log("error loading icon fonts", error);
+      console.error("error loading icon fonts", error);
     }
   };
 
