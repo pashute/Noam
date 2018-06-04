@@ -30,15 +30,30 @@
         "flexDirection": "column"
       },
       "bottomNavRow": {
+        "marginLeft": 5,
         "flex": 2,
         "flexDirection": "row",
-        "marginLeft": 5,
         "justifyContent": "space-between"
       },
       "navButton": {
         "textDecorationLine": "underline",
         "fontSize": 14
       }
+    },
+    "buttonDecorator": {
+      "backgroundColor": "#444444",
+      "borderRadius": 10,
+      "padding": 3,
+      "shadowColor": "#181818",
+      "shadowOffset": {
+        "width": 0,
+        "height": 1
+      },
+      "shadowRadius": 3, 
+      "shadowOpacity": 0.25,
+      "marginRight": 20,
+      "marginLeft": 20
+  
     },
     "accordStyles": {
       "accordStyle": {

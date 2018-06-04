@@ -73,7 +73,7 @@ export default class AutoUpdate extends Component<{}> {
               {': '}
               {this.state.autoupdateStatus}
             </Text>
-            <View style={styles.buttonContainer}>
+            <View style={styles.buttonDecorator}>
               <Button
                 onPress={this._turnOnAutoUpdate}
                 title={txtAutoUpdateTurn + ' ' + txtOn}
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
     marginLeft: 25,
     marginRight: 25
   },
-  buttonContainer: {
+  buttonDecorator: {
     backgroundColor: '#444444', // colorBgDark,//'#454545', // '#2E9298',
     borderRadius: 10,
     padding: 3,
@@ -163,10 +163,10 @@ const styles = StyleSheet.create({
     marginLeft: 20
   },
   bottomNavRow: {
-    flex: 2,
-    flexDirection: 'row',
     marginLeft: 15,
     marginRight: 15,
+    flex: 2,
+    flexDirection: 'row',
     justifyContent: 'space-between'
   },
   navButton: {

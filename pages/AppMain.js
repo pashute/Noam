@@ -252,7 +252,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 18
   },
-  buttonContainer: {
+  buttonDecorator: {
     borderRadius: 10,
     padding: 10,
     shadowColor: '#000000',

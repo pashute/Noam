@@ -117,10 +117,10 @@ export default class Splash extends React.Component {
       if (Platform.OS === 'android')
         console.log('todo: android. turn bluetooth on');
       else console.log('todo: ios. open bluetooth console');
-      
+
       this.setState({ continueDisabled: false });
-    }  catch(err) {
-      console.error("turn bluetooth on failed" + err)
+    } catch (err) {
+      console.error('turn bluetooth on failed' + err);
     }
   };
   render() {
@@ -177,7 +177,7 @@ export default class Splash extends React.Component {
 
           <Text style={styles.instructions}>{instructions}</Text>
 
-          <View style={styles.buttonContainer}>
+          <View style={styles.buttonDecorator}>
             {/* the bluetooth button */}
             <Button
               onPress={this._turnBluetoothOn}
@@ -190,7 +190,7 @@ export default class Splash extends React.Component {
           <View>
             <Text> </Text>
           </View>
-          <View style={styles.buttonContainer}>
+          <View style={styles.buttonDecorator}>
             {/* the CONTINUE button */}
             <Button
               onPress={() => navigate('MainPage')}
@@ -242,7 +242,7 @@ const styles = StyleSheet.create({
   textCentered: {
     textAlign: 'center'
   },
-  buttonContainer: {
+  buttonDecorator: {
     backgroundColor: '#444444', // colorBgDark,//'#454545', // '#2E9298',
     borderRadius: 10,
     padding: 3,

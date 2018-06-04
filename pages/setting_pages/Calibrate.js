@@ -109,10 +109,10 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   bottomNavRow: {
-    flex: 2,
-    flexDirection: 'row',
     marginLeft: 15,
     marginRight: 15,
+    flex: 2,
+    flexDirection: 'row',
     justifyContent: 'space-between'
   },
   navButton: {

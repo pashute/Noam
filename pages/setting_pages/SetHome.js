@@ -41,10 +41,10 @@ export default class SetHome extends Component<{}> {
           leftIconName={'location'}
           onLeftPress={() => console.log('Left!')}
         />
-        <View style={styles.contentContainer}>
+        <View style={[styles.contentContainer, styles.buttonContainer]}>
           <Text style={styles.titleText}>Settings</Text>
 
-          <View style={styles.buttonContainer}>
+          <View style={styles.buttonDecorator}>
             <Button
               onPress={() => navigate('Calibrate')}
               title={txtToCalibrate}
@@ -52,7 +52,7 @@ export default class SetHome extends Component<{}> {
               accessibilityLabel="Tap to calibrate compass"
             />
           </View>
-          <View style={styles.buttonContainer}>
+          <View style={styles.buttonDecorator}>
             <Button
               onPress={() => navigate('AutoUpdate')}
               title={txtToAutoUpdate}
@@ -60,7 +60,7 @@ export default class SetHome extends Component<{}> {
               accessibilityLabel="Tap for auto-update settings"
             />
           </View>
-          <View style={styles.buttonContainer}>
+          <View style={styles.buttonDecorator}>
             <Button
               onPress={() => navigate('Voice')}
               title={txtToVoiceAssist}
@@ -68,7 +68,7 @@ export default class SetHome extends Component<{}> {
               accessibilityLabel="Tap on Me"
             />
           </View>
-          <View style={styles.buttonContainer}>
+          <View style={styles.buttonDecorator}>
             <Button
               onPress={() => navigate('Preferences')}
               title={txtToPreferences}
@@ -76,7 +76,7 @@ export default class SetHome extends Component<{}> {
               accessibilityLabel="Tap on Me"
             />
           </View>
-          <View style={styles.buttonContainer}>
+          <View style={styles.buttonDecorator}>
             <Button
               onPress={() => navigate('Profile')}
               title={txtToProfile}
@@ -121,11 +121,15 @@ const styles = StyleSheet.create({
     marginRight: 20,
     marginBottom: 10
   },
-  buttonContainer: {
-    backgroundColor: '#444444', // colorBgDark,//'#454545', // '#2E9298',
+  buttonContainer:{
+    flexDirection: 'column',
+    justifyContent: 'space-between'
+  },
+  buttonDecorator: {
+    backgroundColor: '#444444', 
     borderRadius: 10,
     padding: 3,
-    shadowColor: colorButtonShadow, //'#454545', // '#000000'
+    shadowColor: colorButtonShadow, 
     shadowOffset: {
       width: 0,
       height: 1

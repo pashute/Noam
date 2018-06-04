@@ -29,7 +29,7 @@ const txtAssistantIs = 'Voice assistant is currently set ';
 const txtAssistantTurn = 'Turn voice assistant ';
 
 const txtChooseVoice = 'Choose voice';
-const txtVoiceMale = 'Male';
+const txtVoiceMale = 'Male  ';
 const txtVoiceFemale = 'Female';
 
 const txtInstrcutionsVoiceAssist = [
@@ -50,10 +50,9 @@ export default class Voice extends Component<{}> {
     super(props);
 
     this.state = {
-      voiceAssistOn: false, 
-      voiceChoice: 'male'
-    }
-
+      voiceAssistOn: false,
+      voiceChoice: 0
+    };
   }
 
   render() {
@@ -74,44 +73,44 @@ export default class Voice extends Component<{}> {
             <Text style={styles.instructions}>
               {txtInstrcutionsVoiceAssist}
             </Text>
-            <View style={{flexDirection: 'row'}}>
-            <Text style={styles.instructions}>
-              {txtAssistantIs}
-              {':'}
-            </Text>
-            <Switch
-              value={false}
-              onValueChange={Alert.alert(
-                'Personal voice assist soon to be available'
-              )}
-              disabled={false}
-              activeText={txtOn}
-              inActiveText={txtOff}
-              circleSize={30}
-              barHeight={1}
-              circleBorderWidth={3}
-              backgroundActive={'#181818'}
-              backgroundInactive={'#898989'}
-              circleActiveColor={'#323232'}
-              circleInActiveColor={'#000000'}
-            />
+            <View style={{ flexDirection: 'row' }}>
+              <Text style={styles.instructions}>
+                {txtAssistantIs}
+                {':'}
+              </Text>
+              <Switch
+                value={false}
+                onValueChange={Alert.alert(
+                  'Personal voice assist soon to be available'
+                )}
+                disabled={true}
+                activeText={txtOn}
+                inActiveText={txtOff}
+                circleSize={30}
+                barHeight={1}
+                circleBorderWidth={3}
+                backgroundActive={'#181818'}
+                backgroundInactive={'#898989'}
+                circleActiveColor={'#232323'}
+                circleInactiveColor={'#575757'}
+              />
             </View>
             <Text style={styles.instructions}>{txtChooseVoice}</Text>
             <RadioForm
-              style={{marginLeft: 25}}
+              style={{ marginLeft: 25 }}
               radio_props={radioVoiceOptions}
               initial={0}
               formHorizontal={true}
               labelHorizontal={true}
               buttonColor={'#131313'}
-              outerColor={'#242424'}
-              innercolor={'#353535'}
+              buttonSize={5}
+              selectedButtonColor={'#131313'}
               animation={true}
               onPress={value => {
                 this.setState({ voiceChoice: value });
               }}
             />
-            <View style={{marginBottom:25}} />
+            <View style={{ marginBottom: 25 }} />
           </View>
           <View style={styles.bottomNavRow}>
             <Text

@@ -30,21 +30,21 @@ export default class Help extends Component {
 
         <Text style={styles.assistant}>Help</Text>
 
-        <View style={styles.buttonContainer}>
+        <View style={styles.buttonDecorator}>
           <Button
             title={hlpGettingStarted}
             color="#111111"
             accessibilityLabel="Tap on Me"
           />
         </View>
-        <View style={styles.buttonContainer}>
+        <View style={styles.buttonDecorator}>
           <Button
             title={hlpFAQ}
             color="#111111"
             accessibilityLabel="Tap on Me"
           />
         </View>
-        <View style={styles.buttonContainer}>
+        <View style={styles.buttonDecorator}>
           <Button
             title={hlpTroubleShooting}
             color="#111111"
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 20
   },
-  buttonContainer: {
+  buttonDecorator: {
     backgroundColor: '#2E9298',
     borderRadius: 10,
     padding: 5,
