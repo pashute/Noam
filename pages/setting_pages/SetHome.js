@@ -21,6 +21,10 @@ const txtToProfile = '5. Profile';
 
 const txtDone = 'Done';
 
+// todo data: take from stylesData
+const colorButtonShadow = '#181818';
+
+
 export default class SetHome extends Component<{}> {
   constructor(props) {
     super(props);
@@ -118,17 +122,18 @@ const styles = StyleSheet.create({
     marginBottom: 10
   },
   buttonContainer: {
-    backgroundColor: '#2E9298',
+    backgroundColor: '#444444', // colorBgDark,//'#454545', // '#2E9298',
     borderRadius: 10,
-    padding: 5,
-    shadowColor: '#000000',
+    padding: 3,
+    shadowColor: colorButtonShadow, //'#454545', // '#000000'
     shadowOffset: {
       width: 0,
-      height: 2
+      height: 1
     },
-    shadowRadius: 10,
+    shadowRadius: 3, //10,
     shadowOpacity: 0.25,
-    margin: 10
+    marginRight: 20,
+    marginLeft: 20
   },
   bottomNavRow: {
     flex: 2,

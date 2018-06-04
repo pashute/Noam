@@ -62,19 +62,5 @@ const styles = StyleSheet.create({
     marginLeft: 4,
     marginRight: 20,
     textAlign: 'center'
-  },
-  buttonContainer: {
-    backgroundColor: '#2E9298',
-    borderRadius: 10,
-    padding: 10,
-    shadowColor: '#000000',
-    shadowOffset: {
-      width: 0,
-      height: 3
-    },
-    shadowRadius: 10,
-    shadowOpacity: 0.25,
-    marginRight: 20,
-    marginLeft: 20
   }
 });

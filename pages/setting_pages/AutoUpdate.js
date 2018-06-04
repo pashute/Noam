@@ -33,6 +33,9 @@ const txtAutoUpdateTurn = 'Turn auto-update ';
 const txtOn = 'on';
 const txtOff = 'off';
 
+// Todo data: get from stylesData
+const colorButtonShadow = '#181818'; // was '#00000F' 181818 is dark
+
 export default class AutoUpdate extends Component<{}> {
   constructor(props) {
     super(props);
@@ -146,18 +149,18 @@ const styles = StyleSheet.create({
     marginRight: 25
   },
   buttonContainer: {
-    backgroundColor: '#444444',
+    backgroundColor: '#444444', // colorBgDark,//'#454545', // '#2E9298',
     borderRadius: 10,
-    padding: 5,
-    shadowColor: '#454545',
+    padding: 3,
+    shadowColor: colorButtonShadow, //'#454545', // '#000000'
     shadowOffset: {
       width: 0,
-      height: 2
+      height: 1
     },
-    shadowRadius: 5,
+    shadowRadius: 3, //10,
     shadowOpacity: 0.25,
-    marginRight: 60,
-    marginLeft: 60
+    marginRight: 20,
+    marginLeft: 20
   },
   bottomNavRow: {
     flex: 2,

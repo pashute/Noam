@@ -7,18 +7,19 @@ import {
   StyleSheet,
   Text,
   View,
-  Button, Alert
+  Button /* , Alert */
 } from 'react-native';
 import ActionBar from 'react-native-action-bar';
-// import { StackNavigator } from 'react-navigation';
 import DrawerLayout from 'react-native-drawer-layout';
 import { FontAwesome } from '@expo/vector-icons';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Font } from 'expo';
-import AppMain from './AppMain';
+// import AppMain from './AppMain';
 import Menu from './Menu';
 
 // import { BluetoothStatus } from 'react-native-bluetooth-status';
+
+// todo data: get from appData
 const txtIosinstruct =
   'Welcome to Noam,\n' +
   'your indoor assistant\n' +
@@ -38,7 +39,7 @@ const txtSplashTitle = 'noam';
 const txtSplashDescription = ' your indoor assistant';
 
 const splashAppnameColor = '#440077';
-const colorBgDark = '#181818'; // was '#00000F'
+const colorButtonShadow = '#181818'; // was '#00000F' 181818 is dark
 
 const instructions = Platform.select({
   ios: txtIosinstruct,
@@ -245,7 +246,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#444444', // colorBgDark,//'#454545', // '#2E9298',
     borderRadius: 10,
     padding: 3,
-    shadowColor: colorBgDark, //'#454545', // '#000000'
+    shadowColor: colorButtonShadow, //'#454545', // '#000000'
     shadowOffset: {
       width: 0,
       height: 1

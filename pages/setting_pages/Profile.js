@@ -4,13 +4,12 @@ import {
   StyleSheet,
   Text,
   TextInput,
-  View,
-  Switch
-  /* Alert, Button */
+  View
+  /* , Switch, Alert, Button */
 } from 'react-native';
 import ActionBar from 'react-native-action-bar';
 // import PropTypes from 'prop-types';
-import RadioForm from 'react-native-simple-radio-button';
+// import RadioForm from 'react-native-simple-radio-button';
 /* RadioButton,
   RadioButtonInput,
   RadioButtonLabel */
@@ -43,6 +42,12 @@ const radioVoiceOptions = [
 export default class Profile extends Component<{}> {
   constructor(props) {
     super(props);
+
+    this.state = {
+      username: '',
+      password: '',
+      email: ''
+    };
   }
 
   render() {
@@ -63,15 +68,25 @@ export default class Profile extends Component<{}> {
             <Text style={styles.instructions}>{txtInstrcutionsProfile}</Text>
             <View style={styles.inputsView}>
               <TextInput
-                style={{ height: 40 }}
+                style={{ height: 40, fontSize: 25 }}
+                value={this.state.username}
                 placeholder="Username"
-                onChangeText={text => this.setState({ text })}
+                onChangeText={text => this.setState({ username: text })}
               />
               <TextInput
-                style={{ height: 40 }}
-                placeholder="email"
-                onChangeText={text => this.setState({ text })}
+                style={{ height: 40, fontSize: 25 }}
+                value={this.state.password}
+                secureTextEntry={true}
+                placeholder="password"
+                onChangeText={text => this.setState({ password: text })}
               />
+              <TextInput
+                style={{ height: 40, fontSize: 25 }}
+                value={this.state.email}
+                placeholder="email"
+                onChangeText={text => this.setState({ email: text })}
+              />
+              <View style={{ marginTop: 60 }} />
             </View>
           </View>
           <View style={styles.bottomNavRow}>
@@ -146,20 +161,6 @@ const styles = StyleSheet.create({
   inputsView: {
     marginLeft: 35,
     marginRight: 35
-  },
-  buttonContainer: {
-    backgroundColor: '#444444',
-    borderRadius: 10,
-    padding: 5,
-    shadowColor: '#454545',
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowRadius: 5,
-    shadowOpacity: 0.25,
-    marginRight: 60,
-    marginLeft: 60
   },
   bottomNavRow: {
     flex: 2,

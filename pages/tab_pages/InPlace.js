@@ -73,19 +73,6 @@ const styles = StyleSheet.create({
     flex: 18
   },
   scrollView: { padding: 0 },
-  buttonContainer: {
-    borderRadius: 10,
-    padding: 10,
-    shadowColor: '#000000',
-    shadowOffset: {
-      width: 0,
-      height: 3
-    },
-    shadowRadius: 10,
-    shadowOpacity: 0.25,
-    marginRight: 20,
-    marginLeft: 20
-  },
   bottomRow: {
     flex: 2
   }

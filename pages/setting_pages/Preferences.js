@@ -11,7 +11,6 @@ import ActionBar from 'react-native-action-bar';
 import CheckBox from 'react-native-checkbox';
 import { Dropdown } from 'react-native-material-dropdown';
 
-
 const txtAppName = 'Noam';
 const txtPreferencesTitle = 'Preferences';
 const txtBack = '< Back';
@@ -66,7 +65,9 @@ export default class Preferences extends Component<{}> {
               containerStyle={{ marginLeft: 30, width: 100 }}
               label="Scaling options"
               data={scalingOptions}
-              onValueChange={console.log("todo: setAppState scalingOption selected")}
+              onValueChange={console.log(
+                'todo: setAppState scalingOption selected'
+              )}
             />
             {/* todo: dropdown onChange should setAppState scalingOption... */}
           </View>
@@ -102,7 +103,9 @@ export default class Preferences extends Component<{}> {
             containerStyle={{ marginLeft: 20 }}
             label="Automatic launch near location"
             checked={false}
-            onChange={checked => console.log('Auto launch near location ', checked)}
+            onChange={checked =>
+              console.log('Auto launch near location ', checked)
+            }
           />
         </View>
         <View style={styles.bottomNavRow}>
@@ -176,25 +179,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginLeft: 20
   },
-  themeView:{
+  themeView: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     marginLeft: 20
-  },
-  buttonContainer: {
-    backgroundColor: '#444444',
-    borderRadius: 10,
-    padding: 5,
-    shadowColor: '#454545',
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowRadius: 5,
-    shadowOpacity: 0.25,
-    marginRight: 60,
-    marginLeft: 60
   },
   bottomNavRow: {
     flex: 2,

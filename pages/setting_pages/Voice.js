@@ -182,20 +182,6 @@ const styles = StyleSheet.create({
     marginLeft: 25,
     marginRight: 25
   },
-  buttonContainer: {
-    backgroundColor: '#444444',
-    borderRadius: 10,
-    padding: 5,
-    shadowColor: '#454545',
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowRadius: 5,
-    shadowOpacity: 0.25,
-    marginRight: 60,
-    marginLeft: 60
-  },
   bottomNavRow: {
     flex: 2,
     flexDirection: 'row',
