@@ -1,22 +1,25 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, Alert, Image } from 'react-native';
-import { Button } from 'react-native';
+import { Platform, StyleSheet, Text, View, Image /* Alert, Button */ } from 'react-native';
+import {  } from 'react-native';
 import ActionBar from 'react-native-action-bar';
-import PropTypes from 'prop-types';
-import { StackNavigator } from 'react-navigation';
+// import PropTypes from 'prop-types';
+// import { StackNavigator } from 'react-navigation';
 import Bottom from '../tab_pages/Bottom.js';
 
 // Todo data: take from appData
+const txtAppName = 'Noam';
+const txtBack = '< Back';
+const txtTOC = 'TOC';
+const txtNext = 'Next >';
 const txtSettingsText = 'Settings';
 const txtTitleCompassCalib = '1. Calibrating Compass';
-const txtCompassInstructions = [
+const txtInstructionsCompass = [
   'Please point the top of your device forward ...\n',
   'then turn it in a large figure eight\n',
   'to calibrate the compass'
 ];
-const txtBack = '< Back';
-const txtTOC = 'TOC';
-const txtNext = 'Next >';
+
+
 export default class Calibrate extends Component<{}> {
   constructor(props) {
     super(props);
@@ -28,23 +31,23 @@ export default class Calibrate extends Component<{}> {
         <ActionBar
           containerStyle={styles.actionBarContainer}
           titleStyle={styles.actionTitle}
-          title={'noam'}
+          title={txtAppName}
           leftIconName={'location'}
           onLeftPress={() => console.log('Left!')}
         />
         <View style={styles.contentContainer}>
           <Text style={styles.titleText}>{txtSettingsText}</Text>
           <Text style={styles.instructionHeader}>{txtTitleCompassCalib}</Text>
-          <Text style={styles.instructions}>{txtCompassInstructions}</Text>
+          <Text style={styles.instructions}>{txtInstructionsCompass}</Text>
           <View style={styles.imgCalibrateView}>
             <Image source={require('../../assets/icons/compass_calibration8.png')} />
           </View>
         </View>
         <View style={styles.bottomNavRow}>
-          <Text onPress={() => navigate('SetHome')} style={styles.navButton}>
+          <Text onPress={() => navigate('MainPage')} style={styles.navButton}>
             {txtBack}
           </Text>
-          <Text onPress={() => navigate('AppMain')} style={styles.navButton}>
+          <Text onPress={() => navigate('SetHome')} style={styles.navButton}>
             {txtTOC}
           </Text>
           <Text onPress={() => navigate('AutoUpdate')} style={styles.navButton}>

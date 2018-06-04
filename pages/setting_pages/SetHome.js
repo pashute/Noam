@@ -66,7 +66,7 @@ export default class SetHome extends Component<{}> {
           </View>
           <View style={styles.buttonContainer}>
             <Button
-              onPress={() => navigate('Personal')}
+              onPress={() => navigate('Preferences')}
               title={txtToPreferences}
               color="#111111"
               accessibilityLabel="Tap on Me"

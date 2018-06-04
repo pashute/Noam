@@ -24,7 +24,7 @@ import Splash from "./pages/Splash";
 import AppMain from "./pages/AppMain";
 import AutoUpdate from "./pages/setting_pages/AutoUpdate";
 import Calibrate from "./pages/setting_pages/Calibrate";
-import Personal from "./pages/setting_pages/Personal";
+import Preferences from "./pages/setting_pages/Preferences";
 import Profile from "./pages/setting_pages/Profile";
 import SetHome from "./pages/setting_pages/SetHome";
 import Voice from "./pages/setting_pages/Voice";
@@ -81,8 +81,8 @@ const Nav = StackNavigator({
       header: null
     }
   },
-  Personal: {
-    screen: Personal,
+  Preferences: {
+    screen: Preferences,
     navigationOptions: {
       headermode: "screen",
       header: null

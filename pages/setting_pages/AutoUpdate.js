@@ -9,8 +9,8 @@ import Bottom from '../tab_pages/Bottom.js';
 // Todo add context autoUpdate state and decide on status accordingly
 
 // Todo data: take from appData
-const appTitle = 'Noam';
-const txtSettingsText = 'Settings';
+const txtAppName = 'Noam';
+const txtSettingsTitle = 'Settings';
 const txtBack = '< Back';
 const txtTOC = 'TOC';
 const txtNext = 'Next >';
@@ -56,12 +56,12 @@ export default class AutoUpdate extends Component<{}> {
         <ActionBar
           containerStyle={styles.actionBarContainer}
           titleStyle={styles.actionTitle}
-          title={'noam'}
+          title={txtAppName}
           leftIconName={'location'}
           onLeftPress={() => console.log('Left!')}
         />
         <View style={styles.contentContainer}>
-          <Text style={styles.titleText}>{txtSettingsText}</Text>
+          <Text style={styles.titleText}>{txtSettingsTitle}</Text>
           <Text style={styles.instructionsHeader}>{txtTitleAutoUpdate}</Text>
           <View style={styles.instructionsView}>
             <Text style={styles.instructions}>{txtInstructionAutoUpdate}</Text>
@@ -84,10 +84,10 @@ export default class AutoUpdate extends Component<{}> {
           <Text onPress={() => navigate('Calibrate')} style={styles.navButton}>
             {txtBack}
           </Text>
-          <Text onPress={() => navigate('AppMain')} style={styles.navButton}>
+          <Text onPress={() => navigate('SetHome')} style={styles.navButton}>
             {txtTOC}
           </Text>
-          <Text onPress={() => navigate('Personal')} style={styles.navButton}>
+          <Text onPress={() => navigate('Voice')} style={styles.navButton}>
             {txtNext}
           </Text>
         </View>

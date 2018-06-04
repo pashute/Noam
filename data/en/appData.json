@@ -1,10 +1,12 @@
 {
   "appData": {
     "general": {
-      "actionbarAppTitle": "Noam",
+      "txtAppName": "Noam",
       "txtNext": "Next",
       "txtTOC": "TOC",
-      "txtBack": "Back"
+      "txtBack": "Back",
+      "txtOn": "on",
+      "txtOff": "off"
     },
     "menu": {
       "txtMenuSettings": "Settings",
@@ -37,12 +39,59 @@
       "txtButtonIosBluetooth": "Go to Bluetooth settings",
       "txtButtonAndroidBluetooth": "Press here to turn Bluetooth on"
     },
-    "screensSettings":{
+    "screensSettings": {
       "txtToCalibrate": "1. Calibrate Compass",
       "txtToAutoUpdate": "2. Auto Update",
       "txtToVoiceAssist": "3. Voice Assist",
-      "txtToPreferences": "4. Preferences", 
-      "txtToProfile": "5. Profile"
+      "txtToPreferences": "4. Preferences",
+      "txtToProfile": "5. Profile",
+
+      "calibrate": {
+        "txtTitleCalibrate": "Calibrate",
+        "txtInstructionsCompass": [
+          "Please point the top of your device forward ...\n",
+          "then turn it in a large figure eight\n",
+          "to calibrate the compass"
+        ]
+      },
+      "autoupdate": {
+        "txtTitleAutoUpdate": "Auto update",
+        "txtInstructionsAutoupdate": [
+          "If you turn this option on the lists\n",
+          "will automatically change as you\n",
+          "change your direction\n",
+          "\n",
+          "To refresh the list manually\n",
+          "point the top of your phone in\n",
+          "the direction you want instructions for\n",
+          "and press the This Way tab"
+        ],
+        "txtAutoUpdateIs": "Auto-update is currently set ",
+        "txtAutoUpdateTurn": "Turn auto-update "
+      },
+      "voiceassist": {
+        "txtTitleVoiceAssist": "Voice assist",
+        "txtTitleVoice": "3. Voice Assistant",
+        "txtAssistantIs": "Voice assistant is currently set ",
+        "txtAssistantTurn": "Turn voice assistant ",
+
+        "txtChooseVoice": "Choose voice",
+        "txtVoiceMale": "Male",
+        "txtVoiceFemale": "Female",
+
+        "txtInstrcutionsVoiceAssist": [
+          "If you trun this option on\n",
+          "you can talk freely with the app\n",
+          "Just say Hey Noam!\n",
+          "and ask about this place in your own words."
+        ]
+      },
+      "preferences": {
+        "txtTitlePreferences": "Preferences"
+      },
+      "profile": {
+        "txtTitleProfile": "Profile"
+      }
     }
   }
 }
