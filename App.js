@@ -137,6 +137,8 @@ export default class App extends React.Component {
 
   componentDidMount() {
     this._asyncFonts();
+    I18nManager.forceRTL(false);
+    this.setState({ isRTL: false });
   }
 
   _asyncFonts = async () => {
