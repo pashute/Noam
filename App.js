@@ -1,7 +1,7 @@
 /* cSpell:disable */
 
 import React from "react";
-import { StyleSheet /*Platform, Text, View, Alert*/ } from "react-native";
+import { StyleSheet, I18nManager /*Platform, Text, View, Alert*/ } from "react-native";
 
 //x import { TabNavigator } from 'react-navigation'; // 1.5.11
 import { StackNavigator } from "react-navigation";
@@ -45,6 +45,8 @@ export const languageDataCtx = React.createContext(Languages.en.data);
 //     }
 //   }
 // };
+
+I18nManager.allowRTL(true);
 
 YellowBox.ignoreWarnings([
   "Warning: componentWillMount is deprecated",
@@ -124,6 +126,7 @@ export default class App extends React.Component {
     super(props);
 
     this.state = {
+      isRTL: I18nManager.isRTL,
       fontLoaded: false,
       data: {},
       currentLanguage: Languages.en.data,
@@ -134,6 +137,8 @@ export default class App extends React.Component {
 
   componentDidMount() {
     this._asyncFonts();
+    I18nManager.forceRTL(false);
+    this.setState({ isRTL: false });
   }
 
   _asyncFonts = async () => {

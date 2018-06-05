@@ -10,11 +10,16 @@ import ActionBar from 'react-native-action-bar';
 // import PropTypes from 'prop-types';
 import CheckBox from 'react-native-checkbox';
 import { Dropdown } from 'react-native-material-dropdown';
+import Bottom from '../tab_pages/Bottom.js';
 
+
+const txtSettings = 'Settings';
 const txtAppName = 'Noam';
 const txtPreferencesTitle = 'Preferences';
+const txtNext = 'Next';
+const txtTOC = 'TOC';
 const txtBack = '< Back';
-const txtDone = 'Done';
+// const txtDone = 'Done';
 // const txtToPreferences = '4. Preferences';
 
 export default class Preferences extends Component<{}> {
@@ -37,7 +42,8 @@ export default class Preferences extends Component<{}> {
       { value: 'High Contrast' },
       { value: 'Android Normal' }
     ];
-    // const { navigate } = this.props.navigation;
+
+    const { navigate } = this.props.navigation;
     return (
       <View style={styles.mainContainer}>
         <ActionBar
@@ -50,7 +56,7 @@ export default class Preferences extends Component<{}> {
           }
         />
         <View style={styles.contentContainer}>
-          <Text style={styles.titleText}>{txtSettingsText}</Text>
+          <Text style={styles.titleText}>{txtSettings}</Text>
           <Text style={styles.instructionsHeader}>{txtPreferencesTitle}</Text>
           <View style={styles.scalingView}>
             <CheckBox
@@ -84,7 +90,7 @@ export default class Preferences extends Component<{}> {
             <Dropdown
               containerStyle={{ marginLeft: 30, width: 250 }}
               label="Theme"
-              data={this.themeOptions}
+              data={themeOptions}
             />
           </View>
           <CheckBox
