@@ -126,7 +126,7 @@ export default class App extends React.Component {
     super(props);
 
     this.state = {
-      isRTL: I18nManager.isRTL,
+      isRTL: false, // I18nManager.isRTL,
       fontLoaded: false,
       data: {},
       currentLanguage: Languages.en.data,
