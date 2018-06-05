@@ -1,7 +1,10 @@
 /* cSpell:disable */
 
 import React from "react";
-import { StyleSheet, I18nManager /*Platform, Text, View, Alert*/ } from "react-native";
+import {
+  StyleSheet,
+  I18nManager /*Platform, Text, View, Alert*/
+} from "react-native";
 
 //x import { TabNavigator } from 'react-navigation'; // 1.5.11
 import { StackNavigator } from "react-navigation";
@@ -29,9 +32,13 @@ import Profile from "./pages/setting_pages/Profile";
 import SetHome from "./pages/setting_pages/SetHome";
 import Voice from "./pages/setting_pages/Voice";
 import Help from "./pages/Help";
-import Languages from "./data";
+import { getLanguage } from "./data";
 
-export const languageDataCtx = React.createContext(Languages.en.data);
+/*
+This contex contains: appData.json, placesData.json and stylesData.json
+of the current language (by default is en)
+*/
+export const languageDataCtx = React.createContext(getLanguage("en"));
 
 //import placesData from "./data/placesData.json";
 //import appData from "./data/appData.json";
@@ -129,7 +136,7 @@ export default class App extends React.Component {
       isRTL: I18nManager.isRTL,
       fontLoaded: false,
       data: {},
-      currentLanguage: Languages.en.data,
+      currentLanguage: "en",
       pointingTo: "North West",
       heading: {}
     };
@@ -205,7 +212,9 @@ export default class App extends React.Component {
     //   />
     // );
     return (
-      <languageDataCtx.Provider value={this.state.currentLanguage}>
+      <languageDataCtx.Provider
+        value={getLanguage(this.state.currentLanguage).data}
+      >
         <Nav
           screenProps={{
             pointingTo: this.state.pointingTo,

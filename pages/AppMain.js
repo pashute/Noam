@@ -97,13 +97,13 @@ export default class AppMain extends Component<{}> {
 
     return (
       <languageDataCtx.Consumer>
-        {({ placesData }) => {
-          //console.log(placesData.places[0].place.thisWay[0].beacon);
+        {({ placesData, appData, stylesData }) => {
+          console.log("placesData:", placesData);
+          console.log("appData:", appData);
+          console.log("stylesData:", stylesData);
           return (
             <placeDataCtx.Provider
-              value={{
-                currentPlace: placesData.places[this.state.placeIndex].place
-              }}
+              value={placesData.places[this.state.placeIndex].place}
             >
               <View style={styles.mainContainer}>
                 <DrawerLayout

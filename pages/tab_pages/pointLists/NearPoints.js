@@ -1,18 +1,19 @@
 /* cSpell:disable */
 
-import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Accordion from 'react-native-collapsible/Accordion';
+import React, { Component } from "react";
+import { StyleSheet, Text, View } from "react-native";
+import Accordion from "react-native-collapsible/Accordion";
 // import * as Animatable from 'react-native-animatable';
 // import PropTypes from 'prop-types';
-import { FontAwesome } from '@expo/vector-icons';
+import { FontAwesome } from "@expo/vector-icons";
 // import { Dropdown } from 'react-native-material-dropdown';
-import { placeDataCtx } from '../../AppMain';
+import { placeDataCtx } from "../../AppMain";
 
-
-const firstTimeMsg = 'Opening hours:\n' + 'Sunday - Thursday 8:30 - 21:00\n' + 'Friday 8:30 - 13:00';
-const atPointDesc  = 'You are at the main gate\n' + 'There is an ATM outside';
-
+const firstTimeMsg =
+  "Opening hours:\n" +
+  "Sunday - Thursday 8:30 - 21:00\n" +
+  "Friday 8:30 - 13:00";
+const atPointDesc = "You are at the main gate\n" + "There is an ATM outside";
 
 export default class NearPoints extends Component<{}> {
   constructor(props) {
@@ -22,9 +23,9 @@ export default class NearPoints extends Component<{}> {
   }
 
   _renderHeader(section, index, isActive, dummy) {
-    let iconName = 'angle-down';
+    let iconName = "angle-down";
     if (isActive === true) {
-      iconName = 'angle-up';
+      iconName = "angle-up";
     }
     // console.log(section.point.title);
     return (
@@ -35,12 +36,12 @@ export default class NearPoints extends Component<{}> {
           */}
           <View style={styles.itemTitleRow}>
             <Text style={styles.itemTitleText}>
-              {'  '}
-              {section.point.title} 
+              {"  "}
+              {section.point.title}
             </Text>
             <Text style={styles.itemTitleDir}>
-              {'Direction: '}
-              {section.point.direction} 
+              {"Direction: "}
+              {section.point.direction}
             </Text>
           </View>
           <View style={styles.iconOpenColapse}>
@@ -63,7 +64,7 @@ export default class NearPoints extends Component<{}> {
     // console.log('rendering placePoints');
     return (
       <placeDataCtx.Consumer>
-        {({ currentPlace }) => {
+        {place => {
           let curBcnIdx = this.props.beaconIndex;
           // console.log('beacon index: ' + curBcnIdx);
           // let points = currentPlace.thisWay[curBcnIdx].beacon.points;
@@ -75,7 +76,7 @@ export default class NearPoints extends Component<{}> {
 
               {/*<Text style={styles.headingTo}>{getTextFromCurHeading()}</Text>*/}
               <Accordion
-                sections={currentPlace.nearby[curBcnIdx].beacon.points}
+                sections={place.nearby[curBcnIdx].beacon.points}
                 renderHeader={this._renderHeader}
                 renderContent={this._renderContent}
               />
@@ -90,13 +91,13 @@ export default class NearPoints extends Component<{}> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: '100%',
-    backgroundColor: '#FDFDFD'
+    width: "100%",
+    backgroundColor: "#FDFDFD"
   },
   atPointDesc: {
     marginLeft: 10,
     marginBottom: 20,
-    fontSize: 20,
+    fontSize: 20
     /* textAlign: 'center'*/
   },
   // headingTo: {
@@ -107,24 +108,24 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginLeft: 20
   },
-  nearbyMessage:  {
+  nearbyMessage: {
     fontSize: 20,
     marginLeft: 20
   },
   accordArea: {
-    width: '100%',
-    backgroundColor: '#FFFFFF', // '#F5FCFF'
+    width: "100%",
+    backgroundColor: "#FFFFFF", // '#F5FCFF'
     padding: 3,
-    borderBottomColor: '#E7E7E7',
+    borderBottomColor: "#E7E7E7",
     borderBottomWidth: 2
   },
   itemTitle: {
     flex: 1,
-    width: '100%',
+    width: "100%",
     height: 35,
-    flexDirection: 'row',
-    backgroundColor: 'transparent',
-    borderBottomColor: 'white',
+    flexDirection: "row",
+    backgroundColor: "transparent",
+    borderBottomColor: "white",
     paddingTop: 5,
     paddingBottom: 5,
     borderRadius: 20
@@ -132,22 +133,22 @@ const styles = StyleSheet.create({
   itemTitleText: {
     // textAlign: 'center',
     fontSize: 18,
-    fontWeight: '300',
-    fontStyle: 'normal'
+    fontWeight: "300",
+    fontStyle: "normal"
   },
   iconOpenColapse: {
-    height: '100%',
-    marginLeft: 'auto',
+    height: "100%",
+    marginLeft: "auto",
     marginRight: 10,
-    alignItems: 'center'
+    alignItems: "center"
   },
   itemDetails: {
     padding: 20,
-    backgroundColor: '#fff'
+    backgroundColor: "#fff"
   },
   itemDetailsText: {
     fontSize: 16,
-    fontWeight: '200',
-    fontStyle: 'normal'
+    fontWeight: "200",
+    fontStyle: "normal"
   }
 });
