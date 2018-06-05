@@ -16,7 +16,8 @@ import {
   /* Constants, AppLoading, */ AppLoading,
   Font,
   Permissions,
-  Location
+  Location,
+  SecureStore
 } from "expo";
 
 import { YellowBox } from "react-native";
@@ -32,7 +33,7 @@ import Profile from "./pages/setting_pages/Profile";
 import SetHome from "./pages/setting_pages/SetHome";
 import Voice from "./pages/setting_pages/Voice";
 import Help from "./pages/Help";
-import { getLanguage } from "./data";
+import { getLanguage, getLanguageCode } from "./data";
 
 /*
 This contex contains: appData.json, placesData.json and stylesData.json
@@ -143,6 +144,12 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
+    SecureStore.getItemAsync("preferences-language").then(value => {
+      console.log(value);
+      if (value !== null) {
+        this.setState({ language: getLanguageCode(value) });
+      }
+    });
     this._asyncFonts();
   }
 
