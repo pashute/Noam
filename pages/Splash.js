@@ -1,54 +1,92 @@
-import React, { Component } from "react";
-import { Platform, StyleSheet, Text, View, Alert } from "react-native";
-import { Button } from "react-native";
-import ActionBar from "react-native-action-bar";
-import PropTypes from "prop-types";
-import { StackNavigator } from "react-navigation";
-import Main from "./Main";
-import DrawerLayout from "react-native-drawer-layout";
-import Menu from "./Menu";
-import Tab from "./Tab";
-import { FontAwesome } from "@expo/vector-icons";
+/* cSpell:disable */
+/* global require */
 
+import React from 'react';
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+  Button /* , Alert */
+} from 'react-native';
+import ActionBar from 'react-native-action-bar';
+import DrawerLayout from 'react-native-drawer-layout';
+import { FontAwesome } from '@expo/vector-icons';
+// import PropTypes from 'prop-types';
+import { Font } from 'expo';
+// import AppMain from './AppMain';
+import Menu from './Menu';
+
+// import { BluetoothStatus } from 'react-native-bluetooth-status';
+
+// todo data: get from appData
 const txtIosinstruct =
-  "Welcome to Noam,\n" +
-  "your indoor assistant\n" +
-  "for accessible buildings\n\n" +
+  'Welcome to Noam,\n' +
+  'your indoor assistant\n' +
+  'for accessible buildings\n\n' +
   "We can tell you what's in\n" +
-  "the building and where";
+  'the building and where';
 
 const txtAndroinstruct =
-  "Welcome to Noam,\n" +
-  "your indoor assistant\n" +
-  "for accessible buildings\n\n" +
+  'Welcome to Noam,\n' +
+  'your indoor assistant\n' +
+  'for accessible buildings\n\n' +
   "We can tell you what's in\n" +
-  "the building and where";
+  'the building and where';
 
-const txtSplashTitle = "noam";
+const txtSplashTitle = 'noam';
 
-const txtSplashBody = " you're indoor assistant";
+const txtSplashDescription = ' your indoor assistant';
 
-const colorBgDark = "#181818"; // was '#00000F'
+const splashAppnameColor = '#440077';
+const colorButtonShadow = '#181818'; // was '#00000F' 181818 is dark
 
 const instructions = Platform.select({
   ios: txtIosinstruct,
   android: txtAndroinstruct
 });
 
-export default class Splash extends Component<{}> {
+export default class Splash extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       titleText: txtSplashTitle,
-      bodyText: txtSplashBody,
-      drawerClosed: true
+      bodyText: txtSplashDescription,
+      drawerClosed: true,
+      continueDisabled: true,
+      bluetoothState: '',
+      fontLoaded: false
     };
+
     // in text style array...
     // { color: this.props.screenProps.welcomeColor }
     this.toggleDrawer = this.toggleDrawer.bind(this);
     this.setDrawerState = this.setDrawerState.bind(this);
+
+    // console.log('ready');
   }
 
+  async componentDidMount() {
+    this.checkInitialBluetoothState();
+    await Font.loadAsync({
+      'Bauhaus 93': require('../assets/fonts/Bauhaus-93.ttf')
+    });
+    this.setState({ fontLoaded: true });
+  }
+
+  // onMount - function
+  async checkInitialBluetoothState() {
+    try {
+      // fix: add bluetooth
+      // const isEnabled = await BluetoothStatus.state();
+      // this.setState({ bluetoothState: (isEnabled) ? 'On' : 'Off'});
+      // console.log(this.state.bluetoothState);
+    } catch (error) {
+      console.error('Problem: Cannot get Bluetooth status.');
+    }
+  }
+
+  // ctor functions
   setDrawerState() {
     this.setState({
       drawerClosed: !this.state.drawerClosed
@@ -62,6 +100,8 @@ export default class Splash extends Component<{}> {
       this.DRAWER.closeDrawer();
     }
   };
+
+  // Noam splash screen specifics
   isLastUserplace() {
     // real:  return( userLastPlaceID  == currentPlaceID)
     return true; // for wireframe  version
@@ -70,14 +110,23 @@ export default class Splash extends Component<{}> {
     // real:  return compassAPI.hasBlootooth() // or something like this
     return false; // for wireframe  version
   }
-  _turnOnBluetooth() {
-    console.log("bluetooth");
-    Alert.alert("Please turn on your bluetooth!");
-  }
+
+  _turnBluetoothOn = () => {
+    try {
+      console.log('bluetooth');
+      if (Platform.OS === 'android')
+        console.log('todo: android. turn bluetooth on');
+      else console.log('todo: ios. open bluetooth console');
+
+      this.setState({ continueDisabled: false });
+    } catch (err) {
+      console.error('turn bluetooth on failed' + err);
+    }
+  };
   render() {
-    const { navigate } = this.props.navigation;
+    const { navigate } = this.props.navigation; // todo: fix validation warning
     return (
-      <View style={styles.container}>
+      <View style={styles.mainContainer}>
         <DrawerLayout
           drawerWidth={200}
           ref={drawerElement => {
@@ -89,37 +138,66 @@ export default class Splash extends Component<{}> {
           renderNavigationView={() => <Menu nav={navigate} />}
         >
           <ActionBar
-            headerStyle={styles.actbar}
-            containerStyle={styles.bar}
-            titleStyle={styles.title}
-            title={"noam"}
-            leftIconName={"location"}
-            onLeftPress={() => console.log("Left!")}
+            containerStyle={styles.actionBarContainer}
+            titleStyle={styles.actionTitle}
+            title={'noam'}
+            leftIconName={'location'}
+            onLeftPress={() => console.log('Left!')}
             rightIcons={[
               {
-                name: "menu",
+                name: 'menu',
                 onPress: this.toggleDrawer
               }
             ]}
           />
 
-          <Text style={styles.assistant}>
-            <FontAwesome name={"adjust"} size={25} color={"#FF0000"} />
-            <Text style={[styles.welcome]}>{this.state.titleText}</Text>
-            <Text onPress={() => navigate("TabPage")}>
+          <Text style={(styles.splashMsg, styles.textCentered)}>
+            {'\n\n\n\n'}
+            <FontAwesome
+              name={'arrow-up'}
+              size={25}
+              color={splashAppnameColor}
+            />
+            <Text
+              style={[
+                this.state.fontLoaded
+                  ? styles.splashAppNameBau
+                  : styles.splashAppName,
+                { color: splashAppnameColor }
+              ]}
+            >
+              {' '}
+              {this.state.titleText}
+            </Text>
+            <Text>
+              {'  '}
               {this.state.bodyText}
             </Text>
           </Text>
 
           <Text style={styles.instructions}>{instructions}</Text>
 
-          <View style={styles.buttonContainer}>
+          <View style={styles.buttonDecorator}>
             {/* the bluetooth button */}
             <Button
-              onPress={this._turnOnBluetooth}
+              onPress={this._turnBluetoothOn}
               title="Press here to turn bluetooth on"
-              color="#0000F3"
-              accessibilityLabel="Tap on Me"
+              color="#242424"
+              disabled={!this.state.continueDisabled}
+              accessibilityLabel="Press to turn bluetooth on"
+            />
+          </View>
+          <View>
+            <Text> </Text>
+          </View>
+          <View style={styles.buttonDecorator}>
+            {/* the CONTINUE button */}
+            <Button
+              onPress={() => navigate('MainPage')}
+              title="Continue"
+              color="#242424"
+              disabled={this.state.continueDisabled}
+              accessibilityLabel="Continue"
             />
           </View>
         </DrawerLayout>
@@ -129,44 +207,49 @@ export default class Splash extends Component<{}> {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  mainContainer: {
     flex: 1,
-    marginTop: Platform.OS === "ios" ? 0 : Expo.Constants.statusBarHeight,
-    backgroundColor: "#F5FCFF"
+    marginTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight,
+    backgroundColor: '#FDFDFD'
   },
-  actbar: {
-    //backgroundColor: "#0000FF",
-    color: "#FF0000"
+  actionBarContainer: {
+    backgroundColor: '#330077'
   },
-  welcome: {
-    fontSize: 35,
-    color: "#6600FF"
+  actionTitle: {
+    textAlign: 'center',
+    fontSize: 20
+  },
+  splashAppName: {
+    fontSize: 35
+  },
+  splashAppNameBau: {
+    fontFamily: 'Bauhaus 93',
+    fontSize: 35
   },
   instructions: {
     marginTop: 40,
-    textAlign: "center",
-    color: "#333333",
+    textAlign: 'center',
+    color: '#333333',
     marginBottom: 80,
     fontSize: 20
   },
-  assistant: {
+  splashMsg: {
     fontSize: 22,
     marginTop: 60,
     marginLeft: 20,
     marginRight: 20
   },
-  title: {
-    textAlign: "center",
-    fontSize: 20
+  textCentered: {
+    textAlign: 'center'
   },
-  buttonContainer: {
-    backgroundColor: "#0000FF", // colorBgDark,//'#454545', // '#2E9298',
+  buttonDecorator: {
+    backgroundColor: '#444444', // colorBgDark,//'#454545', // '#2E9298',
     borderRadius: 10,
-    padding: 10,
-    shadowColor: colorBgDark, //'#454545', // '#000000'
+    padding: 3,
+    shadowColor: colorButtonShadow, //'#454545', // '#000000'
     shadowOffset: {
       width: 0,
-      height: 3
+      height: 1
     },
     shadowRadius: 3, //10,
     shadowOpacity: 0.25,

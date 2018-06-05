@@ -1,150 +1,179 @@
 import React, { Component } from 'react';
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View,
-  Alert,
-} from 'react-native';
+import { Platform, StyleSheet, Text, View, Alert } from 'react-native';
 import { Button } from 'react-native';
 import ActionBar from 'react-native-action-bar';
-import PropTypes from 'prop-types';
-import {StackNavigator,} from 'react-navigation';
-const str_back = '< Back';
-const str_toc = "TOC"
-const str_next = 'Next >'
-const str_title = '2.Auto Updating by pointing'
-const str_description1 = "If you turn this option\n"+"the lists and instructions will\n" + "automatically change as you\n" + "change your direction";
-const str_description2 = 'To refresh the list of manually\n'+'point the top of phone in\n' +'the direction you want\n'+"instructions for and press the\n"+'This WAT Tab';
-const str_status = "Auto-update is currently OFF"
-const str_on = "Turn auto-update on";
+// import PropTypes from 'prop-types';
+// import { StackNavigator } from 'react-navigation';
+import Bottom from '../tab_pages/Bottom.js';
+
+// Todo add context autoUpdate state and decide on status accordingly
+
+// Todo data: take from appData
+const txtAppName = 'Noam';
+const txtSettingsTitle = 'Settings';
+const txtBack = '< Back';
+const txtTOC = 'TOC';
+const txtNext = 'Next >';
+
+const txtTitleAutoUpdate = '2. Auto Update by pointing';
+
+const txtInstructionAutoUpdate = [
+  'If you turn this option on the lists\n',
+  'will automatically change as you\n',
+  'change your direction\n',
+  '\n',
+  'To refresh the list manually\n',
+  'point the top of your phone in\n',
+  'the direction you want instructions for\n',
+  'and press the This Way tab'
+];
+
+const txtAutoUpdateIs = 'Auto-update is currently set ';
+const txtAutoUpdateTurn = 'Turn auto-update ';
+const txtOn = 'on';
+const txtOff = 'off';
+
+// Todo data: get from stylesData
+const colorButtonShadow = '#181818'; // was '#00000F' 181818 is dark
 
 export default class AutoUpdate extends Component<{}> {
   constructor(props) {
     super(props);
-    }
 
-    _turnOnAutoUpdate()
-    {
-        Alert.alert("TOC")
-    }
-    render() {
-        const { navigate } = this.props.navigation;
-        return (
-          <View style={styles.container} onPress={this._onPressMainPage}>
-              <ActionBar
-                        containerStyle={styles.bar}
-                        titleStyle={styles.title}
-                        title={'Noam'}
-                        
-                        leftIconName={'location'}
-                        
-                        onLeftPress={() => console.log('Left!')}
-                        
-                    />
-                       
-                    <Text style={styles.assistant}>
-                       Settings            
-                   </Text>
-                   <Text style={styles.instructions}>
-                       {str_title}
-                   </Text>
-                  
-                <View style={{
-                flex: 1,
-                flexDirection: 'column',
-                
-                }}>
-                    <Text style={styles.describe}>
-                        {str_description1}
-                    </Text>
-                    <Text style={styles.describe}>
-                        {str_description2}
-                    </Text>
-                    <Text style={styles.describe}>
-                        {str_status}
-                </Text>
-                <View style={styles.buttonContainer}>
-                    <Button onPress={this._turnOnAutoUpdate} title={str_on} color="#FFFFFF" accessibilityLabel="Tap on Me"/>
-                </View>
-                </View>                    
-                <View style={{
-                   flex: 1,
-                   flexDirection: 'row',
-                   justifyContent: 'space-between',
-                   }}>
-                   <Text onPress={() => navigate('Calibrate')}style={styles.navbtn}>
-                       {str_back}
-                   </Text>
-                   <Text onPress={() => navigate('TabPage')}style={styles.navbtn}>
-                       {str_toc}
-                   </Text>
-                   <Text onPress={() => navigate('Personal')}style={styles.navbtn}>
-                       {str_next}
-                   </Text>
-                </View>
+    this.state = {
+      autoupdateStatus: 'off',
+      headingchangedWarn: 'off'
+    };
+  }
+
+  _turnOnAutoUpdate() {
+    Alert.alert('demo mode only');
+    this.setateState({
+      autoupdateStatus: this.state.autoupdateStatus == txtOff ? txtOn : txtOff
+    });
+  }
+  render() {
+    const { navigate } = this.props.navigation;
+    return (
+      <View style={styles.mainContainer}>
+        <ActionBar
+          containerStyle={styles.actionBarContainer}
+          titleStyle={styles.actionTitle}
+          title={txtAppName}
+          leftIconName={'location'}
+          onLeftPress={() => console.log('Left!')}
+        />
+        <View style={styles.contentContainer}>
+          <Text style={styles.titleText}>{txtSettingsTitle}</Text>
+          <Text style={styles.instructionsHeader}>{txtTitleAutoUpdate}</Text>
+          <View style={styles.instructionsView}>
+            <Text style={styles.instructions}>{txtInstructionAutoUpdate}</Text>
+            <Text style={styles.instructions}>
+              {txtAutoUpdateIs}
+              {': '}
+              {this.state.autoupdateStatus}
+            </Text>
+            <View style={styles.buttonDecorator}>
+              <Button
+                onPress={this._turnOnAutoUpdate}
+                title={txtAutoUpdateTurn + ' ' + txtOn}
+                color="#333333"
+                accessibilityLabel="Tap to turn on auto update"
+              />
+            </View>
           </View>
-        );
-      }
+        </View>
+        <View style={styles.bottomNavRow}>
+          <Text onPress={() => navigate('Calibrate')} style={styles.navButton}>
+            {txtBack}
+          </Text>
+          <Text onPress={() => navigate('SetHome')} style={styles.navButton}>
+            {txtTOC}
+          </Text>
+          <Text onPress={() => navigate('Voice')} style={styles.navButton}>
+            {txtNext}
+          </Text>
+        </View>
+        <View style={styles.bottomRow}>
+          <Bottom />
+        </View>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      
-      backgroundColor: '#F5FCFF',
+  mainContainer: {
+    flex: 1,
+    marginTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight,
+    backgroundColor: '#FDFDFD'
+  },
+  actionBarContainer: {
+    backgroundColor: '#330077'
+  },
+  actionTitle: {
+    textAlign: 'center',
+    fontSize: 20
+  },
+  contentContainer: {
+    flex: 16
+  },
+  titleText: {
+    fontSize: 30,
+    marginTop: 30,
+    marginLeft: 20,
+    marginRight: 20,
+    marginBottom: 10
+  },
+  instructionsHeader: {
+    marginTop: 10,
+    textAlign: 'left',
+    color: '#333333',
+    marginBottom: 10,
+    fontSize: 22,
+    fontWeight: '400',
+    marginLeft: 25,
+    marginRight: 25
+  },
+  instructionsView: {
+    flex: 1,
+    flexDirection: 'column'
+  },
+  instructions: {
+    marginTop: 25,
+    textAlign: 'left',
+    color: '#333333',
+    marginBottom: 10,
+    fontSize: 18,
+    marginLeft: 25,
+    marginRight: 25
+  },
+  buttonDecorator: {
+    backgroundColor: '#444444', // colorBgDark,//'#454545', // '#2E9298',
+    borderRadius: 10,
+    padding: 3,
+    shadowColor: colorButtonShadow, //'#454545', // '#000000'
+    shadowOffset: {
+      width: 0,
+      height: 1
     },
-    instructions: {
-        marginTop: 25,
-        textAlign: 'left',
-        color: '#333333',
-        marginBottom: 10,
-        fontSize: 20,
-        marginLeft: 25,
-        marginRight: 25,
-      },
-
-      navbtn: {
-        marginTop: 150,
-        textAlign: 'left',
-        color: '#333333',
-        marginBottom: 10,
-        fontSize: 20,
-        marginLeft: 25,
-        marginRight: 25,
-      },
-      describe: {
-          marginTop: 10,
-          textAlign: 'center',
-          color: '#333333',
-          marginBottom: 10,
-          fontSize: 20,
-          
-
-        },
-      assistant:{
-        fontSize: 30,
-        marginTop: 60,
-        marginLeft: 20,
-        marginRight: 20,
-    
-      },
-    title:{
-        textAlign: 'center',
-        fontSize: 20,
-      },
-    buttonContainer: {
-      backgroundColor: '#2E9298',
-      borderRadius: 10,
-      padding: 5,
-      shadowColor: '#000000',
-      shadowOffset: {
-        width: 0,
-        height: 2
-      },
-      shadowRadius: 5,
-      shadowOpacity: 0.25,
-      marginRight: 60,
-      marginLeft: 60,
-    },
-  });
+    shadowRadius: 3, //10,
+    shadowOpacity: 0.25,
+    marginRight: 20,
+    marginLeft: 20
+  },
+  bottomNavRow: {
+    marginLeft: 15,
+    marginRight: 15,
+    flex: 2,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  navButton: {
+    textDecorationLine: 'underline',
+    fontSize: 22
+  },
+  bottomRow: {
+    flex: 2
+  }
+});

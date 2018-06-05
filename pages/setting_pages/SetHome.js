@@ -1,117 +1,155 @@
 import React, { Component } from 'react';
 import {
-  Platform,
   StyleSheet,
   Text,
   View,
-  Alert,
+  Button,
+  Platform /* , Alert, */
 } from 'react-native';
-import { Button } from 'react-native';
 import ActionBar from 'react-native-action-bar';
-import PropTypes from 'prop-types';
-import {StackNavigator,} from 'react-navigation';
-import RNExitApp from 'react-native-exit-app';
-const set1 = '1. Calibrate Compass';
-const set2 = '2. Auto Update when pointing';
-const set3 = '3. Voice Assistant';
-const set4 = '4. Personal Preference';
-const set5 = '5. Profile';
+// import PropTypes from 'prop-types';
+// import {StackNavigator,} from 'react-navigation';
+// import RNExitApp from 'react-native-exit-app';
+import Bottom from '../tab_pages/Bottom.js';
+
+// todo data: take from AppData.json
+const txtToCalibrate = '1. Calibrate Compass';
+const txtToAutoUpdate = '2. Auto Update when pointing';
+const txtToVoiceAssist = '3. Voice Assistant (Disabled)';
+const txtToPreferences = '4. Preferences';
+const txtToProfile = '5. Profile';
+
+const txtDone = 'Done';
+
+// todo data: take from stylesData
+const colorButtonShadow = '#181818';
+
 
 export default class SetHome extends Component<{}> {
   constructor(props) {
     super(props);
-    }
-    _exitApp()
-    {
-       RNExitApp.exitApp();
-      //Alert.alert("How are you?");
-    }
-    render() {
-      const { navigate } = this.props.navigation;
-        return (
-          <View style={styles.container} onPress={this._onPressMainPage}>
-              <ActionBar
-                        containerStyle={styles.bar}
-                        titleStyle={styles.title}
-                        title={'noam'}
-                        
-                        leftIconName={'location'}
-                        
-                        onLeftPress={() => console.log('Left!')}
-                        
-                    />
-                       
-             <Text style={styles.assistant}>
-                Settings
-            </Text>
+  }
 
-            <View style={styles.buttonContainer}>
-              <Button onPress={() => navigate('Calibrate')} title={set1} color="#FFFFFF" accessibilityLabel="Tap on Me"/>
-            </View>
-            <View style={styles.buttonContainer}>
-              <Button onPress={() => navigate('AutoUpdate')} title={set2} color="#FFFFFF" accessibilityLabel="Tap on Me"/>
-              </View>
-            <View style={styles.buttonContainer}>
-              <Button onPress={() => navigate('Voice')} title={set3} color="#FFFFFF" accessibilityLabel="Tap on Me"/>
-            </View>
-            <View style={styles.buttonContainer}>
-              <Button onPress={() => navigate('Personal')} title={set4} color="#FFFFFF" accessibilityLabel="Tap on Me"/>
-            </View>
-            <View style={styles.buttonContainer}>
-            <Button onPress={() => navigate('Profile')} title={set5} color="#FFFFFF" accessibilityLabel="Tap on Me"/>
+  render() {
+    const { navigate } = this.props.navigation;
+    return (
+      <View style={styles.mainContainer}>
+        <ActionBar
+          containerStyle={styles.actionBarContainer}
+          titleStyle={styles.actionTitle}
+          title={'noam'}
+          leftIconName={'location'}
+          onLeftPress={() => console.log('Left!')}
+        />
+        <View style={[styles.contentContainer, styles.buttonContainer]}>
+          <Text style={styles.titleText}>Settings</Text>
+
+          <View style={styles.buttonDecorator}>
+            <Button
+              onPress={() => navigate('Calibrate')}
+              title={txtToCalibrate}
+              color="#111111"
+              accessibilityLabel="Tap to calibrate compass"
+            />
           </View>
-            <Text onPress={this._exitApp}style={styles.instructions}>
-                  Close
-            </Text>
+          <View style={styles.buttonDecorator}>
+            <Button
+              onPress={() => navigate('AutoUpdate')}
+              title={txtToAutoUpdate}
+              color="#111111"
+              accessibilityLabel="Tap for auto-update settings"
+            />
           </View>
-        );
-      }
+          <View style={styles.buttonDecorator}>
+            <Button
+              onPress={() => navigate('Voice')}
+              title={txtToVoiceAssist}
+              color="#111111"
+              accessibilityLabel="Tap on Me"
+            />
+          </View>
+          <View style={styles.buttonDecorator}>
+            <Button
+              onPress={() => navigate('Preferences')}
+              title={txtToPreferences}
+              color="#111111"
+              accessibilityLabel="Tap on Me"
+            />
+          </View>
+          <View style={styles.buttonDecorator}>
+            <Button
+              onPress={() => navigate('Profile')}
+              title={txtToProfile}
+              color="#111111"
+              accessibilityLabel="Tap on Me"
+            />
+          </View>
+        </View>
+        <View style={styles.bottomNavRow}>
+          <Text onPress={() => navigate('MainPage')} style={styles.navButton}>
+            {txtDone}
+          </Text>
+        </View>
+        <View style={styles.bottomRow}>
+          <Bottom />
+        </View>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      
-      backgroundColor: '#F5FCFF',
+  mainContainer: {
+    flex: 1,
+    marginTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight,
+    backgroundColor: '#FDFDFD'
+  },
+  actionBarContainer: {
+    backgroundColor: '#330077'
+  },
+  actionTitle: {
+    textAlign: 'center',
+    fontSize: 20
+  },
+  contentContainer: {
+    flex: 16
+  },
+  titleText: {
+    fontSize: 30,
+    marginTop: 30,
+    marginLeft: 20,
+    marginRight: 20,
+    marginBottom: 10
+  },
+  buttonContainer:{
+    flexDirection: 'column',
+    justifyContent: 'space-between'
+  },
+  buttonDecorator: {
+    backgroundColor: '#444444', 
+    borderRadius: 10,
+    padding: 3,
+    shadowColor: colorButtonShadow, 
+    shadowOffset: {
+      width: 0,
+      height: 1
     },
-    welcome: {
-      fontSize: 35,
-      color: '#6600ff',
-  
-    },
-    instructions: {
-      marginTop: 40,
-      textAlign: 'center',
-      color: '#333333',
-      marginBottom: 80,
-      fontSize: 20,
-      fontStyle: 'normal',
-    },
-    assistant:{
-      fontSize: 30,
-      marginTop: 50,
-      marginLeft: 20,
-      marginRight: 20,
-      marginBottom: 30,
-  
-    },
-    title:{
-        textAlign: 'center',
-        fontSize: 20,
-      },
-    buttonContainer: {
-      backgroundColor: '#2E9298',
-      borderRadius: 10,
-      padding: 5,
-      shadowColor: '#000000',
-      shadowOffset: {
-        width: 0,
-        height: 2
-      },
-      shadowRadius: 10,
-      shadowOpacity: 0.25,
-      margin: 10,
-      
-
-    },
-  });
+    shadowRadius: 3, //10,
+    shadowOpacity: 0.25,
+    marginRight: 20,
+    marginLeft: 20
+  },
+  bottomNavRow: {
+    flex: 2,
+    flexDirection: 'row',
+    marginLeft: 15,
+    justifyContent: 'space-between'
+  },
+  navButton: {
+    textDecorationLine: 'underline',
+    fontSize: 22
+  },
+  bottomRow: {
+    flex: 2
+  }
+});
