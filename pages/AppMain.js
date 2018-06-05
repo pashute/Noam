@@ -1,25 +1,25 @@
 /* cSpell:disable */
 
-import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View /*, Alert*/ } from 'react-native';
+import React, { Component } from "react";
+import { Platform, StyleSheet, Text, View /*, Alert*/ } from "react-native";
 
-import DrawerLayout from 'react-native-drawer-layout';
-import ActionBar from 'react-native-action-bar';
+import DrawerLayout from "react-native-drawer-layout";
+import ActionBar from "react-native-action-bar";
 // import PropTypes from 'prop-types';
 
 // import { Constants } from 'expo';
 // import Icon from 'react-native-vector-icons/FontAwesome';
-import { FontAwesome } from '@expo/vector-icons';
-import '@expo/vector-icons';
-import { ButtonGroup } from 'react-native-elements';
+import { FontAwesome } from "@expo/vector-icons";
+import "@expo/vector-icons";
+import { ButtonGroup } from "react-native-elements";
 
-import NearBy from './tab_pages/NearBy';
-import ThisWay from './tab_pages/ThisWay';
-import InPlace from './tab_pages/InPlace';
-import Menu from './Menu';
-const earIcon = require('../assets/icons/ear1.png');
+import NearBy from "./tab_pages/NearBy";
+import ThisWay from "./tab_pages/ThisWay";
+import InPlace from "./tab_pages/InPlace";
+import Menu from "./Menu";
+const earIcon = require("../assets/icons/ear1.png");
 
-import { languageDataCtx } from '../App';
+import { languageDataCtx } from "../App";
 
 export const placeDataCtx = React.createContext(languageDataCtx);
 
@@ -27,14 +27,14 @@ export const placeDataCtx = React.createContext(languageDataCtx);
 // const strExit = 'Exits';
 // const strCall = 'Call';
 
-const pointPlaceName = 'Big Fashion';
-const pointBeaconLocation = 'South gate (Bank Leumi)';
-const pointPlaceIconName = 'bold';
+const pointPlaceName = "Big Fashion";
+const pointBeaconLocation = "South gate (Bank Leumi)";
+const pointPlaceIconName = "bold";
 
-const strThis = 'This';
-const strWay = 'way';
-const strNearby = 'Nearby';
-const strInplace = 'In building';
+const strThis = "This";
+const strWay = "way";
+const strNearby = "Nearby";
+const strInplace = "In building";
 
 // tab texts and icons:
 const nearbyButton = () => (
@@ -46,7 +46,7 @@ const thatwayButton = () => (
   <View style={styles.tabButton}>
     <Text style={styles.tabText}>{strThis} </Text>
     <FontAwesome name="arrow-up" size={14} />
-    <Text style={styles.tabText}>{' ' + strWay}</Text>
+    <Text style={styles.tabText}>{" " + strWay}</Text>
   </View>
 );
 const inplaceButton = () => (
@@ -70,10 +70,11 @@ export default class AppMain extends Component<{}> {
     this.toggleDrawer = this.toggleDrawer.bind(this);
     this.setDrawerState = this.setDrawerState.bind(this);
     this.updateTabIndex = this.updateTabIndex.bind(this);
+    console.log(this.props.screenProps);
   }
 
   updateTabIndex = tabIndex => {
-    console.log('tab index: ' + tabIndex);
+    console.log("tab index: " + tabIndex);
     this.setState({ tabIndex });
   };
 
@@ -118,12 +119,12 @@ export default class AppMain extends Component<{}> {
                   <ActionBar
                     containerStyle={styles.actionBarContainer}
                     titleStyle={styles.actionTitle}
-                    title={'noam'}
+                    title={"noam"}
                     leftIconImage={earIcon}
-                    onLeftPress={() => console.log('Talk Icon pressed.')}
+                    onLeftPress={() => console.log("Talk Icon pressed.")}
                     rightIcons={[
                       {
-                        name: 'menu',
+                        name: "menu",
                         onPress: this.toggleDrawer
                       }
                     ]}
@@ -155,7 +156,7 @@ export default class AppMain extends Component<{}> {
 
                   <TabbedPage
                     selectedIndex={this.state.tabIndex}
-                    pointingDirection={this.props.screenProps.pointingDirection}
+                    pointingDirection={this.props.screenProps.pointingTo}
                     heading={this.props.screenProps.heading}
                     beaconIndex={this.state.beaconIndex}
                   />
@@ -175,6 +176,8 @@ const TabbedPage = ({
   heading,
   beaconIndex
 }) => {
+  //console.log(pointingDirection);
+  //console.log(heading);
   // console.log('tab: ' + selectedIndex + '  beaconIndex:' + beaconIndex);
   switch (selectedIndex) {
     case 0:
@@ -204,35 +207,35 @@ const TabbedPage = ({
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    marginTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight,
-    backgroundColor: '#FDFDFD'
+    marginTop: Platform.OS === "ios" ? 0 : Expo.Constants.statusBarHeight,
+    backgroundColor: "#FDFDFD"
   },
   actionBarContainer: {
-    backgroundColor: '#330077'
+    backgroundColor: "#330077"
   },
   actionTitle: {
-    textAlign: 'center',
+    textAlign: "center",
     fontSize: 20
   },
   /* tabs */
   tabButton: {
-    flexDirection: 'row'
+    flexDirection: "row"
   },
   tabText: {
     fontSize: 14
   },
   /* tabSelecteButtonStyle:{}, */
   tabSelected: {
-    backgroundColor: '#FFFFFF'
+    backgroundColor: "#FFFFFF"
   },
   topPlaceRow: {
     /* */
-    flexDirection: 'column',
-    justifyContent: 'center',
+    flexDirection: "column",
+    justifyContent: "center",
     marginBottom: 5
   },
   placeBar: {
-    flexDirection: 'row',
+    flexDirection: "row",
     marginTop: 10,
     marginLeft: 40,
     marginRight: 40
@@ -241,21 +244,21 @@ const styles = StyleSheet.create({
     lineHeight: 20,
     flex: 1,
     fontSize: 18,
-    textAlignVertical: 'center'
+    textAlignVertical: "center"
   },
   placeIcon: {
     fontSize: 24,
-    color: '#111145',
+    color: "#111145",
     marginLeft: 5
   },
   beaconTxt: {
-    textAlign: 'center',
+    textAlign: "center",
     fontSize: 18
   },
   buttonDecorator: {
     borderRadius: 10,
     padding: 10,
-    shadowColor: '#000000',
+    shadowColor: "#000000",
     shadowOffset: {
       width: 0,
       height: 3
@@ -266,7 +269,7 @@ const styles = StyleSheet.create({
     marginLeft: 20
   },
   separator: {
-    borderBottomColor: 'lightgray',
+    borderBottomColor: "lightgray",
     borderBottomWidth: 1
   }
 });

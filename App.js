@@ -152,18 +152,37 @@ export default class App extends React.Component {
   };
 
   _getHeadingAsync = async () => {
-    let { status } = await Permissions.askAsync(Permissions.LOCATION);
-    if (status !== "granted") {
+    let { locationServicesEnabled } = await Location.getProviderStatusAsync();
+    if (locationServicesEnabled === false) {
       this.setState({
-        errorMessage: "Permission to access location was denied"
+        pointingTo: "Please enable Location"
       });
+    } else {
+      let { status } = await Permissions.askAsync(Permissions.LOCATION);
+      if (status !== "granted") {
+        this.setState({
+          pointingTo: "Permission to access location was denied"
+        });
+      } else {
+        console.log(status);
+        Location.watchHeadingAsync(this.onHeadingChange);
+      }
     }
-
-    Location.watchHeadingAsync(this.onHeadingChange);
   };
 
   onHeadingChange = heading => {
-    this.setState({ heading });
+    const degree = 360 / 8;
+    const angle = heading.trueHeading + degree / 2;
+    let pointingTo = "North";
+    if (angle >= 0 * degree && angle < 1 * degree) pointingTo = "North";
+    if (angle >= 1 * degree && angle < 2 * degree) pointingTo = "North East";
+    if (angle >= 2 * degree && angle < 3 * degree) pointingTo = "East";
+    if (angle >= 3 * degree && angle < 4 * degree) pointingTo = "South East";
+    if (angle >= 4 * degree && angle < 5 * degree) pointingTo = "South";
+    if (angle >= 5 * degree && angle < 6 * degree) pointingTo = "South West";
+    if (angle >= 6 * degree && angle < 7 * degree) pointingTo = "West";
+    if (angle >= 7 * degree && angle < 8 * degree) pointingTo = "North West";
+    this.setState({ heading, pointingTo });
   };
 
   // onCompassUpdate = pointingTo => this.setState({ pointingTo });
