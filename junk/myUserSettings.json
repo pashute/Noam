@@ -1,0 +1,54 @@
+{
+    "window.zoomLevel": 1,
+    "editor.fontFamily": "Consolas, 'Courier New', monospace",
+    "editor.fontSize": 18,
+    "files.autoSave": "afterDelay",
+    "git.autofetch": false,
+    "colorize.languages": [
+        "javascript",
+        "css",
+        "sass",
+        "scss",
+        "less",
+        "pcss",
+        "sss",
+        "stylus",
+        "xml",
+        "svg"
+    ],
+    "colorize.files_extensions": [
+        ".js"
+    ],
+    "colorize.hide_current_line_decorations": true,
+    "editor.formatOnSave": true,
+    "[javascriptreact]": {},
+    "files.associations": {
+        "*.js": "javascriptreact"
+    },
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    },
+    "emmet.triggerExpansionOnTab": true,
+    "prettier.singleQuote": true,
+    "javascript.validate.enable": false,
+    "cSpell.enabledLanguageIds": [
+        "asciidoc",
+        "handlebars",
+        "html",
+        "jade",
+        "latex",
+        "less",
+        "markdown",
+        "php",
+        "plaintext",
+        "pub",
+        "text",
+        "typescript",
+        "typescriptreact",
+        "yml"
+    ],
+    "cSpell.userWords": [
+        "Pashute",
+        "keytool"
+    ],
+}
