@@ -199,7 +199,9 @@ export default class Preferences extends Component<{}> {
             {txtNext}
           </Text>
         </View>
-        <View style={styles.bottomRow} />
+        <View style={styles.bottomRow}>
+          <Bottom />
+        </View>
       </View>
     );
   }
