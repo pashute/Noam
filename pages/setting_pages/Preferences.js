@@ -3,35 +3,61 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  Alert
   /* TextInput,  Alert, Button*/
 } from 'react-native';
+import { Util, SecureStore, Constants } from 'expo';
 import ActionBar from 'react-native-action-bar';
 // import PropTypes from 'prop-types';
 import CheckBox from 'react-native-checkbox';
 import { Dropdown } from 'react-native-material-dropdown';
+import Languages from '../../data';
 import Bottom from '../tab_pages/Bottom.js';
 
-
-const txtSettings = 'Settings';
 const txtAppName = 'Noam';
 const txtPreferencesTitle = 'Preferences';
+const txtBack = '< Back';
 const txtNext = 'Next';
 const txtTOC = 'TOC';
-const txtBack = '< Back';
-// const txtDone = 'Done';
+// const txtDone = "Done";
+const txtSettings = 'Settings';
 // const txtToPreferences = '4. Preferences';
 
 export default class Preferences extends Component<{}> {
   constructor(props) {
     super(props);
     this.state = {
-      language: 'en',
+      language: 'English',
       useLargeFont: false,
       scale: '100%',
       theme: 'HighContrast'
     };
   }
+
+  UNSAFE_componentWillMount() {
+    SecureStore.getItemAsync('preferences-useLargeFont').then(value => {
+      console.log(value);
+      if (value === 'true') {
+        this.setState({ useLargeFont: true });
+      }
+    });
+
+    SecureStore.getItemAsync('preferences-scale').then(value => {
+      console.log(value);
+      if (value !== null) {
+        this.setState({ scale: value });
+      }
+    });
+
+    SecureStore.getItemAsync('preferences-language').then(value => {
+      console.log(value);
+      if (value !== null) {
+        this.setState({ language: value });
+      }
+    });
+  }
+
   render() {
     let scalingOptions = [
       { value: '100%' },
@@ -51,9 +77,9 @@ export default class Preferences extends Component<{}> {
           titleStyle={styles.actionTitle}
           title={txtAppName}
           leftIconName={'location'}
-          onLeftPress={() =>
-            console.log('requested: Pref actionbar voice assist!')
-          }
+          onLeftPress={value => {
+            console.log('requested: Pref actionbar voice assist!');
+          }}
         />
         <View style={styles.contentContainer}>
           <Text style={styles.titleText}>{txtSettings}</Text>
@@ -62,28 +88,72 @@ export default class Preferences extends Component<{}> {
             <CheckBox
               containerStyle={{ marginTop: 20 }}
               label="Use large fonts"
-              checked={true}
-              onChange={checked =>
-                console.log('todo: setAppState useLargeFonts true', checked)
-              }
+              checked={this.state.useLargeFont}
+              onChange={checked => {
+                const stringChecked = !this.state.useLargeFont;
+                SecureStore.setItemAsync(
+                  'preferences-useLargeFont',
+                  stringChecked.toString()
+                );
+                this.setState({ useLargeFont: !this.state.useLargeFont });
+                console.log('todo: setAppState useLargeFonts true', checked);
+              }}
             />
             <Dropdown
               containerStyle={{ marginLeft: 30, width: 100 }}
               label="Scaling options"
               data={scalingOptions}
-              onValueChange={console.log(
-                'todo: setAppState scalingOption selected'
-              )}
+              value={this.state.scale}
+              onChangeText={value => {
+                SecureStore.setItemAsync('preferences-scale', value.toString());
+                this.setState({ scale: value });
+                console.log(value);
+                //console.log("todo: setAppState scalingOption selected");
+              }}
             />
             {/* todo: dropdown onChange should setAppState scalingOption... */}
           </View>
+          <Dropdown
+            containerStyle={{ marginLeft: 30, width: 100 }}
+            label="Language"
+            data={Languages}
+            value={this.state.language}
+            onChangeText={value => {
+              Alert.alert(
+                'Changing Language',
+                'Changing the language to ' + value,
+                [
+                  {
+                    text: 'Cancel',
+                    onPress: () => {
+                      console.log('Cancel Pressed');
+                    },
+                    style: 'cancel'
+                  },
+                  {
+                    text: 'OK',
+                    onPress: () => {
+                      console.log('OK Pressed');
+                      SecureStore.setItemAsync(
+                        'preferences-language',
+                        value.toString()
+                      );
+                      Util.reload();
+                    }
+                  }
+                ],
+                { cancelable: true }
+              );
+              //console.log("todo: setAppState scalingOption selected");
+            }}
+          />
           <CheckBox
             containerStyle={{ marginLeft: 20 }}
             label="Text only(no icons)"
             checked={true}
-            onChange={checked =>
-              console.log('todo: setAppState checked', checked)
-            }
+            onChange={checked => {
+              console.log('todo: setAppState checked', checked);
+            }}
           />
           <View style={styles.themeView}>
             <Text style={{ marginTop: 20 }}>Theme</Text>
@@ -97,21 +167,25 @@ export default class Preferences extends Component<{}> {
             containerStyle={{ marginLeft: 20 }}
             label="Show outlines"
             checked={true}
-            onChange={checked => console.log('I am checked', checked)}
+            onChange={checked => {
+              console.log('I am checked', checked);
+            }}
           />
           <CheckBox
             containerStyle={{ marginLeft: 20 }}
             label="Notifications on"
             checked={false}
-            onChange={checked => console.log('Notifications set ', checked)}
+            onChange={checked => {
+              console.log('Notifications set ', checked);
+            }}
           />
           <CheckBox
             containerStyle={{ marginLeft: 20 }}
             label="Automatic launch near location"
             checked={false}
-            onChange={checked =>
-              console.log('Auto launch near location ', checked)
-            }
+            onChange={checked => {
+              console.log('Auto launch near location ', checked);
+            }}
           />
         </View>
         <View style={styles.bottomNavRow}>
@@ -125,9 +199,7 @@ export default class Preferences extends Component<{}> {
             {txtNext}
           </Text>
         </View>
-        <View style={styles.bottomRow}>
-          <Bottom />
-        </View>
+        <View style={styles.bottomRow} />
       </View>
     );
   }
@@ -136,7 +208,7 @@ export default class Preferences extends Component<{}> {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    marginTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight,
+    marginTop: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight,
     backgroundColor: '#FDFDFD'
   },
   actionBarContainer: {

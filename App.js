@@ -16,7 +16,8 @@ import {
   /* Constants, AppLoading, */ AppLoading,
   Font,
   Permissions,
-  Location
+  Location,
+  SecureStore
 } from 'expo';
 
 import { YellowBox } from 'react-native';
@@ -32,9 +33,13 @@ import Profile from './pages/setting_pages/Profile';
 import SetHome from './pages/setting_pages/SetHome';
 import Voice from './pages/setting_pages/Voice';
 import Help from './pages/Help';
-import Languages from './data';
+import { getLanguage, getLanguageCode } from './data';
 
-export const languageDataCtx = React.createContext(Languages.en.data);
+/*
+This contex contains: appData.json, placesData.json and stylesData.json
+of the current language (by default is en)
+*/
+export const languageDataCtx = React.createContext(getLanguage('en'));
 
 I18nManager.allowRTL(true);
 
@@ -119,13 +124,19 @@ export default class App extends React.Component {
       isRTL: false, // I18nManager.isRTL,
       fontLoaded: false,
       data: {},
-      currentLanguage: Languages.en.data,
+      currentLanguage: 'en',
       pointingTo: 'North West',
       heading: {}
     };
   }
 
   componentDidMount() {
+    SecureStore.getItemAsync('preferences-language').then(value => {
+      console.log(value);
+      if (value !== null) {
+        this.setState({ language: getLanguageCode(value) });
+      }
+    });
     this._asyncFonts();
     I18nManager.forceRTL(false);
     this.setState({ isRTL: false });
@@ -197,7 +208,9 @@ export default class App extends React.Component {
     //   />
     // );
     return (
-      <languageDataCtx.Provider value={this.state.currentLanguage}>
+      <languageDataCtx.Provider
+        value={getLanguage(this.state.currentLanguage).data}
+      >
         <Nav
           screenProps={{
             pointingTo: this.state.pointingTo,

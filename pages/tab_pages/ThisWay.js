@@ -11,6 +11,7 @@ import {
 //import { Font, AppLoading } from 'expo';
 import WayPoints from "./pointLists/WayPoints";
 import Bottom from "./Bottom";
+import { languageDataCtx } from "../../App";
 
 export default class ThisWay extends Component<{}> {
   constructor(props) {
@@ -39,19 +40,28 @@ export default class ThisWay extends Component<{}> {
   render() {
     // console.log({ placesData, appData });
     return (
-      <View style={styles.mainContainer}>
-        <Text style={styles.pointingTo}>
-          {`Now facing: ${this.props.pointingDirection}`}
-        </Text>
-        <View style={styles.pointsContainer}>
-          <ScrollView contentContainerStyle={styles.scrollView}>
-            <WayPoints beaconIndex={this.props.beaconIndex} />
-          </ScrollView>
-        </View>
-        <View style={styles.bottomRow}>
-          <Bottom />
-        </View>
-      </View>
+      <languageDataCtx.Consumer>
+        {({ appData }) => {
+          console.log(appData);
+          return (
+            <View style={styles.mainContainer}>
+              <Text style={styles.pointingTo}>
+                {`${appData.appData.screenMainApp.txtPointingTo}: ${
+                  this.props.pointingDirection
+                }`}
+              </Text>
+              <View style={styles.pointsContainer}>
+                <ScrollView contentContainerStyle={styles.scrollView}>
+                  <WayPoints beaconIndex={this.props.beaconIndex} />
+                </ScrollView>
+              </View>
+              <View style={styles.bottomRow}>
+                <Bottom />
+              </View>
+            </View>
+          );
+        }}
+      </languageDataCtx.Consumer>
     );
   }
 }
