@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   Platform,
   StyleSheet,
@@ -6,37 +6,37 @@ import {
   TextInput,
   View
   /* , Switch, Alert, Button */
-} from 'react-native';
-import ActionBar from 'react-native-action-bar';
+} from "react-native";
+import ActionBar from "react-native-action-bar";
 // import PropTypes from 'prop-types';
 // import RadioForm from 'react-native-simple-radio-button';
 /* RadioButton,
   RadioButtonInput,
   RadioButtonLabel */
-import Bottom from '../tab_pages/Bottom.js';
+import Bottom from "../tab_pages/Bottom.js";
 
-const txtAppName = 'Noam';
-const txtSettingsText = 'Settings';
-const txtBack = '< Back';
-const txtTOC = 'TOC';
+const txtAppName = "Noam";
+const txtSettingsText = "Settings";
+const txtBack = "< Back";
+const txtTOC = "TOC";
 // const txtNext = 'Next >';
-const txtDone = 'Done';
-const txtOn = 'on';
-const txtOff = 'off';
+const txtDone = "Done";
+const txtOn = "on";
+const txtOff = "off";
 
-const txtTitlePreferences = '5. Profile';
-const txtChooseStyle = 'Choose style';
+const txtTitlePreferences = "5. Profile";
+const txtChooseStyle = "Choose style";
 // const txtVoiceMale = 'Male';
 // const txtVoiceFemale = 'Female';
 
 const txtInstrcutionsProfile = [
-  'Optionally you can save a username and password.'
+  "Optionally you can save a username and password."
 ];
 
 // todo data: make this dynamic
 const radioVoiceOptions = [
-  { label: 'Male', value: 0 },
-  { label: 'Female', value: 1 }
+  { label: "Male", value: 0 },
+  { label: "Female", value: 1 }
 ];
 
 export default class Profile extends Component<{}> {
@@ -44,9 +44,9 @@ export default class Profile extends Component<{}> {
     super(props);
 
     this.state = {
-      username: '',
-      password: '',
-      email: ''
+      username: "",
+      password: "",
+      email: ""
     };
   }
 
@@ -58,8 +58,8 @@ export default class Profile extends Component<{}> {
           containerStyle={styles.actionBarContainer}
           titleStyle={styles.actionTitle}
           title={txtAppName}
-          leftIconName={'location'}
-          onLeftPress={() => console.log('Left!')}
+          leftIconName={"location"}
+          onLeftPress={() => console.log("Left!")}
         />
         <View style={styles.contentContainer}>
           <Text style={styles.titleText}>{txtSettingsText}</Text>
@@ -91,15 +91,27 @@ export default class Profile extends Component<{}> {
           </View>
           <View style={styles.bottomNavRow}>
             <Text
-              onPress={() => navigate('Preferences')}
+              onPress={() => {
+                navigate("Preferences");
+              }}
               style={styles.navButton}
             >
               {txtBack}
             </Text>
-            <Text onPress={() => navigate('SetHome')} style={styles.navButton}>
+            <Text
+              onPress={() => {
+                navigate("SetHome");
+              }}
+              style={styles.navButton}
+            >
               {txtTOC}
             </Text>
-            <Text onPress={() => navigate('MainPage')} style={styles.navButton}>
+            <Text
+              onPress={() => {
+                navigate("MainPage");
+              }}
+              style={styles.navButton}
+            >
               {txtDone}
             </Text>
           </View>
@@ -115,14 +127,14 @@ export default class Profile extends Component<{}> {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    marginTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight,
-    backgroundColor: '#FDFDFD'
+    marginTop: Platform.OS === "ios" ? 0 : Expo.Constants.statusBarHeight,
+    backgroundColor: "#FDFDFD"
   },
   actionBarContainer: {
-    backgroundColor: '#330077'
+    backgroundColor: "#330077"
   },
   actionTitle: {
-    textAlign: 'center',
+    textAlign: "center",
     fontSize: 20
   },
   contentContainer: {
@@ -137,22 +149,22 @@ const styles = StyleSheet.create({
   },
   instructionsHeader: {
     marginTop: 10,
-    textAlign: 'left',
-    color: '#333333',
+    textAlign: "left",
+    color: "#333333",
     marginBottom: 10,
     fontSize: 22,
-    fontWeight: '400',
+    fontWeight: "400",
     marginLeft: 25,
     marginRight: 25
   },
   instructionsView: {
     flex: 1,
-    flexDirection: 'column'
+    flexDirection: "column"
   },
   instructions: {
     marginTop: 25,
-    textAlign: 'left',
-    color: '#333333',
+    textAlign: "left",
+    color: "#333333",
     marginBottom: 10,
     fontSize: 18,
     marginLeft: 25,
@@ -164,13 +176,13 @@ const styles = StyleSheet.create({
   },
   bottomNavRow: {
     flex: 2,
-    flexDirection: 'row',
+    flexDirection: "row",
     marginLeft: 15,
     marginRight: 15,
-    justifyContent: 'space-between'
+    justifyContent: "space-between"
   },
   navButton: {
-    textDecorationLine: 'underline',
+    textDecorationLine: "underline",
     fontSize: 22
   },
   bottomRow: {
