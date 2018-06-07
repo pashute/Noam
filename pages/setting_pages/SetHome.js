@@ -12,6 +12,8 @@ import ActionBar from "react-native-action-bar";
 // import RNExitApp from 'react-native-exit-app';
 import Bottom from "../tab_pages/Bottom.js";
 
+import { languageDataCtx } from "../../App";
+
 // todo data: take from AppData.json
 const txtToCalibrate = "1. Calibrate Compass";
 const txtToAutoUpdate = "2. Auto Update when pointing";
@@ -32,77 +34,74 @@ export default class SetHome extends Component<{}> {
   render() {
     const { navigate, goBack, replace, popToTop } = this.props.navigation;
     return (
-      <View style={styles.mainContainer}>
-        <ActionBar
-          containerStyle={styles.actionBarContainer}
-          titleStyle={styles.actionTitle}
-          title={"noam"}
-          leftIconName={"location"}
-          onLeftPress={() => console.log("Left!")}
-        />
-        <View style={[styles.contentContainer, styles.buttonContainer]}>
-          <Text style={styles.titleText}>Settings</Text>
+      <languageDataCtx.Consumer>
+        {({ stylesData }) => {
+          console.log("stylesData:", stylesData);
+          return (
+            <View style={styles.mainContainer}>
+              <ActionBar
+                containerStyle={styles.actionBarContainer}
+                titleStyle={styles.actionTitle}
+                title={"noam"}
+                leftIconName={"location"}
+                onLeftPress={() => console.log("Left!")}
+              />
+              <View style={[styles.contentContainer, styles.buttonContainer]}>
+                <Text style={styles.titleText}>Settings</Text>
 
-          <View style={styles.buttonDecorator}>
-            <Button
-              onPress={() => {
-                navigate("Calibrate");
-              }}
-              title={txtToCalibrate}
-              color="#111111"
-              accessibilityLabel="Tap to calibrate compass"
-            />
-          </View>
-          <View style={styles.buttonDecorator}>
-            <Button
-              onPress={() => {
-                navigate("AutoUpdate");
-              }}
-              title={txtToAutoUpdate}
-              color="#111111"
-              accessibilityLabel="Tap for auto-update settings"
-            />
-          </View>
-          <View style={styles.buttonDecorator}>
-            <Button
-              onPress={() => {
-                navigate("Voice");
-              }}
-              title={txtToVoiceAssist}
-              color="#111111"
-              accessibilityLabel="Tap on Me"
-            />
-          </View>
-          <View style={styles.buttonDecorator}>
-            <Button
-              onPress={() => {
-                navigate("Preferences");
-              }}
-              title={txtToPreferences}
-              color="#111111"
-              accessibilityLabel="Tap on Me"
-            />
-          </View>
-          <View style={styles.buttonDecorator}>
-            <Button
-              onPress={() => {
-                navigate("Profile");
-              }}
-              title={txtToProfile}
-              color="#111111"
-              accessibilityLabel="Tap on Me"
-            />
-          </View>
-        </View>
-        <View style={styles.bottomNavRow}>
-          <Text onPress={() => {}} style={styles.navButton}>
-            {txtDone}
-          </Text>
-        </View>
-        <View style={styles.bottomRow}>
-          <Bottom />
-        </View>
-      </View>
+                <View style={stylesData.styles.buttonDecorator}>
+                  <Button
+                    onPress={() => navigate("Calibrate")}
+                    title={txtToCalibrate}
+                    color="#111111"
+                    accessibilityLabel="Tap to calibrate compass"
+                  />
+                </View>
+                <View style={stylesData.styles.buttonDecorator}>
+                  <Button
+                    onPress={() => navigate("AutoUpdate")}
+                    title={txtToAutoUpdate}
+                    color="#111111"
+                    accessibilityLabel="Tap for auto-update settings"
+                  />
+                </View>
+                <View style={stylesData.styles.buttonDecorator}>
+                  <Button
+                    onPress={() => navigate("Voice")}
+                    title={txtToVoiceAssist}
+                    color="#111111"
+                    accessibilityLabel="Tap for setting up voice assist"
+                  />
+                </View>
+                <View style={stylesData.styles.buttonDecorator}>
+                  <Button
+                    onPress={() => navigate("Preferences")}
+                    title={txtToPreferences}
+                    color="#111111"
+                    accessibilityLabel="Tap for preferences"
+                  />
+                </View>
+                <View style={stylesData.styles.buttonDecorator}>
+                  <Button
+                    onPress={() => navigate("Profile")}
+                    title={txtToProfile}
+                    color="#111111"
+                    accessibilityLabel="Tap on Me"
+                  />
+                </View>
+              </View>
+              <View style={styles.bottomNavRow}>
+                <Text onPress={() => {}} style={styles.navButton}>
+                  {txtDone}
+                </Text>
+              </View>
+              <View style={styles.bottomRow}>
+                <Bottom />
+              </View>
+            </View>
+          );
+        }}
+      </languageDataCtx.Consumer>
     );
   }
 }
