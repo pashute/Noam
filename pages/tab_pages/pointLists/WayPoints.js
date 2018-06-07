@@ -1,19 +1,19 @@
 /* cSpell:disable */
 
-import React, { Component } from "react";
-import { StyleSheet, Text, View } from "react-native";
-import Accordion from "react-native-collapsible/Accordion";
+import React, { Component } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import Accordion from 'react-native-collapsible/Accordion';
 // import PropTypes from 'prop-types';
 // import { Font, AppLoading } from 'expo';
-import { FontAwesome } from "@expo/vector-icons";
+import { FontAwesome } from '@expo/vector-icons';
 // import { Dropdown } from 'react-native-material-dropdown';
-import { placeDataCtx } from "../../AppMain";
+import { placeDataCtx } from '../../AppMain';
 
 //const str_welcome ='Welcome to Big Fashion';
 //const str_open= 'Opening hours:\n' + 'Sunday - Thursday 8:30 - 21:00\n' + 'Friday 8:30 - 13:00';
 //const str_pos = 'You are at the main gate \n' + 'There is an ATM outside';
 const atPointDesc =
-  "You are on the first floor \n" + "near the south gate \n" + "and bank Leumi";
+  'You are on the first floor \n' + 'near the south gate \n' + 'and bank Leumi';
 
 export default class WayPoints extends Component<{}> {
   constructor(props) {
@@ -23,29 +23,36 @@ export default class WayPoints extends Component<{}> {
   }
 
   _renderHeader(section, index, isActive, dummy) {
-    let iconName = "angle-down";
+    let iconName = 'angle-down';
     if (isActive === true) {
-      iconName = "angle-up";
+      iconName = 'angle-up';
     }
     // console.log(section.point.title);
-    return (
-      <View style={styles.accordArea}>
-        <View style={styles.itemTitle}>
-          {/* if (this.props.useIcons)
+    const direction = section.point.direction;
+    const minusHeading = this.props.heading - 30;
+    const plusHeading = this.props.heading + 30;
+    const inWay = direction > minusHeading && direction < plusHeading;
+    if (inWay) {
+      return (
+        <View style={styles.accordArea}>
+          <View style={styles.itemTitle}>
+            {/* if (this.props.useIcons)
               <Text>here goes icon</Text>
           */}
-          <View>
-            <Text style={styles.itemTitleText}>
-              {"  "}
-              {section.point.title}
-            </Text>
-          </View>
-          <View style={styles.iconOpenColapse}>
-            <FontAwesome name={iconName} size={20} color="gray" />
+            <View>
+              <Text style={styles.itemTitleText}>
+                {'  '}
+                {section.point.title}
+              </Text>
+            </View>
+            <View style={styles.iconOpenColapse}>
+              <FontAwesome name={iconName} size={20} color="gray" />
+            </View>
           </View>
         </View>
-      </View>
-    );
+      );
+    }
+    return <View />;
   }
 
   _renderContent(section) {
@@ -87,8 +94,8 @@ export default class WayPoints extends Component<{}> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: "100%",
-    backgroundColor: "#FDFDFD"
+    width: '100%',
+    backgroundColor: '#FDFDFD'
   },
   atPointDesc: {
     marginLeft: 10,
@@ -109,19 +116,19 @@ const styles = StyleSheet.create({
     marginLeft: 20
   },
   accordArea: {
-    width: "100%",
-    backgroundColor: "#FFFFFF", // '#F5FCFF'
+    width: '100%',
+    backgroundColor: '#FFFFFF', // '#F5FCFF'
     padding: 3,
-    borderBottomColor: "#E7E7E7",
+    borderBottomColor: '#E7E7E7',
     borderBottomWidth: 2
   },
   itemTitle: {
     flex: 1,
-    width: "100%",
+    width: '100%',
     height: 35,
-    flexDirection: "row",
-    backgroundColor: "transparent",
-    borderBottomColor: "white",
+    flexDirection: 'row',
+    backgroundColor: 'transparent',
+    borderBottomColor: 'white',
     paddingTop: 5,
     paddingBottom: 5,
     borderRadius: 20
@@ -129,22 +136,22 @@ const styles = StyleSheet.create({
   itemTitleText: {
     // textAlign: 'center',
     fontSize: 18,
-    fontWeight: "300",
-    fontStyle: "normal"
+    fontWeight: '300',
+    fontStyle: 'normal'
   },
   iconOpenColapse: {
-    height: "100%",
-    marginLeft: "auto",
+    height: '100%',
+    marginLeft: 'auto',
     marginRight: 10,
-    alignItems: "center"
+    alignItems: 'center'
   },
   itemDetails: {
     padding: 20,
-    backgroundColor: "#fff"
+    backgroundColor: '#fff'
   },
   itemDetailsText: {
     fontSize: 16,
-    fontWeight: "200",
-    fontStyle: "normal"
+    fontWeight: '200',
+    fontStyle: 'normal'
   }
 });
