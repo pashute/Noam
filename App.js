@@ -1,116 +1,123 @@
 /* cSpell:disable */
 
-import React from "react";
+import React from 'react';
 import {
   StyleSheet,
   I18nManager /*Platform, Text, View, Alert*/
-} from "react-native";
+} from 'react-native';
 
 //x import { TabNavigator } from 'react-navigation'; // 1.5.11
-import { NavigationActions, StackNavigator } from "react-navigation";
+import { NavigationActions, StackNavigator } from 'react-navigation';
 
 // import { ButtonGroup } from 'react-native-elements';
-import ObjectPath from "object-path";
-import "@expo/vector-icons";
+import ObjectPath from 'object-path';
+import '@expo/vector-icons';
 import {
   /* Constants, AppLoading, */ AppLoading,
   Font,
   Permissions,
   Location,
   SecureStore
-} from "expo";
+} from 'expo';
 
-import { YellowBox } from "react-native";
+import { YellowBox } from 'react-native';
 
-import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
+import { FontAwesome, MaterialIcons } from '@expo/vector-icons';
 
-import Splash from "./pages/Splash";
-import AppMain from "./pages/AppMain";
-import AutoUpdate from "./pages/setting_pages/AutoUpdate";
-import Calibrate from "./pages/setting_pages/Calibrate";
-import Preferences from "./pages/setting_pages/Preferences";
-import Profile from "./pages/setting_pages/Profile";
-import SetHome from "./pages/setting_pages/SetHome";
-import Voice from "./pages/setting_pages/Voice";
-import Help from "./pages/Help";
-import { getLanguage, getLanguageCode } from "./data";
+import Splash from './pages/Splash';
+import AppMain from './pages/AppMain';
+import AutoUpdate from './pages/setting_pages/AutoUpdate';
+import Calibrate from './pages/setting_pages/Calibrate';
+import Preferences from './pages/setting_pages/Preferences';
+import Profile from './pages/setting_pages/Profile';
+import SetHome from './pages/setting_pages/SetHome';
+import Voice from './pages/setting_pages/Voice';
+import Help from './pages/Help';
+import HelpFirstTime from './pages/HelpFirstTime';
+import { getLanguage, getLanguageCode } from './data';
 
 /*
 This contex contains: appData.json, placesData.json and stylesData.json
 of the current language (by default is en)
 */
-export const languageDataCtx = React.createContext(getLanguage("en"));
+export const languageDataCtx = React.createContext(getLanguage('en'));
 
 I18nManager.allowRTL(true);
 
 YellowBox.ignoreWarnings([
-  "Warning: componentWillMount is deprecated",
-  "Warning: componentWillReceiveProps is deprecated",
-  "Warning: componentWillUpdate is deprecated"
+  'Warning: componentWillMount is deprecated',
+  'Warning: componentWillReceiveProps is deprecated',
+  'Warning: componentWillUpdate is deprecated'
 ]);
 
 const Nav = StackNavigator({
+  HelpFirstTime: {
+    screen: HelpFirstTime,
+    navigationOptions: {
+      headermode: 'screen',
+      header: null
+    }
+  },
   SplashPage: {
     screen: Splash,
     navigationOptions: {
-      headermode: "screen",
+      headermode: 'screen',
       header: null
     }
   },
   MainPage: {
     screen: AppMain,
     navigationOptions: {
-      headermode: "screen",
+      headermode: 'screen',
       header: null
     }
   },
   AutoUpdate: {
     screen: AutoUpdate,
     navigationOptions: {
-      headermode: "screen",
+      headermode: 'screen',
       header: null
     }
   },
   Calibrate: {
     screen: Calibrate,
     navigationOptions: {
-      headermode: "screen",
+      headermode: 'screen',
       header: null
     }
   },
   Preferences: {
     screen: Preferences,
     navigationOptions: {
-      headermode: "screen",
+      headermode: 'screen',
       header: null
     }
   },
   Profile: {
     screen: Profile,
     navigationOptions: {
-      headermode: "screen",
+      headermode: 'screen',
       header: null
     }
   },
   SetHome: {
     screen: SetHome,
     navigationOptions: {
-      headermode: "screen",
+      headermode: 'screen',
       header: null
     }
   },
-
   Voice: {
     screen: Voice,
     navigationOptions: {
-      headermode: "screen",
+      headermode: 'screen',
       header: null
     }
   },
   Help: {
     screen: Help,
     navigationOptions: {
-      headermode: "screen",
+      headermode: 'screen',
       header: null
     }
   }
@@ -124,14 +131,14 @@ export default class App extends React.Component {
       isRTL: false, // I18nManager.isRTL,
       fontLoaded: false,
       data: {},
-      currentLanguage: "en",
-      pointingTo: "North West",
+      currentLanguage: 'en',
+      pointingTo: 'North West',
       heading: {}
     };
   }
 
   componentDidMount() {
-    SecureStore.getItemAsync("preferences-language").then(value => {
+    SecureStore.getItemAsync('preferences-language').then(value => {
       console.log(value);
       if (value !== null) {
         this.setState({ language: getLanguageCode(value) });
@@ -148,7 +155,7 @@ export default class App extends React.Component {
       this.setState({ fontLoaded: true });
       this._getHeadingAsync();
     } catch (error) {
-      console.error("error loading icon fonts", error);
+      console.error('error loading icon fonts', error);
     }
   };
 
@@ -156,13 +163,13 @@ export default class App extends React.Component {
     let { locationServicesEnabled } = await Location.getProviderStatusAsync();
     if (locationServicesEnabled === false) {
       this.setState({
-        pointingTo: "Please enable Location"
+        pointingTo: 'Please enable Location'
       });
     } else {
       let { status } = await Permissions.askAsync(Permissions.LOCATION);
-      if (status !== "granted") {
+      if (status !== 'granted') {
         this.setState({
-          pointingTo: "Permission to access location was denied"
+          pointingTo: 'Permission to access location was denied'
         });
       } else {
         console.log(status);
@@ -174,15 +181,15 @@ export default class App extends React.Component {
   onHeadingChange = heading => {
     const degree = 360 / 8;
     const angle = heading.trueHeading + degree / 2;
-    let pointingTo = "North";
-    if (angle >= 0 * degree && angle < 1 * degree) pointingTo = "North";
-    if (angle >= 1 * degree && angle < 2 * degree) pointingTo = "North East";
-    if (angle >= 2 * degree && angle < 3 * degree) pointingTo = "East";
-    if (angle >= 3 * degree && angle < 4 * degree) pointingTo = "South East";
-    if (angle >= 4 * degree && angle < 5 * degree) pointingTo = "South";
-    if (angle >= 5 * degree && angle < 6 * degree) pointingTo = "South West";
-    if (angle >= 6 * degree && angle < 7 * degree) pointingTo = "West";
-    if (angle >= 7 * degree && angle < 8 * degree) pointingTo = "North West";
+    let pointingTo = 'North';
+    if (angle >= 0 * degree && angle < 1 * degree) pointingTo = 'North';
+    if (angle >= 1 * degree && angle < 2 * degree) pointingTo = 'North East';
+    if (angle >= 2 * degree && angle < 3 * degree) pointingTo = 'East';
+    if (angle >= 3 * degree && angle < 4 * degree) pointingTo = 'South East';
+    if (angle >= 4 * degree && angle < 5 * degree) pointingTo = 'South';
+    if (angle >= 5 * degree && angle < 6 * degree) pointingTo = 'South West';
+    if (angle >= 6 * degree && angle < 7 * degree) pointingTo = 'West';
+    if (angle >= 7 * degree && angle < 8 * degree) pointingTo = 'North West';
     this.setState({ heading, pointingTo });
   };
 
@@ -190,7 +197,7 @@ export default class App extends React.Component {
 
   setNoamColor = color => {
     let newState = { ...this.state };
-    ObjectPath.set(newState, "styles.welcomeStyles.welcomeColor", color);
+    ObjectPath.set(newState, 'styles.welcomeStyles.welcomeColor', color);
     this.setState(newState);
   };
 
@@ -200,11 +207,11 @@ export default class App extends React.Component {
     Nav.router.getStateForAction = (action, state) => {
       console.log(action);
       console.log(state);
-      if (state !== undefined && action.type === "Navigation/NAVIGATE") {
+      if (state !== undefined && action.type === 'Navigation/NAVIGATE') {
         const screenToGo = action.routeName;
         let navigateTo = action;
-        let prevScreen = "none";
-        let currentScreen = "none";
+        let prevScreen = 'none';
+        let currentScreen = 'none';
         const currentRutes = state.routes;
         if (currentRutes.length > 1) {
           prevScreen = currentRutes[currentRutes.length - 2].routeName;
@@ -256,7 +263,7 @@ export default class App extends React.Component {
             noamColor:
               this.state.data && this.state.data.styles
                 ? this.state.data.styles.stylesSplash.noamColor
-                : "#FF0000"
+                : '#FF0000'
           }}
         />
       </languageDataCtx.Provider>
@@ -267,18 +274,18 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#FFFFFF"
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF'
   },
   welcome: {
     fontSize: 20,
-    textAlign: "center",
+    textAlign: 'center',
     margin: 10
   },
   instructions: {
-    textAlign: "center",
-    color: "#333333",
+    textAlign: 'center',
+    color: '#333333',
     marginBottom: 5
   }
 });
