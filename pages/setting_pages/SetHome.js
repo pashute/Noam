@@ -20,6 +20,7 @@ const txtToAutoUpdate = '2. Auto Update when pointing';
 const txtToVoiceAssist = '3. Voice Assistant (Disabled)';
 const txtToPreferences = '4. Preferences';
 const txtToProfile = '5. Profile';
+const txtSettings = 'Settings';
 
 const txtDone = 'Done';
 
@@ -38,18 +39,18 @@ export default class SetHome extends Component<{}> {
         {({ stylesData }) => {
           // console.log("stylesData:", stylesData);
           return (
-            <View style={styles.mainContainer}>
+            <View style={[stylesData.styles.sharedStyles.mainContainer, styles.topMargin]}>
               <ActionBar
-                containerStyle={styles.actionBarContainer}
-                titleStyle={styles.actionTitle}
+                containerStyle={stylesData.styles.sharedStyles.actionBarContainer}
+                titleStyle={stylesData.styles.sharedStyles.actionTitle}
                 title={'noam'}
                 leftIconName={'location'}
                 onLeftPress={() => console.log('Left!')}
               />
-              <View style={[styles.contentContainer, styles.buttonContainer]}>
-                <Text style={styles.titleText}>Settings</Text>
+              <View style={[stylesData.styles.sharedStyles.contentContainer, stylesData.styles.sharedStyles.buttonContainer]}>
+                <Text style={styles.titleText}>{txtSettings}</Text>
 
-                <View style={stylesData.styles.buttonDecorator}>
+                <View style={stylesData.styles.sharedStyles.buttonDecorator}>
                   <Button
                     onPress={() => navigate('Calibrate')}
                     title={txtToCalibrate}
@@ -57,7 +58,7 @@ export default class SetHome extends Component<{}> {
                     accessibilityLabel="Tap to calibrate compass"
                   />
                 </View>
-                <View style={stylesData.styles.buttonDecorator}>
+                <View style={stylesData.styles.sharedStyles.buttonDecorator}>
                   <Button
                     onPress={() => navigate('AutoUpdate')}
                     title={txtToAutoUpdate}
@@ -65,7 +66,7 @@ export default class SetHome extends Component<{}> {
                     accessibilityLabel="Tap for auto-update settings"
                   />
                 </View>
-                <View style={stylesData.styles.buttonDecorator}>
+                <View style={stylesData.styles.sharedStyles.buttonDecorator}>
                   <Button
                     onPress={() => navigate('Voice')}
                     title={txtToVoiceAssist}
@@ -73,7 +74,7 @@ export default class SetHome extends Component<{}> {
                     accessibilityLabel="Tap for setting up voice assist"
                   />
                 </View>
-                <View style={stylesData.styles.buttonDecorator}>
+                <View style={stylesData.styles.sharedStyles.buttonDecorator}>
                   <Button
                     onPress={() => navigate('Preferences')}
                     title={txtToPreferences}
@@ -81,7 +82,7 @@ export default class SetHome extends Component<{}> {
                     accessibilityLabel="Tap for preferences"
                   />
                 </View>
-                <View style={stylesData.styles.buttonDecorator}>
+                <View style={stylesData.styles.sharedStyles.buttonDecorator}>
                   <Button
                     onPress={() => navigate('Profile')}
                     title={txtToProfile}
@@ -90,12 +91,12 @@ export default class SetHome extends Component<{}> {
                   />
                 </View>
               </View>
-              <View style={styles.bottomNavRow}>
+              <View style={stylesData.styles.sharedStyles.bottomNavRow}>
                 <Text onPress={() => {}} style={styles.navButton}>
                   {txtDone}
                 </Text>
               </View>
-              <View style={styles.bottomRow}>
+              <View style={stylesData.styles.sharedStyles.bottomRow}>
                 <Bottom />
               </View>
             </View>
@@ -107,57 +108,11 @@ export default class SetHome extends Component<{}> {
 }
 
 const styles = StyleSheet.create({
-  mainContainer: {
-    flex: 1,
+  topMargin: {
     marginTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight,
-    backgroundColor: '#FDFDFD'
-  },
-  actionBarContainer: {
-    backgroundColor: '#330077'
-  },
-  actionTitle: {
-    textAlign: 'center',
-    fontSize: 20
-  },
-  contentContainer: {
-    flex: 16
-  },
-  titleText: {
-    fontSize: 30,
-    marginTop: 30,
-    marginLeft: 20,
-    marginRight: 20,
-    marginBottom: 10
   },
   buttonContainer: {
     flexDirection: 'column',
     justifyContent: 'space-between'
-  },
-  buttonDecorator: {
-    backgroundColor: '#444444',
-    borderRadius: 10,
-    padding: 3,
-    shadowColor: colorButtonShadow,
-    shadowOffset: {
-      width: 0,
-      height: 1
-    },
-    shadowRadius: 3, //10,
-    shadowOpacity: 0.25,
-    marginRight: 20,
-    marginLeft: 20
-  },
-  bottomNavRow: {
-    flex: 2,
-    flexDirection: 'row',
-    marginLeft: 15,
-    justifyContent: 'space-between'
-  },
-  navButton: {
-    textDecorationLine: 'underline',
-    fontSize: 22
-  },
-  bottomRow: {
-    flex: 2
   }
 });

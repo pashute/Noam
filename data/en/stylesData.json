@@ -1,21 +1,29 @@
 {
   "styles": {
     "sharedStyles": {
-      "topContainer": {
-        "style_comment": "place and tabs",
+      "remarkSep1": { "rem": "====== top with actionbar ====================" },
+      "mainContainer": {
         "flex": 1,
-        "marginTop": "Platform.OS === 'ios' ? 0 : Constants.statusBarHeight",
         "backgroundColor": "#F5F5F5"
       },
       "actionBarContainer": {
-        "style_comment": "ear appname and menu",
         "backgroundColor": "#330077"
       },
       "actionTitle": {
         "textAlign": "center",
         "fontSize": 20
       },
-      "instructionsHeader": {
+      "contentContainer": {
+        "flex": 16
+      },
+      "titleText": {
+        "fontSize": 30,
+        "marginTop": 30,
+        "marginLeft": 20,
+        "marginRight": 20,
+        "marginBottom": 10
+      },
+      "depinstructionsHeader": {
         "marginTop": 10,
         "textAlign": "left",
         "color": "#333333",
@@ -25,9 +33,24 @@
         "marginLeft": 25,
         "marginRight": 25
       },
-      "instructions": {
+      "depinstructions": {
         "flex": 1,
         "flexDirection": "column"
+      },
+
+      "buttonDecorator": {
+        "backgroundColor": "#444444",
+        "borderRadius": 10,
+        "padding": 3,
+        "shadowColor": "#181818",
+        "shadowOffset": {
+          "width": 0,
+          "height": 1
+        },
+        "shadowRadius": 3,
+        "shadowOpacity": 0.25,
+        "marginRight": 20,
+        "marginLeft": 20
       },
       "bottomNavRow": {
         "marginLeft": 5,
@@ -40,21 +63,8 @@
         "fontSize": 14
       }
     },
-    "buttonDecorator": {
-      "backgroundColor": "#444444",
-      "borderRadius": 10,
-      "padding": 3,
-      "shadowColor": "#181818",
-      "shadowOffset": {
-        "width": 0,
-        "height": 1
-      },
-      "shadowRadius": 3, 
-      "shadowOpacity": 0.25,
-      "marginRight": 20,
-      "marginLeft": 20
-  
-    },
+    "extraScreenStyles": {},
+
     "accordStyles": {
       "accordStyle": {
         "backgroundColor": "#FF9900"
@@ -63,9 +73,6 @@
       "accordDetails": {},
       "accordSep": {}
     },
-    "thisWayStyles": {
-      "color": "red",
-      "fontWeight": "bold"
-    }
+    "thisWayStyles": {}
   }
 }
