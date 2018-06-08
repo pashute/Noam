@@ -84,7 +84,7 @@ export default class PlacePoints extends Component<{}> {
     return (
       <placeDataCtx.Consumer>
         {place => {
-          console.log('dbg.PlacePoints.place', place);
+          // console.log('dbg.PlacePoints.place', place);
           return (
             <View style={styles.container}>
               <View style={styles.floorViewContainer}>

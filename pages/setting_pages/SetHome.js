@@ -36,22 +36,22 @@ export default class SetHome extends Component<{}> {
     return (
       <languageDataCtx.Consumer>
         {({ stylesData }) => {
-          console.log("stylesData:", stylesData);
+          // console.log("stylesData:", stylesData);
           return (
             <View style={styles.mainContainer}>
               <ActionBar
                 containerStyle={styles.actionBarContainer}
                 titleStyle={styles.actionTitle}
-                title={"noam"}
-                leftIconName={"location"}
-                onLeftPress={() => console.log("Left!")}
+                title={'noam'}
+                leftIconName={'location'}
+                onLeftPress={() => console.log('Left!')}
               />
               <View style={[styles.contentContainer, styles.buttonContainer]}>
                 <Text style={styles.titleText}>Settings</Text>
 
                 <View style={stylesData.styles.buttonDecorator}>
                   <Button
-                    onPress={() => navigate("Calibrate")}
+                    onPress={() => navigate('Calibrate')}
                     title={txtToCalibrate}
                     color="#111111"
                     accessibilityLabel="Tap to calibrate compass"
@@ -59,7 +59,7 @@ export default class SetHome extends Component<{}> {
                 </View>
                 <View style={stylesData.styles.buttonDecorator}>
                   <Button
-                    onPress={() => navigate("AutoUpdate")}
+                    onPress={() => navigate('AutoUpdate')}
                     title={txtToAutoUpdate}
                     color="#111111"
                     accessibilityLabel="Tap for auto-update settings"
@@ -67,7 +67,7 @@ export default class SetHome extends Component<{}> {
                 </View>
                 <View style={stylesData.styles.buttonDecorator}>
                   <Button
-                    onPress={() => navigate("Voice")}
+                    onPress={() => navigate('Voice')}
                     title={txtToVoiceAssist}
                     color="#111111"
                     accessibilityLabel="Tap for setting up voice assist"
@@ -75,7 +75,7 @@ export default class SetHome extends Component<{}> {
                 </View>
                 <View style={stylesData.styles.buttonDecorator}>
                   <Button
-                    onPress={() => navigate("Preferences")}
+                    onPress={() => navigate('Preferences')}
                     title={txtToPreferences}
                     color="#111111"
                     accessibilityLabel="Tap for preferences"
@@ -83,7 +83,7 @@ export default class SetHome extends Component<{}> {
                 </View>
                 <View style={stylesData.styles.buttonDecorator}>
                   <Button
-                    onPress={() => navigate("Profile")}
+                    onPress={() => navigate('Profile')}
                     title={txtToProfile}
                     color="#111111"
                     accessibilityLabel="Tap on Me"
@@ -99,65 +99,65 @@ export default class SetHome extends Component<{}> {
                 <Bottom />
               </View>
             </View>
+          );
+        }}
+      </languageDataCtx.Consumer>
     );
-  }}
-  </languageDataCtx.Consumer>
-  );}
+  }
 }
 
 const styles = StyleSheet.create({
-mainContainer: {
-flex: 1,
-marginTop: Platform.OS === "ios" ? 0 : Expo.Constants.statusBarHeight,
-backgroundColor: "#FDFDFD"
-},
-actionBarContainer: {
-backgroundColor: "#330077"
-},
-actionTitle: {
-textAlign: "center",
-fontSize: 20
-},
-contentContainer: {
-flex: 16
-},
-titleText: {
-fontSize: 30,
-marginTop: 30,
-marginLeft: 20,
-marginRight: 20,
-marginBottom: 10
-},
-buttonContainer: {
-flexDirection: "column",
-justifyContent: "space-between"
-},
-buttonDecorator: {
-backgroundColor: "#444444",
-borderRadius: 10,
-padding: 3,
-shadowColor: colorButtonShadow,
-shadowOffset: {
-width: 0,
-height: 1
-},
-shadowRadius: 3, //10,
-shadowOpacity: 0.25,
-marginRight: 20,
-marginLeft: 20
-},
-bottomNavRow: {
-flex: 2,
-flexDirection: "row",
-marginLeft: 15,
-justifyContent: "space-between"
-},
-navButton: {
-textDecorationLine: "underline",
-fontSize: 22
-},
-bottomRow: {
-flex: 2
-}
+  mainContainer: {
+    flex: 1,
+    marginTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight,
+    backgroundColor: '#FDFDFD'
+  },
+  actionBarContainer: {
+    backgroundColor: '#330077'
+  },
+  actionTitle: {
+    textAlign: 'center',
+    fontSize: 20
+  },
+  contentContainer: {
+    flex: 16
+  },
+  titleText: {
+    fontSize: 30,
+    marginTop: 30,
+    marginLeft: 20,
+    marginRight: 20,
+    marginBottom: 10
+  },
+  buttonContainer: {
+    flexDirection: 'column',
+    justifyContent: 'space-between'
+  },
+  buttonDecorator: {
+    backgroundColor: '#444444',
+    borderRadius: 10,
+    padding: 3,
+    shadowColor: colorButtonShadow,
+    shadowOffset: {
+      width: 0,
+      height: 1
+    },
+    shadowRadius: 3, //10,
+    shadowOpacity: 0.25,
+    marginRight: 20,
+    marginLeft: 20
+  },
+  bottomNavRow: {
+    flex: 2,
+    flexDirection: 'row',
+    marginLeft: 15,
+    justifyContent: 'space-between'
+  },
+  navButton: {
+    textDecorationLine: 'underline',
+    fontSize: 22
+  },
+  bottomRow: {
+    flex: 2
+  }
 });
-

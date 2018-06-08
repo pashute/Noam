@@ -132,7 +132,7 @@ export default class App extends React.Component {
 
   componentDidMount() {
     SecureStore.getItemAsync('preferences-language').then(value => {
-      console.log("dbg.SecureStore:", value);
+      // console.log("dbg.SecureStore:", value);
       if (value !== null) {
         this.setState({ language: getLanguageCode(value) });
       }
@@ -165,7 +165,7 @@ export default class App extends React.Component {
           pointingTo: 'Permission to access location was denied'
         });
       } else {
-        console.log("dbg.LocationStatus:", status);
+        // console.logconsole.log("dbg.LocationStatus:", status);
         Location.watchHeadingAsync(this.onHeadingChange);
       }
     }
@@ -198,8 +198,8 @@ export default class App extends React.Component {
     const prevGetStateForAction = Nav.router.getStateForAction;
 
     Nav.router.getStateForAction = (action, state) => {
-      console.log('dbg.checkNav action:', action);
-      console.log('dbg.checkNav state:', state);
+      // console.log('dbg.checkNav action:', action);
+      // console.log('dbg.checkNav state:', state);
       if (state !== undefined && action.type === 'Navigation/NAVIGATE') {
         const screenToGo = action.routeName;
         let navigateTo = action;
@@ -212,9 +212,9 @@ export default class App extends React.Component {
         if (currentRutes.length > 0) {
           currentScreen = currentRutes[currentRutes.length - 1].routeName;
         }
-        console.log('dbg.prevScreen:', prevScreen);
-        console.log('dbg.curScreen:', currentScreen);
-        console.log('dbg.screenToGo', screenToGo);
+        // console.log('dbg.prevScreen:', prevScreen);
+        // console.log('dbg.curScreen:', currentScreen);
+        // console.log('dbg.screenToGo', screenToGo);
 
         return prevGetStateForAction(action, state);
 
