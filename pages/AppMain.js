@@ -70,11 +70,11 @@ export default class AppMain extends Component<{}> {
     this.toggleDrawer = this.toggleDrawer.bind(this);
     this.setDrawerState = this.setDrawerState.bind(this);
     this.updateTabIndex = this.updateTabIndex.bind(this);
-    console.log(this.props.screenProps);
+    // console.log('dbg.appMain.screenprops:', this.props.screenProps);
   }
 
   updateTabIndex = tabIndex => {
-    console.log("tab index: " + tabIndex);
+    // console.log("dbg.AppMain.tab index: " + tabIndex);
     this.setState({ tabIndex });
   };
 
@@ -94,10 +94,9 @@ export default class AppMain extends Component<{}> {
 
   render() {
     const { navigate } = this.props.navigation;
-
     return (
-      <languageDataCtx.Consumer>
-        {({ placesData, appData, stylesData }) => {
+      <languageDataCtx.Consumer>{
+        ({ placesData, appData, stylesData }) => {
           console.log("placesData:", placesData);
           console.log("appData:", appData);
           console.log("stylesData:", stylesData);
@@ -164,7 +163,8 @@ export default class AppMain extends Component<{}> {
               </View>
             </placeDataCtx.Provider>
           );
-        }}
+        }
+      } 
       </languageDataCtx.Consumer>
     );
   }

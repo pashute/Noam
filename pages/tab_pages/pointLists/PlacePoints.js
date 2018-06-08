@@ -1,24 +1,24 @@
 /* cSpell:disable */
 
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
   View
   /* Platform, Alert, ScrollView, Button */
-} from "react-native";
-import Accordion from "react-native-collapsible/Accordion";
+} from 'react-native';
+import Accordion from 'react-native-collapsible/Accordion';
 //import PropTypes from 'prop-types';
-import { FontAwesome } from "@expo/vector-icons";
-import { Dropdown } from "react-native-material-dropdown";
-import { placeDataCtx } from "../../AppMain";
+import { FontAwesome } from '@expo/vector-icons';
+import { Dropdown } from 'react-native-material-dropdown';
+import { placeDataCtx } from '../../AppMain';
 
 //const str_welcome ='Last place: South Elevators floor 1';
 //const str_open= 'Opening hours:\n' + 'Sunday - Thursday 8:30-21:00\n';
 //const str_pos = 'You are at the main gate \nThere is an ATM outside';
-const floorNumbers = [{ value: "1" }, { value: "2" }, { value: "All Floors" }];
+const floorNumbers = [{ value: '1' }, { value: '2' }, { value: 'All Floors' }];
 
-const strFirstTimeData = "";
+const strFirstTimeData = '';
 // const strDes = 'Opening hours\n' + 'Sunday-Thursday 8:15-17:30';
 
 export default class PlacePoints extends Component<{}> {
@@ -28,18 +28,18 @@ export default class PlacePoints extends Component<{}> {
       floorFilter: floorNumbers[2].value
     };
     this._renderHeader = this._renderHeader.bind(this);
-    this._onChangeFilter = this._onChangeFilter.bind(this);
+    this._onFloorChangeFilter = this._onFloorChangeFilter.bind(this);
   }
 
-  _onChangeFilter(text) {
-    console.log(text);
+  _onFloorChangeFilter(text) {
+    // console.log('dbg.PlacePoints.onChngFloorFilter.txt', text);
     this.setState({ floorFilter: text });
   }
 
   _renderHeader(section, index, isActive, dummy) {
-    let iconName = "angle-down";
+    let iconName = 'angle-down';
     if (isActive === true) {
-      iconName = "angle-up";
+      iconName = 'angle-up';
     }
 
     let canRender = true;
@@ -59,7 +59,7 @@ export default class PlacePoints extends Component<{}> {
           */}
           <View>
             <Text style={styles.itemTitleText}>
-              {"  "}
+              {'  '}
               {section.point.title}
             </Text>
           </View>
@@ -80,11 +80,11 @@ export default class PlacePoints extends Component<{}> {
   }
 
   render() {
-    console.log("rendering placePoints");
+    console.log('rendering placePoints');
     return (
       <placeDataCtx.Consumer>
         {place => {
-          console.log(place);
+          console.log('dbg.PlacePoints.place', place);
           return (
             <View style={styles.container}>
               <View style={styles.floorViewContainer}>
@@ -93,12 +93,12 @@ export default class PlacePoints extends Component<{}> {
                 </View>
                 <View style={styles.floorDropdownView}>
                   <Dropdown
-                    label={""}
+                    label={''}
                     labelFontSize={0}
                     containerStyle={styles.floorDropdown}
                     value={floorNumbers[2].value}
                     data={floorNumbers}
-                    onChangeText={this._onChangeFilter}
+                    onChangeText={this._onFloorChangeFilter}
                   />
                 </View>
               </View>
@@ -119,28 +119,28 @@ export default class PlacePoints extends Component<{}> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: "100%",
-    backgroundColor: "#FDFDFD"
+    width: '100%',
+    backgroundColor: '#FDFDFD'
   },
   floorViewContainer: {
     flex: 1,
-    width: "100%",
-    flexDirection: "row",
+    width: '100%',
+    flexDirection: 'row',
     marginLeft: 20
   },
   floorLabelView: {
     marginTop: 5,
-    height: "100%",
-    justifyContent: "center"
+    height: '100%',
+    justifyContent: 'center'
   },
   floorLabel: {
     marginTop: 35,
     fontSize: 18,
-    textAlign: "left"
+    textAlign: 'left'
   },
   floorDropdownView: {
-    height: "100%",
-    justifyContent: "center"
+    height: '100%',
+    justifyContent: 'center'
   },
   floorDropdown: {
     marginTop: 5,
@@ -152,19 +152,19 @@ const styles = StyleSheet.create({
     marginLeft: 20
   },
   accordArea: {
-    width: "100%",
-    backgroundColor: "#FFFFFF", // '#F5FCFF'
+    width: '100%',
+    backgroundColor: '#FFFFFF', // '#F5FCFF'
     padding: 3,
-    borderBottomColor: "#E7E7E7",
+    borderBottomColor: '#E7E7E7',
     borderBottomWidth: 2
   },
   itemTitle: {
     flex: 1,
-    width: "100%",
+    width: '100%',
     height: 35,
-    flexDirection: "row",
-    backgroundColor: "transparent",
-    borderBottomColor: "white",
+    flexDirection: 'row',
+    backgroundColor: 'transparent',
+    borderBottomColor: 'white',
     paddingTop: 5,
     paddingBottom: 5,
     borderRadius: 20
@@ -172,22 +172,22 @@ const styles = StyleSheet.create({
   itemTitleText: {
     // textAlign: 'center',
     fontSize: 18,
-    fontWeight: "300",
-    fontStyle: "normal"
+    fontWeight: '300',
+    fontStyle: 'normal'
   },
   iconOpenColapse: {
-    height: "100%",
-    marginLeft: "auto",
+    height: '100%',
+    marginLeft: 'auto',
     marginRight: 10,
-    alignItems: "center"
+    alignItems: 'center'
   },
   itemDetails: {
     padding: 20,
-    backgroundColor: "#fff"
+    backgroundColor: '#fff'
   },
   itemDetailsText: {
     fontSize: 16,
-    fontWeight: "200",
-    fontStyle: "normal"
+    fontWeight: '200',
+    fontStyle: 'normal'
   }
 });
