@@ -45,9 +45,10 @@
       "txtToVoiceAssist": "3. Voice Assist",
       "txtToPreferences": "4. Preferences",
       "txtToProfile": "5. Profile",
+      "txtToGoTo": "Tap to go to ",
 
       "calibrate": {
-        "txtTitleCalibrate": "Calibrate",
+        "txtTitleCalibrate": "Compass Calibration",
         "txtInstructionsCompass": [
           "Please point the top of your device forward ...\n",
           "then turn it in a large figure eight\n",

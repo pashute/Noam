@@ -36,7 +36,7 @@ export default class SetHome extends Component<{}> {
     const { navigate, goBack, replace, popToTop } = this.props.navigation;
     return (
       <languageDataCtx.Consumer>
-        {({ stylesData }) => {
+        {({ stylesData, appData }) => {
           // console.log("stylesData:", stylesData);
           return (
             <View style={[stylesData.styles.sharedStyles.mainContainer, styles.topMargin]}>
@@ -47,7 +47,7 @@ export default class SetHome extends Component<{}> {
                 leftIconName={'location'}
                 onLeftPress={() => console.log('Left!')}
               />
-              <View style={[stylesData.styles.sharedStyles.contentContainer, stylesData.styles.sharedStyles.buttonContainer]}>
+              <View style={[stylesData.styles.sharedStyles.contentContainer,styles.buttonContainer]}>
                 <Text style={styles.titleText}>{txtSettings}</Text>
 
                 <View style={stylesData.styles.sharedStyles.buttonDecorator}>
@@ -63,7 +63,7 @@ export default class SetHome extends Component<{}> {
                     onPress={() => navigate('AutoUpdate')}
                     title={txtToAutoUpdate}
                     color="#111111"
-                    accessibilityLabel="Tap for auto-update settings"
+                    accessibilityLabel="Tap  to go to auto-update settings"
                   />
                 </View>
                 <View style={stylesData.styles.sharedStyles.buttonDecorator}>
@@ -71,7 +71,7 @@ export default class SetHome extends Component<{}> {
                     onPress={() => navigate('Voice')}
                     title={txtToVoiceAssist}
                     color="#111111"
-                    accessibilityLabel="Tap for setting up voice assist"
+                    accessibilityLabel="Tap to go to voice-assist settings"
                   />
                 </View>
                 <View style={stylesData.styles.sharedStyles.buttonDecorator}>
@@ -79,7 +79,7 @@ export default class SetHome extends Component<{}> {
                     onPress={() => navigate('Preferences')}
                     title={txtToPreferences}
                     color="#111111"
-                    accessibilityLabel="Tap for preferences"
+                    accessibilityLabel="Tap to go to preferences"
                   />
                 </View>
                 <View style={stylesData.styles.sharedStyles.buttonDecorator}>
@@ -87,7 +87,7 @@ export default class SetHome extends Component<{}> {
                     onPress={() => navigate('Profile')}
                     title={txtToProfile}
                     color="#111111"
-                    accessibilityLabel="Tap on Me"
+                    accessibilityLabel="Tap to go to profile"
                   />
                 </View>
               </View>
