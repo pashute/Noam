@@ -25,7 +25,7 @@ const txtSettings = 'Settings';
 const txtDone = 'Done';
 
 // todo data: take from stylesData
-const colorButtonShadow = '#181818';
+// const colorButtonShadow = '#181818';
 
 export default class SetHome extends Component<{}> {
   constructor(props) {
@@ -48,7 +48,7 @@ export default class SetHome extends Component<{}> {
                 onLeftPress={() => console.log('Left!')}
               />
               <View style={[stylesData.styles.sharedStyles.contentContainer,styles.buttonContainer]}>
-                <Text style={styles.titleText}>{txtSettings}</Text>
+                <Text style={stylesData.styles.sharedStyles.titleText}>{txtSettings}</Text>
 
                 <View style={stylesData.styles.sharedStyles.buttonDecorator}>
                   <Button
@@ -92,7 +92,7 @@ export default class SetHome extends Component<{}> {
                 </View>
               </View>
               <View style={stylesData.styles.sharedStyles.bottomNavRow}>
-                <Text onPress={() => {}} style={styles.navButton}>
+                <Text onPress={() => {console.log('dbg.settingsDone')}} style={stylesData.styles.sharedStyles.navButton}>
                   {txtDone}
                 </Text>
               </View>
