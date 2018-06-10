@@ -23,7 +23,7 @@
         "marginRight": 20,
         "marginBottom": 10
       },
-      "depinstructionsHeader": {
+      "instructionsHeader": {
         "marginTop": 10,
         "textAlign": "left",
         "color": "#333333",
@@ -33,11 +33,19 @@
         "marginLeft": 25,
         "marginRight": 25
       },
-      "depinstructions": {
+      "instructionsView": {
         "flex": 1,
         "flexDirection": "column"
       },
-
+      "instructions": {
+        "marginTop": 25,
+        "textAlign": "left",
+        "color": "#333333",
+        "marginBottom": 10,
+        "fontSize": 20,
+        "marginLeft": 25,
+        "marginRight": 25
+      },
       "buttonDecorator": {
         "backgroundColor": "#444444",
         "borderRadius": 10,

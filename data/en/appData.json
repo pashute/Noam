@@ -2,9 +2,11 @@
   "appData": {
     "general": {
       "txtAppName": "Noam",
+      "txtAppNameOnActionBar": "noam",
       "txtNext": "Next",
       "txtTOC": "TOC",
       "txtBack": "Back",
+      "txtDone": "Done",
       "txtOn": "on",
       "txtOff": "off"
     },
@@ -40,6 +42,7 @@
       "txtButtonAndroidBluetooth": "Press here to turn Bluetooth on"
     },
     "screensSettings": {
+      "txtSettings": "Settings",
       "txtToCalibrate": "1. Calibrate Compass",
       "txtToAutoUpdate": "2. Auto Update",
       "txtToVoiceAssist": "3. Voice Assist",
@@ -48,15 +51,15 @@
       "txtToGoTo": "Tap to go to ",
 
       "calibrate": {
-        "txtTitleCalibrate": "Compass Calibration",
+        "txtTitle": "Compass Calibration",
         "txtInstructionsCompass": [
           "Please point the top of your device forward ...\n",
           "then turn it in a large figure eight\n",
           "to calibrate the compass"
         ]
       },
-      "autoupdate": {
-        "txtTitleAutoUpdate": "Auto update",
+      "autoUpdate": {
+        "txtTitle": "Auto update",
         "txtInstructionsAutoupdate": [
           "If you turn this option on the lists\n",
           "will automatically change as you\n",
@@ -70,9 +73,8 @@
         "txtAutoUpdateIs": "Auto-update is currently set ",
         "txtAutoUpdateTurn": "Turn auto-update "
       },
-      "voiceassist": {
-        "txtTitleVoiceAssist": "Voice assist",
-        "txtTitleVoice": "3. Voice Assistant",
+      "voiceAssist": {
+        "txtTitle": "Voice assist",
         "txtAssistantIs": "Voice assistant is currently set ",
         "txtAssistantTurn": "Turn voice assistant ",
 
@@ -88,10 +90,10 @@
         ]
       },
       "preferences": {
-        "txtTitlePreferences": "Preferences"
+        "txtTitle": "Preferences"
       },
       "profile": {
-        "txtTitleProfile": "Profile"
+        "txtTitle": "Profile"
       }
     }
   }
