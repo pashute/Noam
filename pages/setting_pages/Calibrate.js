@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import {} from 'react-native';
 import ActionBar from 'react-native-action-bar';
+import { Constants } from 'expo';
 // import PropTypes from 'prop-types';
 // import { StackNavigator } from 'react-navigation';
 import Bottom from '../tab_pages/Bottom.js';
@@ -55,12 +56,12 @@ export default class Calibrate extends Component<{}> {
                   />
                 </View>
               </View>
-              <View style={styles.bottomNavRow}>
+              <View style={stylesData.styles.sharedStyles.bottomNavRow}>
                 <Text
                   onPress={() => {
                     navigate('MainPage');
                   }}
-                  style={styles.navButton}
+                  style={stylesData.styles.sharedStyles.navButton}
                 >
                   {appData.appData.general.txtBack}
                 </Text>
@@ -68,7 +69,7 @@ export default class Calibrate extends Component<{}> {
                   onPress={() => {
                     navigate('SetHome');
                   }}
-                  style={styles.navButton}
+                  style={stylesData.styles.sharedStyles.navButton}
                 >
                   {appData.appData.general.txtTOC}
                 </Text>
@@ -76,12 +77,12 @@ export default class Calibrate extends Component<{}> {
                   onPress={() => {
                     navigate('AutoUpdate');
                   }}
-                  style={styles.navButton}
+                  style={stylesData.styles.sharedStyles.navButton}
                 >
-                  {txtNext}
+                  {appData.appData.general.txtNext}
                 </Text>
               </View>
-              <View style={styles.bottomRow}>
+              <View style={stylesData.styles.sharedStyles.bottomRow}>
                 <Bottom />
               </View>
             </View>
@@ -94,7 +95,7 @@ export default class Calibrate extends Component<{}> {
 
 const styles = StyleSheet.create({
   topMargin: {
-    marginTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight
+    marginTop: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight
   },
   buttonContainer: {
     flexDirection: 'column',

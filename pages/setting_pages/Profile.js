@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   Platform,
   StyleSheet,
@@ -6,186 +6,143 @@ import {
   TextInput,
   View
   /* , Switch, Alert, Button */
-} from "react-native";
-import ActionBar from "react-native-action-bar";
+} from 'react-native';
+import { /* Util, */ SecureStore, Constants } from 'expo';
+import ActionBar from 'react-native-action-bar';
 // import PropTypes from 'prop-types';
-// import RadioForm from 'react-native-simple-radio-button';
-/* RadioButton,
-  RadioButtonInput,
-  RadioButtonLabel */
-import Bottom from "../tab_pages/Bottom.js";
-
-const txtAppName = "Noam";
-const txtSettingsText = "Settings";
-const txtBack = "< Back";
-const txtTOC = "TOC";
-// const txtNext = 'Next >';
-const txtDone = "Done";
-const txtOn = "on";
-const txtOff = "off";
-
-const txtTitlePreferences = "5. Profile";
-const txtChooseStyle = "Choose style";
-// const txtVoiceMale = 'Male';
-// const txtVoiceFemale = 'Female';
-
-const txtInstrcutionsProfile = [
-  "Optionally you can save a username and password."
-];
-
-// todo data: make this dynamic
-const radioVoiceOptions = [
-  { label: "Male", value: 0 },
-  { label: "Female", value: 1 }
-];
+import Bottom from '../tab_pages/Bottom.js';
+import { languageDataCtx } from '../../App';
 
 export default class Profile extends Component<{}> {
   constructor(props) {
     super(props);
 
     this.state = {
-      username: "",
-      password: "",
-      email: ""
+      username: '',
+      email: '',
+      password: ''
     };
   }
 
+  UNSAFE_componentWillMount() {
+    SecureStore.getItemAsync('preferences-username').then(value => {
+      // console.log('dbg.profile secureStore.username', value);
+      if (value !== null) {
+        this.setState({ username: value });
+      }
+    });
+  
+    SecureStore.getItemAsync('preferences-email').then(value => {
+      // console.log('dbg.profile secureStore.email', value);
+      if (value !== null) {
+        this.setState({ email: value });
+      }
+    });
+  
+    SecureStore.getItemAsync('preferences-password').then(value => {
+      // console.log('dbg.profile secureStore.password', value);
+      if (value !== null) {
+        this.setState({ password: value });
+      }
+    });
+  }
+  
+
   render() {
-    const { navigate } = this.props.navigation;
+    const { navigate, goBack, replace, popToTop } = this.props.navigation;
     return (
-      <View style={styles.mainContainer}>
-        <ActionBar
-          containerStyle={styles.actionBarContainer}
-          titleStyle={styles.actionTitle}
-          title={txtAppName}
-          leftIconName={"location"}
-          onLeftPress={() => console.log("Left!")}
-        />
-        <View style={styles.contentContainer}>
-          <Text style={styles.titleText}>{txtSettingsText}</Text>
-          <Text style={styles.instructionsHeader}>{txtTitlePreferences}</Text>
-          <View style={styles.insturctionsView}>
-            <Text style={styles.instructions}>{txtInstrcutionsProfile}</Text>
-            <View style={styles.inputsView}>
-              <TextInput
-                style={{ height: 40, fontSize: 25 }}
-                value={this.state.username}
-                placeholder="Username"
-                onChangeText={text => this.setState({ username: text })}
+      <languageDataCtx.Consumer>
+        {({ stylesData, appData }) => {
+          return(
+            <View style={[
+              stylesData.styles.sharedStyles.mainContainer,
+              styles.topMargin
+            ]}>
+              <ActionBar
+                containerStyle={stylesData.styles.sharedStyles.actionBarContainer}
+                titleStyle={stylesData.styles.sharedStyles.actionTitle}
+                title={appData.appData.general.txtAppNameOnActionBar}
+                leftIconName={'location'}
+                onLeftPress={() => console.log('dbg.pref.actionbar requested Voice-Assist!')}
               />
-              <TextInput
-                style={{ height: 40, fontSize: 25 }}
-                value={this.state.password}
-                secureTextEntry={true}
-                placeholder="password"
-                onChangeText={text => this.setState({ password: text })}
-              />
-              <TextInput
-                style={{ height: 40, fontSize: 25 }}
-                value={this.state.email}
-                placeholder="email"
-                onChangeText={text => this.setState({ email: text })}
-              />
-              <View style={{ marginTop: 60 }} />
+              <View style={stylesData.styles.sharedStyles.contentContainer}>
+                <Text style={stylesData.styles.sharedStyles.titleText}>{appData.appData.general.txtSettings}</Text>
+                <Text style={stylesData.styles.sharedStyles.instructionsHeader}>{appData.appData.screensSettings.profile.txtTitle}</Text>
+                <View style={stylesData.styles.sharedStyles.insturctionsView}>
+                  <Text style={stylesData.styles.sharedStyles.instructions}>{appData.appData.screensSettings.profile.txtInstrcutions}</Text>
+                  <View style={styles.inputsView}>
+                    <TextInput
+                      style={stylesData.styles.sharedStyles.inputText}
+                      value={this.state.username}
+                      placeholder="Username"
+                      onChangeText={text => {
+                        SecureStore.setItemAsync('preferences-username', text.toString());
+                        this.setState({ username: text })
+                      }}
+                    />
+                    <TextInput
+                      style={{ height: 40, fontSize: 25 }}
+                      value={this.state.email}
+                      placeholder="email"
+                      onChangeText={text => {
+                        SecureStore.setItemAsync('preferences-email', text.toString());
+                        this.setState({ email: text })
+                      }}
+                    />
+                    <TextInput
+                      style={{ height: 40, fontSize: 25 }}
+                      value={this.state.password}
+                      secureTextEntry={true}
+                      placeholder="password"
+                      onChangeText={text => {
+                        SecureStore.setItemAsync('preferences-password', text.toString());
+                        this.setState({ password: text })
+                      }}
+                    />
+                    <View style={styles.separator60} />
+                  </View>
+                </View>
+                <View style={stylesData.styles.sharedStyles.bottomNavRow}>
+                  <Text
+                    onPress={() => {
+                      navigate('Preferences');
+                    }}
+                    style={stylesData.styles.sharedStyles.navButton}
+                  >
+                    {appData.appData.general.txtBack}
+                  </Text>
+                  <Text
+                    onPress={() => {
+                      navigate('SetHome');
+                    }}
+                    style={stylesData.styles.sharedStyles.navButton}
+                  >
+                    {appData.appData.general.txtTOC}
+                  </Text>
+                  <Text
+                    onPress={() => {
+                      navigate('MainPage');
+                    }}
+                    style={stylesData.styles.sharedStyles.navButton}
+                  >
+                    {appData.appData.general.txtDone}
+                  </Text>
+                </View>
+                <View style={stylesData.styles.sharedStyles.bottomRow}>
+                  <Bottom />
+                </View>
+              </View>
             </View>
-          </View>
-          <View style={styles.bottomNavRow}>
-            <Text
-              onPress={() => {
-                navigate("Preferences");
-              }}
-              style={styles.navButton}
-            >
-              {txtBack}
-            </Text>
-            <Text
-              onPress={() => {
-                navigate("SetHome");
-              }}
-              style={styles.navButton}
-            >
-              {txtTOC}
-            </Text>
-            <Text
-              onPress={() => {
-                navigate("MainPage");
-              }}
-              style={styles.navButton}
-            >
-              {txtDone}
-            </Text>
-          </View>
-          <View style={styles.bottomRow}>
-            <Bottom />
-          </View>
-        </View>
-      </View>
+          );
+        }}
+      </languageDataCtx.Consumer>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  mainContainer: {
-    flex: 1,
-    marginTop: Platform.OS === "ios" ? 0 : Expo.Constants.statusBarHeight,
-    backgroundColor: "#FDFDFD"
+  topMargin: {
+    marginTop: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight
   },
-  actionBarContainer: {
-    backgroundColor: "#330077"
-  },
-  actionTitle: {
-    textAlign: "center",
-    fontSize: 20
-  },
-  contentContainer: {
-    flex: 16
-  },
-  titleText: {
-    fontSize: 30,
-    marginTop: 30,
-    marginLeft: 20,
-    marginRight: 20,
-    marginBottom: 10
-  },
-  instructionsHeader: {
-    marginTop: 10,
-    textAlign: "left",
-    color: "#333333",
-    marginBottom: 10,
-    fontSize: 22,
-    fontWeight: "400",
-    marginLeft: 25,
-    marginRight: 25
-  },
-  instructionsView: {
-    flex: 1,
-    flexDirection: "column"
-  },
-  instructions: {
-    marginTop: 25,
-    textAlign: "left",
-    color: "#333333",
-    marginBottom: 10,
-    fontSize: 18,
-    marginLeft: 25,
-    marginRight: 25
-  },
-  inputsView: {
-    marginLeft: 35,
-    marginRight: 35
-  },
-  bottomNavRow: {
-    flex: 2,
-    flexDirection: "row",
-    marginLeft: 15,
-    marginRight: 15,
-    justifyContent: "space-between"
-  },
-  navButton: {
-    textDecorationLine: "underline",
-    fontSize: 22
-  },
-  bottomRow: {
-    flex: 2
-  }
+  separator60: { marginTop: 60 }
 });
