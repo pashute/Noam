@@ -33,6 +33,7 @@ import Profile from './pages/setting_pages/Profile';
 import SetHome from './pages/setting_pages/SetHome';
 import Voice from './pages/setting_pages/Voice';
 import Help from './pages/Help';
+import HelpFirstTime from './pages/HelpFirstTime';
 import { getLanguage, getLanguageCode } from './data';
 
 /*
@@ -50,6 +51,13 @@ YellowBox.ignoreWarnings([
 ]);
 
 const Nav = StackNavigator({
+  HelpFirstTime: {
+    screen: HelpFirstTime,
+    navigationOptions: {
+      headermode: 'screen',
+      header: null
+    }
+  },
   SplashPage: {
     screen: Splash,
     navigationOptions: {
@@ -99,7 +107,6 @@ const Nav = StackNavigator({
       header: null
     }
   },
-
   Voice: {
     screen: Voice,
     navigationOptions: {
