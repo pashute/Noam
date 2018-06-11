@@ -42,7 +42,7 @@ export default class ThisWay extends Component<{}> {
     return (
       <languageDataCtx.Consumer>
         {({ appData }) => {
-          console.log(appData);
+          // aconsole.log('dbg.ThisWay.appData', appData);
           return (
             <View style={styles.mainContainer}>
               <Text style={styles.pointingTo}>

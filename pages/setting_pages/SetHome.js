@@ -1,28 +1,18 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
   View,
   Button,
   Platform /* , Alert, */
-} from "react-native";
-import ActionBar from "react-native-action-bar";
+} from 'react-native';
+import ActionBar from 'react-native-action-bar';
+import { Constants } from 'expo';
 // import PropTypes from 'prop-types';
 // import {StackNavigator,} from 'react-navigation';
 // import RNExitApp from 'react-native-exit-app';
-import Bottom from "../tab_pages/Bottom.js";
-
-// todo data: take from AppData.json
-const txtToCalibrate = "1. Calibrate Compass";
-const txtToAutoUpdate = "2. Auto Update when pointing";
-const txtToVoiceAssist = "3. Voice Assistant (Disabled)";
-const txtToPreferences = "4. Preferences";
-const txtToProfile = "5. Profile";
-
-const txtDone = "Done";
-
-// todo data: take from stylesData
-const colorButtonShadow = "#181818";
+import Bottom from '../tab_pages/Bottom.js';
+import { languageDataCtx } from '../../App';
 
 export default class SetHome extends Component<{}> {
   constructor(props) {
@@ -32,133 +22,121 @@ export default class SetHome extends Component<{}> {
   render() {
     const { navigate, goBack, replace, popToTop } = this.props.navigation;
     return (
-      <View style={styles.mainContainer}>
-        <ActionBar
-          containerStyle={styles.actionBarContainer}
-          titleStyle={styles.actionTitle}
-          title={"noam"}
-          leftIconName={"location"}
-          onLeftPress={() => console.log("Left!")}
-        />
-        <View style={[styles.contentContainer, styles.buttonContainer]}>
-          <Text style={styles.titleText}>Settings</Text>
+      <languageDataCtx.Consumer>
+        {({ stylesData, appData }) => {
+          // console.log("stylesData:", stylesData);
+          return (
+            <View
+              style={[
+                stylesData.styles.sharedStyles.mainContainer,
+                styles.topMargin
+              ]}
+            >
+              <ActionBar
+                containerStyle={
+                  stylesData.styles.sharedStyles.actionBarContainer
+                }
+                titleStyle={stylesData.styles.sharedStyles.actionTitle}
+                title={appData.appData.general.txtAppNameOnActionBar}
+                leftIconName={'location'}
+                onLeftPress={() => console.log('Left!')}
+              />
+              <View
+                style={[
+                  stylesData.styles.sharedStyles.contentContainer,
+                  styles.buttonContainer
+                ]}
+              >
+                <Text style={stylesData.styles.sharedStyles.titleText}>
+                  {appData.appData.screensSettings.txtSettings}
+                </Text>
 
-          <View style={styles.buttonDecorator}>
-            <Button
-              onPress={() => {
-                navigate("Calibrate");
-              }}
-              title={txtToCalibrate}
-              color="#111111"
-              accessibilityLabel="Tap to calibrate compass"
-            />
-          </View>
-          <View style={styles.buttonDecorator}>
-            <Button
-              onPress={() => {
-                navigate("AutoUpdate");
-              }}
-              title={txtToAutoUpdate}
-              color="#111111"
-              accessibilityLabel="Tap for auto-update settings"
-            />
-          </View>
-          <View style={styles.buttonDecorator}>
-            <Button
-              onPress={() => {
-                navigate("Voice");
-              }}
-              title={txtToVoiceAssist}
-              color="#111111"
-              accessibilityLabel="Tap on Me"
-            />
-          </View>
-          <View style={styles.buttonDecorator}>
-            <Button
-              onPress={() => {
-                navigate("Preferences");
-              }}
-              title={txtToPreferences}
-              color="#111111"
-              accessibilityLabel="Tap on Me"
-            />
-          </View>
-          <View style={styles.buttonDecorator}>
-            <Button
-              onPress={() => {
-                navigate("Profile");
-              }}
-              title={txtToProfile}
-              color="#111111"
-              accessibilityLabel="Tap on Me"
-            />
-          </View>
-        </View>
-        <View style={styles.bottomNavRow}>
-          <Text onPress={() => {}} style={styles.navButton}>
-            {txtDone}
-          </Text>
-        </View>
-        <View style={styles.bottomRow}>
-          <Bottom />
-        </View>
-      </View>
+                <View style={stylesData.styles.sharedStyles.buttonDecorator}>
+                  <Button
+                    onPress={() => navigate('Calibrate')}
+                    titleStyle={stylesData.styles.sharedStyles.buttonText} 
+                    title={appData.appData.screensSettings.txtToCalibrate}
+                    color="#111111"
+                    accessibilityLabel={
+                      appData.appData.screensSettings.txtToGoTo +
+                      appData.appData.screensSettings.calibrate.textTitle
+                    }
+                  />
+                </View>
+                <View style={stylesData.styles.sharedStyles.buttonDecorator}>
+                  <Button
+                    onPress={() => navigate('AutoUpdate')}
+                    titleStyle={stylesData.styles.sharedStyles.buttonText} 
+                    title={appData.appData.screensSettings.txtToAutoUpdate}
+                    color="#111111"
+                    accessibilityLabel={
+                      appData.appData.screensSettings.txtToGoTo +
+                      appData.appData.screensSettings.autoUpdate.textTitle
+                    }
+                  />
+                </View>
+                <View style={stylesData.styles.sharedStyles.buttonDecorator}>
+                  <Button
+                    onPress={() => navigate('Voice')}
+                    titleStyle={stylesData.styles.sharedStyles.buttonText} 
+                    title={appData.appData.screensSettings.txtToVoiceAssist}
+                    color="#111111"
+                    accessibilityLabel={
+                      appData.appData.screensSettings.txtToGoTo +
+                      appData.appData.screensSettings.voiceAssist.textTitle
+                    }
+                  />
+                </View>
+                <View style={stylesData.styles.sharedStyles.buttonDecorator}>
+                  <Button
+                    onPress={() => navigate('Preferences')}
+                    titleStyle={stylesData.styles.sharedStyles.buttonText} 
+                    title={appData.appData.screensSettings.txtToPreferences}
+                    color="#111111"
+                    accessibilityLabel={
+                      appData.appData.screensSettings.txtToGoTo +
+                      appData.appData.screensSettings.preferences.textTitle
+                    }
+                  />
+                </View>
+                <View style={stylesData.styles.sharedStyles.buttonDecorator}>
+                  <Button
+                    onPress={() => navigate('Profile')}
+                    titleStyle={stylesData.styles.sharedStyles.buttonText} 
+                    title={appData.appData.screensSettings.txtToProfile}
+                    color="#111111"
+                    accessibilityLabel={
+                      appData.appData.screensSettings.txtToGoTo +
+                      appData.appData.screensSettings.profile.textTitle
+                    }
+                  />
+                </View>
+              </View>
+              <View style={stylesData.styles.sharedStyles.bottomNavRow}>
+                <Text
+                  onPress={() => navigate('MainPage')}
+                  style={stylesData.styles.sharedStyles.navButton}
+                >
+                  {appData.appData.general.txtDone}
+                </Text>
+              </View>
+              <View style={stylesData.styles.sharedStyles.bottomRow}>
+                <Bottom />
+              </View>
+            </View>
+          );
+        }}
+      </languageDataCtx.Consumer>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  mainContainer: {
-    flex: 1,
-    marginTop: Platform.OS === "ios" ? 0 : Expo.Constants.statusBarHeight,
-    backgroundColor: "#FDFDFD"
-  },
-  actionBarContainer: {
-    backgroundColor: "#330077"
-  },
-  actionTitle: {
-    textAlign: "center",
-    fontSize: 20
-  },
-  contentContainer: {
-    flex: 16
-  },
-  titleText: {
-    fontSize: 30,
-    marginTop: 30,
-    marginLeft: 20,
-    marginRight: 20,
-    marginBottom: 10
+  topMargin: {
+    marginTop: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight
   },
   buttonContainer: {
-    flexDirection: "column",
-    justifyContent: "space-between"
-  },
-  buttonDecorator: {
-    backgroundColor: "#444444",
-    borderRadius: 10,
-    padding: 3,
-    shadowColor: colorButtonShadow,
-    shadowOffset: {
-      width: 0,
-      height: 1
-    },
-    shadowRadius: 3, //10,
-    shadowOpacity: 0.25,
-    marginRight: 20,
-    marginLeft: 20
-  },
-  bottomNavRow: {
-    flex: 2,
-    flexDirection: "row",
-    marginLeft: 15,
-    justifyContent: "space-between"
-  },
-  navButton: {
-    textDecorationLine: "underline",
-    fontSize: 22
-  },
-  bottomRow: {
-    flex: 2
+    flexDirection: 'column',
+    justifyContent: 'space-between'
   }
 });
