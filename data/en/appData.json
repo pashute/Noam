@@ -110,7 +110,10 @@
       },
       "profile": {
         "txtTitle": "Profile",
-        "txtInstructions": "Set optional personal profile"
+        "txtInstructions": "Set optional personal profile",
+        "txtUsername": "Username",
+        "txtEmail": "Email",
+        "txtPassword": "Password"
       }
     }
   }
