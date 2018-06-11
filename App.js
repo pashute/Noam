@@ -188,11 +188,11 @@ export default class App extends React.Component {
 
   // onCompassUpdate = pointingTo => this.setState({ pointingTo });
 
-  setNoamColor = color => {
-    let newState = { ...this.state };
-    ObjectPath.set(newState, 'styles.welcomeStyles.welcomeColor', color);
-    this.setState(newState);
-  };
+  // setNoamColor = color => {
+  //   let newState = { ...this.state };
+  //   ObjectPath.set(newState, 'styles.welcomeStyles.welcomeColor', color);
+  //   this.setState(newState);
+  // };
 
   checkNav() {
     const prevGetStateForAction = Nav.router.getStateForAction;
@@ -205,21 +205,22 @@ export default class App extends React.Component {
         let navigateTo = action;
         let prevScreen = 'none';
         let currentScreen = 'none';
-        const currentRutes = state.routes;
-        if (currentRutes.length > 1) {
-          prevScreen = currentRutes[currentRutes.length - 2].routeName;
+
+        const currentRoutes = state.routes;
+        if (currentRoutes.length > 1) {
+          prevScreen = currentRoutes[currentRoutes.length - 2].routeName;
         }
-        if (currentRutes.length > 0) {
-          currentScreen = currentRutes[currentRutes.length - 1].routeName;
+        if (currentRoutes.length > 0) {
+          currentScreen = currentRoutes[currentRoutes.length - 1].routeName;
         }
+
         // console.log('dbg.prevScreen:', prevScreen);
         // console.log('dbg.curScreen:', currentScreen);
         // console.log('dbg.screenToGo', screenToGo);
-
-        return prevGetStateForAction(action, state);
-
+        // return prevGetStateForAction(action, state);
+        
         if (currentScreen === screenToGo) {
-          return null;
+         // x return null;
         }
         if (prevScreen === screenToGo) {
           navigateTo = NavigationActions.back();
@@ -263,22 +264,3 @@ export default class App extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#FFFFFF'
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5
-  }
-});

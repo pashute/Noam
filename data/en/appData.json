@@ -2,11 +2,15 @@
   "appData": {
     "general": {
       "txtAppName": "Noam",
+      "txtAppNameOnActionBar": "noam",
       "txtNext": "Next",
       "txtTOC": "TOC",
       "txtBack": "Back",
+      "txtDone": "Done",
       "txtOn": "on",
-      "txtOff": "off"
+      "txtOff": "off",
+      "txtOK": "OK",
+      "txtCancel": "Cancel"
     },
     "menu": {
       "txtMenuSettings": "Settings",
@@ -40,38 +44,41 @@
       "txtButtonAndroidBluetooth": "Press here to turn Bluetooth on"
     },
     "screensSettings": {
+      "txtSettings": "Settings",
       "txtToCalibrate": "1. Calibrate Compass",
       "txtToAutoUpdate": "2. Auto Update",
       "txtToVoiceAssist": "3. Voice Assist",
       "txtToPreferences": "4. Preferences",
       "txtToProfile": "5. Profile",
+      "txtToGoTo": "Tap to go to ",
 
       "calibrate": {
-        "txtTitleCalibrate": "Calibrate",
+        "txtTitle": "Compass Calibration",
         "txtInstructionsCompass": [
           "Please point the top of your device forward ...\n",
           "then turn it in a large figure eight\n",
           "to calibrate the compass"
         ]
       },
-      "autoupdate": {
-        "txtTitleAutoUpdate": "Auto update",
-        "txtInstructionsAutoupdate": [
+      "autoUpdate": {
+        "txtTitle": "Auto update",
+        "txtInstructions": [
           "If you turn this option on the lists\n",
           "will automatically change as you\n",
           "change your direction\n",
           "\n",
           "To refresh the list manually\n",
           "point the top of your phone in\n",
-          "the direction you want instructions for\n",
+          "the direction you want instructions for ",
           "and press the This Way tab"
         ],
         "txtAutoUpdateIs": "Auto-update is currently set ",
-        "txtAutoUpdateTurn": "Turn auto-update "
+        "txtAutoUpdateTurn": "Turn auto-update ",
+        "txtAutoUpdateAccessTurnOn": "Tap to turn on auto update",
+        "txtAutoUpdateAccessTurnOff": "Tap to turn off auto update"
       },
-      "voiceassist": {
-        "txtTitleVoiceAssist": "Voice assist",
-        "txtTitleVoice": "3. Voice Assistant",
+      "voiceAssist": {
+        "txtTitle": "Voice assist",
         "txtAssistantIs": "Voice assistant is currently set ",
         "txtAssistantTurn": "Turn voice assistant ",
 
@@ -87,10 +94,23 @@
         ]
       },
       "preferences": {
-        "txtTitlePreferences": "Preferences"
+        "txtTitle": "Preferences",
+        "txtThemeHighContrast": "High Contrast",
+        "txtThemeDefault": "Default",
+        "txtLabelUseLargeFonts": "Use large fonts",
+        "txtLabelScalingOptions": "Scaling options",
+        "txtLabelLanguage": "Language",
+        "txtLabelTextOnly": "Text only (no icons)",
+        "txtLabelTheme": "Theme",
+        "txtLabelShowOutlines": "Show outlines",
+        "txtAlertLangchangeTitle": "Changing Language",
+        "txtAlertLangchangeText": "Changing the language to ",
+        "txtLabelNotifications": "Notifications",
+        "txtLabelAutoLaunch": "Automatic launch near location"
       },
       "profile": {
-        "txtTitleProfile": "Profile"
+        "txtTitle": "Profile",
+        "txtInstructions": "Set optional personal profile"
       }
     }
   }
