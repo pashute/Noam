@@ -1,0 +1,384 @@
+{
+  "places": [
+    {
+      "place": {
+        "id": 1,
+        "txtId": "bigbs",
+        "placeType": "בניין",
+        "fullName": "ביג בית שמש",
+        "msg": "ביג בש",
+        "nearby": [
+          {
+            "beacon": {
+              "id": 11,
+              "txtId": "mainGate",
+              "beaconID": "12345",
+              "fullName": "שער ראשי (דרום)",
+              "msg": "שער ראשי",
+              "points": [
+                {
+                  "point": {
+                    "id": 12,
+                    "txtId": "aToilets3",
+                    "title": "שרותים נגישים 3",
+                    "icon": "toilet",
+                    "direction": 125,
+                    "instructions": ["התקשרו 051-222-333 לעזרה"]
+                  }
+                },
+                {
+                  "point": {
+                    "id": 13,
+                    "txtId": "Elevators",
+                    "title": "מעליות 4א",
+                    "icon": "elevator",
+                    "direction": 343,
+                    "instructions": ["לכל הקומותn", "הנך בקומה 1"]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "beacon": {
+              "id": 12,
+              "txtId": "toilets",
+              "beaconID": "12346",
+              "fullName": "שירותים קומה א 1",
+              "msg": "שירותים א1",
+              "points": [
+                {
+                  "point": {
+                    "id": 11,
+                    "txtId": "sidegate",
+                    "title": "שער צדדי (בן זאב)",
+                    "icon": "gate",
+                    "direction": 32,
+                    "instructions": ["עקבו אחר ריח הסיגריות אל היציאה"]
+                  }
+                },
+                {
+                  "point": {
+                    "id": 13,
+                    "txtId": "Elevators14b",
+                    "title": "מעליות 14ב",
+                    "icon": "elevator",
+                    "direction": 311,
+                    "instructions": [
+                      "רק 2 מעליות באולם זה\n",
+                      "לא עוצרים בקומה 3"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "thisWay": [
+          {
+            "beacon": {
+              "id": 11,
+              "txtId": "mainGate",
+              "beaconID": "12345",
+              "fullName": "שער ראשי (דרום)",
+              "msg": "שער ראשי",
+              "points": [
+                {
+                  "point": {
+                    "id": 12,
+                    "txtId": "Superpharm",
+                    "title": "סופרפארם",
+                    "icon": "pharmacy",
+                    "direction": 125,
+                    "instructions": [
+                      "10 מטרים לפנים\n",
+                      "הכניסה היא 7 מטרים לימינך."
+                    ]
+                  }
+                },
+                {
+                  "point": {
+                    "id": 13,
+                    "txtId": "stairs12",
+                    "title": "מדרגות צפוניות",
+                    "icon": "stairs",
+                    "direction": 150,
+                    "instructions": ["לורם איפסום 1"]
+                  }
+                },
+                {
+                  "point": {
+                    "id": 13,
+                    "txtId": "toilets33",
+                    "title": "שירותי צפוניים 33",
+                    "icon": "men",
+                    "direction": 150,
+                    "instructions": [
+                      "אין שינורתים נגישים. \nשירותים נגישים בקומה השניה"
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "beacon": {
+              "id": 12,
+              "txtId": "toilets",
+              "beaconID": "12346",
+              "fullName": "שירותים קומה א, דרום",
+              "msg": "שירותים א.דר",
+              "points": [
+                {
+                  "point": {
+                    "id": 11,
+                    "txtId": "maingate",
+                    "title": "שער ראשי (דרום)",
+                    "icon": "gate",
+                    "direction": 32,
+                    "instructions": ["הוראות כאלו ואחרים"]
+                  }
+                },
+                {
+                  "point": {
+                    "id": 13,
+                    "txtId": "Elevators 57",
+                    "title": "מעליות לב הבניין",
+                    "icon": "elevator",
+                    "direction": 311,
+                    "instructions":
+                      "4 מעליות. \nשניים בימין האולם  \nושניים משמאל "
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "inPlace": [
+          {
+            "point": {
+              "id": 1,
+              "floor": 1,
+              "title": "ינטה השכנית",
+              "subtitle": "משרד",
+              "content": [
+                "קומה ב \nליד מעליות ב3 דרום\n",
+                "צוות מומחה באתגרי נגישות\n",
+                "דרושים עובדים."
+              ]
+            }
+          },
+          {
+            "point": {
+              "id": 2,
+              "floor": 1,
+              "title": "שירותים",
+              "subtitle": "מונגשים",
+              "content": ["קומה א \nליד מעליות א3 דרום\n", "דלת שלישית משמאל\n"]
+            }
+          },
+          {
+            "point": {
+              "id": 3,
+              "floor": 2,
+              "title": "חדר בריחה",
+              "subtitle": "מרכז פעילות",
+              "content": ["קומה שניה \nליד מעליות ב3 דרום"]
+            }
+          },
+          {
+            "point": {
+              "id": 3,
+              "floor": 2,
+              "title": "קזינו",
+              "subtitle": "מרכז גמילה למהמרים",
+              "content": ["לורם איפסום\n בלה בלו וכו וכו"]
+            }
+          }
+        ],
+        "contactPhone": "029919366",
+        "exits": [
+          {
+            "beacon": {
+              "id": 11,
+              "instruction":
+                "עם המסדרון דרומה 40 צעדים, פנו ימינה למסדרון ועוד 80 צעדים ליציאה"
+            }
+          },
+          {
+            "beacon": {
+              "id": 22,
+              "instruction": "עם המסדרון דרומה 30 צעדים. יציאת החירום משמאלכם"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "place": {
+        "id": 2,
+        "txtId": "hosp",
+        "placeType": "building",
+        "fullName": "איחוד בתי החולים הישראלים",
+        "msg": "iHospital",
+        "nearby": [
+          {
+            "beacon": {
+              "id": 11,
+              "txtId": "mainGate",
+              "beaconID": "12345",
+              "fullName": "שער ראשי (מערב)",
+              "msg": ["Gate (new)"],
+              "points": [
+                {
+                  "point": {
+                    "id": 12,
+                    "txtId": "Cardio",
+                    "title": "אי ספיקת לב",
+                    "icon": "pharmacy",
+                    "direction": 125,
+                    "instructions": ["10 מטר לפנים\n", "הכניסה 2 מטר לשמאלך."]
+                  }
+                },
+                {
+                  "point": {
+                    "id": 13,
+                    "txtId": "stairs35",
+                    "title": "מדרגות חירום (דרום)",
+                    "icon": "stairs",
+                    "direction": 150,
+                    "instructions": ["לורם איפסום 2"]
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "thisWay": [
+          {
+            "beacon": {
+              "id": 11,
+              "txtId": "mainGate",
+              "beaconID": "12345",
+              "fullName": "שער ראשי (מערב)",
+              "msg": "שער (חדש)",
+              "points": [
+                {
+                  "point": {
+                    "id": 12,
+                    "txtId": "Cardio",
+                    "title": "אי ספיקת לב",
+                    "icon": "pharmacy",
+                    "direction": 125,
+                    "instructions": [
+                      "10 מטרים לפנים\n",
+                      "הכניסה 2 מטרים לימינך."
+                    ]
+                  }
+                },
+                {
+                  "point": {
+                    "id": 13,
+                    "txtId": "stairs35",
+                    "title": "מדרגות חירום (דרום)",
+                    "icon": "מדרגות (דרום)",
+                    "direction": 150,
+                    "instructions": ["לורם איפסום 2"]
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "inPlace": [
+          {
+            "point": {
+              "id": 1,
+              "floor": 1,
+              "title": "בלה בלה",
+              "subtitle": "משרד",
+              "content": [
+                "לורם \nליד ניר איפסום\n",
+                "וכולי וכדומה וה הלאה\n",
+                "וכל זה ואולי."
+              ]
+            }
+          },
+          {
+            "point": {
+              "id": 2,
+              "floor": 1,
+              "title": "שירותים",
+              "subtitle": "נגישים",
+              "content": [
+                "קומה א \nליד מעלית א3 (דרום)\n",
+                "דלת שלישית מימין\n"
+              ]
+            }
+          },
+          {
+            "point": {
+              "id": 2,
+              "floor": 2,
+              "title": "חדר בריחה",
+              "subtitle": "מרכז פעילות",
+              "content": ["קומה שניה \nסמוך למעליות ב3 (דרום)"]
+            }
+          },
+          {
+            "point": {
+              "id": 2,
+              "floor": 2,
+              "title": "מעלות התורה",
+              "subtitle": "מרכז מדעי לתורת המשחקים",
+              "content": ["לורם איפסום\n ולך תדע עם יש תקוה"]
+            }
+          }
+        ],
+        "contactPhone": "039993333",
+        "exits": [
+          {
+            "beacon": {
+              "id": 11,
+              "instruction": "יציאת החירום 40 צעדים דרומה"
+            }
+          },
+          {
+            "beacon": {
+              "id": 22,
+              "instruction":
+                "פנו מערבה במסדרון ואז 40 צעדים דרומה ליציאה הראשית"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "place": {
+        "id": 3,
+        "txtId": "tbd",
+        "placeType": "בניין",
+        "fullName": "tbd",
+        "msg": "tbd",
+        "nearby": [{}],
+        "thisWay": [{}],
+        "inPlace": [{}, {}, {}],
+        "contactPhone": "039993333",
+        "exits": [
+          {
+            "beacon": {
+              "id": 11,
+              "instruction": "להגדיר"
+            }
+          },
+          {
+            "beacon": {
+              "id": 22,
+              "instruction": "להגדיר"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

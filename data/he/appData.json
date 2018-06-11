@@ -1,0 +1,121 @@
+{
+  "appData": {
+    "general": {
+      "txtAppName": "נעם",
+      "txtAppNameOnActionBar": "נעם",
+      "txtNext": "הבא",
+      "txtTOC": "תוכן",
+      "txtBack": "חזרה",
+      "txtDone": "סיום",
+      "txtOn": "דלוק",
+      "txtOff": "כבוי",
+      "txtOK": "אשר",
+      "txtCancel": "בטל"
+    },
+    "menu": {
+      "txtMenuSettings": "הגדרות",
+      "txtMenuHelp": "עזרה"
+    },
+    "screenMainApp": {
+      "txtPointingTo": "בכיוון"
+    },
+    "screenSplash": {
+      "txtSplashTitle": "נעם",
+      "txtSplashDescription": "המנחה האישי בסביבה",
+      "txtIosInstruct": [
+        "ברוכים הבאים לנועם\n",
+        "המנחה האישי שלך\n",
+        "לבניינים עם נגישות\n",
+        "\n",
+        "נספר לך מה יש כאן\n",
+        "בסביבה ואיך להגיע אליו.\n",
+        "\n",
+        "ישום זה צריך בלוטוס מופעל"
+      ],
+      "txtAndroidInstruct": [
+        "המנחה האישי שלך\n",
+        "לבניינים עם נגישות\n",
+        "\n",
+        "נספר לך מה יש כאן\n",
+        "בסביבה ואיך להגיע אליו.\n",
+        "\n",
+        "ישום זה צריך בלוטוס מופעל"
+      ],
+      "txtButtonIosBluetooth": "להגדרות בלוּטוּס",
+      "txtButtonAndroidBluetooth": "הקש כאן להפעלת בלוּטוּס"
+    },
+    "screensSettings": {
+      "txtSettings": "הגדרות",
+      "txtToCalibrate": "1. כייל את המצפן",
+      "txtToAutoUpdate": "2. הודעת עדכון מסך",
+      "txtToVoiceAssist": "3. הדמיית שיחה",
+      "txtToPreferences": "4. העדפות",
+      "txtToProfile": "5. איזור אישי",
+      "txtToGoTo": "עבור ל ",
+
+      "calibrate": {
+        "txtTitle": "כיול מצפן",
+        "txtInstructionsCompass": [
+          "נא לכוון את חלקו העליון של הטלפון לפנים...\n",
+          "ואחר כך סובבו אותו בצורת הספרה שמונה\n",
+          "כדי לכייל את המצפן"
+        ]
+      },
+      "autoUpdate": {
+        "txtTitle": "עדכון עצמי",
+        "txtInstructions": [
+          "כאשר אפשרות זו מופעלת רשימת המקומות\n",
+          "תתעדכן בכל פעם שתשנו כיוון\n",
+          "בלי להודיע על כך\n",
+          "\n",
+          "כדי לעדכן את הרשימה ידנית\n",
+          "עליכם להפנות את הטלפון לכיוון הרצוי\n",
+          "וללחוץ על הלחצן עליו רשום:\n",
+          "בכיוון ^ זה"
+        ],
+        "txtAutoUpdateIs": "עדכון עצמי כרגע  ",
+        "txtAutoUpdateTurn": "העבר למצב ",
+        "txtAutoUpdateAccessTurnOn": "הקש עלי למצב עדכון עצמי מופעל",
+        "txtAutoUpdateAccessTurnOff": "הקש עלי למצב עדכון עצמי כבוי"
+      },
+      "voiceAssist": {
+        "txtTitle": "דימוי שיחה",
+        "txtAssistantIs": "דימוי שיחה כרגע ",
+        "txtAssistantTurn": "הפעל דימוי שיחה ",
+
+        "txtChooseVoice": "בחר קול",
+        "txtVoiceMale": "זכר",
+        "txtVoiceFemale": "נקבה",
+
+        "txtInstrcutionsVoiceAssist": [
+          "אם תדליקו אפשרות זו\n",
+          "תוכלו לדבר במעין שיחה חפשית עם הישום\n",
+          "אמרו שלום נעם\n",
+          "ושאלו את שאלותיכם לגבי המצוי בסביבה"
+        ]
+      },
+      "preferences": {
+        "txtTitle": "העדפות",
+        "txtThemeHighContrast": "ניגודיות גבוהה",
+        "txtThemeDefault": "רגיל",
+        "txtLabelUseLargeFonts": "גופן מוגדל",
+        "txtLabelScalingOptions": "הגדלה",
+        "txtLabelLanguage": "שפה",
+        "txtLabelTextOnly": "מלל בלבד - ללא צלמיות",
+        "txtLabelTheme": "ערכת נושא",
+        "txtLabelShowOutlines": "הצג קווים מפרידים",
+        "txtAlertLangchangeTitle": "שינוי שפה",
+        "txtAlertLangchangeText": "משנה שפה ל ",
+        "txtLabelNotifications": "התראות",
+        "txtLabelAutoLaunch": "הפעלה אוטומטית בסמיכות למתחם"
+      },
+      "profile": {
+        "txtTitle": "אזור אישי",
+        "txtInstructions": "באפשרותכם לקבוע חשבון אישי",
+        "txtUsername": "שם משתמש",
+        "txtEmail": "דואר אלקטרוני",
+        "txtPassword": "סיסמה"
+      }
+    }
+  }
+}
