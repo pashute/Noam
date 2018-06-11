@@ -198,6 +198,23 @@
               "content": ["Lorem impsum\n lech teda im yesh teshuva"]
             }
           }
+        ],
+        "contactPhone": "029919366",
+        "exits": [
+          {
+            "beacon": {
+              "id": 11,
+              "instruction":
+                "Follow the hall to the north 20 steps and then to the left, out of the building"
+            }
+          },
+          {
+            "beacon": {
+              "id": 22,
+              "instruction":
+                "Follow the hall to the south 15 steps. The exit is to the right"
+            }
+          }
         ]
       }
     },
@@ -324,6 +341,21 @@
               "content": ["Lorem impsum\n lech teda im yesh teshuva"]
             }
           }
+        ],
+        "contactPhone": "039993333",
+        "exits": [
+          {
+            "beacon": {
+              "id": 11,
+              "instruction": "The exit is 40 steps directly south"
+            }
+          },
+          {
+            "beacon": {
+              "id": 22,
+              "instruction": "The exit is 45 steps down the corridor west"
+            }
+          }
         ]
       }
     },
@@ -336,7 +368,22 @@
         "msg": "tbd",
         "nearby": [{}],
         "thisWay": [{}],
-        "inPlace": [{}, {}, {}]
+        "inPlace": [{}, {}, {}],
+        "contactPhone": "039993333",
+        "exits": [
+          {
+            "beacon": {
+              "id": 11,
+              "instruction": "The exit is 40 steps directly south"
+            }
+          },
+          {
+            "beacon": {
+              "id": 22,
+              "instruction": "The exit is 45 steps down the corridor west"
+            }
+          }
+        ]
       }
     }
   ]
