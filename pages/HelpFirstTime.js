@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
-import { SecureStore } from 'expo';
-import { Platform, StyleSheet, Text, View, Alert } from 'react-native';
+import {
+  AsyncStorage,
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+  Alert
+} from 'react-native';
 import ActionBar from 'react-native-action-bar';
 import { Button } from 'react-native';
 
@@ -11,13 +17,13 @@ export default class HelpFirstTime extends Component {
   }
 
   UNSAFE_componentWillMount() {
-    SecureStore.getItemAsync('helpfirsttime-firstTime').then(value => {
+    AsyncStorage.getItem('helpfirsttime-firstTime').then(value => {
       console.log(value);
       if (value === 'true') {
         const { replace } = this.props.navigation;
         replace('SplashPage');
       } else {
-        SecureStore.setItemAsync('helpfirsttime-firstTime', 'true');
+        AsyncStorage.setItem('helpfirsttime-firstTime', 'true');
       }
     });
   }

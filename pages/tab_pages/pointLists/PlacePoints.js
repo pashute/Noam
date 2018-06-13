@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import Accordion from 'react-native-collapsible/Accordion';
 //import PropTypes from 'prop-types';
-import { FontAwesome } from '@expo/vector-icons';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { Dropdown } from 'react-native-material-dropdown';
 import { placeDataCtx } from '../../AppMain';
 
@@ -64,7 +64,7 @@ export default class PlacePoints extends Component<{}> {
             </Text>
           </View>
           <View style={styles.iconOpenColapse}>
-            <FontAwesome name={iconName} size={20} color="gray" />
+            <Icon name={iconName} size={20} color="gray" />
           </View>
         </View>
       </View>

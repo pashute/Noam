@@ -4,11 +4,10 @@ import {
   StyleSheet,
   Text,
   View,
+  StatusBar,
   Image /* Alert, Button */
 } from 'react-native';
-import {} from 'react-native';
 import ActionBar from 'react-native-action-bar';
-import { Constants } from 'expo';
 // import PropTypes from 'prop-types';
 // import { StackNavigator } from 'react-navigation';
 import Bottom from '../tab_pages/Bottom.js';
@@ -37,19 +36,35 @@ export default class Calibrate extends Component<{}> {
     return (
       <languageDataCtx.Consumer>
         {({ stylesData, appData }) => {
-          return(
-            <View style={[stylesData.styles.sharedStyles.mainContainer, styles.topMargin]}>
+          return (
+            <View
+              style={[
+                stylesData.styles.sharedStyles.mainContainer,
+                styles.topMargin
+              ]}
+            >
               <ActionBar
-                containerStyle={stylesData.styles.sharedStyles.actionBarContainer}
+                containerStyle={
+                  stylesData.styles.sharedStyles.actionBarContainer
+                }
                 titleStyle={stylesData.styles.sharedStyles.actionTitle}
                 title={appData.appData.general.txtAppNameOnActionBar}
                 leftIconName={'location'}
                 onLeftPress={() => console.log('Left!')}
               />
               <View style={stylesData.styles.sharedStyles.contentContainer}>
-                <Text style={stylesData.styles.sharedStyles.titleText}>{appData.appData.screensSettings.txtSettings}</Text>
-                <Text style={stylesData.styles.sharedStyles.instructionHeader}>{appData.appData.screensSettings.calibrate.txtTitle}</Text>
-                <Text style={stylesData.styles.sharedStyles.instructions}>{appData.appData.screensSettings.calibrate.txtInstructionsCompass}</Text>
+                <Text style={stylesData.styles.sharedStyles.titleText}>
+                  {appData.appData.screensSettings.txtSettings}
+                </Text>
+                <Text style={stylesData.styles.sharedStyles.instructionHeader}>
+                  {appData.appData.screensSettings.calibrate.txtTitle}
+                </Text>
+                <Text style={stylesData.styles.sharedStyles.instructions}>
+                  {
+                    appData.appData.screensSettings.calibrate
+                      .txtInstructionsCompass
+                  }
+                </Text>
                 <View style={styles.imgCalibrateView}>
                   <Image
                     source={require('../../assets/icons/compass_calibration8.png')}
@@ -95,7 +110,7 @@ export default class Calibrate extends Component<{}> {
 
 const styles = StyleSheet.create({
   topMargin: {
-    marginTop: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight
+    marginTop: Platform.OS === 'ios' ? 0 : 0
   },
   buttonContainer: {
     flexDirection: 'column',

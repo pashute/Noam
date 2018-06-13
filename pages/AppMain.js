@@ -1,7 +1,13 @@
 /* cSpell:disable */
 
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View /*, Alert*/ } from 'react-native';
+import {
+  StatusBar,
+  Platform,
+  StyleSheet,
+  Text,
+  View /*, Alert*/
+} from 'react-native';
 
 import DrawerLayout from 'react-native-drawer-layout';
 import ActionBar from 'react-native-action-bar';
@@ -9,8 +15,7 @@ import ActionBar from 'react-native-action-bar';
 
 // import { Constants } from 'expo';
 // import Icon from 'react-native-vector-icons/FontAwesome';
-import { FontAwesome } from '@expo/vector-icons';
-import '@expo/vector-icons';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { ButtonGroup } from 'react-native-elements';
 
 import NearBy from './tab_pages/NearBy';
@@ -45,7 +50,7 @@ const nearbyButton = () => (
 const thatwayButton = () => (
   <View style={styles.tabButton}>
     <Text style={styles.tabText}>{strThis} </Text>
-    <FontAwesome name="arrow-up" size={14} />
+    <Icon name="arrow-up" size={14} />
     <Text style={styles.tabText}>{' ' + strWay}</Text>
   </View>
 );
@@ -131,7 +136,7 @@ export default class AppMain extends Component<{}> {
                   <View style={styles.topPlaceRow}>
                     <View style={styles.placeBar}>
                       <Text style={styles.placeMsg}>{pointPlaceName}</Text>
-                      <FontAwesome
+                      <Icon
                         name={pointPlaceIconName}
                         size={30}
                         color="#000000"
@@ -206,7 +211,7 @@ const TabbedPage = ({
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    marginTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight,
+    marginTop: Platform.OS === 'ios' ? 0 : 0,
     backgroundColor: '#FDFDFD'
   },
   actionBarContainer: {

@@ -4,10 +4,10 @@ import {
   Text,
   View,
   Button,
-  Platform /* , Alert, */
+  Platform,
+  StatusBar /* , Alert, */
 } from 'react-native';
 import ActionBar from 'react-native-action-bar';
-import { Constants } from 'expo';
 // import PropTypes from 'prop-types';
 // import {StackNavigator,} from 'react-navigation';
 // import RNExitApp from 'react-native-exit-app';
@@ -54,7 +54,7 @@ export default class SetHome extends Component<{}> {
                 <View style={stylesData.styles.sharedStyles.buttonDecorator}>
                   <Button
                     onPress={() => navigate('Calibrate')}
-                    titleStyle={stylesData.styles.sharedStyles.buttonText} 
+                    titleStyle={stylesData.styles.sharedStyles.buttonText}
                     title={appData.appData.screensSettings.txtToCalibrate}
                     color="#111111"
                     accessibilityLabel={
@@ -66,7 +66,7 @@ export default class SetHome extends Component<{}> {
                 <View style={stylesData.styles.sharedStyles.buttonDecorator}>
                   <Button
                     onPress={() => navigate('AutoUpdate')}
-                    titleStyle={stylesData.styles.sharedStyles.buttonText} 
+                    titleStyle={stylesData.styles.sharedStyles.buttonText}
                     title={appData.appData.screensSettings.txtToAutoUpdate}
                     color="#111111"
                     accessibilityLabel={
@@ -78,7 +78,7 @@ export default class SetHome extends Component<{}> {
                 <View style={stylesData.styles.sharedStyles.buttonDecorator}>
                   <Button
                     onPress={() => navigate('Voice')}
-                    titleStyle={stylesData.styles.sharedStyles.buttonText} 
+                    titleStyle={stylesData.styles.sharedStyles.buttonText}
                     title={appData.appData.screensSettings.txtToVoiceAssist}
                     color="#111111"
                     accessibilityLabel={
@@ -90,7 +90,7 @@ export default class SetHome extends Component<{}> {
                 <View style={stylesData.styles.sharedStyles.buttonDecorator}>
                   <Button
                     onPress={() => navigate('Preferences')}
-                    titleStyle={stylesData.styles.sharedStyles.buttonText} 
+                    titleStyle={stylesData.styles.sharedStyles.buttonText}
                     title={appData.appData.screensSettings.txtToPreferences}
                     color="#111111"
                     accessibilityLabel={
@@ -102,7 +102,7 @@ export default class SetHome extends Component<{}> {
                 <View style={stylesData.styles.sharedStyles.buttonDecorator}>
                   <Button
                     onPress={() => navigate('Profile')}
-                    titleStyle={stylesData.styles.sharedStyles.buttonText} 
+                    titleStyle={stylesData.styles.sharedStyles.buttonText}
                     title={appData.appData.screensSettings.txtToProfile}
                     color="#111111"
                     accessibilityLabel={
@@ -133,7 +133,7 @@ export default class SetHome extends Component<{}> {
 
 const styles = StyleSheet.create({
   topMargin: {
-    marginTop: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight
+    marginTop: Platform.OS === 'ios' ? 0 : 0
   },
   buttonContainer: {
     flexDirection: 'column',

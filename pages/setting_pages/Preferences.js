@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import {
+  AsyncStorage,
   Platform,
   StyleSheet,
   Text,
   View,
-  Alert
+  Alert,
+  StatusBar
   /* TextInput,  Alert, Button*/
 } from 'react-native';
-import { Util, SecureStore, Constants } from 'expo';
 import ActionBar from 'react-native-action-bar';
 // import PropTypes from 'prop-types';
 import CheckBox from 'react-native-checkbox';
@@ -34,57 +35,57 @@ export default class Preferences extends Component<{}> {
   }
 
   UNSAFE_componentWillMount() {
-    SecureStore.getItemAsync('preferences-useLargeFont').then(value => {
-      console.log('dbg.pref secureStore.uselargefont', value);
+    AsyncStorage.getItem('preferences-useLargeFont').then(value => {
+      console.log('dbg.pref AsyncStorage.uselargefont', value);
       if (value !== null) {
         this.setState({ useLargeFont: value });
       }
     });
 
-    SecureStore.getItemAsync('preferences-scale').then(value => {
-      console.log('dbg.pref secureStore.fontScale',value);
+    AsyncStorage.getItem('preferences-scale').then(value => {
+      console.log('dbg.pref AsyncStorage.fontScale', value);
       if (value !== null) {
         this.setState({ scale: value });
       }
     });
 
-    SecureStore.getItemAsync('preferences-language').then(value => {
-      console.log('dbg.pref secureStore.language', value);
+    AsyncStorage.getItem('preferences-language').then(value => {
+      console.log('dbg.pref AsyncStorage.language', value);
       if (value !== null) {
         this.setState({ language: value });
       }
     });
 
-    SecureStore.getItemAsync('preferences-textOnly').then(value => {
-      console.log('dbg.pref secureStore.textOnly', value);
+    AsyncStorage.getItem('preferences-textOnly').then(value => {
+      console.log('dbg.pref AsyncStorage.textOnly', value);
       if (value !== null) {
         this.setState({ textOnly: value });
       }
     });
 
-    SecureStore.getItemAsync('preferences-theme').then(value => {
-      console.log('dbg.pref secureStore.theme', value);
+    AsyncStorage.getItem('preferences-theme').then(value => {
+      console.log('dbg.pref AsyncStorage.theme', value);
       if (value !== null) {
         this.setState({ theme: value });
       }
     });
 
-    SecureStore.getItemAsync('preferences-outlines').then(value => {
-      console.log('dbg.pref secureStore.outlines', value);
+    AsyncStorage.getItem('preferences-outlines').then(value => {
+      console.log('dbg.pref AsyncStorage.outlines', value);
       if (value !== null) {
         this.setState({ outlines: value });
       }
     });
 
-    SecureStore.getItemAsync('preferences-notifications').then(value => {
-      console.log('dbg.pref secureStore.notifications', value);
+    AsyncStorage.getItem('preferences-notifications').then(value => {
+      console.log('dbg.pref AsyncStorage.notifications', value);
       if (value !== null) {
         this.setState({ notifications: value });
       }
     });
 
-    SecureStore.getItemAsync('preferences-autoLaunch').then(value => {
-      console.log('dbg.pref secureStore.autoLaunch', value);
+    AsyncStorage.getItem('preferences-autoLaunch').then(value => {
+      console.log('dbg.pref AsyncStorage.autoLaunch', value);
       if (value !== null) {
         this.setState({ autoLaunch: value });
       }
@@ -138,11 +139,15 @@ export default class Preferences extends Component<{}> {
                 <View style={styles.scalingView}>
                   <CheckBox
                     containerStyle={{ marginTop: 20 }}
-                    label={appData.appData.screensSettings.preferences.txtLabelUseLargeFonts}
+                    label={
+                      appData.appData.screensSettings.preferences
+                        .txtLabelUseLargeFonts
+                    }
                     checked={this.state.useLargeFont}
-                    onChange={() => { // was: checked => {
+                    onChange={() => {
+                      // was: checked => {
                       const stringChecked = !this.state.useLargeFont;
-                      SecureStore.setItemAsync(
+                      AsyncStorage.setItem(
                         'preferences-useLargeFont',
                         stringChecked.toString()
                       );
@@ -151,11 +156,14 @@ export default class Preferences extends Component<{}> {
                   />
                   <Dropdown
                     containerStyle={{ marginLeft: 30, width: 100 }}
-                    label={appData.appData.screensSettings.preferences.txtLabelScalingOptions}
+                    label={
+                      appData.appData.screensSettings.preferences
+                        .txtLabelScalingOptions
+                    }
                     data={scalingOptions}
                     value={this.state.scale}
                     onChangeText={value => {
-                      SecureStore.setItemAsync(
+                      AsyncStorage.setItem(
                         'preferences-scale',
                         value.toString()
                       );
@@ -167,13 +175,17 @@ export default class Preferences extends Component<{}> {
                 </View>
                 <Dropdown
                   containerStyle={{ marginLeft: 30, width: 100 }}
-                  label={appData.appData.screensSettings.preferences.txtLanguage}
+                  label={
+                    appData.appData.screensSettings.preferences.txtLanguage
+                  }
                   data={Languages}
                   value={this.state.language}
                   onChangeText={value => {
                     Alert.alert(
-                      appData.appData.screensSettings.preferences.txtAlertLangchangeTitle,
-                      appData.appData.screensSettings.preferences.txtAlertLangchangeText + value,
+                      appData.appData.screensSettings.preferences
+                        .txtAlertLangchangeTitle,
+                      appData.appData.screensSettings.preferences
+                        .txtAlertLangchangeText + value,
                       [
                         {
                           text: 'Cancel',
@@ -189,11 +201,10 @@ export default class Preferences extends Component<{}> {
                           onPress: () => {
                             console.log('dbg.pref.changeLangue: OK Pressed');
                             // Q? dont I have to set state?
-                            SecureStore.setItemAsync(
+                            AsyncStorage.setItem(
                               'preferences-language',
                               value.toString()
                             );
-                            Util.reload();
                           }
                         }
                       ],
@@ -204,54 +215,87 @@ export default class Preferences extends Component<{}> {
                 />
                 <CheckBox
                   containerStyle={{ marginLeft: 20 }}
-                  label={appData.appData.screensSettings.preferences.txtLabelTextOnly}
+                  label={
+                    appData.appData.screensSettings.preferences.txtLabelTextOnly
+                  }
                   checked={this.state.textOnly}
                   onChange={checked => {
-                    SecureStore.setItemAsync('preferences-textOnly', checked.toString());
+                    AsyncStorage.setItem(
+                      'preferences-textOnly',
+                      checked.toString()
+                    );
                     this.setState({ textOnly: checked });
                   }}
                 />
                 <View style={styles.themeView}>
-                  <Text style={{ marginTop: 20 }}>{appData.appData.screensSettings.preferences.txtLabelTheme}</Text>
+                  <Text style={{ marginTop: 20 }}>
+                    {appData.appData.screensSettings.preferences.txtLabelTheme}
+                  </Text>
                   <Dropdown
                     containerStyle={{ marginLeft: 30, width: 250 }}
-                    label={appData.appData.screensSettings.preferences.txtLabelTheme}
+                    label={
+                      appData.appData.screensSettings.preferences.txtLabelTheme
+                    }
                     data={themeOptions}
                     value={this.state.theme}
                     onChangeText={value => {
-                      SecureStore.setItemAsync('preferences-theme', value.toString());
+                      AsyncStorage.setItem(
+                        'preferences-theme',
+                        value.toString()
+                      );
                       this.setState({ theme: value });
                     }}
                   />
                 </View>
                 <CheckBox
                   containerStyle={{ marginLeft: 20 }}
-                  label={appData.appData.screensSettings.preferences.txtLabelShowOutlines}
+                  label={
+                    appData.appData.screensSettings.preferences
+                      .txtLabelShowOutlines
+                  }
                   checked={true}
-                  onChange={() => { // was checked => {
+                  onChange={() => {
+                    // was checked => {
                     // console.log('dbg.Pref showOutlines changed', checked);
                     let showOutlines = !this.state.outlines;
-                    SecureStore.setItemAsync('preferences-outlines', showOutlines.toString());
+                    AsyncStorage.setItem(
+                      'preferences-outlines',
+                      showOutlines.toString()
+                    );
                     this.setState({ outlines: showOutlines });
                   }}
                 />
                 <CheckBox
                   containerStyle={{ marginLeft: 20 }}
-                  label={appData.appData.screensSettings.preferences.txtLabelNotifications}
+                  label={
+                    appData.appData.screensSettings.preferences
+                      .txtLabelNotifications
+                  }
                   checked={false}
-                  onChange={() => { // was: checked => {
+                  onChange={() => {
+                    // was: checked => {
                     let showNotifications = !this.state.notifications;
-                    SecureStore.setItemAsync('preferences-notifications', showNotifications.toString());
+                    AsyncStorage.setItem(
+                      'preferences-notifications',
+                      showNotifications.toString()
+                    );
                     this.setState({ notifications: showNotifications });
                   }}
                 />
                 <CheckBox
                   containerStyle={{ marginLeft: 20 }}
-                  label={appData.appData.screensSettings.preferences.txtLabelAutoLaunch}
+                  label={
+                    appData.appData.screensSettings.preferences
+                      .txtLabelAutoLaunch
+                  }
                   checked={false}
-                  onChange={() => { // was: checked => {
+                  onChange={() => {
+                    // was: checked => {
                     let autoLaunch = !this.state.autoLaunch;
-                    SecureStore.setItemAsync('preferences-autoLaunch', autoLaunch.toString());
+                    AsyncStorage.setItem(
+                      'preferences-autoLaunch',
+                      autoLaunch.toString()
+                    );
                     this.setState({ autoLaunch: autoLaunch });
                   }}
                 />
@@ -295,7 +339,7 @@ export default class Preferences extends Component<{}> {
 
 const styles = StyleSheet.create({
   topMargin: {
-    marginTop: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight
+    marginTop: Platform.OS === 'ios' ? 0 : 0
   },
   scalingView: {
     display: 'flex',

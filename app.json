@@ -6,6 +6,9 @@
     "privacy": "unlisted",
     "version": "1.0.0",
     "slug": "noam",
-    "platforms": ["android", "ios"]
+    "platforms": [
+      "android",
+      "ios"
+    ]
   }
 }

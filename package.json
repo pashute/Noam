@@ -2,18 +2,15 @@
   "name": "noam",
   "version": "0.0.1",
   "private": true,
-  "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
-    "start": "react-native-scripts start",
-    "eject": "react-native-scripts eject",
-    "android": "react-native-scripts android",
-    "ios": "react-native-scripts ios",
+    "start": "react-native start",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
     "test": "jest"
   },
   "dependencies": {
     "babel-eslint": "^8.2.3",
     "eslint": "^4.19.1",
-    "expo": "^27.0.0",
     "jsonloader": "^1.0.1",
     "object-path": "^0.11.4",
     "react": "16.3.1",
@@ -40,7 +37,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.8.2",
     "is-arrayish": "^0.3.1",
-    "jest": "22.4.3",
+    "jest": "^23.1.0",
     "react-test-renderer": "16.3.1"
   },
   "jest": {

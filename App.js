@@ -2,7 +2,8 @@
 
 import React from 'react';
 import {
-  StyleSheet,
+  View,
+  AsyncStorage,
   I18nManager /*Platform, Text, View, Alert*/
 } from 'react-native';
 
@@ -11,18 +12,8 @@ import { NavigationActions, StackNavigator } from 'react-navigation';
 
 // import { ButtonGroup } from 'react-native-elements';
 import ObjectPath from 'object-path';
-import '@expo/vector-icons';
-import {
-  /* Constants, AppLoading, */ AppLoading,
-  Font,
-  Permissions,
-  Location,
-  SecureStore
-} from 'expo';
 
 import { YellowBox } from 'react-native';
-
-import { FontAwesome, MaterialIcons } from '@expo/vector-icons';
 
 import Splash from './pages/Splash';
 import AppMain from './pages/AppMain';
@@ -138,47 +129,18 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    SecureStore.getItemAsync('preferences-language').then(value => {
-      // console.log("dbg.SecureStore:", value);
+    AsyncStorage.getItem('preferences-language').then(value => {
       if (value !== null) {
         this.setState({ language: getLanguageCode(value) });
       }
     });
-    this._asyncFonts();
     I18nManager.forceRTL(false);
     this.setState({ isRTL: false });
+    this.setState({ fontLoaded: true });
   }
 
-  _asyncFonts = async () => {
-    try {
-      await Font.loadAsync(MaterialIcons.font, FontAwesome.font);
-      this.setState({ fontLoaded: true });
-      this._getHeadingAsync();
-    } catch (error) {
-      console.error('error loading icon fonts', error);
-    }
-  };
-
-  _getHeadingAsync = async () => {
-    let { locationServicesEnabled } = await Location.getProviderStatusAsync();
-    if (locationServicesEnabled === false) {
-      this.setState({
-        pointingTo: 'Please enable Location'
-      });
-    } else {
-      let { status } = await Permissions.askAsync(Permissions.LOCATION);
-      if (status !== 'granted') {
-        this.setState({
-          pointingTo: 'Permission to access location was denied'
-        });
-      } else {
-        // console.logconsole.log("dbg.LocationStatus:", status);
-        Location.watchHeadingAsync(this.onHeadingChange);
-      }
-    }
-  };
-
   onHeadingChange = heading => {
+    console.log(heading);
     const degree = 360 / 8;
     const angle = heading.trueHeading + degree / 2;
     let pointingTo = 'North';
@@ -225,9 +187,9 @@ export default class App extends React.Component {
         // console.log('dbg.curScreen:', currentScreen);
         // console.log('dbg.screenToGo', screenToGo);
         // return prevGetStateForAction(action, state);
-        
+
         if (currentScreen === screenToGo) {
-         // x return null;
+          // x return null;
         }
         if (prevScreen === screenToGo) {
           navigateTo = NavigationActions.back();
@@ -241,7 +203,7 @@ export default class App extends React.Component {
 
   render() {
     if (!this.state.fontLoaded) {
-      return <AppLoading />;
+      return <View />;
     }
 
     // return (
