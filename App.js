@@ -30,7 +30,7 @@ import AutoUpdate from './pages/setting_pages/AutoUpdate';
 import Calibrate from './pages/setting_pages/Calibrate';
 import Preferences from './pages/setting_pages/Preferences';
 import Profile from './pages/setting_pages/Profile';
-import SetHome from './pages/setting_pages/SetHome';
+import Settings from './pages/setting_pages/Settings';
 import Voice from './pages/setting_pages/Voice';
 import Help from './pages/Help';
 import HelpFirstTime from './pages/HelpFirstTime';
@@ -100,8 +100,8 @@ const Nav = StackNavigator({
       header: null
     }
   },
-  SetHome: {
-    screen: SetHome,
+  Settings: {
+    screen: Settings,
     navigationOptions: {
       headermode: 'screen',
       header: null
@@ -225,9 +225,9 @@ export default class App extends React.Component {
         // console.log('dbg.curScreen:', currentScreen);
         // console.log('dbg.screenToGo', screenToGo);
         // return prevGetStateForAction(action, state);
-        
+
         if (currentScreen === screenToGo) {
-         // x return null;
+          // x return null;
         }
         if (prevScreen === screenToGo) {
           navigateTo = NavigationActions.back();

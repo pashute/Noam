@@ -62,6 +62,9 @@
       "buttonText": {
         "fontSize": 25
       },
+      "buttonStyle": {
+        "color": "#111111"
+      },
       "bottomNavRow": {
         "marginTop": 20,
         "marginLeft": 20,
@@ -81,9 +84,9 @@
         "marginLeft": 35,
         "marginRight": 35
       },
-      "inputText": { 
-        "height": 40, 
-        "fontSize": 20 
+      "inputText": {
+        "height": 40,
+        "fontSize": 20
       }
     },
     "extraScreenStyles": {},

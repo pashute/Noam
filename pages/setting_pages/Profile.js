@@ -139,7 +139,7 @@ export default class Profile extends Component<{}> {
                 </Text>
                 <Text
                   onPress={() => {
-                    navigate('SetHome');
+                    navigate('Settings');
                   }}
                   style={stylesData.styles.sharedStyles.navButton}
                 >
