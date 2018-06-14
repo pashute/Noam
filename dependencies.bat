@@ -33,7 +33,7 @@ call npm install react-native-checkbox
 @echo 9. ---------
 call npm install react-native-material-dropdown
 @echo 10. ---------
-call npm install react-native-exit-app
+rem call npm install react-native-exit-app
 @echo 11. ---------
 call npm install react-native-collapsible
 @echo 12. ---------
