@@ -4,9 +4,9 @@ import {
   StyleSheet,
   Text,
   View,
+  StatusBar,
   Image /* Alert, Button */
 } from 'react-native';
-import {} from 'react-native';
 import ActionBar from 'react-native-action-bar';
 // import PropTypes from 'prop-types';
 // import { StackNavigator } from 'react-navigation';

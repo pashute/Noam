@@ -5,7 +5,8 @@ import {
   StyleSheet,
   Text,
   TextInput,
-  View
+  View,
+  StatusBar
   /* , Switch, Alert, Button */
 } from 'react-native';
 import ActionBar from 'react-native-action-bar';

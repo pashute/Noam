@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, Alert } from 'react-native';
-import { Button } from 'react-native';
+import { Button, StatusBar } from 'react-native';
 import ActionBar from 'react-native-action-bar';
 // import PropTypes from 'prop-types';
 // import { StackNavigator } from 'react-navigation';

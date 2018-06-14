@@ -4,7 +4,8 @@ import {
   Text,
   View,
   Button,
-  Platform /* , Alert, */
+  Platform,
+  StatusBar /* , Alert, */
 } from 'react-native';
 import ActionBar from 'react-native-action-bar';
 // import PropTypes from 'prop-types';

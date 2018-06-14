@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+  StatusBar,
   Platform,
   StyleSheet,
   Text,
@@ -123,7 +124,7 @@ export default class Voice extends Component<{}> {
             </Text>
             <Text
               onPress={() => {
-                navigate('Settings');
+                navigate('SetHome');
               }}
               style={styles.navButton}
             >
