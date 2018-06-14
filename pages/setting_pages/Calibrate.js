@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 import {} from 'react-native';
 import ActionBar from 'react-native-action-bar';
-import { Constants } from 'expo';
 // import PropTypes from 'prop-types';
 // import { StackNavigator } from 'react-navigation';
 import Bottom from '../tab_pages/Bottom.js';
@@ -106,7 +105,7 @@ export default class Calibrate extends Component<{}> {
 
 const styles = StyleSheet.create({
   topMargin: {
-    marginTop: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight
+    marginTop: Platform.OS === 'ios' ? 0 : 0
   },
   buttonContainer: {
     flexDirection: 'column',

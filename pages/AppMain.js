@@ -1,17 +1,22 @@
 /* cSpell:disable */
 
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View /*, Alert*/ } from 'react-native';
+import {
+  StatusBar,
+  Platform,
+  StyleSheet,
+  Text,
+  View /*, Alert*/
+} from 'react-native';
 
 import DrawerLayout from 'react-native-drawer-layout';
 import ActionBar from 'react-native-action-bar';
 // import PropTypes from 'prop-types';
 
-// import { Constants } from 'expo';
 // import Icon from 'react-native-vector-icons/FontAwesome';
-import { FontAwesome } from '@expo/vector-icons';
-import '@expo/vector-icons';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { ButtonGroup } from 'react-native-elements';
+import RNSimpleCompass from 'react-native-simple-compass';
 
 import NearBy from './tab_pages/NearBy';
 import ThisWay from './tab_pages/ThisWay';
@@ -45,7 +50,7 @@ const nearbyButton = () => (
 const thatwayButton = () => (
   <View style={styles.tabButton}>
     <Text style={styles.tabText}>{strThis} </Text>
-    <FontAwesome name="arrow-up" size={14} />
+    <Icon name="arrow-up" size={14} />
     <Text style={styles.tabText}>{' ' + strWay}</Text>
   </View>
 );
@@ -58,8 +63,9 @@ const inplaceButton = () => (
 export default class AppMain extends Component<{}> {
   constructor(props) {
     super(props);
-    // fix: txt from constants and then from data
     this.state = {
+      heading: 0,
+      pointingTo: 'not set',
       placeIndex: 0,
       beaconIndex: 0,
       beaconUid: 12,
@@ -71,6 +77,32 @@ export default class AppMain extends Component<{}> {
     this.setDrawerState = this.setDrawerState.bind(this);
     this.updateTabIndex = this.updateTabIndex.bind(this);
     // console.log('dbg.appMain.screenprops:', this.props.screenProps);
+  }
+
+  componentDidMount() {
+    const degree_update_rate = 10; // Number of degrees changed before the callback is triggered
+    RNSimpleCompass.start(degree_update_rate, degree => {
+      const fullDegree = 360 / 8;
+      const angle = degree + fullDegree / 2;
+      let pointingTo = 'North';
+      if (angle >= 0 * fullDegree && angle < 1 * fullDegree)
+        pointingTo = 'North';
+      if (angle >= 1 * fullDegree && angle < 2 * fullDegree)
+        pointingTo = 'North East';
+      if (angle >= 2 * fullDegree && angle < 3 * fullDegree)
+        pointingTo = 'East';
+      if (angle >= 3 * fullDegree && angle < 4 * fullDegree)
+        pointingTo = 'South East';
+      if (angle >= 4 * fullDegree && angle < 5 * fullDegree)
+        pointingTo = 'South';
+      if (angle >= 5 * fullDegree && angle < 6 * fullDegree)
+        pointingTo = 'South West';
+      if (angle >= 6 * fullDegree && angle < 7 * fullDegree)
+        pointingTo = 'West';
+      if (angle >= 7 * fullDegree && angle < 8 * fullDegree)
+        pointingTo = 'North West';
+      this.setState({ heading: degree, pointingTo });
+    });
   }
 
   updateTabIndex = tabIndex => {
@@ -131,7 +163,7 @@ export default class AppMain extends Component<{}> {
                   <View style={styles.topPlaceRow}>
                     <View style={styles.placeBar}>
                       <Text style={styles.placeMsg}>{pointPlaceName}</Text>
-                      <FontAwesome
+                      <Icon
                         name={pointPlaceIconName}
                         size={30}
                         color="#000000"
@@ -155,8 +187,8 @@ export default class AppMain extends Component<{}> {
 
                   <TabbedPage
                     selectedIndex={this.state.tabIndex}
-                    pointingDirection={this.props.screenProps.pointingTo}
-                    heading={this.props.screenProps.heading}
+                    pointingDirection={this.state.pointingTo}
+                    heading={this.state.heading}
                     beaconIndex={this.state.beaconIndex}
                   />
                 </DrawerLayout>
@@ -206,7 +238,7 @@ const TabbedPage = ({
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    marginTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight,
+    marginTop: Platform.OS === 'ios' ? 0 : 0,
     backgroundColor: '#FDFDFD'
   },
   actionBarContainer: {

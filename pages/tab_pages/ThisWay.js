@@ -1,17 +1,16 @@
 /* cSpell:disable */
 
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
   View,
   ScrollView
   /* Platform, Alert, Button */
-} from "react-native";
-//import { Font, AppLoading } from 'expo';
-import WayPoints from "./pointLists/WayPoints";
-import Bottom from "./Bottom";
-import { languageDataCtx } from "../../App";
+} from 'react-native';
+import WayPoints from './pointLists/WayPoints';
+import Bottom from './Bottom';
+import { languageDataCtx } from '../../App';
 
 export default class ThisWay extends Component<{}> {
   constructor(props) {
@@ -68,19 +67,19 @@ export default class ThisWay extends Component<{}> {
 
 const styles = StyleSheet.create({
   mainContainer: {
-    backgroundColor: "#FDFDFD",
+    backgroundColor: '#FDFDFD',
     flex: 1
   },
   pointsContainer: {
-    backgroundColor: "#FDFDFD",
+    backgroundColor: '#FDFDFD',
     borderLeftWidth: 1,
-    borderLeftColor: "#000000",
+    borderLeftColor: '#000000',
     borderRightWidth: 1,
-    borderRightColor: "#000000",
+    borderRightColor: '#000000',
     borderTopWidth: 1.0,
-    borderTopColor: "#000000",
+    borderTopColor: '#000000',
     borderBottomWidth: 1,
-    borderBottomColor: "#000000",
+    borderBottomColor: '#000000',
     margin: 10,
     padding: 0,
     flex: 18
@@ -89,9 +88,9 @@ const styles = StyleSheet.create({
   pointingTo: {
     margin: 10,
     fontSize: 16,
-    textAlign: "center",
-    color: "#111111" /*thisWayStyles.color,*/,
-    fontWeight: "500" /*thisWayStyles.fontWeight*/
+    textAlign: 'center',
+    color: '#111111' /*thisWayStyles.color,*/,
+    fontWeight: '500' /*thisWayStyles.fontWeight*/
   },
   bottomRow: {
     flex: 2

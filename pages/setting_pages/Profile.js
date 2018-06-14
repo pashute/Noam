@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+  AsyncStorage,
   Platform,
   StyleSheet,
   Text,
@@ -7,7 +8,6 @@ import {
   View
   /* , Switch, Alert, Button */
 } from 'react-native';
-import { /* Util, */ SecureStore, Constants } from 'expo';
 import ActionBar from 'react-native-action-bar';
 // import PropTypes from 'prop-types';
 import Bottom from '../tab_pages/Bottom.js';
@@ -25,22 +25,22 @@ export default class Profile extends Component<{}> {
   }
 
   UNSAFE_componentWillMount() {
-    SecureStore.getItemAsync('preferences-username').then(value => {
-      // console.log('dbg.profile secureStore.username', value);
+    AsyncStorage.getItem('preferences-username').then(value => {
+      // console.log('dbg.profile AsyncStorage.username', value);
       if (value !== null) {
         this.setState({ username: value });
       }
     });
 
-    SecureStore.getItemAsync('preferences-email').then(value => {
-      // console.log('dbg.profile secureStore.email', value);
+    AsyncStorage.getItem('preferences-email').then(value => {
+      // console.log('dbg.profile AsyncStorage.email', value);
       if (value !== null) {
         this.setState({ email: value });
       }
     });
 
-    SecureStore.getItemAsync('preferences-password').then(value => {
-      // console.log('dbg.profile secureStore.password', value);
+    AsyncStorage.getItem('preferences-password').then(value => {
+      // console.log('dbg.profile AsyncStorage.password', value);
       if (value !== null) {
         this.setState({ password: value });
       }
@@ -89,7 +89,7 @@ export default class Profile extends Component<{}> {
                         appData.appData.screensSettings.profile.txtUsername
                       }
                       onChangeText={text => {
-                        SecureStore.setItemAsync(
+                        AsyncStorage.setItem(
                           'preferences-username',
                           text.toString()
                         );
@@ -103,7 +103,7 @@ export default class Profile extends Component<{}> {
                         appData.appData.screensSettings.profile.txtEmail
                       }
                       onChangeText={text => {
-                        SecureStore.setItemAsync(
+                        AsyncStorage.setItem(
                           'preferences-email',
                           text.toString()
                         );
@@ -118,7 +118,7 @@ export default class Profile extends Component<{}> {
                         appData.appData.screensSettings.profile.txtPassword
                       }
                       onChangeText={text => {
-                        SecureStore.setItemAsync(
+                        AsyncStorage.setItem(
                           'preferences-password',
                           text.toString()
                         );
@@ -167,7 +167,7 @@ export default class Profile extends Component<{}> {
 
 const styles = StyleSheet.create({
   topMargin: {
-    marginTop: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight
+    marginTop: Platform.OS === 'ios' ? 0 : 0
   },
   separator60: { marginTop: 60 }
 });
