@@ -14,7 +14,7 @@ import { Constants } from 'expo';
 import Bottom from '../tab_pages/Bottom.js';
 import { languageDataCtx } from '../../App';
 
-export default class SetHome extends Component<{}> {
+export default class Settings extends Component<{}> {
   constructor(props) {
     super(props);
   }

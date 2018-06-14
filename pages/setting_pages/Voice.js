@@ -123,7 +123,7 @@ export default class Voice extends Component<{}> {
             </Text>
             <Text
               onPress={() => {
-                navigate("SetHome");
+                navigate("Settings");
               }}
               style={styles.navButton}
             >
