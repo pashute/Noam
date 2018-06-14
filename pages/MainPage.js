@@ -19,7 +19,7 @@ import InPlace from './tab_pages/InPlace';
 import Menu from './Menu';
 const earIcon = require('../assets/icons/ear1.png');
 
-import { languageDataCtx } from '../App';
+import { languageDataCtx } from '../AppMain';
 
 export const placeDataCtx = React.createContext(languageDataCtx);
 
@@ -55,7 +55,7 @@ const inplaceButton = () => (
   </View>
 );
 
-export default class AppMain extends Component<{}> {
+export default class MainPage extends Component<{}> {
   constructor(props) {
     super(props);
     // fix: txt from constants and then from data
@@ -70,11 +70,11 @@ export default class AppMain extends Component<{}> {
     this.toggleDrawer = this.toggleDrawer.bind(this);
     this.setDrawerState = this.setDrawerState.bind(this);
     this.updateTabIndex = this.updateTabIndex.bind(this);
-    // console.log('dbg.appMain.screenprops:', this.props.screenProps);
+    // console.log('dbg.MainPage.screenprops:', this.props.screenProps);
   }
 
   updateTabIndex = tabIndex => {
-    // console.log("dbg.AppMain.tab index: " + tabIndex);
+    // console.log("dbg.MainPage.tab index: " + tabIndex);
     this.setState({ tabIndex });
   };
 
@@ -97,9 +97,9 @@ export default class AppMain extends Component<{}> {
     return (
       <languageDataCtx.Consumer>
         {({ placesData, appData, stylesData }) => {
-          // console.log('dbg.AppMain.placesData:', placesData);
-          // console.log('dbg.AppMain.appData:', appData);
-          // console.log('dbg.AppMain.stylesData:', stylesData);
+          // console.log('dbg.MainPage.placesData:', placesData);
+          // console.log('dbg.MainPage.appData:', appData);
+          // console.log('dbg.MainPage.stylesData:', stylesData);
           return (
             <placeDataCtx.Provider
               value={placesData.places[this.state.placeIndex].place}

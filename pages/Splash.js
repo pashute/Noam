@@ -14,7 +14,7 @@ import DrawerLayout from "react-native-drawer-layout";
 import { FontAwesome } from "@expo/vector-icons";
 // import PropTypes from 'prop-types';
 import { Font } from "expo";
-// import AppMain from './AppMain';
+// import MainPage from './MainPage';
 import Menu from "./Menu";
 
 // import { BluetoothStatus } from 'react-native-bluetooth-status';

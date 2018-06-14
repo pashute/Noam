@@ -7,7 +7,7 @@ import Accordion from "react-native-collapsible/Accordion";
 // import PropTypes from 'prop-types';
 import { FontAwesome } from "@expo/vector-icons";
 // import { Dropdown } from 'react-native-material-dropdown';
-import { placeDataCtx } from "../../AppMain";
+import { placeDataCtx } from "../../MainPage";
 
 const firstTimeMsg =
   "Opening hours:\n" +
