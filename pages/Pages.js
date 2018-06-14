@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, Alert } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import SetHome from './setting_pages/SetHome';
+import Settings from './setting_pages/Settings';
 import Calibrate from './setting_pages/Calibrate';
 import AutoUpdate from './setting_pages/AutoUpdate';
 import Voice from './setting_pages/Voice';
 import Preferences from './setting_pages/Preferences';
 import Profile from './setting_pages/Profile';
 
-const Settings = StackNavigator(
+const SettingsPages = StackNavigator(
   {
     AutoUpdate: {
       screen: AutoUpdate,
@@ -38,8 +38,8 @@ const Settings = StackNavigator(
         header: null
       }
     },
-    SetHome: {
-      screen: SetHome,
+    Settings: {
+      screen: Settings,
       navigationOptions: {
         headermode: 'screen',
         header: null
@@ -56,7 +56,7 @@ const Settings = StackNavigator(
   },
 
   {
-    initialRouteName: 'SetHome'
+    initialRouteName: 'Settings'
   }
 );
 

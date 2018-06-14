@@ -267,7 +267,7 @@ export default class Preferences extends Component<{}> {
                 </Text>
                 <Text
                   onPress={() => {
-                    navigate('SetHome');
+                    navigate('Settings');
                   }}
                   style={stylesData.styles.sharedStyles.navButton}
                 >

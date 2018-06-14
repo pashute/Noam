@@ -43,6 +43,21 @@
       "txtButtonIosBluetooth": "Go to Bluetooth settings",
       "txtButtonAndroidBluetooth": "Press here to turn Bluetooth on"
     },
+    "screensHelp": {
+      "txtHelp": "Help",
+      "txtGettingStarted": "Getting Started",
+      "txtTroubleshooting": "Troubleshooting",
+      "txtFAQ": "FAQ",
+      "gettingStarted": {
+        "title": "Getting Started"
+      },
+      "troubleshooting": {
+        "title": "Troubleshooting"
+      },
+      "faq": {
+        "title": "FAQ"
+      }
+    },
     "screensSettings": {
       "txtSettings": "Settings",
       "txtToCalibrate": "1. Calibrate Compass",

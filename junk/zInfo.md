@@ -53,6 +53,11 @@ exp publish --release-channel production
 
 signed apk https://facebook.github.io/react-native/docs/signed-apk-android.html
 
+
+how to run detached: 
+inside the project folder run this commands: 
+ `npm install` (the first time), `npm start` and `react-native run-android`
+
 native kontakt.io
 
 react native elements tut (youtube utube) ui

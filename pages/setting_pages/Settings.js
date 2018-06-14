@@ -14,7 +14,7 @@ import { Constants } from 'expo';
 import Bottom from '../tab_pages/Bottom.js';
 import { languageDataCtx } from '../../App';
 
-export default class SetHome extends Component<{}> {
+export default class Settings extends Component<{}> {
   constructor(props) {
     super(props);
   }
@@ -54,9 +54,9 @@ export default class SetHome extends Component<{}> {
                 <View style={stylesData.styles.sharedStyles.buttonDecorator}>
                   <Button
                     onPress={() => navigate('Calibrate')}
-                    titleStyle={stylesData.styles.sharedStyles.buttonText} 
+                    titleStyle={stylesData.styles.sharedStyles.buttonText}
                     title={appData.appData.screensSettings.txtToCalibrate}
-                    color="#111111"
+                    color={stylesData.styles.sharedStyles.buttonStyle.color}
                     accessibilityLabel={
                       appData.appData.screensSettings.txtToGoTo +
                       appData.appData.screensSettings.calibrate.textTitle
@@ -66,9 +66,9 @@ export default class SetHome extends Component<{}> {
                 <View style={stylesData.styles.sharedStyles.buttonDecorator}>
                   <Button
                     onPress={() => navigate('AutoUpdate')}
-                    titleStyle={stylesData.styles.sharedStyles.buttonText} 
+                    titleStyle={stylesData.styles.sharedStyles.buttonText}
                     title={appData.appData.screensSettings.txtToAutoUpdate}
-                    color="#111111"
+                    color={stylesData.styles.sharedStyles.buttonStyle.color}
                     accessibilityLabel={
                       appData.appData.screensSettings.txtToGoTo +
                       appData.appData.screensSettings.autoUpdate.textTitle
@@ -78,9 +78,9 @@ export default class SetHome extends Component<{}> {
                 <View style={stylesData.styles.sharedStyles.buttonDecorator}>
                   <Button
                     onPress={() => navigate('Voice')}
-                    titleStyle={stylesData.styles.sharedStyles.buttonText} 
+                    titleStyle={stylesData.styles.sharedStyles.buttonText}
                     title={appData.appData.screensSettings.txtToVoiceAssist}
-                    color="#111111"
+                    color={stylesData.styles.sharedStyles.buttonStyle.color}
                     accessibilityLabel={
                       appData.appData.screensSettings.txtToGoTo +
                       appData.appData.screensSettings.voiceAssist.textTitle
@@ -90,9 +90,9 @@ export default class SetHome extends Component<{}> {
                 <View style={stylesData.styles.sharedStyles.buttonDecorator}>
                   <Button
                     onPress={() => navigate('Preferences')}
-                    titleStyle={stylesData.styles.sharedStyles.buttonText} 
+                    titleStyle={stylesData.styles.sharedStyles.buttonText}
                     title={appData.appData.screensSettings.txtToPreferences}
-                    color="#111111"
+                    color={stylesData.styles.sharedStyles.buttonStyle.color}
                     accessibilityLabel={
                       appData.appData.screensSettings.txtToGoTo +
                       appData.appData.screensSettings.preferences.textTitle
@@ -102,9 +102,9 @@ export default class SetHome extends Component<{}> {
                 <View style={stylesData.styles.sharedStyles.buttonDecorator}>
                   <Button
                     onPress={() => navigate('Profile')}
-                    titleStyle={stylesData.styles.sharedStyles.buttonText} 
+                    titleStyle={stylesData.styles.sharedStyles.buttonText}
                     title={appData.appData.screensSettings.txtToProfile}
-                    color="#111111"
+                    color={stylesData.styles.sharedStyles.buttonStyle.color}
                     accessibilityLabel={
                       appData.appData.screensSettings.txtToGoTo +
                       appData.appData.screensSettings.profile.textTitle

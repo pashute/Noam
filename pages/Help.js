@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, Alert } from 'react-native';
 import { Button } from 'react-native';
 import ActionBar from 'react-native-action-bar';
-import PropTypes from 'prop-types';
-import { StackNavigator } from 'react-navigation';
-
-const hlpGettingStarted = 'Getting Started';
-const hlpTroubleShooting = 'Troubleshooting';
-const hlpFAQ = 'FAQ';
-//const hlpHowTo
+import { Constants } from 'expo';
+// import PropTypes from 'prop-types';
+// import {StackNavigator,} from 'react-navigation';
+// import RNExitApp from 'react-native-exit-app';
+import Bottom from './tab_pages/Bottom.js';
+import { languageDataCtx } from '../App';
 
 export default class Help extends Component {
   //<{}> {
@@ -17,85 +16,99 @@ export default class Help extends Component {
   }
 
   render() {
-    const { navigate } = this.props.navigation;
+    const { navigate, goBack, replace, popToTop } = this.props.navigation;
     return (
-      <View style={styles.container}>
-        <ActionBar
-          containerStyle={styles.bar}
-          titleStyle={styles.title}
-          title={'Noam'}
-          leftIconName={'location'}
-          onLeftPress={() => console.log('Left!')}
-        />
+      <languageDataCtx.Consumer>
+        {({ stylesData, appData }) => {
+          // console.log("stylesData:", stylesData);
+          return (
+            <View
+              style={[
+                stylesData.styles.sharedStyles.mainContainer,
+                styles.topMargin
+              ]}
+            >
+              <ActionBar
+                containerStyle={
+                  stylesData.styles.sharedStyles.actionBarContainer
+                }
+                titleStyle={stylesData.styles.sharedStyles.actionTitle}
+                title={appData.appData.general.txtAppNameOnActionBar}
+                leftIconName={'location'}
+                onLeftPress={() => console.log('Left!')}
+              />
+              <View
+                style={[
+                  stylesData.styles.sharedStyles.contentContainer,
+                  styles.buttonContainer
+                ]}
+              >
+                <Text style={stylesData.styles.sharedStyles.titleText}>
+                  {appData.appData.screensHelp.txtHelp}
+                </Text>
 
-        <Text style={styles.assistant}>Help</Text>
-
-        <View style={styles.buttonDecorator}>
-          <Button
-            title={hlpGettingStarted}
-            color="#111111"
-            accessibilityLabel="Tap on Me"
-          />
-        </View>
-        <View style={styles.buttonDecorator}>
-          <Button
-            title={hlpFAQ}
-            color="#111111"
-            accessibilityLabel="Tap on Me"
-          />
-        </View>
-        <View style={styles.buttonDecorator}>
-          <Button
-            title={hlpTroubleShooting}
-            color="#111111"
-            accessibilityLabel={'Tap on Me to '}
-          />
-        </View>
-      </View>
+                <View style={stylesData.styles.sharedStyles.buttonDecorator}>
+                  <Button
+                    onPress={() => navigate('HelpGettingStarted')}
+                    titleStyle={stylesData.styles.sharedStyles.buttonText}
+                    title={appData.appData.screensHelp.txtGettingStarted}
+                    color={stylesData.styles.sharedStyles.buttonStyle.color}
+                    accessibilityLabel={
+                      appData.appData.screensSettings.txtToGoTo +
+                      appData.appData.screensHelp.gettingStarted.textTitle
+                    }
+                  />
+                </View>
+                <View style={stylesData.styles.sharedStyles.buttonDecorator}>
+                  <Button
+                    onPress={() => navigate('HelpTroubleshooting')}
+                    titleStyle={stylesData.styles.sharedStyles.buttonText}
+                    title={appData.appData.screensHelp.txtTroubleshooting}
+                    color={stylesData.styles.sharedStyles.buttonStyle.color}
+                    accessibilityLabel={
+                      appData.appData.screensSettings.txtToGoTo +
+                      appData.appData.screensHelp.troubleshooting.textTitle
+                    }
+                  />
+                </View>
+                <View style={stylesData.styles.sharedStyles.buttonDecorator}>
+                  <Button
+                    onPress={() => navigate('HelpFAQ')}
+                    titleStyle={stylesData.styles.sharedStyles.buttonText}
+                    title={appData.appData.screensHelp.txtFaq}
+                    color={stylesData.styles.sharedStyles.buttonStyle.color}
+                    accessibilityLabel={
+                      appData.appData.screensSettings.txtToGoTo +
+                      appData.appData.screensHelp.faq.textTitle
+                    }
+                  />
+                </View>
+              </View>
+              <View style={stylesData.styles.sharedStyles.bottomNavRow}>
+                <Text
+                  onPress={() => navigate('MainPage')}
+                  style={stylesData.styles.sharedStyles.navButton}
+                >
+                  {appData.appData.general.txtDone}
+                </Text>
+              </View>
+              <View style={stylesData.styles.sharedStyles.bottomRow}>
+                <Bottom />
+              </View>
+            </View>
+          );
+        }}
+      </languageDataCtx.Consumer>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-
-    backgroundColor: '#F5F5F5'
+  topMargin: {
+    marginTop: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight
   },
-  welcome: {
-    fontSize: 35,
-    color: '#6600ff'
-  },
-  instructions: {
-    marginTop: 40,
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 80,
-    fontSize: 20,
-    fontStyle: 'normal'
-  },
-  assistant: {
-    fontSize: 30,
-    marginTop: 50,
-    marginLeft: 20,
-    marginRight: 20,
-    marginBottom: 30
-  },
-  title: {
-    textAlign: 'center',
-    fontSize: 20
-  },
-  buttonDecorator: {
-    backgroundColor: '#2E9298',
-    borderRadius: 10,
-    padding: 5,
-    shadowColor: '#000000',
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowRadius: 10,
-    shadowOpacity: 0.25,
-    margin: 10
+  buttonContainer: {
+    flexDirection: 'column',
+    justifyContent: 'space-between'
   }
 });

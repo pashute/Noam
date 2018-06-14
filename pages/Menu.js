@@ -23,7 +23,7 @@ export default class Menu extends Component {
   goPage(name) {
     const { navigate } = this.props.nav;
     if (name == 'Settings') {
-      this.props.nav('SetHome');
+      this.props.nav('Settings');
     } else {
       this.props.nav('Help');
     }

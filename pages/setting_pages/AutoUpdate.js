@@ -95,7 +95,7 @@ export default class AutoUpdate extends Component<{}> {
                 </Text>
                 <Text
                   onPress={() => {
-                    navigate('SetHome');
+                    navigate('Settings');
                   }}
                   style={stylesData.styles.sharedStyles.navButton}
                 >
