@@ -5,21 +5,23 @@ import { storiesOf } from '@storybook/react-native';
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 
-import Button from './Button';
 import CenterView from './CenterView';
-import Welcome from './Welcome';
+import Demo0 from './Demo0';
+import Demo1 from './Demo1';
 
-storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
+storiesOf('Welcome', module).add('to Storybook', () => (
+  <Demo0 showApp={linkTo('Button')} />
+));
 
-storiesOf('Button', module)
+storiesOf('Demo1', module)
   .addDecorator(getStory => <CenterView>{getStory()}</CenterView>)
   .add('with text', () => (
-    <Button onPress={action('clicked-text')}>
+    <Demo1 onPress={action('clicked-text')}>
       <Text>Hello Button</Text>
-    </Button>
+    </Demo1>
   ))
   .add('with some emoji', () => (
-    <Button onPress={action('clicked-emoji')}>
+    <Demo1 onPress={action('clicked-emoji')}>
       <Text>😀 😎 👍 💯</Text>
-    </Button>
+    </Demo1>
   ));

@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 
-export default class Welcome extends React.Component {
+export default class Demo0 extends React.Component {
   styles = {
     wrapper: {
       flex: 1,
