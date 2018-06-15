@@ -12,7 +12,7 @@ import {
 import ActionBar from 'react-native-action-bar';
 // import PropTypes from 'prop-types';
 import Bottom from '../tab_pages/Bottom.js';
-import { languageDataCtx } from '../../App';
+import { languageDataCtx } from '../../AppMain';
 
 export default class Profile extends Component<{}> {
   constructor(props) {

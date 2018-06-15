@@ -5,7 +5,7 @@ import ActionBar from 'react-native-action-bar';
 // import PropTypes from 'prop-types';
 // import { StackNavigator } from 'react-navigation';
 import Bottom from '../tab_pages/Bottom.js';
-import { languageDataCtx } from '../../App';
+import { languageDataCtx } from '../../AppMain';
 
 export default class AutoUpdate extends Component<{}> {
   constructor(props) {

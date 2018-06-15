@@ -6,7 +6,7 @@ import ActionBar from 'react-native-action-bar';
 // import {StackNavigator,} from 'react-navigation';
 // import RNExitApp from 'react-native-exit-app';
 import Bottom from './tab_pages/Bottom.js';
-import { languageDataCtx } from '../App';
+import { languageDataCtx } from '../AppMain';
 
 export default class Help extends Component {
   //<{}> {

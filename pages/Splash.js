@@ -11,9 +11,9 @@ import {
 } from 'react-native';
 import ActionBar from 'react-native-action-bar';
 import DrawerLayout from 'react-native-drawer-layout';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 // import PropTypes from 'prop-types';
-// import AppMain from './AppMain';
+// import MainPage from './MainPage';
 import Menu from './Menu';
 
 // import { BluetoothStatus } from 'react-native-bluetooth-status';
@@ -54,7 +54,7 @@ export default class Splash extends React.Component {
       drawerClosed: true,
       continueDisabled: true,
       bluetoothState: '',
-      fontLoaded: false
+      fontLoaded: true
     };
 
     // in text style array...
@@ -68,7 +68,6 @@ export default class Splash extends React.Component {
 
   async componentDidMount() {
     this.checkInitialBluetoothState();
-    this.setState({ fontLoaded: true });
   }
 
   // onMount - function
@@ -148,8 +147,13 @@ export default class Splash extends React.Component {
             ]}
           />
 
-          <View>
-            <Icon name={'arrow-up'} size={25} color={splashAppnameColor} />
+          <Text style={(styles.splashMsg, styles.textCentered)}>
+            {'\n\n\n\n'}
+            <FontAwesome
+              name={'arrow-up'}
+              size={25}
+              color={splashAppnameColor}
+            />
             <Text
               style={[
                 this.state.fontLoaded
@@ -165,7 +169,7 @@ export default class Splash extends React.Component {
               {'  '}
               {this.state.bodyText}
             </Text>
-          </View>
+          </Text>
 
           <Text style={styles.instructions}>{instructions}</Text>
 

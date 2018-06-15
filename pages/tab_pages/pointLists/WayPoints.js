@@ -4,9 +4,9 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Accordion from 'react-native-collapsible/Accordion';
 // import PropTypes from 'prop-types';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 // import { Dropdown } from 'react-native-material-dropdown';
-import { placeDataCtx } from '../../AppMain';
+import { placeDataCtx } from '../../../AppMain';
 
 //const str_welcome ='Welcome to Big Fashion';
 //const str_open= 'Opening hours:\n' + 'Sunday - Thursday 8:30 - 21:00\n' + 'Friday 8:30 - 13:00';
@@ -40,7 +40,7 @@ export default class WayPoints extends Component<{}> {
             </Text>
           </View>
           <View style={styles.iconOpenColapse}>
-            <Icon name={iconName} size={20} color="gray" />
+            <FontAwesome name={iconName} size={20} color="gray" />
           </View>
         </View>
       </View>

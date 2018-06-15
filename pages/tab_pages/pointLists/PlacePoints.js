@@ -11,7 +11,7 @@ import Accordion from 'react-native-collapsible/Accordion';
 //import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Dropdown } from 'react-native-material-dropdown';
-import { placeDataCtx } from '../../AppMain';
+import { placeDataCtx } from '../../MainPage';
 
 //const str_welcome ='Last place: South Elevators floor 1';
 //const str_open= 'Opening hours:\n' + 'Sunday - Thursday 8:30-21:00\n';

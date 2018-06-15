@@ -1,54 +1,82 @@
 {
-    "window.zoomLevel": 1,
-    "editor.fontFamily": "Consolas, 'Courier New', monospace",
-    "editor.fontSize": 18,
-    "files.autoSave": "afterDelay",
-    "git.autofetch": false,
-    "colorize.languages": [
-        "javascript",
-        "css",
-        "sass",
-        "scss",
-        "less",
-        "pcss",
-        "sss",
-        "stylus",
-        "xml",
-        "svg"
+  "window.zoomLevel": 1,
+  "editor.fontFamily": "Consolas, 'Courier New', monospace",
+  "editor.fontSize": 18,
+  "editor.foldingStrategy": "indentation",
+  "editor.formatOnSave": true,
+  "launch": {
+    "name": "Python",
+    "type": "python",
+    "pythonPath": "${config.python.pythonPath}",
+    "request": "launch",
+    "stopOnEntry": true,
+    "console": "none",
+    "program": "${file}",
+    "cwd": "${workspaceRoot}",
+    "debugOptions": [
+      "WaitOnAbnormalExit",
+      "WaitOnNormalExit",
+      "RedirectOutput"
     ],
-    "colorize.files_extensions": [
-        ".js"
-    ],
-    "colorize.hide_current_line_decorations": true,
-    "editor.formatOnSave": true,
-    "[javascriptreact]": {},
-    "files.associations": {
-        "*.js": "javascriptreact"
-    },
-    "emmet.includeLanguages": {
-        "javascript": "javascriptreact"
-    },
-    "emmet.triggerExpansionOnTab": true,
-    "prettier.singleQuote": true,
-    "javascript.validate.enable": false,
-    "cSpell.enabledLanguageIds": [
-        "asciidoc",
-        "handlebars",
-        "html",
-        "jade",
-        "latex",
-        "less",
-        "markdown",
-        "php",
-        "plaintext",
-        "pub",
-        "text",
-        "typescript",
-        "typescriptreact",
-        "yml"
-    ],
-    "cSpell.userWords": [
-        "Pashute",
-        "keytool"
-    ],
+    "env": {
+      "name": "value"
+    }
+  },
+  "files.autoSave": "afterDelay",
+  "env": {
+    "PYTHONPATH": "$(workspaceRoot)"
+  },
+  "git.autofetch": false,
+  "colorize.languages": [
+    "javascript",
+    "css",
+    "sass",
+    "scss",
+    "less",
+    "pcss",
+    "sss",
+    "stylus",
+    "xml",
+    "svg"
+  ],
+  "colorize.files_extensions": [".js"],
+  "colorize.hide_current_line_decorations": true,
+  "[javascriptreact]": {},
+  "files.associations": {
+    "*.js": "javascriptreact"
+  },
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "emmet.triggerExpansionOnTab": true,
+  "prettier.singleQuote": true,
+  "javascript.validate.enable": false,
+  "cSpell.enabledLanguageIds": [
+    "asciidoc",
+    "c",
+    "cpp",
+    "csharp",
+    "css",
+    "go",
+    "handlebars",
+    "html",
+    "jade",
+    "javascript",
+    "latex",
+    "less",
+    "markdown",
+    "php",
+    "plaintext",
+    "pub",
+    "python",
+    "restructuredtext",
+    "rust",
+    "scss",
+    "text",
+    "typescript",
+    "typescriptreact",
+    "yml"
+  ],
+  "cSpell.userWords": ["Pashute", "keytool"],
+  "react-native-storybooks.port": 7007
 }
