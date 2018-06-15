@@ -2,10 +2,10 @@
 
 import React from 'react';
 import {
-  I18nManager /* StyleSheet, Platform, Text, View, Alert */
+  I18nManager /* , DeviceEventEmitter, StyleSheet, Platform, Text, View, Alert */
 } from 'react-native';
+import {} from 'react-native';
 
-//x import { TabNavigator } from 'react-navigation'; // 1.5.11
 import { NavigationActions, StackNavigator } from 'react-navigation';
 
 // import { ButtonGroup } from 'react-native-elements';
@@ -34,6 +34,9 @@ import Voice from './pages/setting_pages/Voice';
 import Help from './pages/Help';
 import HelpFirstTime from './pages/HelpFirstTime';
 import { getLanguage, getLanguageCode } from './data';
+
+// import Kontakt from 'react-native-kontaktio';
+// const { connect, startScanning } = Kontakt;
 
 /*
 This contex contains: appData.json, placesData.json and stylesData.json
@@ -143,7 +146,24 @@ export default class AppMain extends React.Component {
         this.setState({ language: getLanguageCode(value) });
       }
     });
+
+    // // see: https://www.npmjs.com/package/react-native-kontaktio
+    // // kontakt io for android...
+    // connect()
+    //   .then(() => startScanning())
+    //   .catch(error => console.log('error', error));
+
+    //   DeviceEventEmitter.addListener(
+    //     'beaconsDidUpdate',
+    //     ({ beacons, region }) => {
+    //       console.log('beaconsDidUpdate', beacons, region);
+    //     }
+    // );
+
+    // async font
     this._asyncFonts();
+
+    // right to left
     I18nManager.forceRTL(false);
     this.setState({ isRTL: false });
   }
