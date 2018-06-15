@@ -12,7 +12,7 @@ import { Constants } from 'expo';
 // import {StackNavigator,} from 'react-navigation';
 // import RNExitApp from 'react-native-exit-app';
 import Bottom from '../tab_pages/Bottom.js';
-import { languageDataCtx } from '../../App';
+import { languageDataCtx } from '../../AppMain';
 
 export default class Settings extends Component<{}> {
   constructor(props) {

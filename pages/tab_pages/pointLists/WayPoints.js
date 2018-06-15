@@ -7,7 +7,7 @@ import Accordion from 'react-native-collapsible/Accordion';
 // import { Font, AppLoading } from 'expo';
 import { FontAwesome } from '@expo/vector-icons';
 // import { Dropdown } from 'react-native-material-dropdown';
-import { placeDataCtx } from '../../AppMain';
+import { placeDataCtx } from '../../MainPage';
 
 //const str_welcome ='Welcome to Big Fashion';
 //const str_open= 'Opening hours:\n' + 'Sunday - Thursday 8:30 - 21:00\n' + 'Friday 8:30 - 13:00';

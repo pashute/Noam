@@ -15,7 +15,7 @@ import { Dropdown } from 'react-native-material-dropdown';
 // import PropTypes from 'prop-types';
 // import { StackNavigator } from 'react-navigation';
 import Bottom from '../tab_pages/Bottom.js';
-import { languageDataCtx } from '../../App';
+import { languageDataCtx } from '../../AppMain';
 import Languages from '../../data';
 
 export default class Preferences extends Component<{}> {
