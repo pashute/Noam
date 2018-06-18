@@ -29,7 +29,7 @@ export default class Demo0 extends React.Component {
     return (
       <View style={this.styles.wrapper}>
         <Text style={this.styles.header}>
-          Welcome to React Native Storybook
+          Bruchim Habaim to React Native Storybook
         </Text>
         <Text style={this.styles.content}>
           This is a UI Component development environment for your React Native
