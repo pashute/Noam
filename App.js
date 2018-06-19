@@ -3,7 +3,7 @@
 import StorybookUI from './storybook';
 import AppMain from './AppMain';
 
-module.exports = __DEV__ ? StorybookUI : AppMain;
+module.exports = __DEV__ ? AppMain : AppMain;
 
 // // Export the one you want
 // import AppMain from './AppMain'; // Main-App

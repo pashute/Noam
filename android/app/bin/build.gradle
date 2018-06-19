@@ -134,9 +134,6 @@ android {
             }
         }
     }
-	packagingOptions {
-		exclude 'main/AndroidManifest.xml'
-	}
 }
 
 dependencies {

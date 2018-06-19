@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import WayPoints from './pointLists/WayPoints';
 import Bottom from './Bottom';
-import { languageDataCtx } from '../../App';
+import { languageDataCtx } from '../../AppMain';
 
 export default class ThisWay extends Component<{}> {
   constructor(props) {

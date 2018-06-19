@@ -3,6 +3,7 @@ package com.noam;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.artirigo.kontaktio.KontaktPackage;
 import com.reactlibrary.RNSimpleCompassPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.facebook.react.ReactNativeHost;
@@ -23,11 +24,8 @@ public class MainApplication extends Application implements ReactApplication {
 
     @Override
     protected List<ReactPackage> getPackages() {
-      return Arrays.<ReactPackage>asList(
-          new MainReactPackage(),
-            new RNSimpleCompassPackage(),
-            new VectorIconsPackage()
-      );
+      return Arrays.<ReactPackage>asList(new MainReactPackage(), new RNSimpleCompassPackage(), new VectorIconsPackage(),
+          new KontaktPackage());
     }
 
     @Override

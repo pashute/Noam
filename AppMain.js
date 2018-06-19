@@ -3,6 +3,7 @@
 import React from 'react';
 import {
   AsyncStorage,
+  View,
   I18nManager /* , DeviceEventEmitter, StyleSheet, Platform, Text, View, Alert */
 } from 'react-native';
 

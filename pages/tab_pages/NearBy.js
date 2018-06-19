@@ -1,18 +1,20 @@
 /* cSpell:disable */
 
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
   View,
-  ScrollView
+  ScrollView,
+  DeviceEventEmitter
   /* Platform,  Alert, Button */
-} from "react-native";
+} from 'react-native';
 // import PropTypes from 'prop-types';
 // import NoBeacon from './pointLists/NoBeacon';
-import NearPoints from "./pointLists/NearPoints";
-import Bottom from "./Bottom";
-
+import Kontakt from 'react-native-kontaktio';
+import NearPoints from './pointLists/NearPoints';
+import Bottom from './Bottom';
+const { connect, startScanning } = Kontakt;
 export default class NearBy extends Component<{}> {
   constructor(props) {
     super(props);
@@ -22,6 +24,25 @@ export default class NearBy extends Component<{}> {
 
     this.toggleDrawer = this.toggleDrawer.bind(this);
     this.setDrawerState = this.setDrawerState.bind(this);
+  }
+
+  componentDidMount() {
+    console.log('checking beacon');
+    connect()
+      .then(() => {
+        console.log('startScanning');
+        startScanning();
+      })
+      .catch(error => {
+        console.log('error', error);
+      });
+
+    DeviceEventEmitter.addListener(
+      'beaconsDidUpdate',
+      ({ beacons, region }) => {
+        console.log('beaconsDidUpdate', beacons, region);
+      }
+    );
   }
   setDrawerState() {
     this.setState({
@@ -58,19 +79,19 @@ export default class NearBy extends Component<{}> {
 
 const styles = StyleSheet.create({
   mainContainer: {
-    backgroundColor: "#FDFDFD",
+    backgroundColor: '#FDFDFD',
     flex: 1
   },
   pointsContainer: {
-    backgroundColor: "#FDFDFD",
+    backgroundColor: '#FDFDFD',
     borderLeftWidth: 1,
-    borderLeftColor: "#000000",
+    borderLeftColor: '#000000',
     borderRightWidth: 1,
-    borderRightColor: "#000000",
+    borderRightColor: '#000000',
     borderTopWidth: 1.0,
-    borderTopColor: "#000000",
+    borderTopColor: '#000000',
     borderBottomWidth: 1,
-    borderBottomColor: "#000000",
+    borderBottomColor: '#000000',
     margin: 10,
     padding: 0,
     flex: 18
@@ -79,9 +100,9 @@ const styles = StyleSheet.create({
   pointingTo: {
     margin: 10,
     fontSize: 16,
-    textAlign: "center",
-    color: "#000000" /*thisWayStyles.color,*/,
-    fontWeight: "500" /*thisWayStyles.fontWeight*/
+    textAlign: 'center',
+    color: '#000000' /*thisWayStyles.color,*/,
+    fontWeight: '500' /*thisWayStyles.fontWeight*/
   },
   bottomRow: {
     flex: 2
