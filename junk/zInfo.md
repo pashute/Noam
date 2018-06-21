@@ -26,6 +26,9 @@ https://hackernoon.com/configure-eslint-prettier-and-flow-in-vs-code-for-react-d
 
 ---
 
+<details><summary>Install expo - CLICK ME</summary>
+<p />
+
 had to install java jdk8 jse-sdk (standard edition)
 from here: http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 then set %JAVA_HOME% to the directory of the jdk under program files/java
@@ -53,10 +56,27 @@ exp publish --release-channel production
 
 signed apk https://facebook.github.io/react-native/docs/signed-apk-android.html
 
+</details>
 
-how to run detached: 
-inside the project folder run this commands: 
- `npm install` (the first time), `npm start` and `react-native run-android`
+<details><summary>Run detached - CLICK ME</summary>
+<p />
+
+how to run detached:
+inside the project folder run this commands:
+`npm install` (the first time), `npm start` and `react-native run-android`
+`yarn install`, `yarn run storybook`, and `react-native run-android`
+
+how to create app (upload it to drive)
+To create an apk:
+inside Noam/android, open a command window and set this command:
+./gradlew assembleDebug (for a debug APK, this APK can't be uploaded into the Play Store)
+./gradlew assembleRelease (for this we need to set the keystore before: https://facebook.github.io/react-native/docs/signed-apk-android.html)
+
+Every build is going to be stored in the folder: Noam/android/app/build/outputs/apk
+
+If further `run-android` fails, do `gradlew clear` from `<projdir>\Android`.
+
+</details>
 
 native kontakt.io
 
@@ -97,3 +117,11 @@ https://moduscreate.com/blog/expanding-and-collapsing-elements-using-animations-
 
 json online editor
 https://jsoneditoronline.or
+
+troubleshooting: 
+* unable to load script https://stackoverflow.com/questions/44446523/unable-to-load-script-from-assets-index-android-bundle-on-windows
+    * check all windows for problems
+    * on emulator adb reverse
+    * on device set ip and port
+* how to install apk: https://en.softonic.com/articles/how-to-install-android-apk-files-in-windows-xp 
+* how to run react-native on device https://facebook.github.io/react-native/docs/running-on-device.html 

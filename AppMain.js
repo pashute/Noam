@@ -2,8 +2,9 @@
 
 import React from 'react';
 import {
+  View, 
   AsyncStorage,
-  I18nManager /* , DeviceEventEmitter, StyleSheet, Platform, Text, View, Alert */
+  I18nManager /* , DeviceEventEmitter, StyleSheet, Platform, Text, Alert */
 } from 'react-native';
 
 import { NavigationActions, StackNavigator } from 'react-navigation';
