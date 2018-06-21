@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
+// import Splash from '../../../pages/Splash';
 
 export default class MainSplash extends React.Component {
   showApp(event) {
@@ -10,14 +11,17 @@ export default class MainSplash extends React.Component {
   render() {
     return (
       <View>
-        <Text>Splash page goes here</Text>
+        <Text>just changed a Splash again</Text>
+        <Text>and some more texst</Text>
       </View>
     );
   }
 } // .. class
-// MainSplash.propTypes = {
-//   showApp: PropTypes.func
-// };
-// MainSplash.defaultProps = {
-//   showApp: () => {}
-// };
+MainSplash.propTypes = {
+  showApp: PropTypes.func
+};
+MainSplash.defaultProps = {
+  showApp: () => {
+    console.log('mainSplash using default');
+  }
+};

@@ -1,19 +1,19 @@
 import React from 'react';
-import { Text } from 'react-native';
+//x import { Text } from 'react-native';
 
 import { storiesOf } from '@storybook/react-native';
-import { action } from '@storybook/addon-actions';
-import { linkTo } from '@storybook/addon-links';
+//x import { action } from '@storybook/addon-actions';
+//x import { linkTo } from '@storybook/addon-links';
 
-import CenterView from './CenterView';
+//x import CenterView from './CenterView';
 import MainSplash from './MainSplash';
 import MainInPlace from './MainInPlace';
 import MainWay from './MainWay';
 import MainNearby from './MainNearby';
 
-storiesOf('Noam main', module)
-  .add('Splash', () => <MainSplash />)
-  .add('Main tabs', () => <MainInPlace />);
+storiesOf('Noam', module)
+  .add('Splash', () => (<MainSplash />))
+  .add('Main tabs', () => (<MainInPlace />));
 
 // storiesOf('Belcome', module).add('to Storybook', () => (
 //   <Demo0 showApp={linkTo('Button')} />

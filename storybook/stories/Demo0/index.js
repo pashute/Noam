@@ -52,5 +52,7 @@ Demo0.propTypes = {
   showApp: PropTypes.func
 };
 Demo0.defaultProps = {
-  showApp: () => {}
+  showApp: () => {
+    console.log('mainsplash using default');
+  }
 };
