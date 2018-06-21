@@ -1,6 +1,7 @@
 /* cSpell:disable */
 
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   StatusBar,
   Platform,
@@ -24,9 +25,7 @@ import InPlace from './tab_pages/InPlace';
 import Menu from './Menu';
 const earIcon = require('../assets/icons/ear1.png');
 
-import { languageDataCtx } from '../AppMain';
-
-export const placeDataCtx = React.createContext(languageDataCtx);
+import { setCurrentPlace } from '../redux/actions';
 
 // taken from appData
 // const strExit = 'Exits';
@@ -60,7 +59,7 @@ const inplaceButton = () => (
   </View>
 );
 
-export default class MainPage extends Component<{}> {
+class MainPage extends Component<{}> {
   constructor(props) {
     super(props);
     this.state = {
@@ -76,7 +75,6 @@ export default class MainPage extends Component<{}> {
     this.toggleDrawer = this.toggleDrawer.bind(this);
     this.setDrawerState = this.setDrawerState.bind(this);
     this.updateTabIndex = this.updateTabIndex.bind(this);
-    // console.log('dbg.MainPage.screenprops:', this.props.screenProps);
   }
 
   componentDidMount() {
@@ -126,77 +124,61 @@ export default class MainPage extends Component<{}> {
 
   render() {
     const { navigate } = this.props.navigation;
+    const { placesData, stylesData, appData } = this.props.currentLanguage;
     return (
-      <languageDataCtx.Consumer>
-        {({ placesData, appData, stylesData }) => {
-          // console.log('dbg.MainPage.placesData:', placesData);
-          // console.log('dbg.MainPage.appData:', appData);
-          // console.log('dbg.MainPage.stylesData:', stylesData);
-          return (
-            <placeDataCtx.Provider
-              value={placesData.places[this.state.placeIndex].place}
-            >
-              <View style={styles.mainContainer}>
-                <DrawerLayout
-                  drawerWidth={200}
-                  ref={drawerElement => {
-                    this.DRAWER = drawerElement;
-                  }}
-                  drawerPosition={DrawerLayout.positions.Right}
-                  onDrawerOpen={this.setDrawerState}
-                  onDrawerClose={this.setDrawerState}
-                  renderNavigationView={() => <Menu nav={navigate} />}
-                >
-                  <ActionBar
-                    containerStyle={styles.actionBarContainer}
-                    titleStyle={styles.actionTitle}
-                    title={'noam'}
-                    leftIconImage={earIcon}
-                    onLeftPress={() => console.log('Talk Icon pressed.')}
-                    rightIcons={[
-                      {
-                        name: 'menu',
-                        onPress: this.toggleDrawer
-                      }
-                    ]}
-                  />
-                  <View style={styles.topPlaceRow}>
-                    <View style={styles.placeBar}>
-                      <Text style={styles.placeMsg}>{pointPlaceName}</Text>
-                      <Icon
-                        name={pointPlaceIconName}
-                        size={30}
-                        color="#000000"
-                      />
-                    </View>
-                    <Text style={styles.beaconTxt}>{pointBeaconLocation}</Text>
-                  </View>
-                  <View style={styles.separator} />
-                  <ButtonGroup
-                    containerBorderRadius={40}
-                    onPress={this.updateTabIndex}
-                    selectedIndex={this.state.tabIndex}
-                    selectedButtonStyle={styles.tabSelected}
-                    buttons={[
-                      { element: nearbyButton },
-                      { element: thatwayButton },
-                      { element: inplaceButton }
-                    ]}
-                    containerStyle={{ height: 30 }}
-                  />
+      <View style={styles.mainContainer}>
+        <DrawerLayout
+          drawerWidth={200}
+          ref={drawerElement => {
+            this.DRAWER = drawerElement;
+          }}
+          drawerPosition={DrawerLayout.positions.Right}
+          onDrawerOpen={this.setDrawerState}
+          onDrawerClose={this.setDrawerState}
+          renderNavigationView={() => <Menu nav={navigate} />}
+        >
+          <ActionBar
+            containerStyle={styles.actionBarContainer}
+            titleStyle={styles.actionTitle}
+            title={'noam'}
+            leftIconImage={earIcon}
+            onLeftPress={() => console.log('Talk Icon pressed.')}
+            rightIcons={[
+              {
+                name: 'menu',
+                onPress: this.toggleDrawer
+              }
+            ]}
+          />
+          <View style={styles.topPlaceRow}>
+            <View style={styles.placeBar}>
+              <Text style={styles.placeMsg}>{pointPlaceName}</Text>
+              <Icon name={pointPlaceIconName} size={30} color="#000000" />
+            </View>
+            <Text style={styles.beaconTxt}>{pointBeaconLocation}</Text>
+          </View>
+          <View style={styles.separator} />
+          <ButtonGroup
+            containerBorderRadius={40}
+            onPress={this.updateTabIndex}
+            selectedIndex={this.state.tabIndex}
+            selectedButtonStyle={styles.tabSelected}
+            buttons={[
+              { element: nearbyButton },
+              { element: thatwayButton },
+              { element: inplaceButton }
+            ]}
+            containerStyle={{ height: 30 }}
+          />
 
-                  <TabbedPage
-                    selectedIndex={this.state.tabIndex}
-                    pointingDirection={this.state.pointingTo}
-                    heading={this.state.heading}
-                    beaconIndex={this.state.beaconIndex}
-                  />
-                </DrawerLayout>
-              </View>
-            </placeDataCtx.Provider>
-          );
-        }}
-      </languageDataCtx.Consumer>
+          <TabbedPage
+            selectedIndex={this.state.tabIndex}
+            pointingDirection={this.state.pointingTo}
+            heading={this.state.heading}
+            beaconIndex={this.state.beaconIndex}
+          />
+        </DrawerLayout>
+      </View>
     );
   }
 }
@@ -304,3 +286,20 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1
   }
 });
+
+const mapStateToProps = ({ data }) => {
+  const { currentLanguage } = data;
+  return { currentLanguage };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setCurrentPlace: place => {
+      dispatch(setCurrentPlace(place));
+    }
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MainPage);

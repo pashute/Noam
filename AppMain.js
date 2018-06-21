@@ -7,6 +7,7 @@ import {
   I18nManager /* , DeviceEventEmitter, StyleSheet, Platform, Text, View, Alert */
 } from 'react-native';
 
+import { connect } from 'react-redux';
 import { NavigationActions, StackNavigator } from 'react-navigation';
 
 // import { ButtonGroup } from 'react-native-elements';
@@ -26,6 +27,8 @@ import Help from './pages/Help';
 import HelpFirstTime from './pages/HelpFirstTime';
 import { getLanguage, getLanguageCode } from './data';
 
+import { setCurrentLanguage, setCurrentPlace } from './redux/actions';
+
 // import Kontakt from 'react-native-kontaktio';
 // const { connect, startScanning } = Kontakt;
 
@@ -33,7 +36,6 @@ import { getLanguage, getLanguageCode } from './data';
 This contex contains: appData.json, placesData.json and stylesData.json
 of the current language (by default is en)
 */
-export const languageDataCtx = React.createContext(getLanguage('en'));
 
 I18nManager.allowRTL(true);
 
@@ -116,7 +118,7 @@ const Nav = StackNavigator({
   }
 });
 
-export default class AppMain extends React.Component {
+class AppMain extends React.Component {
   constructor(props) {
     super(props);
     this.checkNav = this.checkNav.bind(this);
@@ -133,7 +135,20 @@ export default class AppMain extends React.Component {
   componentDidMount() {
     AsyncStorage.getItem('preferences-language').then(value => {
       if (value !== null) {
-        this.setState({ language: getLanguageCode(value) });
+        const savedLanguage = getLanguage('value').data;
+        this.setState({ language: savedLanguage });
+        const { placesData } = savedLanguage;
+        console.log(savedLanguage);
+        console.log(placesData);
+        this.props.setCurrentLanguage(savedLanguage);
+        this.props.setCurrentPlace(placesData.places[0].place);
+      } else {
+        const tempLanguage = getLanguage('en').data;
+        const { placesData } = tempLanguage;
+        console.log(tempLanguage);
+        console.log(placesData);
+        this.props.setCurrentLanguage(tempLanguage);
+        this.props.setCurrentPlace(placesData.places[0].place);
       }
     });
 
@@ -216,21 +231,33 @@ export default class AppMain extends React.Component {
     //   />
     // );
     return (
-      <languageDataCtx.Provider
-        value={getLanguage(this.state.currentLanguage).data}
-      >
-        <Nav
-          screenProps={{
-            checkNav: this.checkNav,
-            pointingTo: this.state.pointingTo,
-            heading: this.state.heading,
-            noamColor:
-              this.state.data && this.state.data.styles
-                ? this.state.data.styles.stylesSplash.noamColor
-                : '#FF0000'
-          }}
-        />
-      </languageDataCtx.Provider>
+      <Nav
+        screenProps={{
+          checkNav: this.checkNav,
+          pointingTo: this.state.pointingTo,
+          heading: this.state.heading,
+          noamColor:
+            this.state.data && this.state.data.styles
+              ? this.state.data.styles.stylesSplash.noamColor
+              : '#FF0000'
+        }}
+      />
     );
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setCurrentLanguage: languages => {
+      dispatch(setCurrentLanguage(languages));
+    },
+    setCurrentPlace: place => {
+      dispatch(setCurrentPlace(place));
+    }
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(AppMain);

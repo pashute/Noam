@@ -1,6 +1,7 @@
 /* cSpell:disable */
 
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { StyleSheet, Text, View } from 'react-native';
 import Accordion from 'react-native-collapsible/Accordion';
 // import PropTypes from 'prop-types';
@@ -14,7 +15,7 @@ import { placeDataCtx } from '../../../AppMain';
 const atPointDesc =
   'You are on the first floor \n' + 'near the south gate \n' + 'and bank Leumi';
 
-export default class WayPoints extends Component<{}> {
+class WayPoints extends Component<{}> {
   constructor(props) {
     super(props);
 
@@ -57,28 +58,20 @@ export default class WayPoints extends Component<{}> {
 
   render() {
     // console.log('rendering placePoints');
+    const place = this.props.currentPlace;
+    let curBcnIdx = this.props.beaconIndex;
     return (
-      <placeDataCtx.Consumer>
-        {place => {
-          let curBcnIdx = this.props.beaconIndex;
-          // console.log('beacon index: ' + curBcnIdx);
-          // let points = currentPlace.thisWay[curBcnIdx].beacon.points;
-          // console.log('thisway points ' + points);
-          return (
-            <View style={styles.container}>
-              {/* <Text style={styles.firstTimeMsg}>{getFirstTimeMsg()}</Text> */}
-              <Text style={styles.atPointDesc}>{atPointDesc}</Text>
+      <View style={styles.container}>
+        {/* <Text style={styles.firstTimeMsg}>{getFirstTimeMsg()}</Text> */}
+        <Text style={styles.atPointDesc}>{atPointDesc}</Text>
 
-              {/*<Text style={styles.headingTo}>{getTextFromCurHeading()}</Text>*/}
-              <Accordion
-                sections={place.thisWay[curBcnIdx].beacon.points}
-                renderHeader={this._renderHeader}
-                renderContent={this._renderContent}
-              />
-            </View>
-          );
-        }}
-      </placeDataCtx.Consumer>
+        {/*<Text style={styles.headingTo}>{getTextFromCurHeading()}</Text>*/}
+        <Accordion
+          sections={place.thisWay[curBcnIdx].beacon.points}
+          renderHeader={this._renderHeader}
+          renderContent={this._renderContent}
+        />
+      </View>
     );
   }
 }
@@ -147,3 +140,13 @@ const styles = StyleSheet.create({
     fontStyle: 'normal'
   }
 });
+
+const mapStateToProps = ({ data }) => {
+  const { currentPlace } = data;
+  return { currentPlace };
+};
+
+export default connect(
+  mapStateToProps,
+  {}
+)(WayPoints);

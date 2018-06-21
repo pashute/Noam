@@ -1,9 +1,9 @@
 // This will load StorybookUI on Dev and App in Release
 // import { module } from 'react-native';
 import StorybookUI from './storybook';
-import AppMain from './AppMain';
+import AppRedux from './AppRedux';
 
-module.exports = __DEV__ ? AppMain : AppMain;
+module.exports = __DEV__ ? AppRedux : AppRedux;
 
 // // Export the one you want
 // import AppMain from './AppMain'; // Main-App

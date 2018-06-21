@@ -6,7 +6,8 @@ import {
   Text,
   View,
   ScrollView,
-  DeviceEventEmitter
+  DeviceEventEmitter,
+  Platform
   /* Platform,  Alert, Button */
 } from 'react-native';
 // import PropTypes from 'prop-types';
@@ -28,21 +29,23 @@ export default class NearBy extends Component<{}> {
 
   componentDidMount() {
     console.log('checking beacon');
-    connect()
-      .then(() => {
-        console.log('startScanning');
-        startScanning();
-      })
-      .catch(error => {
-        console.log('error', error);
-      });
+    if (Platform.OS !== 'ios') {
+      connect()
+        .then(() => {
+          console.log('startScanning');
+          startScanning();
+        })
+        .catch(error => {
+          console.log('error', error);
+        });
 
-    DeviceEventEmitter.addListener(
-      'beaconsDidUpdate',
-      ({ beacons, region }) => {
-        console.log('beaconsDidUpdate', beacons, region);
-      }
-    );
+      DeviceEventEmitter.addListener(
+        'beaconsDidUpdate',
+        ({ beacons, region }) => {
+          console.log('beaconsDidUpdate', beacons, region);
+        }
+      );
+    }
   }
   setDrawerState() {
     this.setState({
