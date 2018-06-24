@@ -1,13 +1,12 @@
-// This will load StorybookUI on Dev and App in Release
-// import { module } from 'react-native';
-import StorybookUI from './storybook';
+import { YellowBox } from 'react-native';
+// // This will load StorybookUI on Dev and App in Release
+// import StorybookUI from './storybook';
 import AppRedux from './AppRedux';
 
-// module.exports = __DEV__ ? StorybookUI : AppMain;
-module.exports = AppMain;
-// // Export the one you want
-// import AppMain from './AppMain'; // Main-App
-// import AppStorybook from './storybook'; // Storybook view
-// import AppSwitch from './AppSwitch'; // Dev: storybook, Prod: Main-App
+YellowBox.ignoreWarnings([
+  'Warning: isMounted(...) is deprecated',
+  'Module RCTImageLoader'
+]);
 
-// export default AppSwitch;
+// module.exports = __DEV__ ? StorybookUI : AppRedux;
+module.exports = AppRedux;

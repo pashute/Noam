@@ -4,7 +4,7 @@ the same archives just like "en" folder:
 appData.json, placesData.json, stylesData.json and index.js.
 
 For example an "es" language most contain the same archives of "en" 
-but in every json the value most change.
+but in every json the value can change.
 example:
 en/appData.json:
 "appData": {
@@ -20,18 +20,18 @@ es/appData.json:
     }
   }
 */
-import * as en from "./en";
-
+import * as en from './en';
+import * as he from './he';
 /*
 The Languages contains every language (every folder)
 Every language is an object that contains:
-languageCode - this represent the language code (en, es, pt, etc.)
-data - this represents the import for the index of the given language
-value - this represent the value that shows in Preferences
+languageCode - the language code (en, es, pt, etc.)
+data - the index of the given language
+value - the value that shows in Preferences
 */
 const Languages = [
-  { languageCode: "en", data: en, value: "English" },
-  { languageCode: "he", data: en, value: "Hebrew" }
+  { languageCode: 'en', data: en, value: 'English' },
+  { languageCode: 'he', data: he, value: 'Hebrew' }
   //{ languageCode: "es", data: en }
 ];
 
