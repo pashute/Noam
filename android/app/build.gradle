@@ -134,9 +134,13 @@ android {
             }
         }
     }
+	packagingOptions {
+		exclude 'main/AndroidManifest.xml'
+	}
 }
 
 dependencies {
+    compile project(':react-native-kontaktio')
     compile project(':react-native-simple-compass')
     compile project(':react-native-vector-icons')
     compile fileTree(dir: "libs", include: ["*.jar"])
