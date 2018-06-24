@@ -1,6 +1,7 @@
 /* cSpell:disable */
 
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   StyleSheet,
   Text,
@@ -21,7 +22,7 @@ const floorNumbers = [{ value: '1' }, { value: '2' }, { value: 'All Floors' }];
 const strFirstTimeData = '';
 // const strDes = 'Opening hours\n' + 'Sunday-Thursday 8:15-17:30';
 
-export default class PlacePoints extends Component<{}> {
+class PlacePoints extends Component<{}> {
   constructor(props) {
     super(props);
     this.state = {
@@ -80,38 +81,32 @@ export default class PlacePoints extends Component<{}> {
   }
 
   render() {
-    console.log('rendering placePoints');
+    console.log('rendering placePoints: ', this.props);
+    const place = this.props.currentPlace;
     return (
-      <placeDataCtx.Consumer>
-        {place => {
-          // console.log('dbg.PlacePoints.place', place);
-          return (
-            <View style={styles.container}>
-              <View style={styles.floorViewContainer}>
-                <View style={styles.floorView}>
-                  <Text style={styles.floorLabel}>Floor:</Text>
-                </View>
-                <View style={styles.floorDropdownView}>
-                  <Dropdown
-                    label={''}
-                    labelFontSize={0}
-                    containerStyle={styles.floorDropdown}
-                    value={floorNumbers[2].value}
-                    data={floorNumbers}
-                    onChangeText={this._onFloorChangeFilter}
-                  />
-                </View>
-              </View>
-              <Text style={styles.firstTimeData}>{strFirstTimeData}</Text>
-              <Accordion
-                sections={place.inPlace}
-                renderHeader={this._renderHeader}
-                renderContent={this._renderContent}
-              />
-            </View>
-          );
-        }}
-      </placeDataCtx.Consumer>
+      <View style={styles.container}>
+        <View style={styles.floorViewContainer}>
+          <View style={styles.floorView}>
+            <Text style={styles.floorLabel}>Floor:</Text>
+          </View>
+          <View style={styles.floorDropdownView}>
+            <Dropdown
+              label={''}
+              labelFontSize={0}
+              containerStyle={styles.floorDropdown}
+              value={floorNumbers[2].value}
+              data={floorNumbers}
+              onChangeText={this._onFloorChangeFilter}
+            />
+          </View>
+        </View>
+        <Text style={styles.firstTimeData}>{strFirstTimeData}</Text>
+        <Accordion
+          sections={place.inPlace}
+          renderHeader={this._renderHeader}
+          renderContent={this._renderContent}
+        />
+      </View>
     );
   }
 }
@@ -191,3 +186,13 @@ const styles = StyleSheet.create({
     fontStyle: 'normal'
   }
 });
+
+const mapStateToProps = ({ data }) => {
+  const { currentPlace } = data;
+  return { currentPlace };
+};
+
+export default connect(
+  mapStateToProps,
+  {}
+)(PlacePoints);

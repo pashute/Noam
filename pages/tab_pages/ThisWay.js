@@ -1,6 +1,7 @@
 /* cSpell:disable */
 
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   StyleSheet,
   Text,
@@ -10,9 +11,9 @@ import {
 } from 'react-native';
 import WayPoints from './pointLists/WayPoints';
 import Bottom from './Bottom';
-import { languageDataCtx } from '../../App';
+import { languageDataCtx } from '../../AppMain';
 
-export default class ThisWay extends Component<{}> {
+class ThisWay extends Component<{}> {
   constructor(props) {
     super(props);
     this.state = {
@@ -37,30 +38,23 @@ export default class ThisWay extends Component<{}> {
   };
 
   render() {
-    // console.log({ placesData, appData });
+    const { placesData, stylesData, appData } = this.props.currentLanguage;
     return (
-      <languageDataCtx.Consumer>
-        {({ appData }) => {
-          // aconsole.log('dbg.ThisWay.appData', appData);
-          return (
-            <View style={styles.mainContainer}>
-              <Text style={styles.pointingTo}>
-                {`${appData.appData.screenMainApp.txtPointingTo}: ${
-                  this.props.pointingDirection
-                }`}
-              </Text>
-              <View style={styles.pointsContainer}>
-                <ScrollView contentContainerStyle={styles.scrollView}>
-                  <WayPoints beaconIndex={this.props.beaconIndex} />
-                </ScrollView>
-              </View>
-              <View style={styles.bottomRow}>
-                <Bottom />
-              </View>
-            </View>
-          );
-        }}
-      </languageDataCtx.Consumer>
+      <View style={styles.mainContainer}>
+        <Text style={styles.pointingTo}>
+          {`${appData.appData.screenMainApp.txtPointingTo}: ${
+            this.props.pointingDirection
+          }`}
+        </Text>
+        <View style={styles.pointsContainer}>
+          <ScrollView contentContainerStyle={styles.scrollView}>
+            <WayPoints beaconIndex={this.props.beaconIndex} />
+          </ScrollView>
+        </View>
+        <View style={styles.bottomRow}>
+          <Bottom />
+        </View>
+      </View>
     );
   }
 }
@@ -96,3 +90,13 @@ const styles = StyleSheet.create({
     flex: 2
   }
 });
+
+const mapStateToProps = ({ data }) => {
+  const { currentLanguage } = data;
+  return { currentLanguage };
+};
+
+export default connect(
+  mapStateToProps,
+  {}
+)(ThisWay);

@@ -1,6 +1,7 @@
 /* cSpell:disable */
 
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { StyleSheet, Text, View } from 'react-native';
 import Accordion from 'react-native-collapsible/Accordion';
 // import * as Animatable from 'react-native-animatable';
@@ -15,7 +16,7 @@ const firstTimeMsg =
   'Friday 8:30 - 13:00';
 const atPointDesc = 'You are at the main gate\n' + 'There is an ATM outside';
 
-export default class NearPoints extends Component<{}> {
+class NearPoints extends Component<{}> {
   constructor(props) {
     super(props);
 
@@ -62,28 +63,20 @@ export default class NearPoints extends Component<{}> {
 
   render() {
     // console.log('rendering placePoints');
+    const place = this.props.currentPlace;
+    let curBcnIdx = this.props.beaconIndex;
     return (
-      <placeDataCtx.Consumer>
-        {place => {
-          let curBcnIdx = this.props.beaconIndex;
-          // console.log('beacon index: ' + curBcnIdx);
-          // let points = currentPlace.thisWay[curBcnIdx].beacon.points;
-          // console.log('thisway points ' + points);
-          return (
-            <View style={styles.container}>
-              {/* <Text style={styles.firstTimeMsg}>{getFirstTimeMsg()}</Text> */}
-              <Text style={styles.atPointDesc}>{atPointDesc}</Text>
+      <View style={styles.container}>
+        {/* <Text style={styles.firstTimeMsg}>{getFirstTimeMsg()}</Text> */}
+        <Text style={styles.atPointDesc}>{atPointDesc}</Text>
 
-              {/*<Text style={styles.headingTo}>{getTextFromCurHeading()}</Text>*/}
-              <Accordion
-                sections={place.nearby[curBcnIdx].beacon.points}
-                renderHeader={this._renderHeader}
-                renderContent={this._renderContent}
-              />
-            </View>
-          );
-        }}
-      </placeDataCtx.Consumer>
+        {/*<Text style={styles.headingTo}>{getTextFromCurHeading()}</Text>*/}
+        <Accordion
+          sections={place.nearby[curBcnIdx].beacon.points}
+          renderHeader={this._renderHeader}
+          renderContent={this._renderContent}
+        />
+      </View>
     );
   }
 }
@@ -152,3 +145,13 @@ const styles = StyleSheet.create({
     fontStyle: 'normal'
   }
 });
+
+const mapStateToProps = ({ data }) => {
+  const { currentPlace } = data;
+  return { currentPlace };
+};
+
+export default connect(
+  mapStateToProps,
+  {}
+)(NearPoints);
