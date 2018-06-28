@@ -20,7 +20,8 @@ export default class NearBy extends Component<{}> {
   constructor(props) {
     super(props);
     this.state = {
-      drawerClosed: true
+      drawerClosed: true,
+      beaconsData: { beacons: '', region: '' }
     };
 
     this.toggleDrawer = this.toggleDrawer.bind(this);
@@ -28,6 +29,7 @@ export default class NearBy extends Component<{}> {
   }
 
   componentDidMount() {
+    /*
     console.log('checking beacon');
     if (Platform.OS !== 'ios') {
       connect()
@@ -46,7 +48,9 @@ export default class NearBy extends Component<{}> {
         }
       );
     }
+    */
   }
+
   setDrawerState() {
     this.setState({
       drawerClosed: !this.state.drawerClosed

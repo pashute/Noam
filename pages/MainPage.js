@@ -19,6 +19,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { ButtonGroup } from 'react-native-elements';
 import RNSimpleCompass from 'react-native-simple-compass';
 
+import KontakIoAndroid from '../components/KontakIoAndroid';
 import NearBy from './tab_pages/NearBy';
 import ThisWay from './tab_pages/ThisWay';
 import InPlace from './tab_pages/InPlace';
@@ -41,6 +42,11 @@ const strNearby = 'Nearby';
 const strInplace = 'In building';
 
 // tab texts and icons:
+const kontakIo = () => (
+  <View style={styles.tabButton}>
+    <Text style={styles.tabText}>{'KontakIo'}</Text>
+  </View>
+);
 const nearbyButton = () => (
   <View style={styles.tabButton}>
     <Text style={styles.tabText}>{strNearby}</Text>
@@ -166,7 +172,8 @@ class MainPage extends Component<{}> {
             buttons={[
               { element: nearbyButton },
               { element: thatwayButton },
-              { element: inplaceButton }
+              { element: inplaceButton },
+              { element: kontakIo }
             ]}
             containerStyle={{ height: 30 }}
           />
@@ -210,7 +217,8 @@ const TabbedPage = ({
           beaconIndex={beaconIndex}
         />
       );
-
+    case 3:
+      return <KontakIoAndroid />;
     case 2:
     default:
       return <InPlace />;
