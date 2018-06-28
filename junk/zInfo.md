@@ -32,12 +32,7 @@ then set %JAVA_HOME% to the directory of the jdk under program files/java
 then added to the PATH %Java_Home%/bin;
 keytool -genkey -v -keystore noam-release-key.keystore -alias noam-key -keyalg RSA -keysize 2048 -validity 10000
 
-CN=Danny Reiss, OU=Accessability development, O=Pashute Negishut, L=Netanya, ST=Israel, C=IL correct?
-pws: jkjkjk1bcd tehilit dinar vechu, noam1bcd cannal.
-privacy": "unlisted",
-
-email: danny@reisspn.co.il
-user: dannyreiss pw: jkjkjk12 Tehilit suldinar
+further keytool [noam info in private drive file](https://docs.google.com/document/d/1RGpnlgliBMF5veozDY6P3nn88wGF6o4uwNEdekFXIUE/edit)
 
 "name": "Noam",
 rem"icon": "./icons/icon.png",
@@ -66,9 +61,7 @@ problem with listitem https://github.com/react-native-training/react-native-elem
 elements scrollbar http://ranewallin.com/react-native-tap-controlled-scrollview/
 rightIcon={{ name: 'arrow-right', type: 'font-awesome', style: { marginRight: 10, fontSize: 15 } }}
 
-The beacons have finally been listed.
-https://panel.kontakt.io/signin
-danny@reisspn.co.il נגישתשעז
+beacons listed in kontakt.io  [See private doc](https://docs.google.com/document/d/1RGpnlgliBMF5veozDY6P3nn88wGF6o4uwNEdekFXIUE/edit)
 
 native bluetooth status
 https://www.npmjs.com/package/react-native-bluetooth-status
