@@ -36,17 +36,17 @@ const {
 
 const region1 = {
   identifier: 'Test beacons 1',
-  uuid: 'B0702880-A295-A8AB-F734-031A98A512D3',
-  major: 1
+  uuid: 'f7826da6-4fa2-4e98-8024-bc5b71e0893e'
+  // major: 1  no major, all majors will be detected?
   // no minor provided: will detect all minors
 };
 
-const region2 = {
-  identifier: 'Test beacons 2',
-  uuid: 'B0702880-A295-A8AB-F734-031A98A512D3',
-  major: 2
-  // no minor provided: will detect all minors
-};
+// const region2 = {
+//   identifier: 'Test beacons 2',
+//   uuid: 'B0702880-A295-A8AB-F734-031A98A512D3',
+//   major: 2
+//   // no minor provided: will detect all minors
+// };
 
 /**
  * Monitors beacons in two regions and sorts them by proximity,
@@ -93,7 +93,7 @@ export default class KontakIoAndroid extends Component {
           monitoringSyncInterval: monitoringSyncInterval.DEFAULT
         })
       )
-      .then(() => setBeaconRegions([region1, region2]))
+      .then(() => setBeaconRegions([region1])) // , region2
       .then(() => setEddystoneNamespace())
       .catch(error => console.log('error', error));
 
