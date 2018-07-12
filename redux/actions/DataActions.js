@@ -17,3 +17,11 @@ export const setCurrentPlace = place => {
     place: place
   };
 };
+
+export const setCurrentBeacon = beacon => {
+  console.log(beacon);
+  return {
+    type: types.SET_CURRENT_BEACON,
+    beacon: beacon
+  };
+};

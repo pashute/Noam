@@ -1,6 +1,10 @@
 import * as types from '../types';
 
-const INITIAL_STATE = { currentLanguage: {}, currentPlace: {} };
+const INITIAL_STATE = {
+  currentLanguage: {},
+  currentPlace: {},
+  currentBeacon: {} //current beacon
+};
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
@@ -9,6 +13,9 @@ export default (state = INITIAL_STATE, action) => {
     }
     case types.SET_CURRENT_PLACE: {
       return { ...state, currentPlace: action.place };
+    }
+    case types.SET_CURRENT_BEACON: {
+      return { ...state, currentBeacon: action.beacon };
     }
     default: {
       return state;

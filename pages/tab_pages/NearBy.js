@@ -12,10 +12,8 @@ import {
 } from 'react-native';
 // import PropTypes from 'prop-types';
 // import NoBeacon from './pointLists/NoBeacon';
-import Kontakt from 'react-native-kontaktio';
 import NearPoints from './pointLists/NearPoints';
 import Bottom from './Bottom';
-const { connect, startScanning } = Kontakt;
 export default class NearBy extends Component<{}> {
   constructor(props) {
     super(props);
@@ -27,26 +25,6 @@ export default class NearBy extends Component<{}> {
     this.setDrawerState = this.setDrawerState.bind(this);
   }
 
-  componentDidMount() {
-    console.log('checking beacon');
-    if (Platform.OS !== 'ios') {
-      connect()
-        .then(() => {
-          console.log('startScanning');
-          startScanning();
-        })
-        .catch(error => {
-          console.log('error', error);
-        });
-
-      DeviceEventEmitter.addListener(
-        'beaconsDidUpdate',
-        ({ beacons, region }) => {
-          console.log('beaconsDidUpdate', beacons, region);
-        }
-      );
-    }
-  }
   setDrawerState() {
     this.setState({
       drawerClosed: !this.state.drawerClosed

@@ -4,6 +4,8 @@ import React from 'react';
 import {
   AsyncStorage,
   View,
+  DeviceEventEmitter,
+  Alert,
   I18nManager /* , DeviceEventEmitter, StyleSheet, Platform, Text, View, Alert */
 } from 'react-native';
 
@@ -27,10 +29,13 @@ import Help from './pages/Help';
 import HelpFirstTime from './pages/HelpFirstTime';
 import { getLanguage, getLanguageCode } from './data';
 
-import { setCurrentLanguage, setCurrentPlace } from './redux/actions';
+import {
+  setCurrentLanguage,
+  setCurrentPlace,
+  setCurrentBeacon
+} from './redux/actions';
 
-// import Kontakt from 'react-native-kontaktio';
-// const { connect, startScanning } = Kontakt;
+import Kontakt from 'react-native-kontaktio';
 
 /*
 This contex contains: appData.json, placesData.json and stylesData.json
@@ -122,6 +127,7 @@ class AppMain extends React.Component {
   constructor(props) {
     super(props);
     this.checkNav = this.checkNav.bind(this);
+    this.setKontakIo = this.setKontakIo.bind(this);
     this.state = {
       isRTL: false, // I18nManager.isRTL,
       fontLoaded: false,
@@ -130,6 +136,82 @@ class AppMain extends React.Component {
       pointingTo: 'not set',
       heading: {}
     };
+  }
+
+  setKontakIo() {
+    const regionKontakt = {
+      identifier: 'Test beacons 1',
+      uuid: 'f7826da6-4fa2-4e98-8024-bc5b71e0893e'
+      // major: 1  no major, all majors will be detected
+      // no minor provided: will detect all minors
+    };
+
+    const {
+      connect,
+      configure,
+      setBeaconRegions,
+      setEddystoneNamespace,
+      IBEACON,
+      EDDYSTONE,
+      // Configurations
+      scanMode,
+      scanPeriod,
+      activityCheckConfiguration,
+      forceScanConfiguration,
+      monitoringEnabled,
+      monitoringSyncInterval
+    } = Kontakt;
+
+    connect(
+      'MY_KONTAKTIO_API_KEY',
+      [IBEACON, EDDYSTONE]
+    )
+      .then(() =>
+        configure({
+          scanMode: scanMode.BALANCED,
+          scanPeriod: scanPeriod.create({
+            activePeriod: 6000,
+            passivePeriod: 20000
+          }),
+          activityCheckConfiguration: activityCheckConfiguration.DEFAULT,
+          forceScanConfiguration: forceScanConfiguration.MINIMAL,
+          monitoringEnabled: monitoringEnabled.TRUE,
+          monitoringSyncInterval: monitoringSyncInterval.DEFAULT
+        })
+      )
+      .then(() => setBeaconRegions([regionKontakt]))
+      .then(() => setEddystoneNamespace())
+      .catch(error => console.log('error', error));
+
+    // Beacon listeners
+    DeviceEventEmitter.addListener(
+      'beaconDidAppear',
+      ({ beacon: newBeacon, region }) => {
+        console.log('beaconDidAppear', newBeacon, region);
+        if (this.props.currentBeacon.beaconID !== newBeacon.major) {
+          const tempBeacon = this.props.currentPlace.nearby.find(beacon => {
+            beacon.beacon.beaconID === newBeacon.major;
+          });
+          if (tempBeacon !== undefined && tempBeacon !== null) {
+            this.props.setCurrentBeacon(tempBeacon);
+          }
+        }
+      }
+    );
+    DeviceEventEmitter.addListener(
+      'beaconDidDisappear',
+      ({ beacon: lostBeacon, region }) => {
+        console.log('beaconDidDisappear', lostBeacon, region);
+        if (this.props.currentBeacon.beaconID === lostBeacon.major) {
+          Alert.alert(
+            'Beacon Disappear',
+            'You left: ' + this.props.currentBeacon.msg,
+            [{ text: 'OK' }],
+            { cancelable: true }
+          );
+        }
+      }
+    );
   }
 
   componentDidMount() {
@@ -150,6 +232,7 @@ class AppMain extends React.Component {
         this.props.setCurrentLanguage(tempLanguage);
         this.props.setCurrentPlace(placesData.places[0].place);
       }
+      this.setKontakIo();
     });
 
     // // see: https://www.npmjs.com/package/react-native-kontaktio
@@ -245,6 +328,10 @@ class AppMain extends React.Component {
     );
   }
 }
+const mapStateToProps = ({ data }) => {
+  const { currentBeacon, currentPlace } = data;
+  return { currentBeacon, currentPlace };
+};
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -253,11 +340,14 @@ const mapDispatchToProps = dispatch => {
     },
     setCurrentPlace: place => {
       dispatch(setCurrentPlace(place));
+    },
+    setCurrentBeacon: beacon => {
+      dispatch(setCurrentBeacon(beacon));
     }
   };
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(AppMain);
