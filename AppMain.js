@@ -189,11 +189,11 @@ class AppMain extends React.Component {
       ({ beacon: newBeacon, region }) => {
         console.log('beaconDidAppear', newBeacon, region);
         if (this.props.currentBeacon.beaconID !== newBeacon.major) {
-          const tempBeacon = this.props.currentPlace.nearby.find(beacon => {
+          const tempBeacon = this.props.currentPlace.xsnearby.find(beacon => {
             beacon.beacon.beaconID === newBeacon.major;
           });
           if (tempBeacon !== undefined && tempBeacon !== null) {
-            this.props.setCurrentBeacon(tempBeacon);
+            this.props.setCurrentBeacon(tempBeacon.beacon);
           }
         }
       }

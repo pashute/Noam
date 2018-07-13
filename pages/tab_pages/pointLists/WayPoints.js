@@ -67,7 +67,7 @@ class WayPoints extends Component<{}> {
 
         {/*<Text style={styles.headingTo}>{getTextFromCurHeading()}</Text>*/}
         <Accordion
-          sections={place.thisWay[curBcnIdx].beacon.points}
+          sections={this.props.currentBeacon.points || []}
           renderHeader={this._renderHeader}
           renderContent={this._renderContent}
         />
@@ -142,8 +142,8 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = ({ data }) => {
-  const { currentPlace } = data;
-  return { currentPlace };
+  const { currentPlace, currentBeacon } = data;
+  return { currentPlace, currentBeacon };
 };
 
 export default connect(

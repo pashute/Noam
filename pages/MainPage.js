@@ -152,10 +152,14 @@ class MainPage extends Component<{}> {
           />
           <View style={styles.topPlaceRow}>
             <View style={styles.placeBar}>
-              <Text style={styles.placeMsg}>{pointPlaceName}</Text>
+              <Text style={styles.placeMsg}>
+                {this.props.currentPlace.fullName}
+              </Text>
               <Icon name={pointPlaceIconName} size={30} color="#000000" />
             </View>
-            <Text style={styles.beaconTxt}>{pointBeaconLocation}</Text>
+            <Text style={styles.beaconTxt}>
+              {this.props.currentBeacon.fullName}
+            </Text>
           </View>
           <View style={styles.separator} />
           <ButtonGroup
@@ -288,8 +292,8 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = ({ data }) => {
-  const { currentLanguage } = data;
-  return { currentLanguage };
+  const { currentLanguage, currentPlace, currentBeacon } = data;
+  return { currentLanguage, currentPlace, currentBeacon };
 };
 
 const mapDispatchToProps = dispatch => {
