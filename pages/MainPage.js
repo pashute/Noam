@@ -35,9 +35,9 @@ const pointPlaceName = 'Big Fashion';
 const pointBeaconLocation = 'South gate (Bank Leumi)';
 const pointPlaceIconName = 'bold';
 
-const strThis = 'This';
+const strThis = 'this';
 const strWay = 'way';
-const strNearby = 'Nearby';
+const strNearby = 'nearby';
 const strInplace = 'In building';
 
 // tab texts and icons:

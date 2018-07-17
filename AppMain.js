@@ -249,8 +249,8 @@ class AppMain extends React.Component {
     // );
 
     // right to left
-    I18nManager.forceRTL(false);
-    this.setState({ isRTL: false });
+    I18nManager.forceRTL(true);
+    this.setState({ isRTL: true });
     this.setState({ fontLoaded: true });
   }
 

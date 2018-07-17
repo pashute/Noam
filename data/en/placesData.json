@@ -12,14 +12,14 @@
             "beacon": {
               "id": 11,
               "txtId": "mainGate",
-              "beaconID": "12345",
+              "beaconID": "28999",
               "fullName": "Main Gate (South)",
               "msg": "Main gate",
               "points": [
                 {
                   "point": {
                     "id": 12,
-                    "txtId": "aToilets3",
+                    "txtId": "toilets1a",
                     "title": "Accesible toilets",
                     "icon": "toilet",
                     "direction": 125,
@@ -29,21 +29,42 @@
                 {
                   "point": {
                     "id": 13,
-                    "txtId": "Elevators",
+                    "txtId": "elevators4a",
                     "title": "Elevators 4a",
                     "icon": "elevator",
                     "direction": 343,
                     "instructions": ["To all floors\n", "You are on floor 1"]
                   }
+                },
+                {
+                  "point": {
+                    "id": 14,
+                    "txtId": "superfarm",
+                    "title": "Superfarm",
+                    "icon": "elevator",
+                    "direction": 343,
+                    "instructions": ["50 meters north\n", "Entrance to the right"]
+                  }
+                },
+                {
+                  "point": {
+                    "id": 15,
+                    "txtId": "info",
+                    "title": "Information",
+                    "icon": "information",
+                    "direction": 343,
+                    "instructions": ["117 meters north\n", "Information stand in middle"]
+                  }
                 }
+
               ]
             }
           },
           {
             "beacon": {
               "id": 12,
-              "txtId": "toilets",
-              "beaconID": "12346",
+              "txtId": "toilets1a",
+              "beaconID": "55462",
               "fullName": "Toilets south flr 1",
               "msg": "Toilets f1.S",
               "points": [
