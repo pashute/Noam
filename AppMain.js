@@ -140,7 +140,7 @@ class AppMain extends React.Component {
 
   setKontakIo() {
     const regionKontakt = {
-      identifier: 'Test beacons 1',
+      identifier: 'Noam Kontakt Beacons',
       uuid: 'f7826da6-4fa2-4e98-8024-bc5b71e0893e'
       // major: 1  no major, all majors will be detected
       // no minor provided: will detect all minors
@@ -329,6 +329,7 @@ class AppMain extends React.Component {
   }
 }
 const mapStateToProps = ({ data }) => {
+  console.log('currentBeacon');
   const { currentBeacon, currentPlace } = data;
   return { currentBeacon, currentPlace };
 };
