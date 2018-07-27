@@ -188,9 +188,6 @@ class MainPage extends Component<{}> {
             beaconIndex={this.state.beaconIndex}
           />
         </DrawerLayout>
-        {state.beaconIndex < 0 && <mymodal onClick=whatever></mymodal>
-        }
-        <Modal visible={this.state.beaconIndex < 0}></Modal>
       </View>
     );
   }
