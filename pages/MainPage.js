@@ -7,7 +7,7 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View /*, Alert*/
+  View, Modal /*, Alert*/
 } from 'react-native';
 
 import DrawerLayout from 'react-native-drawer-layout';
@@ -58,6 +58,12 @@ const inplaceButton = () => (
     <Text style={styles.tabText}>{strInplace}</Text>
   </View>
 );
+
+// const mymodal = ...
+
+// rnModal with visible property according to condition
+
+// rn has modal
 
 class MainPage extends Component<{}> {
   constructor(props) {
@@ -182,6 +188,9 @@ class MainPage extends Component<{}> {
             beaconIndex={this.state.beaconIndex}
           />
         </DrawerLayout>
+        {state.beaconIndex < 0 && <mymodal onClick=whatever></mymodal>
+        }
+        <Modal visible={this.state.beaconIndex < 0}></Modal>
       </View>
     );
   }
