@@ -331,8 +331,8 @@ class AppMain extends React.Component {
   }
 }
 const mapStateToProps = ({ data }) => {
-  console.log('currentBeacon');
   const { currentBeacon, currentPlace } = data;
+  console.log('dbg.mapStateToProps currentBeacon:', currentBeacon);
   return { currentBeacon, currentPlace };
 };
 
