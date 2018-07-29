@@ -63,7 +63,7 @@ export default class Splash extends React.Component {
     this.setDrawerState = this.setDrawerState.bind(this);
 
     this.props.screenProps.checkNav();
-    // console.log('ready');
+    // console.log('checknav ready');
   }
 
   async componentDidMount() {
@@ -109,7 +109,7 @@ export default class Splash extends React.Component {
 
   _turnBluetoothOn = () => {
     try {
-      console.log('bluetooth');
+      console.log('turnBluetoothOn pressed');
       if (Platform.OS === 'android')
         console.log('todo: android. turn bluetooth on');
       else console.log('todo: ios. open bluetooth console');

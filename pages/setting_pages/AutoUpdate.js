@@ -37,7 +37,7 @@ class AutoUpdate extends Component<{}> {
           titleStyle={stylesData.styles.sharedStyles.actionTitle}
           title={appData.appData.general.txtAppNameOnActionBar}
           leftIconName={'location'}
-          onLeftPress={() => console.log('Left!')}
+          onLeftPress={() => console.log('AutoUpdate. Left icon pressed.')}
         />
         <View style={stylesData.styles.sharedStyles.contentContainer}>
           <Text style={stylesData.styles.sharedStyles.titleText}>

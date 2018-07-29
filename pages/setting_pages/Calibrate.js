@@ -31,7 +31,7 @@ class Calibrate extends Component<{}> {
           titleStyle={stylesData.styles.sharedStyles.actionTitle}
           title={appData.appData.general.txtAppNameOnActionBar}
           leftIconName={'location'}
-          onLeftPress={() => console.log('Left!')}
+          onLeftPress={() => console.log('calibrate page Left icon pressed!')}
         />
         <View style={stylesData.styles.sharedStyles.contentContainer}>
           <Text style={stylesData.styles.sharedStyles.titleText}>

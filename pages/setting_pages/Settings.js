@@ -32,7 +32,7 @@ class Settings extends Component<{}> {
           titleStyle={stylesData.styles.sharedStyles.actionTitle}
           title={appData.appData.general.txtAppNameOnActionBar}
           leftIconName={'location'}
-          onLeftPress={() => console.log('Left!')}
+          onLeftPress={() => console.log('dbg. settings page. Talk icon pressed')}
         />
         <View
           style={[

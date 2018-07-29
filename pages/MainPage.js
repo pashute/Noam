@@ -148,7 +148,7 @@ class MainPage extends Component<{}> {
             titleStyle={styles.actionTitle}
             title={'noam'}
             leftIconImage={earIcon}
-            onLeftPress={() => console.log('Talk Icon pressed.')}
+            onLeftPress={() => console.log('Main page. Talk Icon pressed.')}
             rightIcons={[
               {
                 name: 'menu',

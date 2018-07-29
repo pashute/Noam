@@ -26,7 +26,7 @@ class Help extends Component {
           titleStyle={stylesData.styles.sharedStyles.actionTitle}
           title={appData.appData.general.txtAppNameOnActionBar}
           leftIconName={'location'}
-          onLeftPress={() => console.log('Left!')}
+          onLeftPress={() => console.log('Help page left pressed!')}
         />
         <View
           style={[

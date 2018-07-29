@@ -65,7 +65,7 @@ export default class Voice extends Component<{}> {
           titleStyle={styles.actionTitle}
           title={txtAppName}
           leftIconName={'location'}
-          onLeftPress={() => console.log('Left!')}
+          onLeftPress={() => console.log('Voice settings page. talk icon pressed')}
         />
         <View style={styles.contentContainer}>
           <Text style={styles.titleText}>{txtSettingsText}</Text>

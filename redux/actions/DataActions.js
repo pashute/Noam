@@ -11,7 +11,7 @@ export const setCurrentLanguage = language => {
 };
 
 export const setCurrentPlace = place => {
-  console.log(place);
+  console.log('dbg.dataactions. set currentplace', place);
   return {
     type: types.SET_CURRENT_PLACE,
     place: place
@@ -19,7 +19,7 @@ export const setCurrentPlace = place => {
 };
 
 export const setCurrentBeacon = beacon => {
-  console.log(beacon);
+  console.log('dbg.dataactions. setCurrentBeacon', beacon);
   return {
     type: types.SET_CURRENT_BEACON,
     beacon: beacon

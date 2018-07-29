@@ -11,7 +11,7 @@ export default class HelpFirstTime extends Component {
 
   UNSAFE_componentWillMount() {
     AsyncStorage.getItem('helpfirsttime-firstTime').then(value => {
-      console.log(value);
+      console.log('helpfirsttime:', value);
       if (value === 'true') {
         const { replace } = this.props.navigation;
         replace('SplashPage');
