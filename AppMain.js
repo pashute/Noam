@@ -42,7 +42,7 @@ This contex contains: appData.json, placesData.json and stylesData.json
 of the current language (by default is en)
 */
 
-I18nManager.allowRTL(true);
+I18nManager.allowRTL(false);
 
 YellowBox.ignoreWarnings([
   'Warning: componentWillMount is deprecated',
@@ -249,8 +249,8 @@ class AppMain extends React.Component {
     // );
 
     // right to left
-    I18nManager.forceRTL(true);
-    this.setState({ isRTL: true });
+    I18nManager.forceRTL(false);
+    this.setState({ isRTL: false });
     this.setState({ fontLoaded: true });
   }
 
