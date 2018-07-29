@@ -181,12 +181,14 @@ class AppMain extends React.Component {
       )
       .then(() => setBeaconRegions([regionKontakt]))
       .then(() => setEddystoneNamespace())
-      .catch(error => console.log('error', error));
+      .catch(error => console.log('appmain kontakt error', error));
 
     // Beacon listeners
     DeviceEventEmitter.addListener(
       'beaconDidAppear',
       ({ beacon: newBeacon, region }) => {
+        // beacons: this.state.beacons.concat(newBeacon)
+        // next line does not happen, maybe because I do not do the equivalent of "Start scan..."
         console.log('beaconDidAppear', newBeacon, region);
         if (this.props.currentBeacon.beaconID !== newBeacon.major) {
           const tempBeacon = this.props.currentPlace.xsnearby.find(beacon => {
