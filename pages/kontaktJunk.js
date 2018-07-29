@@ -66,7 +66,7 @@ const region1 = {
  * sorted by their RSSI which reflects a measure of distance from the beacons
  * to your mobile phone.
  */
-
+//
 //
 
 export default class KontakIoAndroid extends Component {
