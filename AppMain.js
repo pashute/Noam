@@ -181,7 +181,7 @@ class AppMain extends React.Component {
       )
       .then(() => setBeaconRegions([regionKontakt]))
       .then(() => setEddystoneNamespace())
-      .catch(error => console.log('error', error));
+      .catch(error => console.log('appmain kontakt error', error));
 
     // Beacon listeners
     DeviceEventEmitter.addListener(
