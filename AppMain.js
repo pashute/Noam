@@ -9,7 +9,7 @@ import {
   I18nManager /* , DeviceEventEmitter, StyleSheet, Platform, Text, View, Alert */
 } from 'react-native';
 
-import { connect } from 'react-redux';
+import { connect as reduxConnect } from 'react-redux';
 import { NavigationActions, StackNavigator } from 'react-navigation';
 
 // import { ButtonGroup } from 'react-native-elements';
@@ -36,6 +36,41 @@ import {
 } from './redux/actions';
 
 import Kontakt from 'react-native-kontaktio';
+const {
+  connect,
+  configure,
+  disconnect,
+  startScanning,
+  setBeaconRegions,
+  setEddystoneNamespace,
+  IBEACON,
+  EDDYSTONE,
+  // Configurations
+  scanMode,
+  scanPeriod,
+  activityCheckConfiguration,
+  forceScanConfiguration,
+  monitoringEnabled,
+  monitoringSyncInterval
+} = Kontakt;
+
+// import {
+//   connect as connectKontakt,
+//   configure,
+//   disconnect,
+//   startScanning,
+//   setBeaconRegions,
+//   setEddystoneNamespace,
+//   IBEACON,
+//   EDDYSTONE,
+//   // Configurations
+//   scanMode,
+//   scanPeriod,
+//   activityCheckConfiguration,
+//   forceScanConfiguration,
+//   monitoringEnabled,
+//   monitoringSyncInterval
+// } from 'react-native-kontaktio';
 
 /*
 This contex contains: appData.json, placesData.json and stylesData.json
@@ -127,40 +162,25 @@ class AppMain extends React.Component {
   constructor(props) {
     super(props);
     this.checkNav = this.checkNav.bind(this);
-    this.setKontakIo = this.setKontakIo.bind(this);
+    this.setKontaktIo = this.setKontaktIo.bind(this);
     this.state = {
       isRTL: false, // I18nManager.isRTL,
       fontLoaded: false,
       data: {},
       currentLanguage: 'en',
       pointingTo: 'not set',
-      heading: {}
+      heading: {},
+      scanning: false
     };
   }
 
-  setKontakIo() {
+  setKontaktIo() {
     const regionKontakt = {
       identifier: 'Noam Kontakt Beacons',
       uuid: 'f7826da6-4fa2-4e98-8024-bc5b71e0893e'
       // major: 1  no major, all majors will be detected
       // no minor provided: will detect all minors
     };
-
-    const {
-      connect,
-      configure,
-      setBeaconRegions,
-      setEddystoneNamespace,
-      IBEACON,
-      EDDYSTONE,
-      // Configurations
-      scanMode,
-      scanPeriod,
-      activityCheckConfiguration,
-      forceScanConfiguration,
-      monitoringEnabled,
-      monitoringSyncInterval
-    } = Kontakt;
 
     connect(
       'MY_KONTAKTIO_API_KEY',
@@ -190,14 +210,15 @@ class AppMain extends React.Component {
         // beacons: this.state.beacons.concat(newBeacon)
         // next line does not happen, maybe because I do not do the equivalent of "Start scan..."
         console.log('beaconDidAppear', newBeacon, region);
-        if (this.props.currentBeacon.beaconID !== newBeacon.major) {
-          const tempBeacon = this.props.currentPlace.xsnearby.find(beacon => {
-            beacon.beacon.beaconID === newBeacon.major;
-          });
-          if (tempBeacon !== undefined && tempBeacon !== null) {
-            this.props.setCurrentBeacon(tempBeacon.beacon);
-          }
-        }
+        //if (this.props.currentBeacon.beaconID !== newBeacon.major) {
+        //  const tempBeacon = this.props.currentPlace.xsnearby.find(beacon => {
+        //    beacon.beacon.beaconID === newBeacon.major;
+        //  });
+        //  if (tempBeacon !== undefined && tempBeacon !== null) {
+        //    console.log('setting currentBeacon to found point in data');
+        //    this.props.setCurrentBeacon(tempBeacon.beacon);
+        //  }
+        //}
       }
     );
     DeviceEventEmitter.addListener(
@@ -211,10 +232,18 @@ class AppMain extends React.Component {
             [{ text: 'OK' }],
             { cancelable: true }
           );
+          r;
         }
       }
     );
   }
+
+  startKontaktIoScan = () => {
+    console.log('startKontaktIoScan called');
+    startScanning()
+      .then(() => console.log('started scanning'))
+      .catch(error => console.log('[startScanning] error:\n', error));
+  };
 
   componentDidMount() {
     AsyncStorage.getItem('preferences-language').then(value => {
@@ -222,33 +251,21 @@ class AppMain extends React.Component {
         const savedLanguage = getLanguage('value').data;
         this.setState({ language: savedLanguage });
         const { placesData } = savedLanguage;
-        console.log(savedLanguage);
-        console.log(placesData);
+        console.log('dbg.AppMain.savedLanguage: ', savedLanguage);
         this.props.setCurrentLanguage(savedLanguage);
+        // console.log('dbg.AppMain.placesData: ', placesData);
         this.props.setCurrentPlace(placesData.places[0].place);
       } else {
         const tempLanguage = getLanguage('en').data;
         const { placesData } = tempLanguage;
-        console.log(tempLanguage);
-        console.log(placesData);
+        console.log('dbg.AppMain.tempLanguage: ', tempLanguage);
         this.props.setCurrentLanguage(tempLanguage);
+        // console.log('dbg.AppMain.placesData: ', placesData);
         this.props.setCurrentPlace(placesData.places[0].place);
       }
-      this.setKontakIo();
+      this.setKontaktIo();
+      this.startKontaktIoScan();
     });
-
-    // // see: https://www.npmjs.com/package/react-native-kontaktio
-    // // kontakt io for android...
-    // connect()
-    //   .then(() => startScanning())
-    //   .catch(error => console.log('error', error));
-
-    //   DeviceEventEmitter.addListener(
-    //     'beaconsDidUpdate',
-    //     ({ beacons, region }) => {
-    //       console.log('beaconsDidUpdate', beacons, region);
-    //     }
-    // );
 
     // right to left
     I18nManager.forceRTL(false);
@@ -263,6 +280,12 @@ class AppMain extends React.Component {
   //   ObjectPath.set(newState, 'styles.welcomeStyles.welcomeColor', color);
   //   this.setState(newState);
   // };
+
+  componentWillUnmount() {
+    // Disconnect beaconManager and set to it to null
+    disconnect();
+    DeviceEventEmitter.removeAllListeners();
+  }
 
   checkNav() {
     const prevGetStateForAction = Nav.router.getStateForAction;
@@ -350,7 +373,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AppMain);
+export default reduxConnect(mapStateToProps, mapDispatchToProps)(AppMain);
