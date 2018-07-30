@@ -6,7 +6,7 @@ import {
   View,
   DeviceEventEmitter,
   Alert,
-  I18nManager /* , DeviceEventEmitter, StyleSheet, Platform, Text, View, Alert */
+  I18nManager, Platform /* , DeviceEventEmitter, StyleSheet,  Text, View, Alert */
 } from 'react-native';
 
 import { connect as reduxConnect } from 'react-redux';
@@ -266,7 +266,7 @@ class AppMain extends React.Component {
 
     this.setKontaktIo();
     this.startKontaktIoScan();
-    y;
+
     // right to left
     I18nManager.forceRTL(false);
     this.setState({ isRTL: false });
