@@ -210,29 +210,28 @@ class AppMain extends React.Component {
         // beacons: this.state.beacons.concat(newBeacon)
         // next line does not happen, maybe because I do not do the equivalent of "Start scan..."
         console.log('beaconDidAppear', newBeacon, region);
-        //if (this.props.currentBeacon.beaconID !== newBeacon.major) {
-        //  const tempBeacon = this.props.currentPlace.xsnearby.find(beacon => {
-        //    beacon.beacon.beaconID === newBeacon.major;
-        //  });
-        //  if (tempBeacon !== undefined && tempBeacon !== null) {
-        //    console.log('setting currentBeacon to found point in data');
-        //    this.props.setCurrentBeacon(tempBeacon.beacon);
-        //  }
-        //}
+        if (this.props.currentBeacon.beaconID !== newBeacon.uniqueId) {
+          const tempBeacon = this.props.currentPlace.xsnearby.find(beacon => {
+            beacon.beacon.beaconID === newBeacon.uniqueId;
+          });
+          if (tempBeacon !== undefined && tempBeacon !== null) {
+            console.log('setting currentBeacon to found point in data');
+            this.props.setCurrentBeacon(tempBeacon.beacon);
+          }
+        }
       }
     );
     DeviceEventEmitter.addListener(
       'beaconDidDisappear',
       ({ beacon: lostBeacon, region }) => {
         console.log('beaconDidDisappear', lostBeacon, region);
-        if (this.props.currentBeacon.beaconID === lostBeacon.major) {
+        if (this.props.currentBeacon.beaconID === lostBeacon.uniqueId) {
           Alert.alert(
             'Beacon Disappear',
             'You left: ' + this.props.currentBeacon.msg,
             [{ text: 'OK' }],
             { cancelable: true }
           );
-          r;
         }
       }
     );
@@ -267,7 +266,7 @@ class AppMain extends React.Component {
 
     this.setKontaktIo();
     this.startKontaktIoScan();
-
+    y;
     // right to left
     I18nManager.forceRTL(false);
     this.setState({ isRTL: false });

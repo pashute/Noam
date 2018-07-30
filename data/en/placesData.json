@@ -7,12 +7,13 @@
         "placeType": "building",
         "fullName": "Big Bet Shemesh",
         "msg": "Big BS",
+        "beacons": ["uWWf", "WNeD", "V36R"],
         "nearby": [
           {
             "beacon": {
               "id": 11,
               "txtId": "mainGate",
-              "beaconID": "28999",
+              "beaconID": "uWWf",
               "fullName": "Main Gate (South)",
               "msg": "Main gate",
               "points": [
@@ -39,8 +40,8 @@
                 {
                   "point": {
                     "id": 14,
-                    "txtId": "superfarm",
-                    "title": "Superfarm",
+                    "txtId": "superpharm",
+                    "title": "Superpharm",
                     "icon": "elevator",
                     "direction": 343,
                     "instructions": ["50 meters north\n", "Entrance to the right"]
@@ -64,7 +65,7 @@
             "beacon": {
               "id": 12,
               "txtId": "toilets1a",
-              "beaconID": "55462",
+              "beaconID": "WNed",
               "fullName": "Toilets south flr 1",
               "msg": "Toilets f1.S",
               "points": [
@@ -100,7 +101,7 @@
             "beacon": {
               "id": 11,
               "txtId": "mainGate",
-              "beaconID": "12345",
+              "beaconID": "uWWf",
               "fullName": "Main Gate (South)",
               "msg": "Main gate",
               "points": [
@@ -146,7 +147,7 @@
             "beacon": {
               "id": 12,
               "txtId": "toilets",
-              "beaconID": "12346",
+              "beaconID": "WNeD",
               "fullName": "Toilets south flr 1",
               "msg": "Toilets f1.S",
               "points": [
@@ -224,14 +225,14 @@
         "exits": [
           {
             "beacon": {
-              "id": 11,
+              "id": "uWWf",
               "instruction":
                 "Follow the hall to the north 20 steps and then to the left, out of the building"
             }
           },
           {
             "beacon": {
-              "id": 22,
+              "id": "wNeD",
               "instruction":
                 "Follow the hall to the south 15 steps. The exit is to the right"
             }
@@ -246,6 +247,7 @@
         "placeType": "building",
         "fullName": "United Israel Hospitals",
         "msg": "iHospital",
+        "beacons": ["aaaa", "bbbb", "cccc"],
         "nearby": [
           {
             "beacon": {
