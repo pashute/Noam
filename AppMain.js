@@ -263,9 +263,10 @@ class AppMain extends React.Component {
         // console.log('dbg.AppMain.placesData: ', placesData);
         this.props.setCurrentPlace(placesData.places[0].place);
       }
-      this.setKontaktIo();
-      this.startKontaktIoScan();
     });
+
+    this.setKontaktIo();
+    this.startKontaktIoScan();
 
     // right to left
     I18nManager.forceRTL(false);
