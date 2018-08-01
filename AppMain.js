@@ -55,29 +55,6 @@ const {
   monitoringSyncInterval
 } = Kontakt;
 
-// import {
-//   connect as connectKontakt,
-//   configure,
-//   disconnect,
-//   startScanning,
-//   setBeaconRegions,
-//   setEddystoneNamespace,
-//   IBEACON,
-//   EDDYSTONE,
-//   // Configurations
-//   scanMode,
-//   scanPeriod,
-//   activityCheckConfiguration,
-//   forceScanConfiguration,
-//   monitoringEnabled,
-//   monitoringSyncInterval
-// } from 'react-native-kontaktio';
-
-/*
-This contex contains: appData.json, placesData.json and stylesData.json
-of the current language (by default is en)
-*/
-
 I18nManager.allowRTL(false);
 
 YellowBox.ignoreWarnings([
@@ -238,12 +215,12 @@ class AppMain extends React.Component {
     );
   }
 
-  startKontaktIoScan = () => {
+  startKontaktIoScan() {
     console.log('startKontaktIoScan called');
     startScanning()
       .then(() => console.log('started scanning'))
       .catch(error => console.log('[startScanning] error:\n', error));
-  };
+  }
 
   componentDidMount() {
     AsyncStorage.getItem('preferences-language').then(value => {
@@ -276,12 +253,6 @@ class AppMain extends React.Component {
 
   // onCompassUpdate = pointingTo => this.setState({ pointingTo });
 
-  // setNoamColor = color => {
-  //   let newState = { ...this.state };
-  //   ObjectPath.set(newState, 'styles.welcomeStyles.welcomeColor', color);
-  //   this.setState(newState);
-  // };
-
   componentWillUnmount() {
     // Disconnect beaconManager and set to it to null
     disconnect();
@@ -292,8 +263,7 @@ class AppMain extends React.Component {
     const prevGetStateForAction = Nav.router.getStateForAction;
 
     Nav.router.getStateForAction = (action, state) => {
-      // console.log('dbg.checkNav action:', action);
-      // console.log('dbg.checkNav state:', state);
+      // console.log('dbg.checkNav action and state:', action, state);
       if (state !== undefined && action.type === 'Navigation/NAVIGATE') {
         const screenToGo = action.routeName;
         let navigateTo = action;
@@ -331,24 +301,12 @@ class AppMain extends React.Component {
       return <View />;
     }
 
-    // return (
-    //   <Nav
-    //     screenProps={{
-    //       setWelcomeColor: this.setWelcomeColor,
-    //       welcomeColor: this.state.styles.welcomeStyles.welcomeColor
-    //     }}
-    //   />
-    // );
     return (
       <Nav
         screenProps={{
           checkNav: this.checkNav,
           pointingTo: this.state.pointingTo,
-          heading: this.state.heading,
-          noamColor:
-            this.state.data && this.state.data.styles
-              ? this.state.data.styles.stylesSplash.noamColor
-              : '#FF0000'
+          heading: this.state.heading
         }}
       />
     );
