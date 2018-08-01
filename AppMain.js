@@ -7,7 +7,7 @@ import {
   DeviceEventEmitter,
   Alert,
   I18nManager,
-  Platform /* , DeviceEventEmitter, StyleSheet,  Text, View, Alert */
+  Platform /* StyleSheet,  Text, View, Alert */
 } from 'react-native';
 
 import { connect as reduxConnect } from 'react-redux';
