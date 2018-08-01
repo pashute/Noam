@@ -6,7 +6,8 @@ import {
   View,
   DeviceEventEmitter,
   Alert,
-  I18nManager, Platform /* , DeviceEventEmitter, StyleSheet,  Text, View, Alert */
+  I18nManager,
+  Platform /* , DeviceEventEmitter, StyleSheet,  Text, View, Alert */
 } from 'react-native';
 
 import { connect as reduxConnect } from 'react-redux';
@@ -183,7 +184,7 @@ class AppMain extends React.Component {
     };
 
     connect(
-      'MY_KONTAKTIO_API_KEY',
+      'CJPwKLLQewygcKuzAIcOTDQbwVfDsiru',
       [IBEACON, EDDYSTONE]
     )
       .then(() =>
