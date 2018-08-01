@@ -6,7 +6,9 @@ import {
   View,
   DeviceEventEmitter,
   Alert,
-  I18nManager, Platform /* , DeviceEventEmitter, StyleSheet,  Text, View, Alert */
+  I18nManager,
+  Platform,
+  NativeEventEmitter /* , DeviceEventEmitter, StyleSheet,  Text, View, Alert */
 } from 'react-native';
 
 import { connect as reduxConnect } from 'react-redux';
@@ -35,42 +37,15 @@ import {
   setCurrentBeacon
 } from './redux/actions';
 
-import Kontakt from 'react-native-kontaktio';
-const {
-  connect,
-  configure,
-  disconnect,
-  startScanning,
-  setBeaconRegions,
-  setEddystoneNamespace,
-  IBEACON,
-  EDDYSTONE,
-  // Configurations
-  scanMode,
-  scanPeriod,
-  activityCheckConfiguration,
-  forceScanConfiguration,
-  monitoringEnabled,
-  monitoringSyncInterval
-} = Kontakt;
+import Kontakt, { KontaktModule } from 'react-native-kontaktio';
+const { init, startDiscovery } = Kontakt; // for ios
+const kontaktEmitter = new NativeEventEmitter(KontaktModule); // for ios
 
-// import {
-//   connect as connectKontakt,
-//   configure,
-//   disconnect,
-//   startScanning,
-//   setBeaconRegions,
-//   setEddystoneNamespace,
-//   IBEACON,
-//   EDDYSTONE,
-//   // Configurations
-//   scanMode,
-//   scanPeriod,
-//   activityCheckConfiguration,
-//   forceScanConfiguration,
-//   monitoringEnabled,
-//   monitoringSyncInterval
-// } from 'react-native-kontaktio';
+/*
+// const { //   init,//   configure,//   requestAlwaysAuthorization,//   disconnect,//   startScanning,//   setBeaconRegions,//   setEddystoneNamespace,
+//   IBEACON,//   EDDYSTONE,//   // Configurations//   scanMode,//   scanPeriod,//   activityCheckConfiguration,//   forceScanConfiguration,//   monitoringEnabled,
+//   monitoringSyncInterval// } = Kontakt;
+*/
 
 /*
 This contex contains: appData.json, placesData.json and stylesData.json
@@ -175,74 +150,62 @@ class AppMain extends React.Component {
   }
 
   setKontaktIo() {
-    const regionKontakt = {
-      identifier: 'Noam Kontakt Beacons',
-      uuid: 'f7826da6-4fa2-4e98-8024-bc5b71e0893e'
-      // major: 1  no major, all majors will be detected
-      // no minor provided: will detect all minors
-    };
+    // const regionKontakt = {
+    //   identifier: 'Noam Kontakt Beacons',
+    //   uuid: 'f7826da6-4fa2-4e98-8024-bc5b71e0893e'
+    //   // major: 1  no major, all majors will be detected
+    //   // no minor provided: will detect all minors
+    // };
 
-    connect(
-      'MY_KONTAKTIO_API_KEY',
-      [IBEACON, EDDYSTONE]
-    )
-      .then(() =>
-        configure({
-          scanMode: scanMode.BALANCED,
-          scanPeriod: scanPeriod.create({
-            activePeriod: 6000,
-            passivePeriod: 20000
-          }),
-          activityCheckConfiguration: activityCheckConfiguration.DEFAULT,
-          forceScanConfiguration: forceScanConfiguration.MINIMAL,
-          monitoringEnabled: monitoringEnabled.TRUE,
-          monitoringSyncInterval: monitoringSyncInterval.DEFAULT
-        })
-      )
-      .then(() => setBeaconRegions([regionKontakt]))
-      .then(() => setEddystoneNamespace())
-      .catch(error => console.log('appmain kontakt error', error));
+    // // connect with api key (not necessary)
+    // connect(
+    //   'CJPwKLLQewygcKuzAIcOTDQbwVfDsiru',
+    //   [IBEACON, EDDYSTONE]
+    // )
+    console.log('initializing ios beacon discovery');
+    init()
+      .then(() => startDiscovery())
+      .catch(error => console.log('AppMain.IOS.StartDiscover.error:', error));
 
     // Beacon listeners
-    DeviceEventEmitter.addListener(
-      'beaconDidAppear',
-      ({ beacon: newBeacon, region }) => {
-        // beacons: this.state.beacons.concat(newBeacon)
-        // next line does not happen, maybe because I do not do the equivalent of "Start scan..."
-        console.log('beaconDidAppear', newBeacon, region);
-        if (this.props.currentBeacon.beaconID !== newBeacon.uniqueId) {
-          const tempBeacon = this.props.currentPlace.xsnearby.find(beacon => {
-            beacon.beacon.beaconID === newBeacon.uniqueId;
-          });
-          if (tempBeacon !== undefined && tempBeacon !== null) {
-            console.log('setting currentBeacon to found point in data');
-            this.props.setCurrentBeacon(tempBeacon.beacon);
-          }
+    kontaktEmitter.addListener('didDiscoverDevices', ({ beacons }) => {
+      console.log('ios.didDiscoverDevices', beacons);
+      if (
+        beacons != null &&
+        beacons.length > 0 &&
+        this.props.currentBeacon.beaconID !== beacons[0].uniqueId
+      ) {
+        const tempBeacon = this.props.currentPlace.xsnearby.find(beacon => {
+          beacon.beacon.beaconID === beacons[0].uniqueId;
+        });
+        if (tempBeacon !== undefined && tempBeacon !== null) {
+          console.log('setting currentBeacon to found point in data');
+          this.props.setCurrentBeacon(tempBeacon.beacon);
         }
       }
-    );
-    DeviceEventEmitter.addListener(
-      'beaconDidDisappear',
-      ({ beacon: lostBeacon, region }) => {
-        console.log('beaconDidDisappear', lostBeacon, region);
-        if (this.props.currentBeacon.beaconID === lostBeacon.uniqueId) {
-          Alert.alert(
-            'Beacon Disappear',
-            'You left: ' + this.props.currentBeacon.msg,
-            [{ text: 'OK' }],
-            { cancelable: true }
-          );
-        }
-      }
-    );
+    });
+    // DeviceEventEmitter.addListener(
+    //         'beaconDidDisappear',
+    //   ({ beacon: lostBeacon, region }) => {
+    //     console.log('beaconDidDisappear', lostBeacon, region);
+    //     if (this.props.currentBeacon.beaconID === lostBeacon.uniqueId) {
+    //       Alert.alert(
+    //         'Beacon Disappear',
+    //         'You left: ' + this.props.currentBeacon.msg,
+    //         [{ text: 'OK' }],
+    //         { cancelable: true }
+    //       );
+    //     }
+    //   }
+    // );
   }
 
-  startKontaktIoScan = () => {
-    console.log('startKontaktIoScan called');
-    startScanning()
-      .then(() => console.log('started scanning'))
-      .catch(error => console.log('[startScanning] error:\n', error));
-  };
+  // startKontaktIoScan = () => {
+  //   console.log('startKontaktIoScan called');
+  //   startScanning()
+  //     .then(() => console.log('started scanning'))
+  //     .catch(error => console.log('[startScanning] error:\n', error));
+  // };
 
   componentDidMount() {
     AsyncStorage.getItem('preferences-language').then(value => {
@@ -265,7 +228,7 @@ class AppMain extends React.Component {
     });
 
     this.setKontaktIo();
-    this.startKontaktIoScan();
+    // this.startKontaktIoScan();
 
     // right to left
     I18nManager.forceRTL(false);
@@ -283,8 +246,8 @@ class AppMain extends React.Component {
 
   componentWillUnmount() {
     // Disconnect beaconManager and set to it to null
-    disconnect();
-    DeviceEventEmitter.removeAllListeners();
+    // disconnect();
+    NativeEventEmitter.removeAllListeners();
   }
 
   checkNav() {

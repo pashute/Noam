@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import { AsyncStorage, Platform, StyleSheet, Text, View, Alert } from 'react-native';
+import {
+  AsyncStorage,
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+  Alert
+} from 'react-native';
 import ActionBar from 'react-native-action-bar';
 import { Button } from 'react-native';
 
@@ -33,13 +40,16 @@ export default class HelpFirstTime extends Component {
           onLeftPress={() => console.log('Left!')}
         />
         <View style={styles.buttonDecorator}>
+          <Text>Welcome to Noam your indoor assistant.</Text>
+          <Text>Danny and Lisa, the text here is from the database</Text>
+          <Text>This screen shows only the first time you enter the app</Text>
           <Button
             onPress={() => {
               replace('SplashPage');
             }}
-            title={'Continue to app'}
+            title={'Continue to the application'}
             color="#111111"
-            accessibilityLabel={'Tap on Me to '}
+            accessibilityLabel={'Tap on Me to start working with the app'}
           />
         </View>
       </View>
