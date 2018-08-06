@@ -215,12 +215,12 @@ class AppMain extends React.Component {
     );
   }
 
-  startKontaktIoScan() {
+  startKontaktIoScan = () => {
     console.log('startKontaktIoScan called');
     startScanning()
       .then(() => console.log('started scanning'))
       .catch(error => console.log('[startScanning] error:\n', error));
-  }
+  };
 
   componentDidMount() {
     AsyncStorage.getItem('preferences-language').then(value => {
