@@ -3,7 +3,7 @@
 import StorybookUI from './storybook';
 import AppRedux from './AppRedux';
 
-module.exports = __DEV__ ? AppRedux : AppRedux;
+module.exports = __DEV__ ? StorybookUI : AppRedux;
 
 // // Export the one you want
 // import AppMain from './AppMain'; // Main-App
