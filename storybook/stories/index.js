@@ -6,14 +6,11 @@ import { storiesOf } from '@storybook/react-native';
 //x import { linkTo } from '@storybook/addon-links';
 
 //x import CenterView from './CenterView';
-import MainSplash from './MainSplash';
-import MainInPlace from './MainInPlace';
-import MainWay from './MainWay';
-import MainNearby from './MainNearby';
+import StorySplash from './StorySplash';
+// import StoryTabs from './StoryTabs';
 
-storiesOf('Noam', module)
-  .add('Splash', () => (<MainSplash />))
-  .add('Main tabs', () => (<MainInPlace />));
+storiesOf('Noam', module).add('Splash', () => <StorySplash />);
+// .add('Main tabs', () => (<StoryTabs />));
 
 // storiesOf('Belcome', module).add('to Storybook', () => (
 //   <Demo0 showApp={linkTo('Button')} />
