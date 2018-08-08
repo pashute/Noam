@@ -10,7 +10,9 @@ export default class StoryTabs extends React.Component {
   render() {
     return (
       <View style={styles.wrapper}>
-        <Text style={styles.header}>Nearby page goes here</Text>
+        <Text style={styles.header}>
+          Main tabs (with nearby) page goes here
+        </Text>
       </View>
     );
   }
@@ -31,4 +33,3 @@ const styles = StyleSheet.create({
     fontSize: 20
   }
 });
-

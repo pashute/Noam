@@ -7,10 +7,11 @@ import { storiesOf } from '@storybook/react-native';
 
 //x import CenterView from './CenterView';
 import StorySplash from './StorySplash';
-// import StoryTabs from './StoryTabs';
+import StoryTabs from './StoryTabs';
 
-storiesOf('Noam', module).add('Splash', () => <StorySplash />);
-// .add('Main tabs', () => (<StoryTabs />));
+storiesOf('Noam', module)
+  .add('Splash', () => <StorySplash />)
+  .add('Main tabs', () => <StoryTabs />);
 
 // storiesOf('Belcome', module).add('to Storybook', () => (
 //   <Demo0 showApp={linkTo('Button')} />
