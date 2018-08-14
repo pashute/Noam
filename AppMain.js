@@ -195,8 +195,8 @@ class AppMain extends React.Component {
         // next line does not happen, maybe because I do not do the equivalent of "Start scan..."
         console.log('beaconDidAppear', newBeacon, region);
         if (this.props.currentBeacon.beaconID !== newBeacon.major) {
-          const tempBeacon = this.props.currentPlace.xsnearby.find(beacon => {
-            beacon.beacon.beaconID === newBeacon.uniqueId;
+          const tempBeacon = this.props.currentPlace.nearby.find(beacon => {
+            beacon.beacon.beaconID === newBeacon.major;
           });
           if (tempBeacon !== undefined && tempBeacon !== null) {
             console.log('setting currentBeacon to found point in data');
