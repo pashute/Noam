@@ -3,7 +3,10 @@ import * as types from '../types';
 const INITIAL_STATE = {
   currentLanguage: {},
   currentPlace: {},
-  currentBeacon: {} //current beacon
+  currentBeacon: {},
+  currentPlacesData: {},
+  beaconPlaceRelation: []
+  //current beacon
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -16,6 +19,12 @@ export default (state = INITIAL_STATE, action) => {
     }
     case types.SET_CURRENT_BEACON: {
       return { ...state, currentBeacon: action.beacon };
+    }
+    case types.SET_BEACON_PLACE_RELATION_BEACON: {
+      return { ...state, beaconPlaceRelation: action.beaconPlaceRelation };
+    }
+    case types.SET_CURRENT_PLACES_DATA: {
+      return { ...state, currentPlacesData: action.currentPlacesData };
     }
     default: {
       return state;

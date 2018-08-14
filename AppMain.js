@@ -31,6 +31,8 @@ import HelpFirstTime from './pages/HelpFirstTime';
 import { getLanguage, getLanguageCode } from './data';
 
 import {
+  setAllBeaconsPlacesRelation,
+  setCurrentPlacesData,
   setCurrentLanguage,
   setCurrentPlace,
   setCurrentBeacon
@@ -195,18 +197,46 @@ class AppMain extends React.Component {
         // next line does not happen, maybe because I do not do the equivalent of "Start scan..."
         console.log('beaconDidAppear', newBeacon, region);
         if (this.props.currentBeacon.beaconID !== newBeacon.major) {
-          const tempBeacon = this.props.currentPlace.nearby.find(beacon => {
-            beacon.beacon.beaconID === newBeacon.major;
-          });
-          if (tempBeacon !== undefined && tempBeacon !== null) {
+          const tempBeaconRelation = this.props.beaconPlaceRelation.find(
+            beaconRelation => {
+              return beaconRelation.beaconID === newBeacon.major;
+            }
+          );
+          if (tempBeaconRelation !== undefined && tempBeaconRelation !== null) {
+            let finalBeacon = undefined;
+            let finalPlace = undefined;
             console.log('setting currentBeacon to found point in data');
-            this.props.setCurrentBeacon(tempBeacon.beacon);
-            Alert.alert(
-              'Beacon Detected',
-              'New Beacon Detected',
-              [{ text: 'OK' }],
-              { cancelable: true }
-            );
+            const currentPlace = placesData.places.find(place => {
+              return place.place.id === tempBeaconRelation.placeId;
+            });
+            if (currentPlace !== undefined && currentPlace !== null) {
+              finalPlace = currentPlace.place;
+              if (finalPlace !== undefined && finalPlace !== null) {
+                const tempBeacon = currentPlace.nearby.find(beacon => {
+                  return beacon.beacon.id === tempBeaconRelation.beaconID;
+                });
+                if (tempBeacon !== undefined && tempBeacon !== null) {
+                  finalBeacon = tempBeacon.beacon;
+                  if (tempBeacon !== undefined && tempBeacon !== null) {
+                    if (
+                      this.props.currentPlace.id !== tempBeaconRelation.placeId
+                    ) {
+                      this.props.setCurrentPlace(finalPlace);
+                    }
+                    this.props.setCurrentBeacon(tempBeacon);
+                    Alert.alert(
+                      'Beacon Detected',
+                      'You are at ' +
+                        tempBeacon.msg +
+                        ' in ' +
+                        finalPlace.fullName,
+                      [{ text: 'OK' }],
+                      { cancelable: true }
+                    );
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -234,26 +264,56 @@ class AppMain extends React.Component {
   // };
 
   componentDidMount() {
-    AsyncStorage.getItem('preferences-language').then(value => {
-      if (value !== null) {
-        const savedLanguage = getLanguage('value').data;
-        this.setState({ language: savedLanguage });
-        const { placesData } = savedLanguage;
-        console.log('dbg.AppMain.savedLanguage: ', savedLanguage);
-        this.props.setCurrentLanguage(savedLanguage);
-        // console.log('dbg.AppMain.placesData: ', placesData);
-        this.props.setCurrentPlace(placesData.places[0].place);
-      } else {
-        const tempLanguage = getLanguage('en').data;
-        const { placesData } = tempLanguage;
-        console.log('dbg.AppMain.tempLanguage: ', tempLanguage);
-        this.props.setCurrentLanguage(tempLanguage);
-        // console.log('dbg.AppMain.placesData: ', placesData);
-        this.props.setCurrentPlace(placesData.places[0].place);
-      }
-    });
+    AsyncStorage.getItem('preferences-language')
+      .then(value => {
+        let places = [];
+        if (value !== null) {
+          const savedLanguage = getLanguage('value').data;
+          this.setState({ language: savedLanguage });
+          const { placesData } = savedLanguage;
+          places = placesData.places;
+          console.log('dbg.AppMain.savedLanguage: ', savedLanguage);
+          this.props.setCurrentLanguage(savedLanguage);
+          this.props.setCurrentPlacesData(placesData);
+          // console.log('dbg.AppMain.placesData: ', placesData);
+          this.props.setCurrentPlace(placesData.places[0].place);
+        } else {
+          const tempLanguage = getLanguage('en').data;
+          const { placesData } = tempLanguage;
+          console.log('dbg.AppMain.tempLanguage: ', tempLanguage);
+          this.props.setCurrentLanguage(tempLanguage);
+          this.props.setCurrentPlacesData(placesData);
+          // console.log('dbg.AppMain.placesData: ', placesData);
+          places = placesData.places;
+          this.props.setCurrentPlace(placesData.places[0].place);
+        }
+        const finalBeaconRelation = [];
+        for (let i = 0; i < places.length; i++) {
+          const tempPlace = places[i];
+          console.log(tempPlace);
+          const nearbyBeacons = tempPlace.place.nearby;
+          for (let b = 0; b < nearbyBeacons.length; b++) {
+            const tempBeacon = nearbyBeacons[b];
+            if (tempBeacon.beacon !== undefined) {
+              console.log(tempBeacon);
+              const tempRelation = {
+                beaconId: tempBeacon.beacon.id,
+                placeId: tempPlace.place.id
+              };
+              finalBeaconRelation.push(tempRelation);
+            }
+          }
+        }
 
-    this.setKontaktIo();
+        console.log(finalBeaconRelation);
+        this.props.setAllBeaconsPlacesRelation(finalBeaconRelation);
+
+        this.setKontaktIo();
+      })
+      .catch(error => {
+        console.log(error);
+      });
+
     //x this.startKontaktIoScan();
 
     // right to left
@@ -324,15 +384,31 @@ class AppMain extends React.Component {
   }
 }
 const mapStateToProps = ({ data }) => {
-  const { currentBeacon, currentPlace } = data;
+  const {
+    currentBeacon,
+    currentPlace,
+    beaconPlaceRelation,
+    currentPlacesData
+  } = data;
   console.log('dbg.mapStateToProps currentBeacon:', currentBeacon);
-  return { currentBeacon, currentPlace };
+  return {
+    currentBeacon,
+    currentPlace,
+    beaconPlaceRelation,
+    currentPlacesData
+  };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     setCurrentLanguage: languages => {
       dispatch(setCurrentLanguage(languages));
+    },
+    setCurrentPlacesData: currentPlacesData => {
+      dispatch(setCurrentPlacesData(currentPlacesData));
+    },
+    setAllBeaconsPlacesRelation: beaconPlaceRelation => {
+      dispatch(setAllBeaconsPlacesRelation(beaconPlaceRelation));
     },
     setCurrentPlace: place => {
       dispatch(setCurrentPlace(place));
