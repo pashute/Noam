@@ -201,6 +201,12 @@ class AppMain extends React.Component {
           if (tempBeacon !== undefined && tempBeacon !== null) {
             console.log('setting currentBeacon to found point in data');
             this.props.setCurrentBeacon(tempBeacon.beacon);
+            Alert.alert(
+              'Beacon Detected',
+              'New Beacon Detected',
+              [{ text: 'OK' }],
+              { cancelable: true }
+            );
           }
         }
       }
