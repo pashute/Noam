@@ -194,7 +194,7 @@ class AppMain extends React.Component {
         // beacons: this.state.beacons.concat(newBeacon)
         // next line does not happen, maybe because I do not do the equivalent of "Start scan..."
         console.log('beaconDidAppear', newBeacon, region);
-        if (this.props.currentBeacon.beaconID !== newBeacon.uniqueId) {
+        if (this.props.currentBeacon.beaconID !== newBeacon.major) {
           const tempBeacon = this.props.currentPlace.xsnearby.find(beacon => {
             beacon.beacon.beaconID === newBeacon.uniqueId;
           });
@@ -209,7 +209,7 @@ class AppMain extends React.Component {
       'beaconDidDisappear',
       ({ beacon: lostBeacon, region }) => {
         console.log('beaconDidDisappear', lostBeacon, region);
-        if (this.props.currentBeacon.beaconID === lostBeacon.uniqueId) {
+        if (this.props.currentBeacon.beaconID === lostBeacon.major) {
           Alert.alert(
             'Beacon Disappear',
             'You left: ' + this.props.currentBeacon.msg,
