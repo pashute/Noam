@@ -160,26 +160,7 @@ class AppMain extends React.Component {
       // no minor provided: will detect all minors
     };
 
-    connect(
-      'CJPwKLLQewygcKuzAIcOTDQbwVfDsiru',
-      [IBEACON, EDDYSTONE]
-    )
-      .then(() =>
-        configure({
-          scanMode: scanMode.BALANCED,
-          scanPeriod: scanPeriod.create({
-            activePeriod: 6000,
-            passivePeriod: 20000
-          }),
-          activityCheckConfiguration: activityCheckConfiguration.DEFAULT,
-          forceScanConfiguration: forceScanConfiguration.MINIMAL,
-          monitoringEnabled: monitoringEnabled.TRUE,
-          monitoringSyncInterval: monitoringSyncInterval.DEFAULT
-        })
-      )
-      .then(() => setBeaconRegions([regionKontakt]))
-      .then(() => setEddystoneNamespace())
-      .catch(error => console.log('appmain kontakt error', error));
+    const noamKontaktApiKey = 'CJPwKLLQewygcKuzAIcOTDQbwVfDsiru';
 
     // Beacon listeners
     DeviceEventEmitter.addListener(
@@ -215,12 +196,34 @@ class AppMain extends React.Component {
     );
   }
 
-  startKontaktIoScan = () => {
-    console.log('startKontaktIoScan called');
-    startScanning()
-      .then(() => console.log('started scanning'))
-      .catch(error => console.log('[startScanning] error:\n', error));
-  };
+  connect(noamKontaktApiKey, [IBEACON, EDDYSTONE])
+    .then(() =>
+      configure({
+        scanMode: scanMode.BALANCED,
+        scanPeriod: scanPeriod.create({
+          activePeriod: 6000,
+          passivePeriod: 20000
+        }),
+        activityCheckConfiguration: activityCheckConfiguration.DEFAULT,
+        forceScanConfiguration: forceScanConfiguration.MINIMAL,
+        monitoringEnabled: monitoringEnabled.TRUE,
+        monitoringSyncInterval: monitoringSyncInterval.DEFAULT
+      })
+    )
+    .then(() => setBeaconRegions([regionKontakt]))
+    .then(() => setEddystoneNamespace())
+    .then(() => {
+      console.log('dbg.appmain about to start scanning');
+      startScanning()
+    })
+    .catch(error => console.log('appmain kontakt error: \n', error));
+
+
+  // startKontaktIoScan = () => {
+  //   console.log('startKontaktIoScan called');
+  //     .then(() => console.log('started scanning'))
+  //     .catch(error => console.log('[startScanning] error:\n', error));
+  // };
 
   componentDidMount() {
     AsyncStorage.getItem('preferences-language').then(value => {
@@ -243,7 +246,7 @@ class AppMain extends React.Component {
     });
 
     this.setKontaktIo();
-    this.startKontaktIoScan();
+    //x this.startKontaktIoScan();
 
     // right to left
     I18nManager.forceRTL(false);
