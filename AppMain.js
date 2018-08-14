@@ -38,7 +38,7 @@ import {
 
 import Kontakt from 'react-native-kontaktio';
 const {
-  connect,
+  kontaktConnect: connect,
   configure,
   disconnect,
   startScanning,
@@ -194,30 +194,31 @@ class AppMain extends React.Component {
         }
       }
     );
-  }
-
-  connect(noamKontaktApiKey, [IBEACON, EDDYSTONE])
-    .then(() =>
-      configure({
-        scanMode: scanMode.BALANCED,
-        scanPeriod: scanPeriod.create({
-          activePeriod: 6000,
-          passivePeriod: 20000
-        }),
-        activityCheckConfiguration: activityCheckConfiguration.DEFAULT,
-        forceScanConfiguration: forceScanConfiguration.MINIMAL,
-        monitoringEnabled: monitoringEnabled.TRUE,
-        monitoringSyncInterval: monitoringSyncInterval.DEFAULT
-      })
+    connect(
+      noamKontaktApiKey,
+      [IBEACON, EDDYSTONE]
     )
-    .then(() => setBeaconRegions([regionKontakt]))
-    .then(() => setEddystoneNamespace())
-    .then(() => {
-      console.log('dbg.appmain about to start scanning');
-      startScanning()
-    })
-    .catch(error => console.log('appmain kontakt error: \n', error));
-
+      .then(() =>
+        configure({
+          scanMode: scanMode.BALANCED,
+          scanPeriod: scanPeriod.create({
+            activePeriod: 6000,
+            passivePeriod: 20000
+          }),
+          activityCheckConfiguration: activityCheckConfiguration.DEFAULT,
+          forceScanConfiguration: forceScanConfiguration.MINIMAL,
+          monitoringEnabled: monitoringEnabled.TRUE,
+          monitoringSyncInterval: monitoringSyncInterval.DEFAULT
+        })
+      )
+      .then(() => setBeaconRegions([regionKontakt]))
+      .then(() => setEddystoneNamespace())
+      .then(() => {
+        console.log('dbg.appmain about to start scanning');
+        startScanning();
+      })
+      .catch(error => console.log('appmain kontakt error: \n', error));
+  }
 
   // startKontaktIoScan = () => {
   //   console.log('startKontaktIoScan called');
