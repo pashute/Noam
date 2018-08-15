@@ -8,4 +8,4 @@ project(':react-native-vector-icons').projectDir = new File(rootProject.projectD
 include ':react-native-hockeyapp', ':app'
 project(':react-native-hockeyapp').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-hockeyapp/android')
 
-//include ':app'
+// include ':app'
