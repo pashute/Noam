@@ -205,10 +205,7 @@ class AppMain extends React.Component {
         // beacons: this.state.beacons.concat(newBeacon)
         // next line does not happen, maybe because I do not do the equivalent of "Start scan..."
         console.log('dbg.Appmain.beaconDidAppear detected', newBeacon);
-        console.log(
-          'dbg.Appmain.bcnDid propsBcnRel',
-          this.props.beaconPlaceRelation
-        );
+        console.log('dbg.Appmain.bcnDid propsBcnRel', this.props.beaconPlaceRelation);
         console.log('dbg.Appmain.bcnDid curbcn', this.props.currentBeacon);
         if (
           this.props.currentBeacon === {} ||
@@ -225,7 +222,7 @@ class AppMain extends React.Component {
           if (tempBeaconRelation !== undefined && tempBeaconRelation !== null) {
             let finalBeacon = undefined; // what for?
             let finalPlace = undefined;
-            console.log('find point in data');
+            console.log('dbg.appmain.bcnDid find point', this.props.currentPlacesData);
             const currentPlace = this.props.currentPlacesData.places.find(
               place => {
                 return place.place.id === tempBeaconRelation.placeId;
