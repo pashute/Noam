@@ -81,7 +81,7 @@ class PlacePoints extends Component<{}> {
   }
 
   render() {
-    console.log('dbg.placePoints rendering: ', this.props);
+    // console.log('dbg.placePoints rendering: ', this.props);
     const place = this.props.currentPlace;
     return (
       <View style={styles.container}>

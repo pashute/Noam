@@ -20,10 +20,10 @@ Data:
  Places
    * place:  id, txtid, type, title, shortname, msg1stTime
     Nearby: 
-      * beacon: id, txtid, beaconId, title, points: 
+      * beacon: id, txtid, kId, title, points: 
         * point: id, txtid, direction, title, instruc
     ThatWay: 
-      * beacon: id, txtid, beaconId, title, points: 
+      * beacon: id, txtid, kId, title, points: 
         * point: id, txtid, direction, title, instruc
     InPlace:
       * point: id, txtid, title, desc.
