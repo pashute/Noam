@@ -248,7 +248,7 @@ class AppMain extends React.Component {
                   this.props.setCurrentBeacon(finalBeacon);
                   Alert.alert(
                     'New point reached',
-                    `You are at ${finalBeacon.msg} in ${finalPlace.fullName}`,
+                    `You are at ${finalBeacon.fullName} in ${finalPlace.fullName}`,
                     [{ text: 'OK' }],
                     { cancelable: true }
                   );
@@ -266,7 +266,7 @@ class AppMain extends React.Component {
         if (this.props.currentBeacon.major === lostBeacon.major) {
           Alert.alert(
             'Leaving point',
-            'You have left ' + this.props.currentBeacon.msg,
+            'You have left ' + this.props.currentBeacon.fullName,
             [{ text: 'OK' }],
             { cancelable: true }
           );
@@ -450,13 +450,13 @@ AppMain.propTypes = {
   currentPlacesData: PropTypes.object,
   beaconPlaceRelation: PropTypes.array,
   currentBeacon: PropTypes.object,
-  currentPlace: PropTypes.object //,
+  currentPlace: PropTypes.object,
 
-  // setCurrentPlace: PropTypes.function,
-  // setCurrentLanguage: PropTypes.function,
-  // setCurrentPlacesData: PropTypes.function,
-  // setCurrentBeacon: PropTypes.function //,
-  // setAllBeaconsPlacesRelation: PropTypes.function
+  setCurrentPlace: PropTypes.any,
+  setCurrentLanguage: PropTypes.any,
+  setCurrentPlacesData: PropTypes.any,
+  setCurrentBeacon: PropTypes.any,
+  setAllBeaconsPlacesRelation: PropTypes.any
 };
 
 export default reduxConnect(mapStateToProps, mapDispatchToProps)(AppMain);

@@ -10,11 +10,11 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 // import { Dropdown } from 'react-native-material-dropdown';
 import { placeDataCtx } from '../../MainPage';
 
-const firstTimeMsg =
+const firstTimeMsg = // change this to get from place. rename var firstTimePlaceMsg
   'Opening hours:\n' +
   'Sunday - Thursday 8:30 - 21:00\n' +
   'Friday 8:30 - 13:00';
-const atPointDesc = 'You are at the main gate\n' + 'There is an ATM outside';
+// const atPointDesc = 'You are at the main gate\n' + 'There is an ATM outside';
 
 class NearPoints extends Component<{}> {
   constructor(props) {
@@ -65,6 +65,9 @@ class NearPoints extends Component<{}> {
     // console.log('rendering placePoints');
     const place = this.props.currentPlace;
     let curBcnIdx = this.props.beaconIndex;
+    let curPoints = this.props.currentBeacon.points;
+    let atPointDesc = this.props.currentBeacon.msg;
+    
     return (
       <View style={styles.container}>
         {/* <Text style={styles.firstTimeMsg}>{getFirstTimeMsg()}</Text> */}
@@ -72,7 +75,7 @@ class NearPoints extends Component<{}> {
 
         {/*<Text style={styles.headingTo}>{getTextFromCurHeading()}</Text>*/}
         <Accordion
-          sections={this.props.currentBeacon.points || []}
+          sections={curPoints || []}
           renderHeader={this._renderHeader}
           renderContent={this._renderContent}
         />

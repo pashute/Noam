@@ -54,7 +54,7 @@
               "major": 28999,
               "minor": 64381,
               "fullName": "Main Gate (South)",
-              "msg": "Main gate",
+              "msg": ["You are at the main gate", "There is an ATM outside"],
               "points": [
                 {
                   "point": {
@@ -113,7 +113,7 @@
               "major": 57356,
               "minor": 52537,
               "fullName": "Accessible toilets 1S",
-              "msg": "Toilets f1.S",
+              "msg": "Toilets (south) on floor 1",
               "points": [
                 {
                   "point": {

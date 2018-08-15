@@ -12,8 +12,8 @@ import { placeDataCtx } from '../../../AppMain';
 //const str_welcome ='Welcome to Big Fashion';
 //const str_open= 'Opening hours:\n' + 'Sunday - Thursday 8:30 - 21:00\n' + 'Friday 8:30 - 13:00';
 //const str_pos = 'You are at the main gate \n' + 'There is an ATM outside';
-const atPointDesc =
-  'You are on the first floor \n' + 'near the south gate \n' + 'and bank Leumi';
+//const atPointDesc =
+//  'You are on the first floor \n' + 'near the south gate \n' + 'and bank Leumi';
 
 class WayPoints extends Component<{}> {
   constructor(props) {
@@ -60,6 +60,7 @@ class WayPoints extends Component<{}> {
     // console.log('rendering placePoints');
     const place = this.props.currentPlace;
     let curBcnIdx = this.props.beaconIndex;
+    let atPointDesc = this.props.currentBeacon.msg;
     return (
       <View style={styles.container}>
         {/* <Text style={styles.firstTimeMsg}>{getFirstTimeMsg()}</Text> */}
