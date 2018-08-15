@@ -223,7 +223,7 @@ class AppMain extends React.Component {
           );
           console.log('dbg.Appmain.bcnDid tempbcnRel', tempBeaconRelation);
           if (tempBeaconRelation !== undefined && tempBeaconRelation !== null) {
-            let finalBeacon = undefined; // what for?
+            let finalBeacon = undefined; 
             let finalPlace = undefined;
             console.log('dbg.appmain.bcnDid find point',this.props.currentPlacesData);
             const currentPlace = this.props.currentPlacesData.places.find(
@@ -240,17 +240,16 @@ class AppMain extends React.Component {
                 });
                 // console.log('dbg.Appmain.bcnDidAppear.beaconPoint tempBeacon', tempBeacon);
                 if (tempBeacon !== undefined && tempBeacon !== null) {
-                  finalBeacon = tempBeacon.beacon; // what is this for ??
-                  if (
-                    this.props.currentPlace.id !== tempBeaconRelation.placeId
-                  ) {
+                  finalBeacon = tempBeacon.beacon; 
+                  console.log('dbg.AppMain.bcnDid finalbcn', finalBeacon);
+                  if (this.props.currentPlace.id !== tempBeaconRelation.placeId) {
                     this.props.setCurrentPlace(finalPlace);
                   }
-                  this.props.setCurrentBeacon(tempBeacon);
+                  this.props.setCurrentBeacon(finalBeacon);
                   Alert.alert(
                     'New point reached',
                     'You are at ' +
-                      tempBeacon.msg +
+                      finalBeacon.msg +
                       ' in ' +
                       finalPlace.fullName,
                     [{ text: 'OK' }],
@@ -452,7 +451,7 @@ const mapDispatchToProps = dispatch => {
 
 AppMain.propTypes = {
   currentPlacesData: PropTypes.object,
-  beaconPlaceRelation: PropTypes.object,
+  beaconPlaceRelation: PropTypes.array,
   currentBeacon: PropTypes.object,
   currentPlace: PropTypes.object //,
 
