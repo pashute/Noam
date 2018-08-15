@@ -248,10 +248,7 @@ class AppMain extends React.Component {
                   this.props.setCurrentBeacon(finalBeacon);
                   Alert.alert(
                     'New point reached',
-                    'You are at ' +
-                      finalBeacon.msg +
-                      ' in ' +
-                      finalPlace.fullName,
+                    `You are at ${finalBeacon.msg} in ${finalPlace.fullName}`,
                     [{ text: 'OK' }],
                     { cancelable: true }
                   );
