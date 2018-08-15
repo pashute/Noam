@@ -205,10 +205,7 @@ class AppMain extends React.Component {
         // beacons: this.state.beacons.concat(newBeacon)
         // next line does not happen, maybe because I do not do the equivalent of "Start scan..."
         console.log('dbg.Appmain.beaconDidAppear detected', newBeacon);
-        console.log(
-          'dbg.Appmain.bcnDid propsBcnRel',
-          this.props.beaconPlaceRelation
-        );
+        console.log('dbg.Appmain.bcnDid propsBcnRel', this.props.beaconPlaceRelation);
         console.log('dbg.Appmain.bcnDid curbcn', this.props.currentBeacon);
         if (
           this.props.currentBeacon === {} ||

@@ -1,7 +1,9 @@
 package com.noam;
 
 import com.facebook.react.ReactActivity;
-
+import com.slowpath.hockeyapp.RNHockeyAppModule; 
+import com.slowpath.hockeyapp.RNHockeyAppPackage; 
+ 
 public class MainActivity extends ReactActivity {
 
     /**
@@ -12,4 +14,12 @@ public class MainActivity extends ReactActivity {
     protected String getMainComponentName() {
         return "noam";
     }
+
+    @Override
+    protected List<ReactPackage> getPackages() {
+        return Arrays.<ReactPackage>asList(
+            new RNHockeyAppPackage(this), // <------ add this line to yout MainActivity class 
+            new MainReactPackage());
+    }
+
 }

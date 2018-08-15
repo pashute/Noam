@@ -18,7 +18,6 @@
   ],
   "colorize.files_extensions": [".js"],
   "colorize.hide_current_line_decorations": true,
-  "editor.formatOnSave": true,
   "[javascriptreact]": {},
   "files.associations": {
     "*.js": "javascriptreact"

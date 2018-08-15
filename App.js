@@ -2,6 +2,17 @@
 // import { module } from 'react-native';
 import StorybookUI from './storybook';
 import AppRedux from './AppRedux';
+import HockeyApp from 'react-native-hockeyapp';
+
+componentWillMount() {
+    HockeyApp.configure(HOCKEY_APP, true);
+}
+
+componentDidMount() {
+    HockeyApp.start();
+    HockeyApp.checkForUpdate();
+    HockeyApp.start();
+}
 
 module.exports = __DEV__ ? AppRedux : AppRedux;
 
