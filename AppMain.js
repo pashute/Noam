@@ -9,7 +9,7 @@ import {
   I18nManager,
   Platform /* StyleSheet,  Text, View, Alert */
 } from 'react-native';
-
+import PropTypes from 'prop-types';
 import { connect as reduxConnect } from 'react-redux';
 import { NavigationActions, StackNavigator } from 'react-navigation';
 
@@ -193,7 +193,7 @@ class AppMain extends React.Component {
       .then(() => setBeaconRegions([regionKontakt]))
       .then(() => setEddystoneNamespace())
       .then(() => {
-        console.log('dbg.appmain about to start scanning');
+        console.log('dbg.appmain scanning start');
         startScanning();
       })
       .catch(error => console.log('appmain kontakt error: \n', error));
@@ -226,9 +226,11 @@ class AppMain extends React.Component {
             let finalBeacon = undefined; // what for?
             let finalPlace = undefined;
             console.log('find point in data');
-            const currentPlace = placesData.places.find(place => {
-              return place.place.id === tempBeaconRelation.placeId;
-            });
+            const currentPlace = this.props.currentPlacesData.places.find(
+              place => {
+                return place.place.id === tempBeaconRelation.placeId;
+              }
+            );
             if (currentPlace !== undefined && currentPlace !== null) {
               finalPlace = currentPlace.place;
               if (finalPlace !== undefined && finalPlace !== null) {
@@ -446,6 +448,19 @@ const mapDispatchToProps = dispatch => {
       dispatch(setCurrentBeacon(beacon));
     }
   };
+};
+
+AppMain.propTypes = {
+  currentPlacesData: PropTypes.object,
+  beaconPlaceRelation: PropTypes.object,
+  currentBeacon: PropTypes.object,
+  currentPlace: PropTypes.object,
+
+  setCurrentPlace: PropTypes.function,
+  setCurrentLanguage: PropTypes.function,
+  setCurrentPlacesData: PropTypes.function,
+  setCurrentBeacon: PropTypes.function,
+  setAllBeaconsPlacesRelation: PropTypes.function
 };
 
 export default reduxConnect(mapStateToProps, mapDispatchToProps)(AppMain);
