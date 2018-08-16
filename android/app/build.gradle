@@ -101,6 +101,7 @@ android {
         applicationId "com.noam"
         minSdkVersion 16
         targetSdkVersion 22
+        
         versionCode 1
         versionName "1.0"
         ndk {
@@ -111,9 +112,9 @@ android {
     signingConfigs {
         release {
             storeFile file("noam-release-key.keystore")
-            storePassword "noam12#\$"
+            storePassword 'noam12#$'
             keyAlias "noam-key"
-            keyPassword "noam12#\$"
+            keyPassword 'noam12#$'
         }
     }
     splits {
@@ -126,6 +127,7 @@ android {
     }
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }

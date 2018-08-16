@@ -12,6 +12,7 @@ import {
 import PropTypes from 'prop-types';
 import { connect as reduxConnect } from 'react-redux';
 import { NavigationActions, StackNavigator } from 'react-navigation';
+import HockeyApp from 'react-native-hockeyapp';
 
 // import { ButtonGroup } from 'react-native-elements';
 // import ObjectPath from 'object-path';
@@ -152,6 +153,8 @@ class AppMain extends React.Component {
       heading: {},
       scanning: false
     };
+    // moved from componentWillMount and hope this works
+    HockeyApp.configure(HOCKEY_APP, true);
   }
   /*
     kontakt uuid: 'f7826da6-4fa2-4e98-8024-bc5b71e0893e'
@@ -278,8 +281,14 @@ class AppMain extends React.Component {
   //     .catch(error => console.log('[startScanning] error:\n', error));
   // };
 
+  //componentWillMount() {
+  //  HockeyApp.configure(HOCKEY_APP, true);
+  //}
+
   componentDidMount() {
-    AsyncStorage.getItem('preferences-language')
+      HockeyApp.start();
+      HockeyApp.checkForUpdate();
+      AsyncStorage.getItem('preferences-language')
       .then(value => {
         let places = [];
         if (value !== null) {
