@@ -670,7 +670,7 @@
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				CAB22ED3A1954F70A1ED20F0 /* RNVectorIcons.xcodeproj */,
 				4222E1799F2F4D9C95AB8879 /* RNSimpleCompass.xcodeproj */,
-				1D7F794CE9244B17A67537D0 /* KontaktBeacons.xcodeproj */
+				1D7F794CE9244B17A67537D0 /* KontaktBeacons.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -746,7 +746,8 @@
 			children = (
 				FD4AE4FA679E49D0991E36F1 /* libRNVectorIcons.a */,
 				E43C979F2F654606BD70CC7C /* libRNSimpleCompass.a */,
-				48E65BE16E9F48158F0E17D8 /* libKontaktBeacons.a */			);
+				48E65BE16E9F48158F0E17D8 /* libKontaktBeacons.a */,
+			);
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
@@ -1458,8 +1459,8 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-simple-compass/ios",
-					"$(SRCROOT)/../node_modules/react-native-kontaktio/ios/**"				
-					);
+					"$(SRCROOT)/../node_modules/react-native-kontaktio/ios/**",
+				);
 				INFOPLIST_FILE = noamTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1488,7 +1489,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-simple-compass/ios",
-					"$(SRCROOT)/../node_modules/react-native-kontaktio/ios/**"
+					"$(SRCROOT)/../node_modules/react-native-kontaktio/ios/**",
 				);
 				INFOPLIST_FILE = noamTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1522,7 +1523,8 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-simple-compass/ios",
-					"$(SRCROOT)/../node_modules/react-native-kontaktio/ios/**"
+					"$(SRCROOT)/../node_modules/react-native-kontaktio/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-hockeyapp/RNHockeyApp/**",
 				);
 				INFOPLIST_FILE = noam/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1550,7 +1552,8 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-simple-compass/ios",
-					"$(SRCROOT)/../node_modules/react-native-kontaktio/ios/**"
+					"$(SRCROOT)/../node_modules/react-native-kontaktio/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-hockeyapp/RNHockeyApp/**",
 				);
 				INFOPLIST_FILE = noam/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
