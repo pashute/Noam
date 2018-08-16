@@ -3,7 +3,6 @@ package com.noam;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import com.testfairy.react.TestFairyPackage;
 import com.artirigo.kontaktio.KontaktPackage;
 import com.reactlibrary.RNSimpleCompassPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -26,7 +25,6 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(new MainReactPackage(),
-            new TestFairyPackage(), new RNSimpleCompassPackage(), new VectorIconsPackage(),
           new KontaktPackage());
     }
 

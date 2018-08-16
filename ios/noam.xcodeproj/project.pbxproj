@@ -13,6 +13,7 @@
 		00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
 		00E356F31AD99517003FC87E /* noamTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* noamTests.m */; };
+		131FE6C12125E5EB00156F41 /* react-native-hockeyapp in Resources */ = {isa = PBXBuildFile; fileRef = 131FE6972125E5EB00156F41 /* react-native-hockeyapp */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
 		139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
@@ -55,12 +56,12 @@
 		A98711D994E748A994BD2BE5 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1B91A4E87E1143E2AC6A5DCB /* Entypo.ttf */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		BB5C016B7019449789172971 /* libKontaktBeacons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E65BE16E9F48158F0E17D8 /* libKontaktBeacons.a */; };
-		C13E660A1C484C01B5E89DFF /* libReactNativeTestFairy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 361553CCB17F4A71ADBB6B4E /* libReactNativeTestFairy.a */; };
 		D3D771BB332A4D8787FDE7FB /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EEEFA2DC92B94658A461B97D /* Zocial.ttf */; };
 		DF1D50BC7C4547C1B5EBADA1 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E78138D04E654AEA9BCE921F /* EvilIcons.ttf */; };
 		DFB59D5D999B426B9B501996 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD918A4325AE4E3C8FFCF801 /* Feather.ttf */; };
 		E391CB5A20DB41A2009A01F0 /* KontaktSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E391CB5920DB41A2009A01F0 /* KontaktSDK.framework */; };
 		E391CB5B20DB41A2009A01F0 /* KontaktSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E391CB5920DB41A2009A01F0 /* KontaktSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FBEAB93F9FC0CE469188B5D8 /* libPods-noam.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F5780FD5196A5B4B2132F7D /* libPods-noam.a */; };
 		FF6DBBE2CB4B41AD9E232BB1 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20DA0A69942A4082AA739483 /* FontAwesome.ttf */; };
 /* End PBXBuildFile section */
 
@@ -303,13 +304,6 @@
 			remoteGlobalIDString = 3D3CD9181DE5FBD800167DC4;
 			remoteInfo = "jschelpers-tvOS";
 		};
-		4FFE1CD3211B7E450074088C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 312C46B3112F46F386EF24C0 /* ReactNativeTestFairy.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 42959838203B471F00E34882;
-			remoteInfo = ReactNativeTestFairy;
-		};
 		5E9157321DD0AC6500FF2AA8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */;
@@ -393,6 +387,7 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* noamTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = noamTests.m; sourceTree = "<group>"; };
 		01673C6A898349B5B9AF9D7D /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
+		131FE6972125E5EB00156F41 /* react-native-hockeyapp */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "react-native-hockeyapp"; path = "../node_modules/react-native-hockeyapp"; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* noam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = noam.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -409,8 +404,7 @@
 		2D02E47B1E0B4A5D006451C7 /* noam-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "noam-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* noam-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "noam-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		312C46B3112F46F386EF24C0 /* ReactNativeTestFairy.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeTestFairy.xcodeproj; path = "../node_modules/react-native-testfairy/ios/ReactNativeTestFairy.xcodeproj"; sourceTree = "<group>"; };
-		361553CCB17F4A71ADBB6B4E /* libReactNativeTestFairy.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libReactNativeTestFairy.a; sourceTree = "<group>"; };
+		3125857F1DF55620EC5AA373 /* libPods-noam-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-noam-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4222E1799F2F4D9C95AB8879 /* RNSimpleCompass.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSimpleCompass.xcodeproj; path = "../node_modules/react-native-simple-compass/ios/RNSimpleCompass.xcodeproj"; sourceTree = "<group>"; };
 		48E65BE16E9F48158F0E17D8 /* libKontaktBeacons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libKontaktBeacons.a; sourceTree = "<group>"; };
 		4FFE1CD7211B83340074088C /* ios */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ios; sourceTree = "<group>"; };
@@ -424,12 +418,16 @@
 		640BE137FE774CA8BF6F22BF /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		7259F443FF2B4F199AD55722 /* Bauhaus-93.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Bauhaus-93.ttf"; path = "../assets/fonts/Bauhaus-93.ttf"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
+		7D8695BE031B3BF9561305E0 /* libPods-noam-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-noam-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		8F5780FD5196A5B4B2132F7D /* libPods-noam.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-noam.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		97F7E2E927AAC4D58F2E2659 /* Pods-noam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-noam.debug.xcconfig"; path = "Pods/Target Support Files/Pods-noam/Pods-noam.debug.xcconfig"; sourceTree = "<group>"; };
 		9CDF41704E174095B7B90547 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		A05001DCF3564D67B6E86150 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		AD918A4325AE4E3C8FFCF801 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		CAB22ED3A1954F70A1ED20F0 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
+		CB39794E93F48DBA14C3906A /* Pods-noam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-noam.release.xcconfig"; path = "Pods/Target Support Files/Pods-noam/Pods-noam.release.xcconfig"; sourceTree = "<group>"; };
 		E391CB5920DB41A2009A01F0 /* KontaktSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KontaktSDK.framework; path = "../node_modules/react-native-kontaktio/ios/KontaktSDK.framework"; sourceTree = "<group>"; };
 		E43C979F2F654606BD70CC7C /* libRNSimpleCompass.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSimpleCompass.a; sourceTree = "<group>"; };
 		E78138D04E654AEA9BCE921F /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
@@ -473,7 +471,7 @@
 				38D366071067480193ADFC04 /* libRNVectorIcons.a in Frameworks */,
 				6B31363A45464920A746F948 /* libRNSimpleCompass.a in Frameworks */,
 				BB5C016B7019449789172971 /* libKontaktBeacons.a in Frameworks */,
-				C13E660A1C484C01B5E89DFF /* libReactNativeTestFairy.a in Frameworks */,
+				FBEAB93F9FC0CE469188B5D8 /* libPods-noam.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -628,16 +626,11 @@
 				4FFE1CDB211B88B00074088C /* CoreMedia.framework */,
 				4FFE1CD9211B888B0074088C /* AVFoundation.framework */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
+				8F5780FD5196A5B4B2132F7D /* libPods-noam.a */,
+				7D8695BE031B3BF9561305E0 /* libPods-noam-tvOS.a */,
+				3125857F1DF55620EC5AA373 /* libPods-noam-tvOSTests.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		4FFE1CAA211B7E450074088C /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				4FFE1CD4211B7E450074088C /* libReactNativeTestFairy.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		5E91572E1DD0AC6500FF2AA8 /* Products */ = {
@@ -661,6 +654,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				131FE6972125E5EB00156F41 /* react-native-hockeyapp */,
 				4FFE1CD7211B83340074088C /* ios */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
@@ -676,8 +670,7 @@
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				CAB22ED3A1954F70A1ED20F0 /* RNVectorIcons.xcodeproj */,
 				4222E1799F2F4D9C95AB8879 /* RNSimpleCompass.xcodeproj */,
-				1D7F794CE9244B17A67537D0 /* KontaktBeacons.xcodeproj */,
-				312C46B3112F46F386EF24C0 /* ReactNativeTestFairy.xcodeproj */,
+				1D7F794CE9244B17A67537D0 /* KontaktBeacons.xcodeproj */
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -702,6 +695,7 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				CFC827A644014AB68934E9A7 /* Resources */,
 				E391CB2420DB3CB7009A01F0 /* Recovered References */,
+				FE34D113B3FE3F53B638F2E9 /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -752,8 +746,7 @@
 			children = (
 				FD4AE4FA679E49D0991E36F1 /* libRNVectorIcons.a */,
 				E43C979F2F654606BD70CC7C /* libRNSimpleCompass.a */,
-				48E65BE16E9F48158F0E17D8 /* libKontaktBeacons.a */,
-			);
+				48E65BE16E9F48158F0E17D8 /* libKontaktBeacons.a */			);
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
@@ -781,6 +774,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		FE34D113B3FE3F53B638F2E9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				97F7E2E927AAC4D58F2E2659 /* Pods-noam.debug.xcconfig */,
+				CB39794E93F48DBA14C3906A /* Pods-noam.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -806,12 +808,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "noam" */;
 			buildPhases = (
+				465017A056C57B7EEA9F4BC6 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				E391CB5C20DB41A3009A01F0 /* Embed Frameworks */,
 				E391CB5D20DB4292009A01F0 /* ShellScript */,
+				E7375346F8ADDEAAC26CCAA8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -948,10 +952,6 @@
 				{
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
-				},
-				{
-					ProductGroup = 4FFE1CAA211B7E450074088C /* Products */;
-					ProjectRef = 312C46B3112F46F386EF24C0 /* ReactNativeTestFairy.xcodeproj */;
 				},
 				{
 					ProductGroup = E391CB4C20DB3CBC009A01F0 /* Products */;
@@ -1197,13 +1197,6 @@
 			remoteRef = 3DAD3EAE1DF850E9000B6D8A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		4FFE1CD4211B7E450074088C /* libReactNativeTestFairy.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libReactNativeTestFairy.a;
-			remoteRef = 4FFE1CD3211B7E450074088C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1284,6 +1277,7 @@
 				44F1318A6DAF47F38A438CED /* Foundation.ttf in Resources */,
 				313F6FF1CD9D40BAA0730CB1 /* Ionicons.ttf in Resources */,
 				4FFE1CD8211B83340074088C /* ios in Resources */,
+				131FE6C12125E5EB00156F41 /* react-native-hockeyapp in Resources */,
 				99195506CEAA45F2B20C25AE /* MaterialCommunityIcons.ttf in Resources */,
 				946D5094037E49BD905A51D6 /* MaterialIcons.ttf in Resources */,
 				A97980D57DF447309D75F019 /* Octicons.ttf in Resources */,
@@ -1338,6 +1332,24 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
+		465017A056C57B7EEA9F4BC6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-noam-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		E391CB5D20DB4292009A01F0 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1350,6 +1362,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/KontaktSDK.framework/strip-frameworks.sh\"";
+		};
+		E7375346F8ADDEAAC26CCAA8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-noam/Pods-noam-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/HockeySDK/HockeySDKResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/HockeySDKResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-noam/Pods-noam-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1428,9 +1458,8 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-simple-compass/ios",
-					"$(SRCROOT)/../node_modules/react-native-kontaktio/ios/**",
-					"$(SRCROOT)..\node_modules\neact-native-testfairyios",
-				);
+					"$(SRCROOT)/../node_modules/react-native-kontaktio/ios/**"				
+					);
 				INFOPLIST_FILE = noamTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1459,8 +1488,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-simple-compass/ios",
-					"$(SRCROOT)/../node_modules/react-native-kontaktio/ios/**",
-					"$(SRCROOT)..\node_modules\neact-native-testfairyios",
+					"$(SRCROOT)/../node_modules/react-native-kontaktio/ios/**"
 				);
 				INFOPLIST_FILE = noamTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1483,6 +1511,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97F7E2E927AAC4D58F2E2659 /* Pods-noam.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1493,8 +1522,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-simple-compass/ios",
-					"$(SRCROOT)/../node_modules/react-native-kontaktio/ios/**",
-					"$(SRCROOT)..\node_modules\neact-native-testfairyios",
+					"$(SRCROOT)/../node_modules/react-native-kontaktio/ios/**"
 				);
 				INFOPLIST_FILE = noam/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1505,12 +1533,14 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pashute.noam;
 				PRODUCT_NAME = noam;
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB39794E93F48DBA14C3906A /* Pods-noam.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1520,8 +1550,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-simple-compass/ios",
-					"$(SRCROOT)/../node_modules/react-native-kontaktio/ios/**",
-					"$(SRCROOT)..\node_modules\neact-native-testfairyios",
+					"$(SRCROOT)/../node_modules/react-native-kontaktio/ios/**"
 				);
 				INFOPLIST_FILE = noam/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1532,6 +1561,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pashute.noam;
 				PRODUCT_NAME = noam;
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -1553,7 +1583,6 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-simple-compass/ios",
 					"$(SRCROOT)/../node_modules/react-native-kontaktio/ios/**",
-					"$(SRCROOT)..\node_modules\neact-native-testfairyios",
 				);
 				INFOPLIST_FILE = "noam-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1593,7 +1622,6 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-simple-compass/ios",
 					"$(SRCROOT)/../node_modules/react-native-kontaktio/ios/**",
-					"$(SRCROOT)..\node_modules\neact-native-testfairyios",
 				);
 				INFOPLIST_FILE = "noam-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1632,7 +1660,6 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-simple-compass/ios",
 					"$(SRCROOT)/../node_modules/react-native-kontaktio/ios/**",
-					"$(SRCROOT)..\node_modules\neact-native-testfairyios",
 				);
 				INFOPLIST_FILE = "noam-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1671,7 +1698,6 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-simple-compass/ios",
 					"$(SRCROOT)/../node_modules/react-native-kontaktio/ios/**",
-					"$(SRCROOT)..\node_modules\neact-native-testfairyios",
 				);
 				INFOPLIST_FILE = "noam-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
