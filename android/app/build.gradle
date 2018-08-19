@@ -100,11 +100,20 @@ android {
     defaultConfig {
         applicationId "com.noam"
         minSdkVersion 16
-        targetSdkVersion 22
+        targetSdkVersion 22        
         versionCode 1
         versionName "1.0"
         ndk {
             abiFilters "armeabi-v7a", "x86"
+        }
+        manifestPlaceholders = [HOCKEYAPP_APP_ID: "4d90883bb99743b4967fc2de72ef170c"]
+    }
+    signingConfigs {
+        release {
+            storeFile file("noam-release-key.keystore")
+            storePassword 'noam12#$'
+            keyAlias "noam-key"
+            keyPassword 'noam12#$'
         }
     }
     splits {
