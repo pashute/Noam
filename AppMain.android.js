@@ -57,7 +57,7 @@ const {
   monitoringSyncInterval
 } = Kontakt;
 
-// not yet:  import HockeyApp from 'react-native-hockeyapp';
+import HockeyApp from 'react-native-hockeyapp';
 
 I18nManager.allowRTL(false);
 
@@ -66,6 +66,8 @@ YellowBox.ignoreWarnings([
   'Warning: componentWillReceiveProps is deprecated',
   'Warning: componentWillUpdate is deprecated'
 ]);
+
+const HOCKEY_APP_ID = '4d90883bb99743b4967fc2de72ef170c'; // as defined in manifest placeholder
 
 const Nav = StackNavigator({
   HelpFirstTime: {
@@ -154,9 +156,9 @@ class AppMain extends React.Component {
       heading: {},
       scanning: false
     };
-    // not yet...
-    // // moved from componentWillMount and hope this works
-    // HockeyApp.configure(HOCKEY_APP, true);
+    // hockeyapp
+    // moved from componentWillMount and hope this works
+    HockeyApp.configure(HOCKEY_APP_ID, true);
   }
   /*
     kontakt uuid: 'f7826da6-4fa2-4e98-8024-bc5b71e0893e'
@@ -345,7 +347,8 @@ class AppMain extends React.Component {
         console.log('error.AppMain.scanPlaceAndPoint', error);
       });
 
-    //x this.startKontaktIoScan();
+    HockeyApp.start();
+    // HockeyApp.checkForUpdate(); optional
 
     // right to left
     I18nManager.forceRTL(false);
