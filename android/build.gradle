@@ -2,21 +2,26 @@
 
 buildscript {
     repositories {
-        jcenter()
+        jcenter() // for gradle 1.7 & on. remark  when downgrading to 1.5
+        // google() // for 4.3 and on
+        // maven { url "https://jcenter.bintray.com" } // jcenter() for gradle versions less than 1.7
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.3'
-        classpath 'net.hockeyapp.android:HockeySDK:5.1.0' // added for hockeyapp
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+        classpath 'net.hockeyapp.android:HockeySDK:5.1.0' // added for hockeyapp
     }
 }
 
 allprojects {
     repositories {
+        // google() // for gradle 4.1 and on
         mavenLocal()
-        jcenter()
-        maven {
+        jcenter() // downgraded to gradle 1.5 and this works only for gradle 1.7 and on
+        // see https://stackoverflow.com/questions/30114860/multiple-maven-repositories-in-one-gradle-file
+        // maven { url "https://jcenter.bintray.com" } // jcenter() for gradle versions less than 1.7
+        maven { 
             // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
             url "$rootDir/../node_modules/react-native/android"
         }

@@ -70,6 +70,12 @@ The beacons have finally been listed.
 https://panel.kontakt.io/signin
 danny@reisspn.co.il נגישתשעז
 
+adb 
+adb devices 
+list all installed: `adb shell pm list packages -f` 
+
+hockeyapp problem: https://github.com/wireapp/wire-android/issues/177
+
 native bluetooth status
 https://www.npmjs.com/package/react-native-bluetooth-status
 
