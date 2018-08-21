@@ -52,7 +52,11 @@ I18nManager.allowRTL(false);
 YellowBox.ignoreWarnings([
   'Warning: componentWillMount is deprecated',
   'Warning: componentWillReceiveProps is deprecated',
-  'Warning: componentWillUpdate is deprecated'
+  'Warning: componentWillUpdate is deprecated',
+  'class RCTxxModule was not exported',
+  'Module RCTImageLoader requires main queue setup',
+  'Module RNSimpleCompass requires main queue setup',
+  'Module KontaktBeacons requires main queue setup'
 ]);
 
 const HOCKEY_APP_ID = '4d90883bb99743b4967fc2de72ef170c'; // as defined in manifest placeholder
