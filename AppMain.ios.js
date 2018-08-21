@@ -184,7 +184,7 @@ class AppMain extends React.Component {
     kontaktEmitter.addListener(
       'didDiscoverDevices', 
       ({ beacons }) => {
-        console.log('ios.didDiscoverDevices', beacons);
+        console.warn('ios.didDiscoverDevices', beacons);
         console.log('dbg.Appmain.bcnDid propsBcnRel', this.props.beaconPlaceRelation);
         console.log('dbg.Appmain.bcnDid curbcn', this.props.currentBeacon);
         try {
