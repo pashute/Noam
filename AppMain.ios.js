@@ -181,81 +181,86 @@ class AppMain extends React.Component {
       .catch(error => console.log('AppMain.IOS.kontakt.error:', error));
 
     // Beacon listeners
-    kontaktEmitter.addListener(
-      'didDiscoverDevices', 
-      ({ beacons }) => {
-        console.warn('ios.didDiscoverDevices', beacons);
-        console.log('dbg.Appmain.bcnDid propsBcnRel', this.props.beaconPlaceRelation);
-        console.log('dbg.Appmain.bcnDid curbcn', this.props.currentBeacon);
-        try {
-          let hasBeacon = false; 
-          let newBeacon = {};
-          if (beacons != null && beacons.length > 0) {
-            hasBeacon = true;
-            newBeacon = beacons[0];
-          }
-          if (
-            this.props.currentBeacon === {} ||
-            (hasBeacon && this.props.currentBeacon.ktid !== newBeacon.uniqueId)
-          ) {
-            console.log('dbg.Appmain.bcnDid bcnPlcFind');
-            const tempBeaconRelation = this.props.beaconPlaceRelation.find(
-              beaconRelation => {
-                return beaconRelation.major === newBeacon.major;
-                // newBeacon?: uniqueId: "uWWf",major,minor, uuid: f7826da6-4fa2-4e98-8024-bc5b71e0893e
+    kontaktEmitter.addListener('didDiscoverDevices', ({ beacons }) => {
+      console.warn('ios.didDiscoverDevices', beacons);
+      console.log(
+        'dbg.Appmain.bcnDid propsBcnRel',
+        this.props.beaconPlaceRelation
+      );
+      console.log('dbg.Appmain.bcnDid curbcn', this.props.currentBeacon);
+      try {
+        let hasBeacon = false;
+        let newBeacon = {};
+        if (beacons != null && beacons.length > 0) {
+          hasBeacon = true;
+          newBeacon = beacons[0];
+        }
+        if (
+          this.props.currentBeacon === {} ||
+          (hasBeacon && this.props.currentBeacon.ktid !== newBeacon.uniqueId)
+        ) {
+          console.log('dbg.Appmain.bcnDid bcnPlcFind');
+          const tempBeaconRelation = this.props.beaconPlaceRelation.find(
+            beaconRelation => {
+              return beaconRelation.major === newBeacon.major;
+              // newBeacon?: uniqueId: "uWWf",major,minor, uuid: f7826da6-4fa2-4e98-8024-bc5b71e0893e
+            }
+          );
+          console.log('dbg.Appmain.bcnDid tempbcnRel', tempBeaconRelation);
+          if (tempBeaconRelation !== undefined && tempBeaconRelation !== null) {
+            let finalBeacon = undefined;
+            let finalPlace = undefined;
+            console.log(
+              'dbg.appmain.bcnDid finding point',
+              this.props.currentPlacesData
+            );
+            const currentPlace = this.props.currentPlacesData.places.find(
+              place => {
+                return place.place.id === tempBeaconRelation.placeId;
               }
             );
-            console.log('dbg.Appmain.bcnDid tempbcnRel', tempBeaconRelation);
-            if (tempBeaconRelation !== undefined && tempBeaconRelation !== null) {
-              let finalBeacon = undefined;
-              let finalPlace = undefined;
-              console.log('dbg.appmain.bcnDid finding point', this.props.currentPlacesData);
-              const currentPlace = this.props.currentPlacesData.places.find(
-                place => {
-                  return place.place.id === tempBeaconRelation.placeId;
-                }
-              );
-              if (currentPlace !== undefined && currentPlace !== null) {
-                finalPlace = currentPlace.place;
-                if (finalPlace !== undefined && finalPlace !== null) {
-                  const tempBeacon = finalPlace.nearby.find(beacon => {
-                    // console.log('dbg.Appmain.bcnDid.bcnPoint bcn.bcn', beacon.beacon);
-                    return beacon.beacon.ktid === tempBeaconRelation.ktid;
-                  });
-                  // console.log('dbg.Appmain.bcnDid.beaconPoint tempBeacon', tempBeacon);
-                  if (tempBeacon !== undefined && tempBeacon !== null) {
-                    finalBeacon = tempBeacon.beacon;
-                    console.log('dbg.AppMain.bcnDid finalbcn', finalBeacon);
-                    if (this.props.currentPlace.id !== tempBeaconRelation.placeId) {
-                      this.props.setCurrentPlace(finalPlace);
-                    }
-                    this.props.setCurrentBeacon(finalBeacon);
-                    Alert.alert(
-                      'New point reached',
-                      `You are at ${finalBeacon.fullName} in ${
-                        finalPlace.fullName
-                      }`,
-                      [{ text: 'OK' }],
-                      { cancelable: true }
-                    );
+            if (currentPlace !== undefined && currentPlace !== null) {
+              finalPlace = currentPlace.place;
+              if (finalPlace !== undefined && finalPlace !== null) {
+                const tempBeacon = finalPlace.nearby.find(beacon => {
+                  // console.log('dbg.Appmain.bcnDid.bcnPoint bcn.bcn', beacon.beacon);
+                  return beacon.beacon.ktid === tempBeaconRelation.ktid;
+                });
+                // console.log('dbg.Appmain.bcnDid.beaconPoint tempBeacon', tempBeacon);
+                if (tempBeacon !== undefined && tempBeacon !== null) {
+                  finalBeacon = tempBeacon.beacon;
+                  console.log('dbg.AppMain.bcnDid finalbcn', finalBeacon);
+                  if (
+                    this.props.currentPlace.id !== tempBeaconRelation.placeId
+                  ) {
+                    this.props.setCurrentPlace(finalPlace);
                   }
+                  this.props.setCurrentBeacon(finalBeacon);
+                  Alert.alert(
+                    'New point reached',
+                    `You are at ${finalBeacon.fullName} in ${
+                      finalPlace.fullName
+                    }`,
+                    [{ text: 'OK' }],
+                    { cancelable: true }
+                  );
                 }
               }
             }
-            //  this.props.setCurrentBeacon(tempBeacon.beacon);
           }
-        } catch (error) {
-          console.log('error Appmain.setKontakt', error)
+          //  this.props.setCurrentBeacon(tempBeacon.beacon);
         }
+      } catch (error) {
+        console.error('Appmain.setKontakt', error);
       }
-    );
+    });
   }
 
   componentDidMount() {
     AsyncStorage.getItem('preferences-language')
       .then(value => {
         let places = [];
-        let selectedValue = ((value == null) ? 'en' : value);
+        let selectedValue = value == null ? 'en' : value;
         const savedLanguage = getLanguage(selectedValue).data;
         this.setState({ language: savedLanguage });
         const { placesData } = savedLanguage;
@@ -263,7 +268,7 @@ class AppMain extends React.Component {
         // console.log('dbg.AppMain.savedLanguage: ', savedLanguage);
         this.props.setCurrentLanguage(savedLanguage);
         this.props.setCurrentPlacesData(placesData);
-        this.props.setCurrentPlace(placesData.places[0].place); 
+        this.props.setCurrentPlace(placesData.places[0].place);
         const finalBeaconRelation = [];
         for (let i = 0; i < places.length; i++) {
           let tempPlace = places[i];
@@ -288,12 +293,12 @@ class AppMain extends React.Component {
         this.setKontaktIo();
       })
       .catch(error => {
-        console.log('error.AppMain.scanPlaceAndPoint', error);
+        console.error('error.AppMain.scanPlaceAndPoint', error);
       });
 
     // HockeyApp.start();
     // HockeyApp.checkForUpdate(); optional
-  
+
     // right to left
     I18nManager.forceRTL(false);
     this.setState({ isRTL: false });
@@ -302,13 +307,12 @@ class AppMain extends React.Component {
 
   // onCompassUpdate = pointingTo => this.setState({ pointingTo });
 
-
   componentWillUnmount() {
     try {
-    // Disconnect beaconManager and set to it to null
-    // disconnect();
-    NativeEventEmitter.removeAllListeners();
-    } catch(error) {
+      // Disconnect beaconManager and set to it to null
+      // disconnect();
+      NativeEventEmitter.removeAllListeners();
+    } catch (error) {
       console.log('info: AppMain cannot remove listeners.\n', error);
     }
   }
