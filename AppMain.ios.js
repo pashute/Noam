@@ -1,5 +1,6 @@
 /* cSpell:disable */
 
+//#region imports
 import React from 'react';
 import {
   AsyncStorage,
@@ -43,7 +44,9 @@ const { init, startDiscovery } = Kontakt; // for ios
 const kontaktEmitter = new NativeEventEmitter(KontaktModule); // for ios
 
 import HockeyApp from 'react-native-hockeyapp';
+//#endregion imports
 
+//#region setup
 I18nManager.allowRTL(false);
 
 YellowBox.ignoreWarnings([
@@ -126,6 +129,7 @@ const Nav = StackNavigator({
     }
   }
 });
+//#endregion setup
 
 class AppMain extends React.Component {
   constructor(props) {
@@ -352,39 +356,43 @@ class AppMain extends React.Component {
       return <View />;
     }
 
-    // return (
-    //   <Nav
-    //     screenProps={{
-    //       setWelcomeColor: this.setWelcomeColor,
-    //       welcomeColor: this.state.styles.welcomeStyles.welcomeColor
-    //     }}
-    //   />
-    // );
     return (
       <Nav
         screenProps={{
           checkNav: this.checkNav,
           pointingTo: this.state.pointingTo,
-          heading: this.state.heading,
-          noamColor:
-            this.state.data && this.state.data.styles
-              ? this.state.data.styles.stylesSplash.noamColor
-              : '#FF0000'
+          heading: this.state.heading
         }}
       />
     );
   }
 }
 const mapStateToProps = ({ data }) => {
-  const { currentBeacon, currentPlace } = data;
-  console.log('dbg.mapStateToProps currentBeacon:', currentBeacon);
-  return { currentBeacon, currentPlace };
+  const {
+    currentBeacon,
+    currentPlace,
+    beaconPlaceRelation,
+    currentPlacesData
+  } = data;
+  // console.log('dbg.Appmain.mapStt currentBeacon:', currentBeacon);
+  return {
+    currentBeacon,
+    currentPlace,
+    beaconPlaceRelation,
+    currentPlacesData
+  };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     setCurrentLanguage: languages => {
       dispatch(setCurrentLanguage(languages));
+    },
+    setCurrentPlacesData: currentPlacesData => {
+      dispatch(setCurrentPlacesData(currentPlacesData));
+    },
+    setAllBeaconsPlacesRelation: beaconPlaceRelation => {
+      dispatch(setAllBeaconsPlacesRelation(beaconPlaceRelation));
     },
     setCurrentPlace: place => {
       dispatch(setCurrentPlace(place));

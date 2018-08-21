@@ -1,5 +1,6 @@
 /* cSpell:disable */
 
+//#region imports
 import React from 'react';
 import {
   AsyncStorage,
@@ -58,7 +59,9 @@ const {
 } = Kontakt;
 
 import HockeyApp from 'react-native-hockeyapp';
+//#endregion imports
 
+//#region setup
 I18nManager.allowRTL(false);
 
 YellowBox.ignoreWarnings([
@@ -141,7 +144,7 @@ const Nav = StackNavigator({
     }
   }
 });
-
+//#endregion setup
 class AppMain extends React.Component {
   constructor(props) {
     super(props);
