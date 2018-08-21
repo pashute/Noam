@@ -4,7 +4,7 @@ import React from 'react';
 import {
   AsyncStorage,
   View,
-  DeviceEventEmitter,
+  NativeEventEmitter,
   Alert,
   I18nManager,
   Platform /* StyleSheet,  Text, View, Alert */
@@ -38,24 +38,11 @@ import {
   setCurrentBeacon
 } from './redux/actions';
 
-import Kontakt from 'react-native-kontaktio';
-const {
-  connect,
-  configure,
-  disconnect,
-  startScanning,
-  setBeaconRegions,
-  setEddystoneNamespace,
-  IBEACON,
-  EDDYSTONE,
-  // Configurations
-  scanMode,
-  scanPeriod,
-  activityCheckConfiguration,
-  forceScanConfiguration,
-  monitoringEnabled,
-  monitoringSyncInterval
-} = Kontakt;
+import Kontakt, { KontaktModule } from 'react-native-kontaktio';
+const { init, startDiscovery } = Kontakt; // for ios
+const kontaktEmitter = new NativeEventEmitter(KontaktModule); // for ios
+
+import HockeyApp from 'react-native-hockeyapp';
 
 I18nManager.allowRTL(false);
 
@@ -64,6 +51,8 @@ YellowBox.ignoreWarnings([
   'Warning: componentWillReceiveProps is deprecated',
   'Warning: componentWillUpdate is deprecated'
 ]);
+
+const HOCKEY_APP_ID = '4d90883bb99743b4967fc2de72ef170c'; // as defined in manifest placeholder
 
 const Nav = StackNavigator({
   HelpFirstTime: {
@@ -152,7 +141,11 @@ class AppMain extends React.Component {
       heading: {},
       scanning: false
     };
+    // hockeyapp
+    // moved from componentWillMount and hope this works
+    // HockeyApp.configure(HOCKEY_APP_ID, true);
   }
+
   /*
     kontakt uuid: 'f7826da6-4fa2-4e98-8024-bc5b71e0893e'
     No.	ID	Model	Battery	Location	TX Power	Major	Minor	
@@ -162,156 +155,118 @@ class AppMain extends React.Component {
     4.	Z055 (Kontakt)	94%		3	38979	49687	EDIT
     5.	uWWf (Kontakt)	71%		3	28999	64381	EDIT
   */
-
   setKontaktIo() {
-    const regionKontakt = {
-      identifier: 'Noam Kontakt Beacons',
-      uuid: 'f7826da6-4fa2-4e98-8024-bc5b71e0893e'
-      // major: 1  no major, all majors will be detected
-      // no minor provided: will detect all minors
-    };
+    // const regionKontakt = {
+    //   identifier: 'Noam Kontakt Beacons',
+    //   uuid: 'f7826da6-4fa2-4e98-8024-bc5b71e0893e'
+    //   // major: 1  no major, all majors will be detected
+    //   // no minor provided: will detect all minors
+    // };
 
-    const noamKontaktApiKey = 'CJPwKLLQewygcKuzAIcOTDQbwVfDsiru';
-
-    connect(
-      noamKontaktApiKey,
-      [IBEACON, EDDYSTONE]
-    )
-      .then(() =>
-        configure({
-          scanMode: scanMode.BALANCED,
-          scanPeriod: scanPeriod.create({
-            activePeriod: 6000,
-            passivePeriod: 20000
-          }),
-          activityCheckConfiguration: activityCheckConfiguration.DEFAULT,
-          forceScanConfiguration: forceScanConfiguration.MINIMAL,
-          monitoringEnabled: monitoringEnabled.TRUE,
-          monitoringSyncInterval: monitoringSyncInterval.DEFAULT
-        })
-      )
-      .then(() => setBeaconRegions([regionKontakt]))
-      .then(() => setEddystoneNamespace())
+    // // connect with api key (not necessary)
+    // connect(
+    //   'CJPwKLLQewygcKuzAIcOTDQbwVfDsiru',
+    //   [IBEACON, EDDYSTONE]
+    // )
+    console.log('initializing ios beacon discovery');
+    init()
       .then(() => {
         console.log('dbg.appmain scanning start');
-        startScanning();
+        startDiscovery();
       })
-      .catch(error => console.log('appmain kontakt error: \n', error));
+      .catch(error => console.log('AppMain.IOS.kontakt.error:', error));
 
     // Beacon listeners
-    DeviceEventEmitter.addListener(
-      'beaconDidAppear',
-      ({ beacon: newBeacon, region }) => {
-        // beacons: this.state.beacons.concat(newBeacon)
-        // next line does not happen, maybe because I do not do the equivalent of "Start scan..."
-        console.log('dbg.Appmain.beaconDidAppear detected', newBeacon);
-        console.log(
-          'dbg.Appmain.bcnDid propsBcnRel',
-          this.props.beaconPlaceRelation
-        );
+    kontaktEmitter.addListener(
+      'didDiscoverDevices', 
+      ({ beacons }) => {
+        console.log('ios.didDiscoverDevices', beacons);
+        console.log('dbg.Appmain.bcnDid propsBcnRel', this.props.beaconPlaceRelation);
         console.log('dbg.Appmain.bcnDid curbcn', this.props.currentBeacon);
-        if (
-          this.props.currentBeacon === {} ||
-          this.props.currentBeacon.ktid !== newBeacon.uniqueId
-        ) {
-          console.log('dbg.Appmain.bcnDid bcnPlcFind');
-          const tempBeaconRelation = this.props.beaconPlaceRelation.find(
-            beaconRelation => {
-              return beaconRelation.major === newBeacon.major;
-              // newBeacon: uniqueId: "uWWf",major,minor, uuid: f7826da6-4fa2-4e98-8024-bc5b71e0893e
-            }
-          );
-          console.log('dbg.Appmain.bcnDid tempbcnRel', tempBeaconRelation);
-          if (tempBeaconRelation !== undefined && tempBeaconRelation !== null) {
-            let finalBeacon = undefined; 
-            let finalPlace = undefined;
-            console.log('dbg.appmain.bcnDid find point',this.props.currentPlacesData);
-            const currentPlace = this.props.currentPlacesData.places.find(
-              place => {
-                return place.place.id === tempBeaconRelation.placeId;
+        try {
+          let hasBeacon = false; 
+          let newBeacon = {};
+          if (beacons != null && beacons.length > 0) {
+            hasBeacon = true;
+            newBeacon = beacons[0];
+          }
+          if (
+            this.props.currentBeacon === {} ||
+            (hasBeacon && this.props.currentBeacon.ktid !== newBeacon.uniqueId)
+          ) {
+            console.log('dbg.Appmain.bcnDid bcnPlcFind');
+            const tempBeaconRelation = this.props.beaconPlaceRelation.find(
+              beaconRelation => {
+                return beaconRelation.major === newBeacon.major;
+                // newBeacon?: uniqueId: "uWWf",major,minor, uuid: f7826da6-4fa2-4e98-8024-bc5b71e0893e
               }
             );
-            if (currentPlace !== undefined && currentPlace !== null) {
-              finalPlace = currentPlace.place;
-              if (finalPlace !== undefined && finalPlace !== null) {
-                const tempBeacon = finalPlace.nearby.find(beacon => {
-                  // console.log('dbg.Appmain.bcnDid.bcnPoint bcn.bcn', beacon.beacon);
-                  return beacon.beacon.ktid === tempBeaconRelation.ktid;
-                });
-                // console.log('dbg.Appmain.bcnDidAppear.beaconPoint tempBeacon', tempBeacon);
-                if (tempBeacon !== undefined && tempBeacon !== null) {
-                  finalBeacon = tempBeacon.beacon; 
-                  console.log('dbg.AppMain.bcnDid finalbcn', finalBeacon);
-                  if (this.props.currentPlace.id !== tempBeaconRelation.placeId) {
-                    this.props.setCurrentPlace(finalPlace);
+            console.log('dbg.Appmain.bcnDid tempbcnRel', tempBeaconRelation);
+            if (tempBeaconRelation !== undefined && tempBeaconRelation !== null) {
+              let finalBeacon = undefined;
+              let finalPlace = undefined;
+              console.log('dbg.appmain.bcnDid finding point', this.props.currentPlacesData);
+              const currentPlace = this.props.currentPlacesData.places.find(
+                place => {
+                  return place.place.id === tempBeaconRelation.placeId;
+                }
+              );
+              if (currentPlace !== undefined && currentPlace !== null) {
+                finalPlace = currentPlace.place;
+                if (finalPlace !== undefined && finalPlace !== null) {
+                  const tempBeacon = finalPlace.nearby.find(beacon => {
+                    // console.log('dbg.Appmain.bcnDid.bcnPoint bcn.bcn', beacon.beacon);
+                    return beacon.beacon.ktid === tempBeaconRelation.ktid;
+                  });
+                  // console.log('dbg.Appmain.bcnDid.beaconPoint tempBeacon', tempBeacon);
+                  if (tempBeacon !== undefined && tempBeacon !== null) {
+                    finalBeacon = tempBeacon.beacon;
+                    console.log('dbg.AppMain.bcnDid finalbcn', finalBeacon);
+                    if (this.props.currentPlace.id !== tempBeaconRelation.placeId) {
+                      this.props.setCurrentPlace(finalPlace);
+                    }
+                    this.props.setCurrentBeacon(finalBeacon);
+                    Alert.alert(
+                      'New point reached',
+                      `You are at ${finalBeacon.fullName} in ${
+                        finalPlace.fullName
+                      }`,
+                      [{ text: 'OK' }],
+                      { cancelable: true }
+                    );
                   }
-                  this.props.setCurrentBeacon(finalBeacon);
-                  Alert.alert(
-                    'New point reached',
-                    `You are at ${finalBeacon.fullName} in ${finalPlace.fullName}`,
-                    [{ text: 'OK' }],
-                    { cancelable: true }
-                  );
                 }
               }
             }
+            //  this.props.setCurrentBeacon(tempBeacon.beacon);
           }
-        }
-      }
-    );
-    DeviceEventEmitter.addListener(
-      'beaconDidDisappear',
-      ({ beacon: lostBeacon, region }) => {
-        console.log('beaconDidDisappear', lostBeacon, region);
-        if (this.props.currentBeacon.major === lostBeacon.major) {
-          Alert.alert(
-            'Leaving point',
-            'You have left ' + this.props.currentBeacon.fullName,
-            [{ text: 'OK' }],
-            { cancelable: true }
-          );
+        } catch (error) {
+          console.log('error Appmain.setKontakt', error)
         }
       }
     );
   }
 
-  // startKontaktIoScan = () => {
-  //   console.log('startKontaktIoScan called');
-  //     .then(() => console.log('started scanning'))
-  //     .catch(error => console.log('[startScanning] error:\n', error));
-  // };
-
   componentDidMount() {
     AsyncStorage.getItem('preferences-language')
       .then(value => {
         let places = [];
-        if (value !== null) {
-          const savedLanguage = getLanguage('value').data;
-          this.setState({ language: savedLanguage });
-          const { placesData } = savedLanguage;
-          places = placesData.places;
-          // console.log('dbg.AppMain.savedLanguage: ', savedLanguage);
-          this.props.setCurrentLanguage(savedLanguage);
-          this.props.setCurrentPlacesData(placesData);
-          // console.log('dbg.AppMain.placesData: ', placesData);
-          this.props.setCurrentPlace(placesData.places[0].place);
-        } else {
-          const tempLanguage = getLanguage('en').data;
-          const { placesData } = tempLanguage;
-          // console.log('dbg.AppMain.tempLanguage: ', tempLanguage);
-          this.props.setCurrentLanguage(tempLanguage);
-          this.props.setCurrentPlacesData(placesData);
-          // console.log('dbg.AppMain.placesData: ', placesData);
-          places = placesData.places;
-          this.props.setCurrentPlace(placesData.places[0].place);
-        }
+        let selectedValue = ((value == null) ? 'en' : value);
+        const savedLanguage = getLanguage(selectedValue).data;
+        this.setState({ language: savedLanguage });
+        const { placesData } = savedLanguage;
+        places = placesData.places;
+        // console.log('dbg.AppMain.savedLanguage: ', savedLanguage);
+        this.props.setCurrentLanguage(savedLanguage);
+        this.props.setCurrentPlacesData(placesData);
+        this.props.setCurrentPlace(placesData.places[0].place); 
         const finalBeaconRelation = [];
         for (let i = 0; i < places.length; i++) {
-          const tempPlace = places[i];
+          let tempPlace = places[i];
           // console.log('dbg.appmain.finalBcnRel tempPlace i', tempPlace, i);
-          const nearbyBeacons = tempPlace.place.nearby;
+          let nearbyBeacons = tempPlace.place.nearby;
           for (let b = 0; b < nearbyBeacons.length; b++) {
-            const tempBeacon = nearbyBeacons[b];
+            let tempBeacon = nearbyBeacons[b];
             if (tempBeacon.beacon !== undefined) {
               // console.log('dbg.appmain.bcnDid nrby tempBeacon', tempBeacon);
               const tempRelation = {
@@ -323,7 +278,6 @@ class AppMain extends React.Component {
             }
           }
         }
-
         // console.log('dbg.appmain.finalBcnRel finalbcnrel', finalBeaconRelation);
         this.props.setAllBeaconsPlacesRelation(finalBeaconRelation);
 
@@ -333,27 +287,25 @@ class AppMain extends React.Component {
         console.log('error.AppMain.scanPlaceAndPoint', error);
       });
 
-    //x this.startKontaktIoScan();
-
+    // HockeyApp.start();
+    // HockeyApp.checkForUpdate(); optional
+  
     // right to left
     I18nManager.forceRTL(false);
     this.setState({ isRTL: false });
     this.setState({ fontLoaded: true });
-  }
+  } // .. componentDidMount
 
   // onCompassUpdate = pointingTo => this.setState({ pointingTo });
 
+
   componentWillUnmount() {
+    try {
     // Disconnect beaconManager and set to it to null
-    try {
-      disconnect();
-    } catch (error) {
-      console.log('info: cannot disconnect.\n', error);
-    }
-    try {
-      DeviceEventEmitter.removeAllListeners();
-    } catch (error) {
-      console.log('info: cannot remove listeners.\n', error);
+    // disconnect();
+    NativeEventEmitter.removeAllListeners();
+    } catch(error) {
+      console.log('info: AppMain cannot remove listeners.\n', error);
     }
   }
 
@@ -361,7 +313,8 @@ class AppMain extends React.Component {
     const prevGetStateForAction = Nav.router.getStateForAction;
 
     Nav.router.getStateForAction = (action, state) => {
-      // console.log('dbg.checkNav action and state:', action, state);
+      // console.log('dbg.checkNav action:', action);
+      // console.log('dbg.checkNav state:', state);
       if (state !== undefined && action.type === 'Navigation/NAVIGATE') {
         const screenToGo = action.routeName;
         let navigateTo = action;
@@ -399,43 +352,39 @@ class AppMain extends React.Component {
       return <View />;
     }
 
+    // return (
+    //   <Nav
+    //     screenProps={{
+    //       setWelcomeColor: this.setWelcomeColor,
+    //       welcomeColor: this.state.styles.welcomeStyles.welcomeColor
+    //     }}
+    //   />
+    // );
     return (
       <Nav
         screenProps={{
           checkNav: this.checkNav,
           pointingTo: this.state.pointingTo,
-          heading: this.state.heading
+          heading: this.state.heading,
+          noamColor:
+            this.state.data && this.state.data.styles
+              ? this.state.data.styles.stylesSplash.noamColor
+              : '#FF0000'
         }}
       />
     );
   }
 }
 const mapStateToProps = ({ data }) => {
-  const {
-    currentBeacon,
-    currentPlace,
-    beaconPlaceRelation,
-    currentPlacesData
-  } = data;
-  // console.log('dbg.Appmain.mapStt currentBeacon:', currentBeacon);
-  return {
-    currentBeacon,
-    currentPlace,
-    beaconPlaceRelation,
-    currentPlacesData
-  };
+  const { currentBeacon, currentPlace } = data;
+  console.log('dbg.mapStateToProps currentBeacon:', currentBeacon);
+  return { currentBeacon, currentPlace };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     setCurrentLanguage: languages => {
       dispatch(setCurrentLanguage(languages));
-    },
-    setCurrentPlacesData: currentPlacesData => {
-      dispatch(setCurrentPlacesData(currentPlacesData));
-    },
-    setAllBeaconsPlacesRelation: beaconPlaceRelation => {
-      dispatch(setAllBeaconsPlacesRelation(beaconPlaceRelation));
     },
     setCurrentPlace: place => {
       dispatch(setCurrentPlace(place));
