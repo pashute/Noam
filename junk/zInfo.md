@@ -68,7 +68,7 @@ rightIcon={{ name: 'arrow-right', type: 'font-awesome', style: { marginRight: 10
 
 The beacons have finally been listed.
 https://panel.kontakt.io/signin
-danny@reisspn.co.il נגישתשעז
+danny@reisspn.co.il נגישתשעז נ גדולה
 
 adb 
 adb devices 
