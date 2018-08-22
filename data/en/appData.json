@@ -70,7 +70,7 @@
       "calibrate": {
         "txtTitle": "Compass Calibration",
         "txtInstructionsCompass": [
-          "Please point the top of your device forward ...\n",
+          "Please point your device forward ...\n",
           "then turn it in a large figure eight\n",
           "to calibrate the compass"
         ]
@@ -102,7 +102,7 @@
         "txtVoiceFemale": "Female",
 
         "txtInstrcutionsVoiceAssist": [
-          "If you trun this option on\n",
+          "If you turn this option on\n",
           "you can talk freely with the app\n",
           "Just say Hey Noam!\n",
           "and ask about this place in your own words."
