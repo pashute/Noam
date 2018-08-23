@@ -9,6 +9,9 @@ import Accordion from 'react-native-collapsible/Accordion';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 // import { Dropdown } from 'react-native-material-dropdown';
 import { placeDataCtx } from '../../MainPage';
+// fix: use redux instead of props: see issue: 23
+// https://github.com/pashute/Noam/issues/23
+
 
 const firstTimeMsg = // change this to get from place. rename var firstTimePlaceMsg
   'Opening hours:\n' +

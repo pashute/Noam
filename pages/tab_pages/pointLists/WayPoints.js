@@ -8,6 +8,9 @@ import Accordion from 'react-native-collapsible/Accordion';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 // import { Dropdown } from 'react-native-material-dropdown';
 import { placeDataCtx } from '../../../AppMain';
+// fix: use redux instead of props: see issue: 23
+// https://github.com/pashute/Noam/issues/23
+
 
 //const str_welcome ='Welcome to Big Fashion';
 //const str_open= 'Opening hours:\n' + 'Sunday - Thursday 8:30 - 21:00\n' + 'Friday 8:30 - 13:00';

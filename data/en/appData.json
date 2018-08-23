@@ -19,6 +19,17 @@
     "screenMainApp": {
       "txtPointingTo": "Pointing to"
     },
+    "screenInPlace": {
+      "noDataForFloor": "No data for chosen floor"
+    },
+    "screenFirstTime": {
+      "txtFirstTimeMsg": [
+        "First time msg line 1\n",
+        "First time msg line 2\n",
+        "First time msg line 3\n",
+        "First time msg etc etc"
+      ]
+    },
     "screenSplash": {
       "txtSplashTitle": "noam",
       "txtSplashDescription": "your indoor assistant",

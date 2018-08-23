@@ -13,6 +13,9 @@ import Accordion from 'react-native-collapsible/Accordion';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Dropdown } from 'react-native-material-dropdown';
 import { placeDataCtx } from '../../MainPage';
+// fix: use redux instead of props: see issue: 23
+// https://github.com/pashute/Noam/issues/23
+// 
 
 //const str_welcome ='Last place: South Elevators floor 1';
 //const str_open= 'Opening hours:\n' + 'Sunday - Thursday 8:30-21:00\n';
@@ -50,7 +53,7 @@ class PlacePoints extends Component<{}> {
       }
     }
     if (canRender === false) {
-      return <View />;
+      return <View><Text>No data for chosen floor</Text></View>;
     }
     return (
       <View style={styles.accordArea}>
