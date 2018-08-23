@@ -187,6 +187,12 @@ class AppMain extends React.Component {
     // Beacon listeners
     kontaktEmitter.addListener('didDiscoverDevices', ({ beacons }) => {
       console.warn('ios.didDiscoverDevices', beacons);
+      Alert.alert(
+        'ios.didDiscoverDevices, Line: 191 of AppMain.js',
+        beacons,
+        [{ text: 'OK' }],
+        { cancelable: true }
+      );
       console.log(
         'dbg.Appmain.bcnDid propsBcnRel',
         this.props.beaconPlaceRelation
@@ -255,7 +261,13 @@ class AppMain extends React.Component {
           //  this.props.setCurrentBeacon(tempBeacon.beacon);
         }
       } catch (error) {
-        console.error('Appmain.setKontakt', error);
+        console.error('Error.Appmain.setKontakt', error);
+        Alert.alert(
+          'Error.Appmain.setKontakt, Line: 264 of AppMain.js',
+          error,
+          [{ text: 'OK' }],
+          { cancelable: true }
+        );
       }
     });
   }
@@ -297,7 +309,13 @@ class AppMain extends React.Component {
         this.setKontaktIo();
       })
       .catch(error => {
-        console.error('error.AppMain.scanPlaceAndPoint', error);
+        console.error('Error.AppMain.scanPlaceAndPoint', error);
+        Alert.alert(
+          'Error.AppMain.scanPlaceAndPoint, Line: 312 of AppMain,js',
+          error,
+          [{ text: 'OK' }],
+          { cancelable: true }
+        );
       });
 
     // HockeyApp.start();

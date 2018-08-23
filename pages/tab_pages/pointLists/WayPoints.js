@@ -22,6 +22,7 @@ class WayPoints extends Component<{}> {
   constructor(props) {
     super(props);
 
+    this._renderContent = this._renderContent.bind(this);
     this._renderHeader = this._renderHeader.bind(this);
   }
 
@@ -31,24 +32,31 @@ class WayPoints extends Component<{}> {
       iconName = 'angle-up';
     }
     // console.log(section.point.title);
-    return (
-      <View style={styles.accordArea}>
-        <View style={styles.itemTitle}>
-          {/* if (this.props.useIcons)
+    const direction = section.point.direction;
+    const minusHeading = this.props.heading - 30;
+    const plusHeading = this.props.heading + 30;
+    const inWay = direction > minusHeading && direction < plusHeading;
+    if (inWay) {
+      return (
+        <View style={styles.accordArea}>
+          <View style={styles.itemTitle}>
+            {/* if (this.props.useIcons)
               <Text>here goes icon</Text>
           */}
-          <View>
-            <Text style={styles.itemTitleText}>
-              {'  '}
-              {section.point.title}
-            </Text>
-          </View>
-          <View style={styles.iconOpenColapse}>
-            <FontAwesome name={iconName} size={20} color="gray" />
+            <View>
+              <Text style={styles.itemTitleText}>
+                {'  '}
+                {section.point.title}
+              </Text>
+            </View>
+            <View style={styles.iconOpenColapse}>
+              <FontAwesome name={iconName} size={20} color="gray" />
+            </View>
           </View>
         </View>
-      </View>
-    );
+      );
+    }
+    return <View />;
   }
 
   _renderContent(section) {
@@ -64,6 +72,7 @@ class WayPoints extends Component<{}> {
     const place = this.props.currentPlace;
     let curBcnIdx = this.props.beaconIndex;
     let atPointDesc = this.props.currentBeacon.msg;
+    console.log(this.props.currentBeacon);
     return (
       <View style={styles.container}>
         {/* <Text style={styles.firstTimeMsg}>{getFirstTimeMsg()}</Text> */}
