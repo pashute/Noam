@@ -28,8 +28,8 @@
           },
           {
             "id": 13,
-            "txtId": "bbb",
-            "fullName": "bbb",
+            "txtId": "test1",
+            "fullName": "Test One",
             "ktid": "Z055",
             "uuid": "",
             "major": 38979,
@@ -37,8 +37,8 @@
           },
           {
             "id": 14,
-            "txtId": "ddd",
-            "fullName": "ddd",
+            "txtId": "test2",
+            "fullName": "Test Two",
             "ktid": "V36R",
             "uuid": "",
             "major": 55462,
@@ -135,6 +135,124 @@
                     "instructions": [
                       "Only 2 elevators in this entrance\n",
                       "Does not reach 3rd floor"
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "beacon": {
+              "id": 13,
+              "txtId": "test1",
+              "ktid": "Z055",
+              "major": 38979,
+              "minor": 49687,
+              "fullName": "Test One",
+              "msg": ["lorem1 impsum1 bla bla 1", "lorem impsum bla bla 2"],
+              "points": [
+                {
+                  "point": {
+                    "id": 12,
+                    "txtId": "toilets1a",
+                    "title": "Accessible toilets 1S",
+                    "icon": "toilet",
+                    "direction": 125,
+                    "instructions": ["Call 051-222-333 for assistance"]
+                  }
+                },
+                {
+                  "point": {
+                    "id": 15,
+                    "txtId": "rimon",
+                    "title": "Rimon Cafe",
+                    "icon": "food",
+                    "direction": 343,
+                    "instructions": ["Walk 30 meters north\n", "The door is to the right"]
+                  }
+                },
+                {
+                  "point": {
+                    "id": 16,
+                    "txtId": "electro",
+                    "title": "Nissim Electronics",
+                    "icon": "fix",
+                    "direction": 343,
+                    "instructions": [
+                      "50 meters north\n",
+                      "Entrance to the left"
+                    ]
+                  }
+                },
+                {
+                  "point": {
+                    "id": 17,
+                    "txtId": "info",
+                    "title": "Information",
+                    "icon": "information",
+                    "direction": 343,
+                    "instructions": [
+                      "117 meters north\n",
+                      "Information stand in middle"
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "beacon": {
+              "id": 14,
+              "txtId": "test2",
+              "ktid": "V36R",
+              "major": 55462,
+              "minor": 52576,
+              "fullName": "Test two",
+              "msg": ["You are at the test two", "There is something outside"],
+              "points": [
+                {
+                  "point": {
+                    "id": 12,
+                    "txtId": "toilets1a",
+                    "title": "Accessible toilets 1S",
+                    "icon": "toilet",
+                    "direction": 125,
+                    "instructions": ["Call 051-222-333 for assistance"]
+                  }
+                },
+                {
+                  "point": {
+                    "id": 13,
+                    "txtId": "elevators4a",
+                    "title": "Elevators 4a",
+                    "icon": "elevator",
+                    "direction": 343,
+                    "instructions": ["To all floors\n", "You are on floor 1"]
+                  }
+                },
+                {
+                  "point": {
+                    "id": 14,
+                    "txtId": "superpharm",
+                    "title": "Superpharm",
+                    "icon": "elevator",
+                    "direction": 343,
+                    "instructions": [
+                      "50 meters north\n",
+                      "Entrance to the right"
+                    ]
+                  }
+                },
+                {
+                  "point": {
+                    "id": 15,
+                    "txtId": "info",
+                    "title": "Information",
+                    "icon": "information",
+                    "direction": 343,
+                    "instructions": [
+                      "117 meters north\n",
+                      "Information stand in middle"
                     ]
                   }
                 }
