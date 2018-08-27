@@ -1,0 +1,502 @@
+{
+  "places": [
+    {
+      "place": 1,
+      "placeType": "building",
+      "fullName": "Big Bet Shemesh",
+      "shortName": "Big BS",
+      "inside": [
+        {
+          "point": 1,
+          "floor": 1,
+          "title": "Amanda matchmaker",
+          "subtitle": "office",
+          "content": [
+            "2nd floor \nNear elevator C3 (south)\n",
+            "Staff specializes in disabilities\n",
+            "and we are hiring."
+          ]
+        },
+        {
+          "point": 2,
+          "floor": 1,
+          "title": "Toilets",
+          "subtitle": "for disabled",
+          "content": [
+            "1st floor \nNear elevator C3 (south)\n",
+            "Third door to right\n"
+          ]
+        },
+        {
+          "point": 3,
+          "floor": 2,
+          "title": "Brake out room",
+          "subtitle": "activity place",
+          "content": ["2nd floor \nNear elevator C3 (south)"]
+        },
+        {
+          "point": 3,
+          "floor": 2,
+          "title": "Cazino",
+          "subtitle": "activity place",
+          "content": ["Lorem impsum\n lech teda im yesh teshuva"]
+        }
+      ],
+      "beacons": [
+        {
+          "beacon": 11,
+          "fullName": "Main Gate (South)",
+          "ktid": "uWWf",
+          "uuid": "",
+          "major": 28999,
+          "minor": 64381,
+          "details": ["You are at the main gate\n", "There is an ATM outside"],
+          "points": [
+            {
+              "point": 12,
+              "title": "Accessible toilets 1S",
+              "subtitle": "Accessible toilets (South, flr 1)",
+              "icon": "toilet",
+              "direction": 125,
+              "nearby": true,
+              "instructions": [
+                "10 meters ahead\n",
+                "Entrance is 7 meters to your right.\n",
+                "Call 051-222-333 for assistance"
+              ]
+            },
+            {
+              "point": 13,
+              "title": "Elevators 4a",
+              "subtitle": "point 13 details",
+              "icon": "elevator",
+              "direction": 343,
+              "nearby": false,
+              "instructions": ["Reaches all floors\n", "You are on floor 1"]
+            },
+            {
+              "point": 14,
+              "title": "Superpharm",
+              "subtitle": "subtitle point 14",
+              "icon": "elevator",
+              "direction": 343,
+              "nearby": true,
+              "instructions": ["50 meters north\n", "Entrance to the right"]
+            },
+            {
+              "point": 15,
+              "title": "Information",
+              "subtitle": "",
+              "icon": "information",
+              "direction": 343,
+              "nearby": false,
+              "instructions": [
+                "117 meters north\n",
+                "Information stand in middle"
+              ]
+            },
+            {
+              "point": 16,
+              "title": "North toilets 33",
+              "subtitle": "point 16 subtitle",
+              "icon": "men",
+              "direction": 150,
+              "nearby": true,
+              "instructions": [
+                "No accssiblity. \nUse 2nd floor toilets for this"
+              ]
+            }
+          ]
+        },
+        {
+          "beacon": 12,
+          "fullName": "Accessible toilets 1S",
+          "ktid": "WNed",
+          "uuid": "",
+          "major": 57356,
+          "minor": 52537,
+          "details": "Toilets (south) on floor 1",
+          "points": [
+            {
+              "point": 11,
+              "title": "Main Gate (South)",
+              "icon": "gate",
+              "direction": 32,
+              "nearby": true,
+              "instructions": ["Follow the smell\n", "of the smoking corner"]
+            },
+            {
+              "point": 18,
+              "title": "Elevators 14b",
+              "subtitle": "subtitle 18 goes here",
+              "icon": "elevator",
+              "direction": 311,
+              "nearby": true,
+              "instructions": [
+                "Only 2 elevators in this entrance\n",
+                "Does not reach 3rd floor"
+              ]
+            }
+          ]
+        },
+        {
+          "beacon": 13,
+          "fullName": "Elevators 14b",
+          "ktid": "Z055",
+          "uuid": "",
+          "major": 38979,
+          "minor": 49687,
+          "details": "beacon 13 details",
+          "points": [
+            {
+              "point": 12,
+              "title": "Accessible toilets 1S",
+              "subtitle": "Accessible toilets (South, flr 1)",
+              "icon": "toilet",
+              "direction": 125,
+              "nearby": true,
+              "instructions": [
+                "10 meters ahead\n",
+                "Entrance is 7 meters to your right.\n",
+                "Call 051-222-333 for assistance"
+              ]
+            },
+            {
+              "point": 25,
+              "title": "Rimon Cafe",
+              "subtitle": "subtitle 15 goes here",
+              "icon": "food",
+              "direction": 343,
+              "nearby": false,
+              "instructions": [
+                "Walk 30 meters north\n",
+                "The door is to the right"
+              ]
+            },
+            {
+              "point": 26,
+              "title": "Nissim Electronics",
+              "subtitle": "subtitle 16 goes here",
+              "icon": "fix",
+              "direction": 343,
+              "nearby": true,
+              "instructions": ["50 meters north\n", "Entrance to the left"]
+            },
+            {
+              "point": 15,
+              "title": "Information",
+              "subtitle": "subtitle 17 here",
+              "icon": "information",
+              "direction": 343,
+              "nearby": false,
+              "instructions": [
+                "86 meters north\n",
+                "Information stand in middle"
+              ]
+            }
+          ]
+        },
+        {
+          "beacon": 14,
+          "fullName": "Test Two",
+          "ktid": "V36R",
+          "uuid": "",
+          "major": 55462,
+          "minor": 52576,
+          "details": ["You are at Test Two\n", "There is something outside"],
+          "points": [
+            {
+              "point": 12,
+              "title": "Accessible toilets 1S",
+              "subtitle": "Accessible toilets (South, flr 1)",
+              "icon": "toilet",
+              "direction": 125,
+              "nearby": true,
+              "instructions": [
+                "10 meters ahead\n",
+                "Entrance is 7 meters to your right.\n",
+                "Call 051-222-333 for assistance"
+              ]
+            },
+            {
+              "point": 13,
+              "title": "Elevators 4a",
+              "subtitle": "subtitle 13 goes here",
+              "icon": "elevator",
+              "direction": 343,
+              "nearby": false,
+              "instructions": ["Reaches all floors\n", "You are on floor 1"]
+            },
+            {
+              "point": 15,
+              "title": "Information",
+              "subtitle": "subtitle 15 goes here",
+              "icon": "information",
+              "direction": 343,
+              "nearby": false,
+              "instructions": [
+                "63 meters north\n",
+                "The information stand is in middle"
+              ]
+            },
+            {
+              "point": 36,
+              "title": "Superpharm",
+              "subtitle": "subtitle 16 goes here",
+              "icon": "elevator",
+              "direction": 343,
+              "nearby": true,
+              "instructions": ["50 meters north\n", "Entrance to the right"]
+            }
+          ]
+        }
+      ],
+      "contactPhone": "029919366",
+      "exits": [
+        {
+          "beacon": {
+            "id": 11,
+            "instruction": "Follow the hall to the north 20 steps and then to the left, out of the building"
+          }
+        },
+        {
+          "beacon": {
+            "id": 12,
+            "instruction": "Follow the hall to the south 15 steps. The exit is to the right"
+          }
+        }
+      ]
+    },
+    {
+      "place": 2,
+      "placeType": "hospital",
+      "fullName": "Grand Medical Center",
+      "shortName": "place 2",
+      "inside": [],
+      "beacons": [
+        {
+          "beacon": 11,
+          "fullName": "Main Gate (South)",
+          "ktid": "a11",
+          "uuid": "",
+          "major": 1,
+          "minor": 1,
+          "details": ["You are at the main gate\n", "There is an ATM outside"],
+          "points": [
+            {
+              "point": 12,
+              "title": "Accessible toilets 1S",
+              "subtitle": "Accessible toilets (South, flr 1)",
+              "icon": "toilet",
+              "direction": 125,
+              "nearby": true,
+              "instructions": [
+                "10 meters ahead\n",
+                "Entrance is 7 meters to your right.\n",
+                "Call 051-222-333 for assistance"
+              ]
+            },
+            {
+              "point": 13,
+              "title": "Elevators 4a",
+              "subtitle": "",
+              "icon": "elevator",
+              "direction": 343,
+              "nearby": false,
+              "instructions": ["Reaches all floors\n", "You are on floor 1"]
+            },
+            {
+              "point": 14,
+              "title": "point 14",
+              "subtitle": "point 14 details",
+              "icon": "elevator",
+              "direction": 343,
+              "nearby": true,
+              "instructions": ["50 meters north\n", "Entrance to the right"]
+            },
+            {
+              "point": 15,
+              "title": "Information",
+              "subtitle": "point 15 details",
+              "icon": "information",
+              "direction": 343,
+              "nearby": false,
+              "instructions": [
+                "117 meters north\n",
+                "Information stand in middle"
+              ]
+            },
+            {
+              "point": 16,
+              "title": "North toilets 33",
+              "subtitle": "point 16 details",
+              "icon": "men",
+              "direction": 150,
+              "nearby": true,
+              "instructions": [
+                "No accssiblity. \nUse 2nd floor toilets for this"
+              ]
+            }
+          ]
+        },
+        {
+          "beacon": 12,
+          "fullName": "Accessible toilets 1S",
+          "ktid": "b12",
+          "uuid": "",
+          "major": 1,
+          "minor": 2,
+          "details": "Toilets (south) on floor 1",
+          "points": [
+            {
+              "point": 11,
+              "title": "Main Gate (South)",
+              "icon": "gate",
+              "direction": 32,
+              "nearby": true,
+              "instructions": ["Follow the smell\n", "of the smoking corner"]
+            },
+            {
+              "point": 18,
+              "title": "Elevators 14b",
+              "subtitle": "subtitle 18 goes here",
+              "icon": "elevator",
+              "direction": 311,
+              "nearby": true,
+              "instructions": [
+                "Only 2 elevators in this entrance\n",
+                "Does not reach 3rd floor"
+              ]
+            }
+          ]
+        },
+        {
+          "beacon": 13,
+          "fullName": "Elevators 14b",
+          "ktid": "b13",
+          "uuid": "",
+          "major": 1,
+          "minor": 4,
+          "details": "beacon 13 details",
+          "points": [
+            {
+              "point": 12,
+              "title": "Accessible toilets 1S",
+              "subtitle": "Accessible toilets (South, flr 1)",
+              "icon": "toilet",
+              "direction": 125,
+              "nearby": true,
+              "instructions": [
+                "10 meters ahead\n",
+                "Entrance is 7 meters to your right.\n",
+                "Call 051-222-333 for assistance"
+              ]
+            },
+            {
+              "point": 25,
+              "title": "Rimon Cafe",
+              "subtitle": "subtitle 15 goes here",
+              "icon": "food",
+              "direction": 343,
+              "nearby": false,
+              "instructions": [
+                "Walk 30 meters north\n",
+                "The door is to the right"
+              ]
+            },
+            {
+              "point": 26,
+              "title": "Nissim Electronics",
+              "subtitle": "subtitle 16 goes here",
+              "icon": "fix",
+              "direction": 343,
+              "nearby": true,
+              "instructions": ["50 meters north\n", "Entrance to the left"]
+            },
+            {
+              "point": 15,
+              "title": "Information",
+              "subtitle": "subtitle 17 here",
+              "icon": "information",
+              "direction": 343,
+              "nearby": false,
+              "instructions": [
+                "86 meters north\n",
+                "Information stand in middle"
+              ]
+            }
+          ]
+        },
+        {
+          "beacon": 14,
+          "fullName": "Test Two",
+          "ktid": "V36R",
+          "uuid": "",
+          "major": 1,
+          "minor": 5,
+          "details": ["You are at Test Two\n", "There is something outside"],
+          "points": [
+            {
+              "point": 12,
+              "title": "Accessible toilets 1S",
+              "subtitle": "Accessible toilets (South, flr 1)",
+              "icon": "toilet",
+              "direction": 125,
+              "nearby": true,
+              "instructions": [
+                "10 meters ahead\n",
+                "Entrance is 7 meters to your right.\n",
+                "Call 051-222-333 for assistance"
+              ]
+            },
+            {
+              "point": 13,
+              "title": "Elevators 4a",
+              "subtitle": "subtitle 13 goes here",
+              "icon": "elevator",
+              "direction": 343,
+              "nearby": false,
+              "instructions": ["Reaches all floors\n", "You are on floor 1"]
+            },
+            {
+              "point": 15,
+              "title": "Information",
+              "subtitle": "subtitle 15 goes here",
+              "icon": "information",
+              "direction": 343,
+              "nearby": false,
+              "instructions": [
+                "63 meters north\n",
+                "The information stand is in middle"
+              ]
+            },
+            {
+              "point": 36,
+              "title": "Superpharm",
+              "subtitle": "subtitle 16 goes here",
+              "icon": "elevator",
+              "direction": 343,
+              "nearby": true,
+              "instructions": ["50 meters north\n", "Entrance to the right"]
+            }
+          ]
+        }
+      ],
+      "contactPhone": "024445555",
+      "exits": [
+        {
+          "beacon": {
+            "id": 11,
+            "instruction": "Follow the hall to the north 20 steps and then to the left, out of the building"
+          }
+        },
+        {
+          "beacon": {
+            "id": 12,
+            "instruction": "Follow the hall to the south 15 steps. The exit is to the right"
+          }
+        }
+      ]
+    }
+  ]
+}

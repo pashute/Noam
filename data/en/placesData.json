@@ -54,7 +54,7 @@
               "major": 28999,
               "minor": 64381,
               "fullName": "Main Gate (South)",
-              "msg": ["You are at the main gate", "There is an ATM outside"],
+              "msg": ["You are at the main gate\n", "There is an ATM outside"],
               "points": [
                 {
                   "point": {
@@ -208,7 +208,7 @@
               "major": 55462,
               "minor": 52576,
               "fullName": "Test two",
-              "msg": ["You are at the test two", "There is something outside"],
+              "msg": ["You are at the test two\n", "There is something outside"],
               "points": [
                 {
                   "point": {

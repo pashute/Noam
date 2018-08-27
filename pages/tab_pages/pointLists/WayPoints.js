@@ -36,6 +36,9 @@ class WayPoints extends Component<{}> {
     const minusHeading = this.props.heading - 30;
     const plusHeading = this.props.heading + 30;
     const inWay = direction > minusHeading && direction < plusHeading;
+    console.log("direction:", direction, 
+                " minusHeading:", minusHeading, " plusHeading:", plusHeading, 
+                "inWay", inWay);
     if (inWay) {
       return (
         <View style={styles.accordArea}>
