@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { AsyncStorage, StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
-import { AsyncStorage, Platform, StyleSheet, Text, View, Alert } from 'react-native';
 import ActionBar from 'react-native-action-bar';
 import { Button } from 'react-native';
 // import { languageDataCtx } from '../../AppMain';
