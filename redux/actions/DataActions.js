@@ -41,3 +41,11 @@ export const setCurrentBeacon = beacon => {
     beacon: beacon
   };
 };
+
+export const setIsInMainPage = isInMainPage => {
+  // console.log('dbg.dataActions. setIsInMainPage', isInMainPage);
+  return {
+    type: types.SET_IS_IN_MAINPAGE,
+    isInMainPage: isInMainPage
+  };
+};

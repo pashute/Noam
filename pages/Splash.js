@@ -12,11 +12,16 @@ import {
 import ActionBar from 'react-native-action-bar';
 import DrawerLayout from 'react-native-drawer-layout';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 // import MainPage from './MainPage';
 import Menu from './Menu';
 
 // import { BluetoothStatus } from 'react-native-bluetooth-status';
+import { connect } from 'react-redux'
+import {
+  setIsInMainPage
+} from '../redux/actions';
+
 
 // todo data: get from appData
 const txtIosinstruct =
@@ -45,7 +50,7 @@ const instructions = Platform.select({
   android: txtAndroinstruct
 });
 
-export default class Splash extends React.Component {
+class Splash extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -190,6 +195,8 @@ export default class Splash extends React.Component {
             {/* the CONTINUE button */}
             <Button
               onPress={() => {
+                console.log('dbg splash.js props ', this.props);
+                this.props.setIsInMainPage(true);
                 navigate('MainPage');
               }}
               title="Continue"
@@ -255,3 +262,24 @@ const styles = StyleSheet.create({
     marginLeft: 20
   }
 });
+
+const mapStateToProps = ({ data }) => {
+  const { isInMainPage } = data;
+  return { isInMainPage };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setIsInMainPage: isInMainPage => {
+      dispatch(setIsInMainPage(isInMainPage));
+    }
+  };
+};
+
+Splash.propTypes = {
+  isInMainPage: PropTypes.bool,
+  setIsInMainPage: PropTypes.any
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Splash);

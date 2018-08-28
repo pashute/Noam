@@ -5,8 +5,8 @@ const INITIAL_STATE = {
   currentPlace: {},
   currentBeacon: {},
   currentPlacesData: {},
-  beaconPlaceRelation: []
-  //current beacon
+  beaconPlaceRelation: [],
+  isInMainPage: false
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -25,6 +25,9 @@ export default (state = INITIAL_STATE, action) => {
     }
     case types.SET_CURRENT_PLACES_DATA: {
       return { ...state, currentPlacesData: action.currentPlacesData };
+    }
+    case types.SET_IS_IN_MAINPAGE: {
+      return { ...state, isInMainPage: action.isInMainPage };
     }
     default: {
       return state;

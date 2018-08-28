@@ -303,8 +303,7 @@ const mapStateToProps = ({ data }) => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return {
-    setCurrentPlace: place => {
+  return { setCurrentPlace: place => {
       dispatch(setCurrentPlace(place));
     }
   };
