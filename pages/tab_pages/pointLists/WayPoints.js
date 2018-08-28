@@ -32,12 +32,13 @@ class WayPoints extends Component<{}> {
       iconName = 'angle-up';
     }
     // console.log(section.point.title);
-    const direction = section.point.direction;
-    const minusHeading = this.props.heading - 30;
-    const plusHeading = this.props.heading + 30;
-    const inWay = direction > minusHeading && direction < plusHeading;
-    console.log("direction:", direction, 
-                " minusHeading:", minusHeading, " plusHeading:", plusHeading, 
+    let direction = section.point.direction;
+    let curHeading = this.props.heading; 
+    let minusHeading = curHeading - 30;
+    let plusHeading = curHeading + 30;
+    let inWay = direction > minusHeading && direction < plusHeading;
+    console.log("dbg.waypoints direction:", direction, " heading:", curHeading,
+                "\n minusHeading:", minusHeading, " plusHeading:", plusHeading, 
                 "inWay", inWay);
     if (inWay) {
       return (
@@ -71,11 +72,11 @@ class WayPoints extends Component<{}> {
   }
 
   render() {
-    // console.log('rendering placePoints');
+    console.log("dbg.wayPoints.render curBeacon", this.props.currentBeacon, 
+             "\n beaconIdx", this.props.beaconIndex);
     const place = this.props.currentPlace;
     let curBcnIdx = this.props.beaconIndex;
     let atPointDesc = this.props.currentBeacon.msg;
-    console.log(this.props.currentBeacon);
     return (
       <View style={styles.container}>
         {/* <Text style={styles.firstTimeMsg}>{getFirstTimeMsg()}</Text> */}

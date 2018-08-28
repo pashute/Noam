@@ -195,7 +195,7 @@ class Splash extends React.Component {
             {/* the CONTINUE button */}
             <Button
               onPress={() => {
-                console.log('dbg splash.js props ', this.props);
+                // console.log('dbg.splash.js props ', this.props);
                 this.props.setIsInMainPage(true);
                 navigate('MainPage');
               }}
