@@ -26,6 +26,7 @@ class HelpFirstTime extends Component {
   render() {
     const { replace } = this.props.navigation;
     const { placesData, stylesData, appData } = this.props.currentLanguage;
+    console.log("dbg.help1stTime.styles ", stylesData);
     return (
       <View
         style={[stylesData.styles.sharedStyles.mainContainer, styles.topMargin]}
@@ -63,50 +64,6 @@ class HelpFirstTime extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-
-    backgroundColor: '#F5F5F5'
-  },
-  welcome: {
-    fontSize: 35,
-    color: '#6600ff'
-  },
-  instructions: {
-    marginTop: 40,
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 80,
-    fontSize: 20,
-    fontStyle: 'normal'
-  },
-  assistant: {
-    fontSize: 30,
-    marginTop: 50,
-    marginLeft: 20,
-    marginRight: 20,
-    marginBottom: 30
-  },
-  title: {
-    textAlign: 'center',
-    fontSize: 20
-  },
-  buttonDecorator: {
-    backgroundColor: '#2E9298',
-    borderRadius: 10,
-    padding: 5,
-    shadowColor: '#000000',
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowRadius: 10,
-    shadowOpacity: 0.25,
-    margin: 10
-  }
-});
 
 const mapStateToProps = ({ data }) => {
   const { currentLanguage } = data;

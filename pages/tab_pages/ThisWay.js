@@ -50,7 +50,7 @@ class ThisWay extends Component<{}> {
         <View style={styles.pointsContainer}>
           <ScrollView contentContainerStyle={styles.scrollView}>
             <WayPoints
-              heading={this.props.heading.trueHeading}
+              heading={this.props.heading}
               beaconIndex={this.props.beaconIndex}
             />
           </ScrollView>
