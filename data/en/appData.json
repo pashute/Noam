@@ -23,6 +23,7 @@
       "noDataForFloor": "No data for chosen floor"
     },
     "screenFirstTime": {
+      "txtFirstTimeHeader": "First time header",
       "txtFirstTimeMsg": [
         "First time msg line 1\n",
         "First time msg line 2\n",
