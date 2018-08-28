@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import { View } from 'react-native';
+import { connect } from 'react-redux';
 import { AsyncStorage, Platform, StyleSheet, Text, View, Alert } from 'react-native';
 import ActionBar from 'react-native-action-bar';
 import { Button } from 'react-native';
+// import { languageDataCtx } from '../../AppMain';
 
-export default class HelpFirstTime extends Component {
+class HelpFirstTime extends Component {
   //<{}> {
   constructor(props) {
     super(props);
@@ -23,24 +26,39 @@ export default class HelpFirstTime extends Component {
 
   render() {
     const { replace } = this.props.navigation;
+    const { placesData, stylesData, appData } = this.props.currentLanguage;
     return (
-      <View style={styles.container}>
+      <View
+        style={[stylesData.styles.sharedStyles.mainContainer, styles.topMargin]}
+      >
         <ActionBar
-          containerStyle={styles.bar}
-          titleStyle={styles.title}
-          title={'Noam'}
+          containerStyle={stylesData.styles.sharedStyles.actionBarContainer}
+          titleStyle={stylesData.styles.sharedStyles.actionTitle}
+          title={appData.appData.general.txtAppNameOnActionBar}
           leftIconName={'location'}
-          onLeftPress={() => console.log('Left!')}
+          onLeftPress={() =>
+            console.log('dbg.help1stTm.actionbar requested Voice-Assist!')
+          }
         />
-        <View style={styles.buttonDecorator}>
-          <Button
-            onPress={() => {
-              replace('SplashPage');
-            }}
-            title={'Continue to app'}
-            color="#111111"
-            accessibilityLabel={'Tap on Me to '}
-          />
+        <View style={stylesData.styles.sharedStyles.contentContainer}>
+          <Text style={stylesData.styles.sharedStyles.instructionsHeader}>
+            {appData.appData.screensSettings.screenFirstTime.txtFirstTimeHeader}
+          </Text>
+          <View style={stylesData.styles.sharedStyles.instructionsView}>
+            <Text style={stylesData.styles.sharedStyles.instructions}>
+              {appData.appData.screensSettings.screenFirstTime.txtFirstTimeMsg}
+            </Text>
+          </View>
+          <View style={stylesData.styles.sharedStyles.buttonDecorator}>
+            <Button
+              onPress={() => {
+                replace('SplashPage');
+              }}
+              title={'Continue to app'}
+              color="#111111"
+              accessibilityLabel={'Tap on Me to '}
+            />
+          </View>
         </View>
       </View>
     );
@@ -90,3 +108,10 @@ const styles = StyleSheet.create({
     margin: 10
   }
 });
+
+const mapStateToProps = ({ data }) => {
+  const { currentLanguage } = data;
+  return { currentLanguage };
+};
+
+export default connect(mapStateToProps, {})(HelpFirstTime);
