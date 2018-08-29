@@ -147,7 +147,8 @@ class AppMain extends React.Component {
       currentLanguage: 'en',
       pointingTo: 'not set',
       heading: {},
-      scanning: false
+      scanning: false,
+      inMainPage: false
     };
     // hockeyapp
     // moved from componentWillMount and hope this works
@@ -220,10 +221,7 @@ class AppMain extends React.Component {
           if (tempBeaconRelation !== undefined && tempBeaconRelation !== null) {
             let finalBeacon = undefined;
             let finalPlace = undefined;
-            console.log(
-              'dbg.appmain.bcnDid finding point',
-              this.props.currentPlacesData
-            );
+            console.log('dbg.appmain.bcnDid finding point in', this.props.currentPlacesData);
             const currentPlace = this.props.currentPlacesData.places.find(
               place => {
                 return place.place.id === tempBeaconRelation.placeId;
@@ -240,20 +238,19 @@ class AppMain extends React.Component {
                 if (tempBeacon !== undefined && tempBeacon !== null) {
                   finalBeacon = tempBeacon.beacon;
                   console.log('dbg.AppMain.bcnDid finalbcn', finalBeacon);
-                  if (
-                    this.props.currentPlace.id !== tempBeaconRelation.placeId
-                  ) {
+                  if (this.props.currentPlace.id !== tempBeaconRelation.placeId) {
                     this.props.setCurrentPlace(finalPlace);
                   }
                   this.props.setCurrentBeacon(finalBeacon);
-                  Alert.alert(
-                    'New point reached',
-                    `You are at ${finalBeacon.fullName} in ${
-                      finalPlace.fullName
-                    }`,
-                    [{ text: 'OK' }],
-                    { cancelable: true }
-                  );
+                  if (this.props.isInMainPage === true)
+                    Alert.alert(
+                      'New point reached',
+                      `You are at ${finalBeacon.fullName} in ${
+                        finalPlace.fullName
+                      }`,
+                      [{ text: 'OK' }],
+                      { cancelable: true }
+                    );
                 }
               }
             }
@@ -285,6 +282,7 @@ class AppMain extends React.Component {
         this.props.setCurrentLanguage(savedLanguage);
         this.props.setCurrentPlacesData(placesData);
         this.props.setCurrentPlace(placesData.places[0].place);
+
         const finalBeaconRelation = [];
         for (let i = 0; i < places.length; i++) {
           let tempPlace = places[i];
@@ -303,6 +301,7 @@ class AppMain extends React.Component {
             }
           }
         }
+        
         // console.log('dbg.appmain.finalBcnRel finalbcnrel', finalBeaconRelation);
         this.props.setAllBeaconsPlacesRelation(finalBeaconRelation);
 
@@ -398,14 +397,16 @@ const mapStateToProps = ({ data }) => {
     currentBeacon,
     currentPlace,
     beaconPlaceRelation,
-    currentPlacesData
+    currentPlacesData,
+    isInMainPage
   } = data;
   // console.log('dbg.Appmain.mapStt currentBeacon:', currentBeacon);
   return {
     currentBeacon,
     currentPlace,
     beaconPlaceRelation,
-    currentPlacesData
+    currentPlacesData,
+    isInMainPage
   };
 };
 
@@ -425,7 +426,11 @@ const mapDispatchToProps = dispatch => {
     },
     setCurrentBeacon: beacon => {
       dispatch(setCurrentBeacon(beacon));
+    },
+    setIsInMainPage: isInMainPage => {
+      dispatch(setIsInMainPage(isInMainPage));
     }
+
   };
 };
 
@@ -434,6 +439,7 @@ AppMain.propTypes = {
   beaconPlaceRelation: PropTypes.array,
   currentBeacon: PropTypes.object,
   currentPlace: PropTypes.object,
+  isInMainPage: PropTypes.bool,
 
   setCurrentPlace: PropTypes.any,
   setCurrentLanguage: PropTypes.any,
