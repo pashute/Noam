@@ -181,7 +181,7 @@ class AppMain extends React.Component {
     init()
       .then(() => {
         console.log('dbg.appmain scanning start');
-        startDiscovery();
+        return startDiscovery();
       })
       .catch(error => console.log('AppMain.IOS.kontakt.error:', error));
 
@@ -446,6 +446,7 @@ AppMain.propTypes = {
   setCurrentPlacesData: PropTypes.any,
   setCurrentBeacon: PropTypes.any,
   setAllBeaconsPlacesRelation: PropTypes.any
+
 };
 
 export default reduxConnect(mapStateToProps, mapDispatchToProps)(AppMain);
