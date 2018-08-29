@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { AsyncStorage, StyleSheet, Text, View } from 'react-native';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import ActionBar from 'react-native-action-bar';
 import { Button } from 'react-native';
-// import { languageDataCtx } from '../../AppMain';
 
-class HelpFirstTime extends Component {
+export default class HelpFirstTime extends Component {
   //<{}> {
   constructor(props) {
     super(props);
@@ -25,31 +24,28 @@ class HelpFirstTime extends Component {
 
   render() {
     const { replace } = this.props.navigation;
-    const { placesData, stylesData, appData } = this.props.currentLanguage;
-    console.log("dbg.help1stTime.styles ", stylesData);
-    return (
-      <View
-        style={[stylesData.styles.sharedStyles.mainContainer, styles.topMargin]}
-      >
+    // const { placesData, stylesData, appData } = this.props.currentLanguage;
+    // console.log("dbg.help1stTime.styles ", stylesData);
+ return (
+      <View style={styles.container}>
         <ActionBar
-          containerStyle={stylesData.styles.sharedStyles.actionBarContainer}
-          titleStyle={stylesData.styles.sharedStyles.actionTitle}
-          title={appData.appData.general.txtAppNameOnActionBar}
+          containerStyle={styles.bar}
+          titleStyle={styles.title}
+          title={'Noam'}
           leftIconName={'location'}
-          onLeftPress={() =>
-            console.log('dbg.help1stTm.actionbar requested Voice-Assist!')
-          }
+          onLeftPress={() => console.log('dbg.help1stTm.actionbar requested Voice-Assist')}
         />
-        <View style={stylesData.styles.sharedStyles.contentContainer}>
-          <Text style={stylesData.styles.sharedStyles.instructionsHeader}>
-            {appData.appData.screensSettings.screenFirstTime.txtFirstTimeHeader}
+        <View style={styles.contentContainer}>
+          <Text style={styles.instructionsHeader}>
+            app 1st time header
           </Text>
-          <View style={stylesData.styles.sharedStyles.instructionsView}>
-            <Text style={stylesData.styles.sharedStyles.instructions}>
-              {appData.appData.screensSettings.screenFirstTime.txtFirstTimeMsg}
+          <View style={styles.instructionsView}>
+            <Text style={styles.instructions}>
+              "First time msg line 1\nFirst time msg line 2\nFirst time msg line 3\nFirst time msg etc etc"
             </Text>
           </View>
-          <View style={stylesData.styles.sharedStyles.buttonDecorator}>
+
+          <View style={styles.buttonDecorator}>
             <Button
               onPress={() => {
                 replace('SplashPage');
@@ -65,9 +61,64 @@ class HelpFirstTime extends Component {
   }
 }
 
-const mapStateToProps = ({ data }) => {
-  const { currentLanguage } = data;
-  return { currentLanguage };
-};
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
 
-export default connect(mapStateToProps, {})(HelpFirstTime);
+    backgroundColor: '#F5F5F5'
+  },
+  contentContainer: {
+    flex: 16
+  },
+  welcome: {
+    fontSize: 35,
+    color: '#6600ff'
+  },
+  instructionsHeader: {
+    marginTop: 10,
+    textAlign: "left",
+    color: "#333333",
+    marginBottom: 10,
+    fontSize: 25,
+    fontWeight: "400",
+    marginLeft: 25,
+    marginRight: 25
+  },
+  instructionsView: {
+    flex: 1,
+    flexDirection: "column"
+  },
+
+  instructions: {
+    marginTop: 40,
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 80,
+    fontSize: 20,
+    fontStyle: 'normal'
+  },
+  assistant: {
+    fontSize: 30,
+    marginTop: 50,
+    marginLeft: 20,
+    marginRight: 20,
+    marginBottom: 30
+  },
+  title: {
+    textAlign: 'center',
+    fontSize: 20
+  },
+  buttonDecorator: {
+    backgroundColor: '#2E9298',
+    borderRadius: 10,
+    padding: 5,
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowRadius: 10,
+    shadowOpacity: 0.25,
+    margin: 10
+  }
+});

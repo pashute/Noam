@@ -38,7 +38,7 @@ class ThisWay extends Component<{}> {
   };
 
   render() {
-    console.log("dbg.way heading", this.props.heading);
+    // console.log("dbg.way heading", this.props.heading);
     const { placesData, stylesData, appData } = this.props.currentLanguage;
     return (
       <View style={styles.mainContainer}>

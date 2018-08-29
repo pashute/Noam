@@ -37,9 +37,9 @@ class WayPoints extends Component<{}> {
     let minusHeading = curHeading - 30;
     let plusHeading = curHeading + 30;
     let inWay = direction > minusHeading && direction < plusHeading;
-    console.log("dbg.waypoints direction:", direction, " heading:", curHeading,
-                "\n minusHeading:", minusHeading, " plusHeading:", plusHeading, 
-                "inWay", inWay);
+    // console.log("dbg.waypoints direction:", direction, " heading:", curHeading,
+    //             "\n minusHeading:", minusHeading, " plusHeading:", plusHeading, 
+    //             "inWay", inWay);
     if (inWay) {
       return (
         <View style={styles.accordArea}>
