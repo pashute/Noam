@@ -206,7 +206,7 @@ class AppMain extends React.Component {
     .then(() => setEddystoneNamespace())
     .then(() => {
       // console.log('dbg.appmain scanning start');
-      startScanning();
+      return startScanning();
     })
     .catch(error => console.log('appmain.Andr.kontakt error: \n', error));
 
