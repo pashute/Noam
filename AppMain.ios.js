@@ -39,6 +39,8 @@ import {
   setCurrentBeacon
 } from './redux/actions';
 
+// debugging with ibeacon simulator:
+// https://www.npmjs.com/package/react-native-ibeacon-simulator
 import Kontakt, { KontaktModule } from 'react-native-kontaktio';
 const { init, startDiscovery } = Kontakt; // for ios
 const kontaktEmitter = new NativeEventEmitter(KontaktModule); // for ios
@@ -181,7 +183,7 @@ class AppMain extends React.Component {
     init()
       .then(() => {
         console.log('dbg.appmain scanning start');
-        startDiscovery();
+        return startDiscovery();
       })
       .catch(error => console.log('AppMain.IOS.kontakt.error:', error));
 
@@ -194,12 +196,10 @@ class AppMain extends React.Component {
         [{ text: 'OK' }],
         { cancelable: true }
       );
-      console.log(
-        'dbg.Appmain.bcnDid propsBcnRel',
-        this.props.beaconPlaceRelation
-      );
-      console.log('dbg.Appmain.bcnDid curbcn', this.props.currentBeacon);
       try {
+        console.log('dbg.Appmain.bcnDid propsBcnRel', this.props.beaconPlaceRelation);
+        console.log('dbg.Appmain.bcnDid curbcn', this.props.currentBeacon);
+
         let hasBeacon = false;
         let newBeacon = {};
         if (beacons != null && beacons.length > 0) {
@@ -446,6 +446,7 @@ AppMain.propTypes = {
   setCurrentPlacesData: PropTypes.any,
   setCurrentBeacon: PropTypes.any,
   setAllBeaconsPlacesRelation: PropTypes.any
+
 };
 
 export default reduxConnect(mapStateToProps, mapDispatchToProps)(AppMain);
