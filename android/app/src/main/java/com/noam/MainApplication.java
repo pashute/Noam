@@ -3,6 +3,8 @@ package com.noam;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.ibeacon.simulator.BeaconBroadcastPackage;
+import com.slowpath.hockeyapp.RNHockeyAppPackage;
 import com.artirigo.kontaktio.KontaktPackage;
 import com.reactlibrary.RNSimpleCompassPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -27,7 +29,9 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-        new MainReactPackage(), 
+        new MainReactPackage(),
+            new BeaconBroadcastPackage(),
+            new RNHockeyAppPackage(), 
         new RNSimpleCompassPackage(), 
         new VectorIconsPackage(),
         new KontaktPackage(),
