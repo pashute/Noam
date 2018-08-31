@@ -31,7 +31,6 @@
     "react-navigation": "^1.5.11",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
-    "redux-persist": "^5.10.0",
     "redux-thunk": "^2.3.0",
     "rn-stack-router": "^1.0.0",
     "storybook-addon-specifications": "^2.1.2"
