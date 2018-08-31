@@ -59,7 +59,7 @@ const {
   monitoringSyncInterval
 } = Kontakt;
 
-import HockeyApp from 'react-native-hockeyapp';
+// import HockeyApp from 'react-native-hockeyapp';
 //#endregion imports
 
 //#region setup
@@ -163,7 +163,7 @@ class AppMain extends React.Component {
     };
     // hockeyapp
     // moved from componentWillMount and hope this works
-    HockeyApp.configure(HOCKEY_APP_ID, true);
+    // HockeyApp.configure(HOCKEY_APP_ID, true);
   }
 
   /*
@@ -332,7 +332,7 @@ class AppMain extends React.Component {
         console.log('error.AppMain.scanPlaceAndPoint', error);
       });
 
-    HockeyApp.start();
+    // HockeyApp.start();
     // HockeyApp.checkForUpdate(); optional
 
     // right to left
