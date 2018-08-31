@@ -1,7 +1,6 @@
 /* cSpell:disable */
 /* global require */
 
-#region imports
 import React from 'react';
 import {
   Platform,
@@ -22,10 +21,8 @@ import { connect } from 'react-redux'
 import {
   setIsInMainPage
 } from '../redux/actions';
-import BeaconBroadcast from react-native-ibeacon-simulator;
-//#endregion imports
 
-//#region app data
+
 // todo data: get from appData
 const txtIosinstruct =
   'Welcome to Noam,\n' +
@@ -52,7 +49,6 @@ const instructions = Platform.select({
   ios: txtIosinstruct,
   android: txtAndroinstruct
 });
-//#endregion app data
 
 class Splash extends React.Component {
   constructor(props) {
@@ -121,15 +117,8 @@ class Splash extends React.Component {
       console.log('turnBluetoothOn pressed');
       if (Platform.OS === 'android')
         console.log('todo: android. turn bluetooth on');
-      else{
-         console.log('todo: ios. open bluetooth console');
-         //1.	V36R (Kontakt)	67%		3	55462	32576	EDIT
-         //f7826da6-4fa2-4e98-8024-bc5b71e0893e
-         BeaconBroadcast.startAdvertisingBeaconWithString(
-           'f7826da6-4fa2-4e98-8024-bc5b71e0893e', 
-           'V36R', 55462, 32576);
-      }
-      
+      else console.log('todo: ios. open bluetooth console');
+
       this.setState({ continueDisabled: false });
     } catch (err) {
       console.error('turn bluetooth on failed' + err);
@@ -222,8 +211,6 @@ class Splash extends React.Component {
   }
 }
 
-//#region styles data
-// todo change to take from stylesData
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
@@ -275,10 +262,7 @@ const styles = StyleSheet.create({
     marginLeft: 20
   }
 });
-//#endregion styles data
 
-//#region redux
-// todo: add data
 const mapStateToProps = ({ data }) => {
   const { isInMainPage } = data;
   return { isInMainPage };
@@ -297,5 +281,5 @@ Splash.propTypes = {
   setIsInMainPage: PropTypes.any
 };
 
+
 export default connect(mapStateToProps, mapDispatchToProps)(Splash);
-//#endregion
