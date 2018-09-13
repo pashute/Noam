@@ -1,0 +1,807 @@
+1 {
+    2   "definitions": {},
+    3   "$schema": "http://json-schema.org/draft-07/schema#",
+    4   "$id": "http://example.com/root.json",
+    5   "type": "object",
+    6   "title": "The Root Schema",
+    7   "required": [
+    8     "styles"
+    9   ],
+   10   "properties": {
+   11     "styles": {
+   12       "$id": "#/properties/styles",
+   13       "type": "object",
+   14       "title": "The Styles Schema",
+   15       "required": [
+   16         "sharedStyles",
+   17         "extraScreenStyles",
+   18         "accordStyles",
+   19         "thisWayStyles"
+   20       ],
+   21       "properties": {
+   22         "sharedStyles": {
+   23           "$id": "#/properties/styles/properties/sharedStyles",
+   24           "type": "object",
+   25           "title": "The Sharedstyles Schema",
+   26           "required": [
+   27             "mainContainer",
+   28             "actionBarContainer",
+   29             "actionTitle",
+   30             "contentContainer",
+   31             "titleText",
+   32             "instructionsHeader",
+   33             "instructionsView",
+   34             "instructions",
+   35             "buttonDecorator",
+   36             "buttonText",
+   37             "buttonStyle",
+   38             "bottomNavRow",
+   39             "navButton",
+   40             "bottomRow",
+   41             "inputsView",
+   42             "inputText"
+   43           ],
+   44           "properties": {
+   45             "mainContainer": {
+   46               "$id": "#/properties/styles/properties/sharedStyles/properties/mainContainer",
+   47               "type": "object",
+   48               "title": "The Maincontainer Schema",
+   49               "required": [
+   50                 "flex",
+   51                 "backgroundColor"
+   52               ],
+   53               "properties": {
+   54                 "flex": {
+   55                   "$id": "#/properties/styles/properties/sharedStyles/properties/mainContainer/properties/flex",
+   56                   "type": "integer",
+   57                   "title": "The Flex Schema",
+   58                   "default": 0,
+   59                   "examples": [
+   60                     1
+   61                   ]
+   62                 },
+   63                 "backgroundColor": {
+   64                   "$id": "#/properties/styles/properties/sharedStyles/properties/mainContainer/properties/backgroundColor",
+   65                   "type": "string",
+   66                   "title": "The Backgroundcolor Schema",
+   67                   "default": "",
+   68                   "examples": [
+   69                     "#F5F5F5"
+   70                   ],
+   71                   "pattern": "^(.*)$"
+   72                 }
+   73               }
+   74             },
+   75             "actionBarContainer": {
+   76               "$id": "#/properties/styles/properties/sharedStyles/properties/actionBarContainer",
+   77               "type": "object",
+   78               "title": "The Actionbarcontainer Schema",
+   79               "required": [
+   80                 "backgroundColor"
+   81               ],
+   82               "properties": {
+   83                 "backgroundColor": {
+   84                   "$id": "#/properties/styles/properties/sharedStyles/properties/actionBarContainer/properties/backgroundColor",
+   85                   "type": "string",
+   86                   "title": "The Backgroundcolor Schema",
+   87                   "default": "",
+   88                   "examples": [
+   89                     "#330077"
+   90                   ],
+   91                   "pattern": "^(.*)$"
+   92                 }
+   93               }
+   94             },
+   95             "actionTitle": {
+   96               "$id": "#/properties/styles/properties/sharedStyles/properties/actionTitle",
+   97               "type": "object",
+   98               "title": "The Actiontitle Schema",
+   99               "required": [
+  100                 "textAlign",
+  101                 "fontSize"
+  102               ],
+  103               "properties": {
+  104                 "textAlign": {
+  105                   "$id": "#/properties/styles/properties/sharedStyles/properties/actionTitle/properties/textAlign",
+  106                   "type": "string",
+  107                   "title": "The Textalign Schema",
+  108                   "default": "",
+  109                   "examples": [
+  110                     "center"
+  111                   ],
+  112                   "pattern": "^(.*)$"
+  113                 },
+  114                 "fontSize": {
+  115                   "$id": "#/properties/styles/properties/sharedStyles/properties/actionTitle/properties/fontSize",
+  116                   "type": "integer",
+  117                   "title": "The Fontsize Schema",
+  118                   "default": 0,
+  119                   "examples": [
+  120                     20
+  121                   ]
+  122                 }
+  123               }
+  124             },
+  125             "contentContainer": {
+  126               "$id": "#/properties/styles/properties/sharedStyles/properties/contentContainer",
+  127               "type": "object",
+  128               "title": "The Contentcontainer Schema",
+  129               "required": [
+  130                 "flex"
+  131               ],
+  132               "properties": {
+  133                 "flex": {
+  134                   "$id": "#/properties/styles/properties/sharedStyles/properties/contentContainer/properties/flex",
+  135                   "type": "integer",
+  136                   "title": "The Flex Schema",
+  137                   "default": 0,
+  138                   "examples": [
+  139                     16
+  140                   ]
+  141                 }
+  142               }
+  143             },
+  144             "titleText": {
+  145               "$id": "#/properties/styles/properties/sharedStyles/properties/titleText",
+  146               "type": "object",
+  147               "title": "The Titletext Schema",
+  148               "required": [
+  149                 "fontSize",
+  150                 "marginTop",
+  151                 "marginLeft",
+  152                 "marginRight",
+  153                 "marginBottom"
+  154               ],
+  155               "properties": {
+  156                 "fontSize": {
+  157                   "$id": "#/properties/styles/properties/sharedStyles/properties/titleText/properties/fontSize",
+  158                   "type": "integer",
+  159                   "title": "The Fontsize Schema",
+  160                   "default": 0,
+  161                   "examples": [
+  162                     30
+  163                   ]
+  164                 },
+  165                 "marginTop": {
+  166                   "$id": "#/properties/styles/properties/sharedStyles/properties/titleText/properties/marginTop",
+  167                   "type": "integer",
+  168                   "title": "The Margintop Schema",
+  169                   "default": 0,
+  170                   "examples": [
+  171                     30
+  172                   ]
+  173                 },
+  174                 "marginLeft": {
+  175                   "$id": "#/properties/styles/properties/sharedStyles/properties/titleText/properties/marginLeft",
+  176                   "type": "integer",
+  177                   "title": "The Marginleft Schema",
+  178                   "default": 0,
+  179                   "examples": [
+  180                     20
+  181                   ]
+  182                 },
+  183                 "marginRight": {
+  184                   "$id": "#/properties/styles/properties/sharedStyles/properties/titleText/properties/marginRight",
+  185                   "type": "integer",
+  186                   "title": "The Marginright Schema",
+  187                   "default": 0,
+  188                   "examples": [
+  189                     20
+  190                   ]
+  191                 },
+  192                 "marginBottom": {
+  193                   "$id": "#/properties/styles/properties/sharedStyles/properties/titleText/properties/marginBottom",
+  194                   "type": "integer",
+  195                   "title": "The Marginbottom Schema",
+  196                   "default": 0,
+  197                   "examples": [
+  198                     10
+  199                   ]
+  200                 }
+  201               }
+  202             },
+  203             "instructionsHeader": {
+  204               "$id": "#/properties/styles/properties/sharedStyles/properties/instructionsHeader",
+  205               "type": "object",
+  206               "title": "The Instructionsheader Schema",
+  207               "required": [
+  208                 "marginTop",
+  209                 "textAlign",
+  210                 "color",
+  211                 "marginBottom",
+  212                 "fontSize",
+  213                 "fontWeight",
+  214                 "marginLeft",
+  215                 "marginRight"
+  216               ],
+  217               "properties": {
+  218                 "marginTop": {
+  219                   "$id": "#/properties/styles/properties/sharedStyles/properties/instructionsHeader/properties/marginTop",
+  220                   "type": "integer",
+  221                   "title": "The Margintop Schema",
+  222                   "default": 0,
+  223                   "examples": [
+  224                     10
+  225                   ]
+  226                 },
+  227                 "textAlign": {
+  228                   "$id": "#/properties/styles/properties/sharedStyles/properties/instructionsHeader/properties/textAlign",
+  229                   "type": "string",
+  230                   "title": "The Textalign Schema",
+  231                   "default": "",
+  232                   "examples": [
+  233                     "left"
+  234                   ],
+  235                   "pattern": "^(.*)$"
+  236                 },
+  237                 "color": {
+  238                   "$id": "#/properties/styles/properties/sharedStyles/properties/instructionsHeader/properties/color",
+  239                   "type": "string",
+  240                   "title": "The Color Schema",
+  241                   "default": "",
+  242                   "examples": [
+  243                     "#333333"
+  244                   ],
+  245                   "pattern": "^(.*)$"
+  246                 },
+  247                 "marginBottom": {
+  248                   "$id": "#/properties/styles/properties/sharedStyles/properties/instructionsHeader/properties/marginBottom",
+  249                   "type": "integer",
+  250                   "title": "The Marginbottom Schema",
+  251                   "default": 0,
+  252                   "examples": [
+  253                     10
+  254                   ]
+  255                 },
+  256                 "fontSize": {
+  257                   "$id": "#/properties/styles/properties/sharedStyles/properties/instructionsHeader/properties/fontSize",
+  258                   "type": "integer",
+  259                   "title": "The Fontsize Schema",
+  260                   "default": 0,
+  261                   "examples": [
+  262                     25
+  263                   ]
+  264                 },
+  265                 "fontWeight": {
+  266                   "$id": "#/properties/styles/properties/sharedStyles/properties/instructionsHeader/properties/fontWeight",
+  267                   "type": "string",
+  268                   "title": "The Fontweight Schema",
+  269                   "default": "",
+  270                   "examples": [
+  271                     "400"
+  272                   ],
+  273                   "pattern": "^(.*)$"
+  274                 },
+  275                 "marginLeft": {
+  276                   "$id": "#/properties/styles/properties/sharedStyles/properties/instructionsHeader/properties/marginLeft",
+  277                   "type": "integer",
+  278                   "title": "The Marginleft Schema",
+  279                   "default": 0,
+  280                   "examples": [
+  281                     25
+  282                   ]
+  283                 },
+  284                 "marginRight": {
+  285                   "$id": "#/properties/styles/properties/sharedStyles/properties/instructionsHeader/properties/marginRight",
+  286                   "type": "integer",
+  287                   "title": "The Marginright Schema",
+  288                   "default": 0,
+  289                   "examples": [
+  290                     25
+  291                   ]
+  292                 }
+  293               }
+  294             },
+  295             "instructionsView": {
+  296               "$id": "#/properties/styles/properties/sharedStyles/properties/instructionsView",
+  297               "type": "object",
+  298               "title": "The Instructionsview Schema",
+  299               "required": [
+  300                 "flex",
+  301                 "flexDirection"
+  302               ],
+  303               "properties": {
+  304                 "flex": {
+  305                   "$id": "#/properties/styles/properties/sharedStyles/properties/instructionsView/properties/flex",
+  306                   "type": "integer",
+  307                   "title": "The Flex Schema",
+  308                   "default": 0,
+  309                   "examples": [
+  310                     1
+  311                   ]
+  312                 },
+  313                 "flexDirection": {
+  314                   "$id": "#/properties/styles/properties/sharedStyles/properties/instructionsView/properties/flexDirection",
+  315                   "type": "string",
+  316                   "title": "The Flexdirection Schema",
+  317                   "default": "",
+  318                   "examples": [
+  319                     "column"
+  320                   ],
+  321                   "pattern": "^(.*)$"
+  322                 }
+  323               }
+  324             },
+  325             "instructions": {
+  326               "$id": "#/properties/styles/properties/sharedStyles/properties/instructions",
+  327               "type": "object",
+  328               "title": "The Instructions Schema",
+  329               "required": [
+  330                 "marginTop",
+  331                 "textAlign",
+  332                 "color",
+  333                 "marginBottom",
+  334                 "fontSize",
+  335                 "marginLeft",
+  336                 "marginRight"
+  337               ],
+  338               "properties": {
+  339                 "marginTop": {
+  340                   "$id": "#/properties/styles/properties/sharedStyles/properties/instructions/properties/marginTop",
+  341                   "type": "integer",
+  342                   "title": "The Margintop Schema",
+  343                   "default": 0,
+  344                   "examples": [
+  345                     25
+  346                   ]
+  347                 },
+  348                 "textAlign": {
+  349                   "$id": "#/properties/styles/properties/sharedStyles/properties/instructions/properties/textAlign",
+  350                   "type": "string",
+  351                   "title": "The Textalign Schema",
+  352                   "default": "",
+  353                   "examples": [
+  354                     "left"
+  355                   ],
+  356                   "pattern": "^(.*)$"
+  357                 },
+  358                 "color": {
+  359                   "$id": "#/properties/styles/properties/sharedStyles/properties/instructions/properties/color",
+  360                   "type": "string",
+  361                   "title": "The Color Schema",
+  362                   "default": "",
+  363                   "examples": [
+  364                     "#333333"
+  365                   ],
+  366                   "pattern": "^(.*)$"
+  367                 },
+  368                 "marginBottom": {
+  369                   "$id": "#/properties/styles/properties/sharedStyles/properties/instructions/properties/marginBottom",
+  370                   "type": "integer",
+  371                   "title": "The Marginbottom Schema",
+  372                   "default": 0,
+  373                   "examples": [
+  374                     10
+  375                   ]
+  376                 },
+  377                 "fontSize": {
+  378                   "$id": "#/properties/styles/properties/sharedStyles/properties/instructions/properties/fontSize",
+  379                   "type": "integer",
+  380                   "title": "The Fontsize Schema",
+  381                   "default": 0,
+  382                   "examples": [
+  383                     20
+  384                   ]
+  385                 },
+  386                 "marginLeft": {
+  387                   "$id": "#/properties/styles/properties/sharedStyles/properties/instructions/properties/marginLeft",
+  388                   "type": "integer",
+  389                   "title": "The Marginleft Schema",
+  390                   "default": 0,
+  391                   "examples": [
+  392                     25
+  393                   ]
+  394                 },
+  395                 "marginRight": {
+  396                   "$id": "#/properties/styles/properties/sharedStyles/properties/instructions/properties/marginRight",
+  397                   "type": "integer",
+  398                   "title": "The Marginright Schema",
+  399                   "default": 0,
+  400                   "examples": [
+  401                     25
+  402                   ]
+  403                 }
+  404               }
+  405             },
+  406             "buttonDecorator": {
+  407               "$id": "#/properties/styles/properties/sharedStyles/properties/buttonDecorator",
+  408               "type": "object",
+  409               "title": "The Buttondecorator Schema",
+  410               "required": [
+  411                 "backgroundColor",
+  412                 "borderRadius",
+  413                 "padding",
+  414                 "shadowColor",
+  415                 "shadowOffset",
+  416                 "shadowRadius",
+  417                 "shadowOpacity",
+  418                 "marginRight",
+  419                 "marginLeft"
+  420               ],
+  421               "properties": {
+  422                 "backgroundColor": {
+  423                   "$id": "#/properties/styles/properties/sharedStyles/properties/buttonDecorator/properties/backgroundColor",
+  424                   "type": "string",
+  425                   "title": "The Backgroundcolor Schema",
+  426                   "default": "",
+  427                   "examples": [
+  428                     "#444444"
+  429                   ],
+  430                   "pattern": "^(.*)$"
+  431                 },
+  432                 "borderRadius": {
+  433                   "$id": "#/properties/styles/properties/sharedStyles/properties/buttonDecorator/properties/borderRadius",
+  434                   "type": "integer",
+  435                   "title": "The Borderradius Schema",
+  436                   "default": 0,
+  437                   "examples": [
+  438                     10
+  439                   ]
+  440                 },
+  441                 "padding": {
+  442                   "$id": "#/properties/styles/properties/sharedStyles/properties/buttonDecorator/properties/padding",
+  443                   "type": "integer",
+  444                   "title": "The Padding Schema",
+  445                   "default": 0,
+  446                   "examples": [
+  447                     3
+  448                   ]
+  449                 },
+  450                 "shadowColor": {
+  451                   "$id": "#/properties/styles/properties/sharedStyles/properties/buttonDecorator/properties/shadowColor",
+  452                   "type": "string",
+  453                   "title": "The Shadowcolor Schema",
+  454                   "default": "",
+  455                   "examples": [
+  456                     "#181818"
+  457                   ],
+  458                   "pattern": "^(.*)$"
+  459                 },
+  460                 "shadowOffset": {
+  461                   "$id": "#/properties/styles/properties/sharedStyles/properties/buttonDecorator/properties/shadowOffset",
+  462                   "type": "object",
+  463                   "title": "The Shadowoffset Schema",
+  464                   "required": [
+  465                     "width",
+  466                     "height"
+  467                   ],
+  468                   "properties": {
+  469                     "width": {
+  470                       "$id": "#/properties/styles/properties/sharedStyles/properties/buttonDecorator/properties/shadowOffset/properties/width",
+  471                       "type": "integer",
+  472                       "title": "The Width Schema",
+  473                       "default": 0,
+  474                       "examples": [
+  475                         0
+  476                       ]
+  477                     },
+  478                     "height": {
+  479                       "$id": "#/properties/styles/properties/sharedStyles/properties/buttonDecorator/properties/shadowOffset/properties/height",
+  480                       "type": "integer",
+  481                       "title": "The Height Schema",
+  482                       "default": 0,
+  483                       "examples": [
+  484                         1
+  485                       ]
+  486                     }
+  487                   }
+  488                 },
+  489                 "shadowRadius": {
+  490                   "$id": "#/properties/styles/properties/sharedStyles/properties/buttonDecorator/properties/shadowRadius",
+  491                   "type": "integer",
+  492                   "title": "The Shadowradius Schema",
+  493                   "default": 0,
+  494                   "examples": [
+  495                     3
+  496                   ]
+  497                 },
+  498                 "shadowOpacity": {
+  499                   "$id": "#/properties/styles/properties/sharedStyles/properties/buttonDecorator/properties/shadowOpacity",
+  500                   "type": "number",
+  501                   "title": "The Shadowopacity Schema",
+  502                   "default": 0.0,
+  503                   "examples": [
+  504                     0.25
+  505                   ]
+  506                 },
+  507                 "marginRight": {
+  508                   "$id": "#/properties/styles/properties/sharedStyles/properties/buttonDecorator/properties/marginRight",
+  509                   "type": "integer",
+  510                   "title": "The Marginright Schema",
+  511                   "default": 0,
+  512                   "examples": [
+  513                     20
+  514                   ]
+  515                 },
+  516                 "marginLeft": {
+  517                   "$id": "#/properties/styles/properties/sharedStyles/properties/buttonDecorator/properties/marginLeft",
+  518                   "type": "integer",
+  519                   "title": "The Marginleft Schema",
+  520                   "default": 0,
+  521                   "examples": [
+  522                     20
+  523                   ]
+  524                 }
+  525               }
+  526             },
+  527             "buttonText": {
+  528               "$id": "#/properties/styles/properties/sharedStyles/properties/buttonText",
+  529               "type": "object",
+  530               "title": "The Buttontext Schema",
+  531               "required": [
+  532                 "fontSize"
+  533               ],
+  534               "properties": {
+  535                 "fontSize": {
+  536                   "$id": "#/properties/styles/properties/sharedStyles/properties/buttonText/properties/fontSize",
+  537                   "type": "integer",
+  538                   "title": "The Fontsize Schema",
+  539                   "default": 0,
+  540                   "examples": [
+  541                     25
+  542                   ]
+  543                 }
+  544               }
+  545             },
+  546             "buttonStyle": {
+  547               "$id": "#/properties/styles/properties/sharedStyles/properties/buttonStyle",
+  548               "type": "object",
+  549               "title": "The Buttonstyle Schema",
+  550               "required": [
+  551                 "color"
+  552               ],
+  553               "properties": {
+  554                 "color": {
+  555                   "$id": "#/properties/styles/properties/sharedStyles/properties/buttonStyle/properties/color",
+  556                   "type": "string",
+  557                   "title": "The Color Schema",
+  558                   "default": "",
+  559                   "examples": [
+  560                     "#111111"
+  561                   ],
+  562                   "pattern": "^(.*)$"
+  563                 }
+  564               }
+  565             },
+  566             "bottomNavRow": {
+  567               "$id": "#/properties/styles/properties/sharedStyles/properties/bottomNavRow",
+  568               "type": "object",
+  569               "title": "The Bottomnavrow Schema",
+  570               "required": [
+  571                 "marginTop",
+  572                 "marginLeft",
+  573                 "marginRight",
+  574                 "flex",
+  575                 "flexDirection",
+  576                 "justifyContent"
+  577               ],
+  578               "properties": {
+  579                 "marginTop": {
+  580                   "$id": "#/properties/styles/properties/sharedStyles/properties/bottomNavRow/properties/marginTop",
+  581                   "type": "integer",
+  582                   "title": "The Margintop Schema",
+  583                   "default": 0,
+  584                   "examples": [
+  585                     20
+  586                   ]
+  587                 },
+  588                 "marginLeft": {
+  589                   "$id": "#/properties/styles/properties/sharedStyles/properties/bottomNavRow/properties/marginLeft",
+  590                   "type": "integer",
+  591                   "title": "The Marginleft Schema",
+  592                   "default": 0,
+  593                   "examples": [
+  594                     20
+  595                   ]
+  596                 },
+  597                 "marginRight": {
+  598                   "$id": "#/properties/styles/properties/sharedStyles/properties/bottomNavRow/properties/marginRight",
+  599                   "type": "integer",
+  600                   "title": "The Marginright Schema",
+  601                   "default": 0,
+  602                   "examples": [
+  603                     20
+  604                   ]
+  605                 },
+  606                 "flex": {
+  607                   "$id": "#/properties/styles/properties/sharedStyles/properties/bottomNavRow/properties/flex",
+  608                   "type": "integer",
+  609                   "title": "The Flex Schema",
+  610                   "default": 0,
+  611                   "examples": [
+  612                     2
+  613                   ]
+  614                 },
+  615                 "flexDirection": {
+  616                   "$id": "#/properties/styles/properties/sharedStyles/properties/bottomNavRow/properties/flexDirection",
+  617                   "type": "string",
+  618                   "title": "The Flexdirection Schema",
+  619                   "default": "",
+  620                   "examples": [
+  621                     "row"
+  622                   ],
+  623                   "pattern": "^(.*)$"
+  624                 },
+  625                 "justifyContent": {
+  626                   "$id": "#/properties/styles/properties/sharedStyles/properties/bottomNavRow/properties/justifyContent",
+  627                   "type": "string",
+  628                   "title": "The Justifycontent Schema",
+  629                   "default": "",
+  630                   "examples": [
+  631                     "space-between"
+  632                   ],
+  633                   "pattern": "^(.*)$"
+  634                 }
+  635               }
+  636             },
+  637             "navButton": {
+  638               "$id": "#/properties/styles/properties/sharedStyles/properties/navButton",
+  639               "type": "object",
+  640               "title": "The Navbutton Schema",
+  641               "required": [
+  642                 "textDecorationLine",
+  643                 "fontSize"
+  644               ],
+  645               "properties": {
+  646                 "textDecorationLine": {
+  647                   "$id": "#/properties/styles/properties/sharedStyles/properties/navButton/properties/textDecorationLine",
+  648                   "type": "string",
+  649                   "title": "The Textdecorationline Schema",
+  650                   "default": "",
+  651                   "examples": [
+  652                     "underline"
+  653                   ],
+  654                   "pattern": "^(.*)$"
+  655                 },
+  656                 "fontSize": {
+  657                   "$id": "#/properties/styles/properties/sharedStyles/properties/navButton/properties/fontSize",
+  658                   "type": "integer",
+  659                   "title": "The Fontsize Schema",
+  660                   "default": 0,
+  661                   "examples": [
+  662                     22
+  663                   ]
+  664                 }
+  665               }
+  666             },
+  667             "bottomRow": {
+  668               "$id": "#/properties/styles/properties/sharedStyles/properties/bottomRow",
+  669               "type": "object",
+  670               "title": "The Bottomrow Schema",
+  671               "required": [
+  672                 "flex"
+  673               ],
+  674               "properties": {
+  675                 "flex": {
+  676                   "$id": "#/properties/styles/properties/sharedStyles/properties/bottomRow/properties/flex",
+  677                   "type": "integer",
+  678                   "title": "The Flex Schema",
+  679                   "default": 0,
+  680                   "examples": [
+  681                     2
+  682                   ]
+  683                 }
+  684               }
+  685             },
+  686             "inputsView": {
+  687               "$id": "#/properties/styles/properties/sharedStyles/properties/inputsView",
+  688               "type": "object",
+  689               "title": "The Inputsview Schema",
+  690               "required": [
+  691                 "marginLeft",
+  692                 "marginRight"
+  693               ],
+  694               "properties": {
+  695                 "marginLeft": {
+  696                   "$id": "#/properties/styles/properties/sharedStyles/properties/inputsView/properties/marginLeft",
+  697                   "type": "integer",
+  698                   "title": "The Marginleft Schema",
+  699                   "default": 0,
+  700                   "examples": [
+  701                     35
+  702                   ]
+  703                 },
+  704                 "marginRight": {
+  705                   "$id": "#/properties/styles/properties/sharedStyles/properties/inputsView/properties/marginRight",
+  706                   "type": "integer",
+  707                   "title": "The Marginright Schema",
+  708                   "default": 0,
+  709                   "examples": [
+  710                     35
+  711                   ]
+  712                 }
+  713               }
+  714             },
+  715             "inputText": {
+  716               "$id": "#/properties/styles/properties/sharedStyles/properties/inputText",
+  717               "type": "object",
+  718               "title": "The Inputtext Schema",
+  719               "required": [
+  720                 "height",
+  721                 "fontSize"
+  722               ],
+  723               "properties": {
+  724                 "height": {
+  725                   "$id": "#/properties/styles/properties/sharedStyles/properties/inputText/properties/height",
+  726                   "type": "integer",
+  727                   "title": "The Height Schema",
+  728                   "default": 0,
+  729                   "examples": [
+  730                     40
+  731                   ]
+  732                 },
+  733                 "fontSize": {
+  734                   "$id": "#/properties/styles/properties/sharedStyles/properties/inputText/properties/fontSize",
+  735                   "type": "integer",
+  736                   "title": "The Fontsize Schema",
+  737                   "default": 0,
+  738                   "examples": [
+  739                     20
+  740                   ]
+  741                 }
+  742               }
+  743             }
+  744           }
+  745         },
+  746         "extraScreenStyles": {
+  747           "$id": "#/properties/styles/properties/extraScreenStyles",
+  748           "type": "object",
+  749           "title": "The Extrascreenstyles Schema"
+  750         },
+  751         "accordStyles": {
+  752           "$id": "#/properties/styles/properties/accordStyles",
+  753           "type": "object",
+  754           "title": "The Accordstyles Schema",
+  755           "required": [
+  756             "accordStyle",
+  757             "accordHead",
+  758             "accordDetails",
+  759             "accordSep"
+  760           ],
+  761           "properties": {
+  762             "accordStyle": {
+  763               "$id": "#/properties/styles/properties/accordStyles/properties/accordStyle",
+  764               "type": "object",
+  765               "title": "The Accordstyle Schema",
+  766               "required": [
+  767                 "backgroundColor"
+  768               ],
+  769               "properties": {
+  770                 "backgroundColor": {
+  771                   "$id": "#/properties/styles/properties/accordStyles/properties/accordStyle/properties/backgroundColor",
+  772                   "type": "string",
+  773                   "title": "The Backgroundcolor Schema",
+  774                   "default": "",
+  775                   "examples": [
+  776                     "#FF9900"
+  777                   ],
+  778                   "pattern": "^(.*)$"
+  779                 }
+  780               }
+  781             },
+  782             "accordHead": {
+  783               "$id": "#/properties/styles/properties/accordStyles/properties/accordHead",
+  784               "type": "object",
+  785               "title": "The Accordhead Schema"
+  786             },
+  787             "accordDetails": {
+  788               "$id": "#/properties/styles/properties/accordStyles/properties/accordDetails",
+  789               "type": "object",
+  790               "title": "The Accorddetails Schema"
+  791             },
+  792             "accordSep": {
+  793               "$id": "#/properties/styles/properties/accordStyles/properties/accordSep",
+  794               "type": "object",
+  795               "title": "The Accordsep Schema"
+  796             }
+  797           }
+  798         },
+  799         "thisWayStyles": {
+  800           "$id": "#/properties/styles/properties/thisWayStyles",
+  801           "type": "object",
+  802           "title": "The Thiswaystyles Schema"
+  803         }
+  804       }
+  805     }
+  806   }
+  807 }

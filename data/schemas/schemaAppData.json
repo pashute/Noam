@@ -1,0 +1,997 @@
+1 {
+    2   "definitions": {},
+    3   "$schema": "http://json-schema.org/draft-07/schema#",
+    4   "$id": "http://example.com/root.json",
+    5   "type": "object",
+    6   "title": "The Root Schema",
+    7   "required": [
+    8     "appData"
+    9   ],
+   10   "properties": {
+   11     "appData": {
+   12       "$id": "#/properties/appData",
+   13       "type": "object",
+   14       "title": "The Appdata Schema",
+   15       "required": [
+   16         "general",
+   17         "menu",
+   18         "screenMainApp",
+   19         "screenInPlace",
+   20         "screenFirstTime",
+   21         "screenSplash",
+   22         "screensHelp",
+   23         "screensSettings"
+   24       ],
+   25       "properties": {
+   26         "general": {
+   27           "$id": "#/properties/appData/properties/general",
+   28           "type": "object",
+   29           "title": "The General Schema",
+   30           "required": [
+   31             "txtAppName",
+   32             "txtAppNameOnActionBar",
+   33             "txtNext",
+   34             "txtTOC",
+   35             "txtBack",
+   36             "txtDone",
+   37             "txtOn",
+   38             "txtOff",
+   39             "txtOK",
+   40             "txtCancel"
+   41           ],
+   42           "properties": {
+   43             "txtAppName": {
+   44               "$id": "#/properties/appData/properties/general/properties/txtAppName",
+   45               "type": "string",
+   46               "title": "The Txtappname Schema",
+   47               "default": "",
+   48               "examples": [
+   49                 "Noam"
+   50               ],
+   51               "pattern": "^(.*)$"
+   52             },
+   53             "txtAppNameOnActionBar": {
+   54               "$id": "#/properties/appData/properties/general/properties/txtAppNameOnActionBar",
+   55               "type": "string",
+   56               "title": "The Txtappnameonactionbar Schema",
+   57               "default": "",
+   58               "examples": [
+   59                 "noam"
+   60               ],
+   61               "pattern": "^(.*)$"
+   62             },
+   63             "txtNext": {
+   64               "$id": "#/properties/appData/properties/general/properties/txtNext",
+   65               "type": "string",
+   66               "title": "The Txtnext Schema",
+   67               "default": "",
+   68               "examples": [
+   69                 "Next"
+   70               ],
+   71               "pattern": "^(.*)$"
+   72             },
+   73             "txtTOC": {
+   74               "$id": "#/properties/appData/properties/general/properties/txtTOC",
+   75               "type": "string",
+   76               "title": "The Txttoc Schema",
+   77               "default": "",
+   78               "examples": [
+   79                 "TOC"
+   80               ],
+   81               "pattern": "^(.*)$"
+   82             },
+   83             "txtBack": {
+   84               "$id": "#/properties/appData/properties/general/properties/txtBack",
+   85               "type": "string",
+   86               "title": "The Txtback Schema",
+   87               "default": "",
+   88               "examples": [
+   89                 "Back"
+   90               ],
+   91               "pattern": "^(.*)$"
+   92             },
+   93             "txtDone": {
+   94               "$id": "#/properties/appData/properties/general/properties/txtDone",
+   95               "type": "string",
+   96               "title": "The Txtdone Schema",
+   97               "default": "",
+   98               "examples": [
+   99                 "Done"
+  100               ],
+  101               "pattern": "^(.*)$"
+  102             },
+  103             "txtOn": {
+  104               "$id": "#/properties/appData/properties/general/properties/txtOn",
+  105               "type": "string",
+  106               "title": "The Txton Schema",
+  107               "default": "",
+  108               "examples": [
+  109                 "on"
+  110               ],
+  111               "pattern": "^(.*)$"
+  112             },
+  113             "txtOff": {
+  114               "$id": "#/properties/appData/properties/general/properties/txtOff",
+  115               "type": "string",
+  116               "title": "The Txtoff Schema",
+  117               "default": "",
+  118               "examples": [
+  119                 "off"
+  120               ],
+  121               "pattern": "^(.*)$"
+  122             },
+  123             "txtOK": {
+  124               "$id": "#/properties/appData/properties/general/properties/txtOK",
+  125               "type": "string",
+  126               "title": "The Txtok Schema",
+  127               "default": "",
+  128               "examples": [
+  129                 "OK"
+  130               ],
+  131               "pattern": "^(.*)$"
+  132             },
+  133             "txtCancel": {
+  134               "$id": "#/properties/appData/properties/general/properties/txtCancel",
+  135               "type": "string",
+  136               "title": "The Txtcancel Schema",
+  137               "default": "",
+  138               "examples": [
+  139                 "Cancel"
+  140               ],
+  141               "pattern": "^(.*)$"
+  142             }
+  143           }
+  144         },
+  145         "menu": {
+  146           "$id": "#/properties/appData/properties/menu",
+  147           "type": "object",
+  148           "title": "The Menu Schema",
+  149           "required": [
+  150             "txtMenuSettings",
+  151             "txtMenuHelp"
+  152           ],
+  153           "properties": {
+  154             "txtMenuSettings": {
+  155               "$id": "#/properties/appData/properties/menu/properties/txtMenuSettings",
+  156               "type": "string",
+  157               "title": "The Txtmenusettings Schema",
+  158               "default": "",
+  159               "examples": [
+  160                 "Settings"
+  161               ],
+  162               "pattern": "^(.*)$"
+  163             },
+  164             "txtMenuHelp": {
+  165               "$id": "#/properties/appData/properties/menu/properties/txtMenuHelp",
+  166               "type": "string",
+  167               "title": "The Txtmenuhelp Schema",
+  168               "default": "",
+  169               "examples": [
+  170                 "Help"
+  171               ],
+  172               "pattern": "^(.*)$"
+  173             }
+  174           }
+  175         },
+  176         "screenMainApp": {
+  177           "$id": "#/properties/appData/properties/screenMainApp",
+  178           "type": "object",
+  179           "title": "The Screenmainapp Schema",
+  180           "required": [
+  181             "txtPointingTo"
+  182           ],
+  183           "properties": {
+  184             "txtPointingTo": {
+  185               "$id": "#/properties/appData/properties/screenMainApp/properties/txtPointingTo",
+  186               "type": "string",
+  187               "title": "The Txtpointingto Schema",
+  188               "default": "",
+  189               "examples": [
+  190                 "Pointing to"
+  191               ],
+  192               "pattern": "^(.*)$"
+  193             }
+  194           }
+  195         },
+  196         "screenInPlace": {
+  197           "$id": "#/properties/appData/properties/screenInPlace",
+  198           "type": "object",
+  199           "title": "The Screeninplace Schema",
+  200           "required": [
+  201             "noDataForFloor"
+  202           ],
+  203           "properties": {
+  204             "noDataForFloor": {
+  205               "$id": "#/properties/appData/properties/screenInPlace/properties/noDataForFloor",
+  206               "type": "string",
+  207               "title": "The Nodataforfloor Schema",
+  208               "default": "",
+  209               "examples": [
+  210                 "No data for chosen floor"
+  211               ],
+  212               "pattern": "^(.*)$"
+  213             }
+  214           }
+  215         },
+  216         "screenFirstTime": {
+  217           "$id": "#/properties/appData/properties/screenFirstTime",
+  218           "type": "object",
+  219           "title": "The Screenfirsttime Schema",
+  220           "required": [
+  221             "txtFirstTimeHeader",
+  222             "txtFirstTimeMsg"
+  223           ],
+  224           "properties": {
+  225             "txtFirstTimeHeader": {
+  226               "$id": "#/properties/appData/properties/screenFirstTime/properties/txtFirstTimeHeader",
+  227               "type": "string",
+  228               "title": "The Txtfirsttimeheader Schema",
+  229               "default": "",
+  230               "examples": [
+  231                 "First time header"
+  232               ],
+  233               "pattern": "^(.*)$"
+  234             },
+  235             "txtFirstTimeMsg": {
+  236               "$id": "#/properties/appData/properties/screenFirstTime/properties/txtFirstTimeMsg",
+  237               "type": "array",
+  238               "title": "The Txtfirsttimemsg Schema",
+  239               "items": {
+  240                 "$id": "#/properties/appData/properties/screenFirstTime/properties/txtFirstTimeMsg/items",
+  241                 "type": "string",
+  242                 "title": "The Items Schema",
+  243                 "default": "",
+  244                 "examples": [
+  245                   "First time msg line 1\n",
+  246                   "First time msg line 2\n",
+  247                   "First time msg line 3\n",
+  248                   "First time msg etc etc"
+  249                 ],
+  250                 "pattern": "^(.*)$"
+  251               }
+  252             }
+  253           }
+  254         },
+  255         "screenSplash": {
+  256           "$id": "#/properties/appData/properties/screenSplash",
+  257           "type": "object",
+  258           "title": "The Screensplash Schema",
+  259           "required": [
+  260             "txtSplashTitle",
+  261             "txtSplashDescription",
+  262             "txtIosInstruct",
+  263             "txtAndroidInstruct",
+  264             "txtButtonIosBluetooth",
+  265             "txtButtonAndroidBluetooth"
+  266           ],
+  267           "properties": {
+  268             "txtSplashTitle": {
+  269               "$id": "#/properties/appData/properties/screenSplash/properties/txtSplashTitle",
+  270               "type": "string",
+  271               "title": "The Txtsplashtitle Schema",
+  272               "default": "",
+  273               "examples": [
+  274                 "noam"
+  275               ],
+  276               "pattern": "^(.*)$"
+  277             },
+  278             "txtSplashDescription": {
+  279               "$id": "#/properties/appData/properties/screenSplash/properties/txtSplashDescription",
+  280               "type": "string",
+  281               "title": "The Txtsplashdescription Schema",
+  282               "default": "",
+  283               "examples": [
+  284                 "your indoor assistant"
+  285               ],
+  286               "pattern": "^(.*)$"
+  287             },
+  288             "txtIosInstruct": {
+  289               "$id": "#/properties/appData/properties/screenSplash/properties/txtIosInstruct",
+  290               "type": "array",
+  291               "title": "The Txtiosinstruct Schema",
+  292               "items": {
+  293                 "$id": "#/properties/appData/properties/screenSplash/properties/txtIosInstruct/items",
+  294                 "type": "string",
+  295                 "title": "The Items Schema",
+  296                 "default": "",
+  297                 "examples": [
+  298                   "Welcome to Noam\n",
+  299                   "your indoor assistant\n",
+  300                   "for accessible buildings\n",
+  301                   "\n",
+  302                   "We can tell you what's in\n",
+  303                   "the building and where.\n",
+  304                   "\n",
+  305                   "This app needs Bluetooth"
+  306                 ],
+  307                 "pattern": "^(.*)$"
+  308               }
+  309             },
+  310             "txtAndroidInstruct": {
+  311               "$id": "#/properties/appData/properties/screenSplash/properties/txtAndroidInstruct",
+  312               "type": "array",
+  313               "title": "The Txtandroidinstruct Schema",
+  314               "items": {
+  315                 "$id": "#/properties/appData/properties/screenSplash/properties/txtAndroidInstruct/items",
+  316                 "type": "string",
+  317                 "title": "The Items Schema",
+  318                 "default": "",
+  319                 "examples": [
+  320                   "Welcome to Noam",
+  321                   "your indoor assistant\n",
+  322                   "for accessible buildings\n",
+  323                   "\n",
+  324                   "We can tell you what's in\n",
+  325                   "the building and where."
+  326                 ],
+  327                 "pattern": "^(.*)$"
+  328               }
+  329             },
+  330             "txtButtonIosBluetooth": {
+  331               "$id": "#/properties/appData/properties/screenSplash/properties/txtButtonIosBluetooth",
+  332               "type": "string",
+  333               "title": "The Txtbuttoniosbluetooth Schema",
+  334               "default": "",
+  335               "examples": [
+  336                 "Go to Bluetooth settings"
+  337               ],
+  338               "pattern": "^(.*)$"
+  339             },
+  340             "txtButtonAndroidBluetooth": {
+  341               "$id": "#/properties/appData/properties/screenSplash/properties/txtButtonAndroidBluetooth",
+  342               "type": "string",
+  343               "title": "The Txtbuttonandroidbluetooth Schema",
+  344               "default": "",
+  345               "examples": [
+  346                 "Press here to turn Bluetooth on"
+  347               ],
+  348               "pattern": "^(.*)$"
+  349             }
+  350           }
+  351         },
+  352         "screensHelp": {
+  353           "$id": "#/properties/appData/properties/screensHelp",
+  354           "type": "object",
+  355           "title": "The Screenshelp Schema",
+  356           "required": [
+  357             "txtHelp",
+  358             "txtGettingStarted",
+  359             "txtTroubleshooting",
+  360             "txtFAQ",
+  361             "gettingStarted",
+  362             "troubleshooting",
+  363             "faq"
+  364           ],
+  365           "properties": {
+  366             "txtHelp": {
+  367               "$id": "#/properties/appData/properties/screensHelp/properties/txtHelp",
+  368               "type": "string",
+  369               "title": "The Txthelp Schema",
+  370               "default": "",
+  371               "examples": [
+  372                 "Help"
+  373               ],
+  374               "pattern": "^(.*)$"
+  375             },
+  376             "txtGettingStarted": {
+  377               "$id": "#/properties/appData/properties/screensHelp/properties/txtGettingStarted",
+  378               "type": "string",
+  379               "title": "The Txtgettingstarted Schema",
+  380               "default": "",
+  381               "examples": [
+  382                 "Getting Started"
+  383               ],
+  384               "pattern": "^(.*)$"
+  385             },
+  386             "txtTroubleshooting": {
+  387               "$id": "#/properties/appData/properties/screensHelp/properties/txtTroubleshooting",
+  388               "type": "string",
+  389               "title": "The Txttroubleshooting Schema",
+  390               "default": "",
+  391               "examples": [
+  392                 "Troubleshooting"
+  393               ],
+  394               "pattern": "^(.*)$"
+  395             },
+  396             "txtFAQ": {
+  397               "$id": "#/properties/appData/properties/screensHelp/properties/txtFAQ",
+  398               "type": "string",
+  399               "title": "The Txtfaq Schema",
+  400               "default": "",
+  401               "examples": [
+  402                 "FAQ"
+  403               ],
+  404               "pattern": "^(.*)$"
+  405             },
+  406             "gettingStarted": {
+  407               "$id": "#/properties/appData/properties/screensHelp/properties/gettingStarted",
+  408               "type": "object",
+  409               "title": "The Gettingstarted Schema",
+  410               "required": [
+  411                 "title"
+  412               ],
+  413               "properties": {
+  414                 "title": {
+  415                   "$id": "#/properties/appData/properties/screensHelp/properties/gettingStarted/properties/title",
+  416                   "type": "string",
+  417                   "title": "The Title Schema",
+  418                   "default": "",
+  419                   "examples": [
+  420                     "Getting Started"
+  421                   ],
+  422                   "pattern": "^(.*)$"
+  423                 }
+  424               }
+  425             },
+  426             "troubleshooting": {
+  427               "$id": "#/properties/appData/properties/screensHelp/properties/troubleshooting",
+  428               "type": "object",
+  429               "title": "The Troubleshooting Schema",
+  430               "required": [
+  431                 "title"
+  432               ],
+  433               "properties": {
+  434                 "title": {
+  435                   "$id": "#/properties/appData/properties/screensHelp/properties/troubleshooting/properties/title",
+  436                   "type": "string",
+  437                   "title": "The Title Schema",
+  438                   "default": "",
+  439                   "examples": [
+  440                     "Troubleshooting"
+  441                   ],
+  442                   "pattern": "^(.*)$"
+  443                 }
+  444               }
+  445             },
+  446             "faq": {
+  447               "$id": "#/properties/appData/properties/screensHelp/properties/faq",
+  448               "type": "object",
+  449               "title": "The Faq Schema",
+  450               "required": [
+  451                 "title"
+  452               ],
+  453               "properties": {
+  454                 "title": {
+  455                   "$id": "#/properties/appData/properties/screensHelp/properties/faq/properties/title",
+  456                   "type": "string",
+  457                   "title": "The Title Schema",
+  458                   "default": "",
+  459                   "examples": [
+  460                     "FAQ"
+  461                   ],
+  462                   "pattern": "^(.*)$"
+  463                 }
+  464               }
+  465             }
+  466           }
+  467         },
+  468         "screensSettings": {
+  469           "$id": "#/properties/appData/properties/screensSettings",
+  470           "type": "object",
+  471           "title": "The Screenssettings Schema",
+  472           "required": [
+  473             "txtSettings",
+  474             "txtToCalibrate",
+  475             "txtToAutoUpdate",
+  476             "txtToVoiceAssist",
+  477             "txtToPreferences",
+  478             "txtToProfile",
+  479             "txtToGoTo",
+  480             "calibrate",
+  481             "autoUpdate",
+  482             "voiceAssist",
+  483             "preferences",
+  484             "profile"
+  485           ],
+  486           "properties": {
+  487             "txtSettings": {
+  488               "$id": "#/properties/appData/properties/screensSettings/properties/txtSettings",
+  489               "type": "string",
+  490               "title": "The Txtsettings Schema",
+  491               "default": "",
+  492               "examples": [
+  493                 "Settings"
+  494               ],
+  495               "pattern": "^(.*)$"
+  496             },
+  497             "txtToCalibrate": {
+  498               "$id": "#/properties/appData/properties/screensSettings/properties/txtToCalibrate",
+  499               "type": "string",
+  500               "title": "The Txttocalibrate Schema",
+  501               "default": "",
+  502               "examples": [
+  503                 "1. Calibrate Compass"
+  504               ],
+  505               "pattern": "^(.*)$"
+  506             },
+  507             "txtToAutoUpdate": {
+  508               "$id": "#/properties/appData/properties/screensSettings/properties/txtToAutoUpdate",
+  509               "type": "string",
+  510               "title": "The Txttoautoupdate Schema",
+  511               "default": "",
+  512               "examples": [
+  513                 "2. Auto Update"
+  514               ],
+  515               "pattern": "^(.*)$"
+  516             },
+  517             "txtToVoiceAssist": {
+  518               "$id": "#/properties/appData/properties/screensSettings/properties/txtToVoiceAssist",
+  519               "type": "string",
+  520               "title": "The Txttovoiceassist Schema",
+  521               "default": "",
+  522               "examples": [
+  523                 "3. Voice Assist"
+  524               ],
+  525               "pattern": "^(.*)$"
+  526             },
+  527             "txtToPreferences": {
+  528               "$id": "#/properties/appData/properties/screensSettings/properties/txtToPreferences",
+  529               "type": "string",
+  530               "title": "The Txttopreferences Schema",
+  531               "default": "",
+  532               "examples": [
+  533                 "4. Preferences"
+  534               ],
+  535               "pattern": "^(.*)$"
+  536             },
+  537             "txtToProfile": {
+  538               "$id": "#/properties/appData/properties/screensSettings/properties/txtToProfile",
+  539               "type": "string",
+  540               "title": "The Txttoprofile Schema",
+  541               "default": "",
+  542               "examples": [
+  543                 "5. Profile"
+  544               ],
+  545               "pattern": "^(.*)$"
+  546             },
+  547             "txtToGoTo": {
+  548               "$id": "#/properties/appData/properties/screensSettings/properties/txtToGoTo",
+  549               "type": "string",
+  550               "title": "The Txttogoto Schema",
+  551               "default": "",
+  552               "examples": [
+  553                 "Tap to go to "
+  554               ],
+  555               "pattern": "^(.*)$"
+  556             },
+  557             "calibrate": {
+  558               "$id": "#/properties/appData/properties/screensSettings/properties/calibrate",
+  559               "type": "object",
+  560               "title": "The Calibrate Schema",
+  561               "required": [
+  562                 "txtTitle",
+  563                 "txtInstructionsCompass"
+  564               ],
+  565               "properties": {
+  566                 "txtTitle": {
+  567                   "$id": "#/properties/appData/properties/screensSettings/properties/calibrate/properties/txtTitle",
+  568                   "type": "string",
+  569                   "title": "The Txttitle Schema",
+  570                   "default": "",
+  571                   "examples": [
+  572                     "Compass Calibration"
+  573                   ],
+  574                   "pattern": "^(.*)$"
+  575                 },
+  576                 "txtInstructionsCompass": {
+  577                   "$id": "#/properties/appData/properties/screensSettings/properties/calibrate/properties/txtInstructionsCompass",
+  578                   "type": "array",
+  579                   "title": "The Txtinstructionscompass Schema",
+  580                   "items": {
+  581                     "$id": "#/properties/appData/properties/screensSettings/properties/calibrate/properties/txtInstructionsCompass/items",
+  582                     "type": "string",
+  583                     "title": "The Items Schema",
+  584                     "default": "",
+  585                     "examples": [
+  586                       "Please point your device forward ...\n",
+  587                       "then turn it in a large figure eight\n",
+  588                       "to calibrate the compass"
+  589                     ],
+  590                     "pattern": "^(.*)$"
+  591                   }
+  592                 }
+  593               }
+  594             },
+  595             "autoUpdate": {
+  596               "$id": "#/properties/appData/properties/screensSettings/properties/autoUpdate",
+  597               "type": "object",
+  598               "title": "The Autoupdate Schema",
+  599               "required": [
+  600                 "txtTitle",
+  601                 "txtInstructions",
+  602                 "txtAutoUpdateIs",
+  603                 "txtAutoUpdateTurn",
+  604                 "txtAutoUpdateAccessTurnOn",
+  605                 "txtAutoUpdateAccessTurnOff"
+  606               ],
+  607               "properties": {
+  608                 "txtTitle": {
+  609                   "$id": "#/properties/appData/properties/screensSettings/properties/autoUpdate/properties/txtTitle",
+  610                   "type": "string",
+  611                   "title": "The Txttitle Schema",
+  612                   "default": "",
+  613                   "examples": [
+  614                     "Auto update"
+  615                   ],
+  616                   "pattern": "^(.*)$"
+  617                 },
+  618                 "txtInstructions": {
+  619                   "$id": "#/properties/appData/properties/screensSettings/properties/autoUpdate/properties/txtInstructions",
+  620                   "type": "array",
+  621                   "title": "The Txtinstructions Schema",
+  622                   "items": {
+  623                     "$id": "#/properties/appData/properties/screensSettings/properties/autoUpdate/properties/txtInstructions/items",
+  624                     "type": "string",
+  625                     "title": "The Items Schema",
+  626                     "default": "",
+  627                     "examples": [
+  628                       "If you turn this option on the lists\n",
+  629                       "will automatically change as you\n",
+  630                       "change your direction\n",
+  631                       "\n",
+  632                       "To refresh the list manually\n",
+  633                       "point the top of your phone in\n",
+  634                       "the direction you want instructions for ",
+  635                       "and press the This Way tab"
+  636                     ],
+  637                     "pattern": "^(.*)$"
+  638                   }
+  639                 },
+  640                 "txtAutoUpdateIs": {
+  641                   "$id": "#/properties/appData/properties/screensSettings/properties/autoUpdate/properties/txtAutoUpdateIs",
+  642                   "type": "string",
+  643                   "title": "The Txtautoupdateis Schema",
+  644                   "default": "",
+  645                   "examples": [
+  646                     "Auto-update is currently set "
+  647                   ],
+  648                   "pattern": "^(.*)$"
+  649                 },
+  650                 "txtAutoUpdateTurn": {
+  651                   "$id": "#/properties/appData/properties/screensSettings/properties/autoUpdate/properties/txtAutoUpdateTurn",
+  652                   "type": "string",
+  653                   "title": "The Txtautoupdateturn Schema",
+  654                   "default": "",
+  655                   "examples": [
+  656                     "Turn auto-update "
+  657                   ],
+  658                   "pattern": "^(.*)$"
+  659                 },
+  660                 "txtAutoUpdateAccessTurnOn": {
+  661                   "$id": "#/properties/appData/properties/screensSettings/properties/autoUpdate/properties/txtAutoUpdateAccessTurnOn",
+  662                   "type": "string",
+  663                   "title": "The Txtautoupdateaccessturnon Schema",
+  664                   "default": "",
+  665                   "examples": [
+  666                     "Tap to turn on auto update"
+  667                   ],
+  668                   "pattern": "^(.*)$"
+  669                 },
+  670                 "txtAutoUpdateAccessTurnOff": {
+  671                   "$id": "#/properties/appData/properties/screensSettings/properties/autoUpdate/properties/txtAutoUpdateAccessTurnOff",
+  672                   "type": "string",
+  673                   "title": "The Txtautoupdateaccessturnoff Schema",
+  674                   "default": "",
+  675                   "examples": [
+  676                     "Tap to turn off auto update"
+  677                   ],
+  678                   "pattern": "^(.*)$"
+  679                 }
+  680               }
+  681             },
+  682             "voiceAssist": {
+  683               "$id": "#/properties/appData/properties/screensSettings/properties/voiceAssist",
+  684               "type": "object",
+  685               "title": "The Voiceassist Schema",
+  686               "required": [
+  687                 "txtTitle",
+  688                 "txtAssistantIs",
+  689                 "txtAssistantTurn",
+  690                 "txtChooseVoice",
+  691                 "txtVoiceMale",
+  692                 "txtVoiceFemale",
+  693                 "txtInstrcutionsVoiceAssist"
+  694               ],
+  695               "properties": {
+  696                 "txtTitle": {
+  697                   "$id": "#/properties/appData/properties/screensSettings/properties/voiceAssist/properties/txtTitle",
+  698                   "type": "string",
+  699                   "title": "The Txttitle Schema",
+  700                   "default": "",
+  701                   "examples": [
+  702                     "Voice assist"
+  703                   ],
+  704                   "pattern": "^(.*)$"
+  705                 },
+  706                 "txtAssistantIs": {
+  707                   "$id": "#/properties/appData/properties/screensSettings/properties/voiceAssist/properties/txtAssistantIs",
+  708                   "type": "string",
+  709                   "title": "The Txtassistantis Schema",
+  710                   "default": "",
+  711                   "examples": [
+  712                     "Voice assistant is currently set "
+  713                   ],
+  714                   "pattern": "^(.*)$"
+  715                 },
+  716                 "txtAssistantTurn": {
+  717                   "$id": "#/properties/appData/properties/screensSettings/properties/voiceAssist/properties/txtAssistantTurn",
+  718                   "type": "string",
+  719                   "title": "The Txtassistantturn Schema",
+  720                   "default": "",
+  721                   "examples": [
+  722                     "Turn voice assistant "
+  723                   ],
+  724                   "pattern": "^(.*)$"
+  725                 },
+  726                 "txtChooseVoice": {
+  727                   "$id": "#/properties/appData/properties/screensSettings/properties/voiceAssist/properties/txtChooseVoice",
+  728                   "type": "string",
+  729                   "title": "The Txtchoosevoice Schema",
+  730                   "default": "",
+  731                   "examples": [
+  732                     "Choose voice"
+  733                   ],
+  734                   "pattern": "^(.*)$"
+  735                 },
+  736                 "txtVoiceMale": {
+  737                   "$id": "#/properties/appData/properties/screensSettings/properties/voiceAssist/properties/txtVoiceMale",
+  738                   "type": "string",
+  739                   "title": "The Txtvoicemale Schema",
+  740                   "default": "",
+  741                   "examples": [
+  742                     "Male"
+  743                   ],
+  744                   "pattern": "^(.*)$"
+  745                 },
+  746                 "txtVoiceFemale": {
+  747                   "$id": "#/properties/appData/properties/screensSettings/properties/voiceAssist/properties/txtVoiceFemale",
+  748                   "type": "string",
+  749                   "title": "The Txtvoicefemale Schema",
+  750                   "default": "",
+  751                   "examples": [
+  752                     "Female"
+  753                   ],
+  754                   "pattern": "^(.*)$"
+  755                 },
+  756                 "txtInstrcutionsVoiceAssist": {
+  757                   "$id": "#/properties/appData/properties/screensSettings/properties/voiceAssist/properties/txtInstrcutionsVoiceAssist",
+  758                   "type": "array",
+  759                   "title": "The Txtinstrcutionsvoiceassist Schema",
+  760                   "items": {
+  761                     "$id": "#/properties/appData/properties/screensSettings/properties/voiceAssist/properties/txtInstrcutionsVoiceAssist/items",
+  762                     "type": "string",
+  763                     "title": "The Items Schema",
+  764                     "default": "",
+  765                     "examples": [
+  766                       "If you turn this option on\n",
+  767                       "you can talk freely with the app\n",
+  768                       "Just say Hey Noam!\n",
+  769                       "and ask about this place in your own words."
+  770                     ],
+  771                     "pattern": "^(.*)$"
+  772                   }
+  773                 }
+  774               }
+  775             },
+  776             "preferences": {
+  777               "$id": "#/properties/appData/properties/screensSettings/properties/preferences",
+  778               "type": "object",
+  779               "title": "The Preferences Schema",
+  780               "required": [
+  781                 "txtTitle",
+  782                 "txtThemeHighContrast",
+  783                 "txtThemeDefault",
+  784                 "txtLabelUseLargeFonts",
+  785                 "txtLabelScalingOptions",
+  786                 "txtLabelLanguage",
+  787                 "txtLabelTextOnly",
+  788                 "txtLabelTheme",
+  789                 "txtLabelShowOutlines",
+  790                 "txtAlertLangchangeTitle",
+  791                 "txtAlertLangchangeText",
+  792                 "txtLabelNotifications",
+  793                 "txtLabelAutoLaunch"
+  794               ],
+  795               "properties": {
+  796                 "txtTitle": {
+  797                   "$id": "#/properties/appData/properties/screensSettings/properties/preferences/properties/txtTitle",
+  798                   "type": "string",
+  799                   "title": "The Txttitle Schema",
+  800                   "default": "",
+  801                   "examples": [
+  802                     "Preferences"
+  803                   ],
+  804                   "pattern": "^(.*)$"
+  805                 },
+  806                 "txtThemeHighContrast": {
+  807                   "$id": "#/properties/appData/properties/screensSettings/properties/preferences/properties/txtThemeHighContrast",
+  808                   "type": "string",
+  809                   "title": "The Txtthemehighcontrast Schema",
+  810                   "default": "",
+  811                   "examples": [
+  812                     "High Contrast"
+  813                   ],
+  814                   "pattern": "^(.*)$"
+  815                 },
+  816                 "txtThemeDefault": {
+  817                   "$id": "#/properties/appData/properties/screensSettings/properties/preferences/properties/txtThemeDefault",
+  818                   "type": "string",
+  819                   "title": "The Txtthemedefault Schema",
+  820                   "default": "",
+  821                   "examples": [
+  822                     "Default"
+  823                   ],
+  824                   "pattern": "^(.*)$"
+  825                 },
+  826                 "txtLabelUseLargeFonts": {
+  827                   "$id": "#/properties/appData/properties/screensSettings/properties/preferences/properties/txtLabelUseLargeFonts",
+  828                   "type": "string",
+  829                   "title": "The Txtlabeluselargefonts Schema",
+  830                   "default": "",
+  831                   "examples": [
+  832                     "Use large fonts"
+  833                   ],
+  834                   "pattern": "^(.*)$"
+  835                 },
+  836                 "txtLabelScalingOptions": {
+  837                   "$id": "#/properties/appData/properties/screensSettings/properties/preferences/properties/txtLabelScalingOptions",
+  838                   "type": "string",
+  839                   "title": "The Txtlabelscalingoptions Schema",
+  840                   "default": "",
+  841                   "examples": [
+  842                     "Scaling options"
+  843                   ],
+  844                   "pattern": "^(.*)$"
+  845                 },
+  846                 "txtLabelLanguage": {
+  847                   "$id": "#/properties/appData/properties/screensSettings/properties/preferences/properties/txtLabelLanguage",
+  848                   "type": "string",
+  849                   "title": "The Txtlabellanguage Schema",
+  850                   "default": "",
+  851                   "examples": [
+  852                     "Language"
+  853                   ],
+  854                   "pattern": "^(.*)$"
+  855                 },
+  856                 "txtLabelTextOnly": {
+  857                   "$id": "#/properties/appData/properties/screensSettings/properties/preferences/properties/txtLabelTextOnly",
+  858                   "type": "string",
+  859                   "title": "The Txtlabeltextonly Schema",
+  860                   "default": "",
+  861                   "examples": [
+  862                     "Text only (no icons)"
+  863                   ],
+  864                   "pattern": "^(.*)$"
+  865                 },
+  866                 "txtLabelTheme": {
+  867                   "$id": "#/properties/appData/properties/screensSettings/properties/preferences/properties/txtLabelTheme",
+  868                   "type": "string",
+  869                   "title": "The Txtlabeltheme Schema",
+  870                   "default": "",
+  871                   "examples": [
+  872                     "Theme"
+  873                   ],
+  874                   "pattern": "^(.*)$"
+  875                 },
+  876                 "txtLabelShowOutlines": {
+  877                   "$id": "#/properties/appData/properties/screensSettings/properties/preferences/properties/txtLabelShowOutlines",
+  878                   "type": "string",
+  879                   "title": "The Txtlabelshowoutlines Schema",
+  880                   "default": "",
+  881                   "examples": [
+  882                     "Show outlines"
+  883                   ],
+  884                   "pattern": "^(.*)$"
+  885                 },
+  886                 "txtAlertLangchangeTitle": {
+  887                   "$id": "#/properties/appData/properties/screensSettings/properties/preferences/properties/txtAlertLangchangeTitle",
+  888                   "type": "string",
+  889                   "title": "The Txtalertlangchangetitle Schema",
+  890                   "default": "",
+  891                   "examples": [
+  892                     "Changing Language"
+  893                   ],
+  894                   "pattern": "^(.*)$"
+  895                 },
+  896                 "txtAlertLangchangeText": {
+  897                   "$id": "#/properties/appData/properties/screensSettings/properties/preferences/properties/txtAlertLangchangeText",
+  898                   "type": "string",
+  899                   "title": "The Txtalertlangchangetext Schema",
+  900                   "default": "",
+  901                   "examples": [
+  902                     "Changing the language to "
+  903                   ],
+  904                   "pattern": "^(.*)$"
+  905                 },
+  906                 "txtLabelNotifications": {
+  907                   "$id": "#/properties/appData/properties/screensSettings/properties/preferences/properties/txtLabelNotifications",
+  908                   "type": "string",
+  909                   "title": "The Txtlabelnotifications Schema",
+  910                   "default": "",
+  911                   "examples": [
+  912                     "Notifications"
+  913                   ],
+  914                   "pattern": "^(.*)$"
+  915                 },
+  916                 "txtLabelAutoLaunch": {
+  917                   "$id": "#/properties/appData/properties/screensSettings/properties/preferences/properties/txtLabelAutoLaunch",
+  918                   "type": "string",
+  919                   "title": "The Txtlabelautolaunch Schema",
+  920                   "default": "",
+  921                   "examples": [
+  922                     "Automatic launch near location"
+  923                   ],
+  924                   "pattern": "^(.*)$"
+  925                 }
+  926               }
+  927             },
+  928             "profile": {
+  929               "$id": "#/properties/appData/properties/screensSettings/properties/profile",
+  930               "type": "object",
+  931               "title": "The Profile Schema",
+  932               "required": [
+  933                 "txtTitle",
+  934                 "txtInstructions",
+  935                 "txtUsername",
+  936                 "txtEmail",
+  937                 "txtPassword"
+  938               ],
+  939               "properties": {
+  940                 "txtTitle": {
+  941                   "$id": "#/properties/appData/properties/screensSettings/properties/profile/properties/txtTitle",
+  942                   "type": "string",
+  943                   "title": "The Txttitle Schema",
+  944                   "default": "",
+  945                   "examples": [
+  946                     "Profile"
+  947                   ],
+  948                   "pattern": "^(.*)$"
+  949                 },
+  950                 "txtInstructions": {
+  951                   "$id": "#/properties/appData/properties/screensSettings/properties/profile/properties/txtInstructions",
+  952                   "type": "string",
+  953                   "title": "The Txtinstructions Schema",
+  954                   "default": "",
+  955                   "examples": [
+  956                     "Set optional personal profile"
+  957                   ],
+  958                   "pattern": "^(.*)$"
+  959                 },
+  960                 "txtUsername": {
+  961                   "$id": "#/properties/appData/properties/screensSettings/properties/profile/properties/txtUsername",
+  962                   "type": "string",
+  963                   "title": "The Txtusername Schema",
+  964                   "default": "",
+  965                   "examples": [
+  966                     "Username"
+  967                   ],
+  968                   "pattern": "^(.*)$"
+  969                 },
+  970                 "txtEmail": {
+  971                   "$id": "#/properties/appData/properties/screensSettings/properties/profile/properties/txtEmail",
+  972                   "type": "string",
+  973                   "title": "The Txtemail Schema",
+  974                   "default": "",
+  975                   "examples": [
+  976                     "Email"
+  977                   ],
+  978                   "pattern": "^(.*)$"
+  979                 },
+  980                 "txtPassword": {
+  981                   "$id": "#/properties/appData/properties/screensSettings/properties/profile/properties/txtPassword",
+  982                   "type": "string",
+  983                   "title": "The Txtpassword Schema",
+  984                   "default": "",
+  985                   "examples": [
+  986                     "Password"
+  987                   ],
+  988                   "pattern": "^(.*)$"
+  989                 }
+  990               }
+  991             }
+  992           }
+  993         }
+  994       }
+  995     }
+  996   }
+  997 }
