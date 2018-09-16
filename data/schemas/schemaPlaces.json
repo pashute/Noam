@@ -1,392 +1,335 @@
-  1 {
-  2   "definitions": {},
-  3   "$schema": "http://json-schema.org/draft-07/schema#",
-  4   "$id": "http://noamdata.com/root.json",
-  5   "type": "object",
-  6   "title": "The Root Schema",
-  7   "required": [
-  8     "places"
-  9   ],
- 10   "properties": {
- 11     "places": {
- 12       "$id": "#/properties/places",
- 13       "type": "array",
- 14       "title": "The Places Schema",
- 15       "items": {
- 16         "$id": "#/properties/places/items",
- 17         "type": "object",
- 18         "title": "The Items Schema",
- 19         "required": [
- 20           "place",
- 21           "placeType",
- 22           "fullName",
- 23           "shortName",
- 24           "inside",
- 25           "beacons",
- 26           "contactPhone",
- 27           "exits"
- 28         ],
- 29         "properties": {
- 30           "place": {
- 31             "$id": "#/properties/places/items/properties/place",
- 32             "type": "integer",
- 33             "title": "The Place Schema",
- 34             "default": 0,
- 35             "examples": [
- 36               1
- 37             ]
- 38           },
- 39           "placeType": {
- 40             "$id": "#/properties/places/items/properties/placeType",
- 41             "type": "string",
- 42             "title": "The Placetype Schema",
- 43             "default": "building",
- 44             "examples": [
- 45               "building", "park", "hospital"
- 46             ],
- 47             "pattern": "^(.*)$"
- 48           },
- 49           "fullName": {
- 50             "$id": "#/properties/places/items/properties/fullName",
- 51             "type": "string",
- 52             "title": "The Fullname Schema",
- 53             "default": "Full name",
- 54             "examples": [
- 55               "Big Bet Shemesh"
- 56             ],
- 57             "pattern": "^(.*)$"
- 58           },
- 59           "shortName": {
- 60             "$id": "#/properties/places/items/properties/shortName",
- 61             "type": "string",
- 62             "title": "The Shortname Schema",
- 63             "default": "Short name",
- 64             "examples": [
- 65               "Big BS"
- 66             ],
- 67             "pattern": "^(.*)$"
- 68           },
- 69           "inside": {
- 70             "$id": "#/properties/places/items/properties/inside",
- 71             "type": "array",
- 72             "title": "The Inside Schema",
- 73             "items": {
- 74               "$id": "#/properties/places/items/properties/inside/items",
- 75               "type": "object",
- 76               "title": "The Items Schema",
- 77               "required": [
- 78                 "point",
- 79                 "floor",
- 80                 "title",
- 81                 "subtitle",
- 82                 "content"
- 83               ],
- 84               "properties": {
- 85                 "point": {
- 86                   "$id": "#/properties/places/items/properties/inside/items/properties/point",
- 87                   "type": "integer",
- 88                   "title": "The Point Schema",
- 89                   "default": 0,
- 90                   "examples": [
- 91                     1
- 92                   ]
- 93                 },
- 94                 "floor": {
- 95                   "$id": "#/properties/places/items/properties/inside/items/properties/floor",
- 96                   "type": "integer",
- 97                   "title": "The Floor Schema",
- 98                   "default": 0,
- 99                   "examples": [
-100                     1
-101                   ]
-102                 },
-103                 "title": {
-104                   "$id": "#/properties/places/items/properties/inside/items/properties/title",
-105                   "type": "string",
-106                   "title": "Point Title Schema",
-107                   "default": "point title",
-108                   "examples": [
-109                     "Amanda matchmaker"
-110                   ],
-111                   "pattern": "^(.*)$"
-112                 },
-113                 "subtitle": {
-114                   "$id": "#/properties/places/items/properties/inside/items/properties/subtitle",
-115                   "type": "string",
-116                   "title": "Point Subtitle Schema",
-117                   "default": "point subtitle",
-118                   "examples": [
-119                     "office"
-120                   ],
-121                   "pattern": "^(.*)$"
-122                 },
-123                 "content": {
-124                   "$id": "#/properties/places/items/properties/inside/items/properties/content",
-125                   "type": "array",
-126                   "title": "The Content Schema",
-127                   "items": {
-128                     "$id": "#/properties/places/items/properties/inside/items/properties/content/items",
-129                     "type": "string",
-130                     "title": "The Items Schema",
-131                     "default": "",
-132                     "examples": [
-133                       "2nd floor \nNear elevator C3 (south)\n",
-134                       "Staff specializes in disabilities\n",
-135                       "and we are hiring."
-136                     ],
-137                     "pattern": "^(.*)$"
-138                   }
-139                 }
-140               }
-141             }
-142           },
-143           "beacons": {
-144             "$id": "#/properties/places/items/properties/beacons",
-145             "type": "array",
-146             "title": "The Beacons Schema",
-147             "items": {
-148               "$id": "#/properties/places/items/properties/beacons/items",
-149               "type": "object",
-150               "title": "The Items Schema",
-151               "required": [
-152                 "beacon",
-153                 "fullName",
-154                 "ktid",
-155                 "uuid",
-156                 "major",
-157                 "minor",
-158                 "details",
-159                 "points"
-160               ],
-161               "properties": {
-162                 "beacon": {
-163                   "$id": "#/properties/places/items/properties/beacons/items/properties/beacon",
-164                   "type": "integer",
-165                   "title": "The Beacon Schema",
-166                   "default": 0,
-167                   "examples": [
-168                     11
-169                   ]
-170                 },
-171                 "fullName": {
-172                   "$id": "#/properties/places/items/properties/beacons/items/properties/fullName",
-173                   "type": "string",
-174                   "title": "The Fullname Schema",
-175                   "default": "",
-176                   "examples": [
-177                     "Main Gate (South)"
-178                   ],
-179                   "pattern": "^(.*)$"
-180                 },
-181                 "ktid": {
-182                   "$id": "#/properties/places/items/properties/beacons/items/properties/ktid",
-183                   "type": "string",
-184                   "title": "The Ktid Schema",
-185                   "default": "",
-186                   "examples": [
-187                     "uWWf"
-188                   ],
-189                   "pattern": "^(.*)$"
-190                 },
-191                 "uuid": {
-192                   "$id": "#/properties/places/items/properties/beacons/items/properties/uuid",
-193                   "type": "string",
-194                   "title": "The Uuid Schema",
-195                   "default": "",
-196                   "examples": [
-197                     ""
-198                   ],
-199                   "pattern": "^(.*)$"
-200                 },
-201                 "major": {
-202                   "$id": "#/properties/places/items/properties/beacons/items/properties/major",
-203                   "type": "integer",
-204                   "title": "The Major Schema",
-205                   "default": 0,
-206                   "examples": [
-207                     28999
-208                   ]
-209                 },
-210                 "minor": {
-211                   "$id": "#/properties/places/items/properties/beacons/items/properties/minor",
-212                   "type": "integer",
-213                   "title": "The Minor Schema",
-214                   "default": 0,
-215                   "examples": [
-216                     64381
-217                   ]
-218                 },
-219                 "details": {
-220                   "$id": "#/properties/places/items/properties/beacons/items/properties/details",
-221                   "type": "array",
-222                   "title": "The Details Schema",
-223                   "items": {
-224                     "$id": "#/properties/places/items/properties/beacons/items/properties/details/items",
-225                     "type": "string",
-226                     "title": "The Items Schema",
-227                     "default": "",
-228                     "examples": [
-229                       "You are at the main gate\n",
-230                       "There is an ATM outside"
-231                     ],
-232                     "pattern": "^(.*)$"
-233                   }
-234                 },
-235                 "points": {
-236                   "$id": "#/properties/places/items/properties/beacons/items/properties/points",
-237                   "type": "array",
-238                   "title": "The Points Schema",
-239                   "items": {
-240                     "$id": "#/properties/places/items/properties/beacons/items/properties/points/items",
-241                     "type": "object",
-242                     "title": "The Items Schema",
-243                     "required": [
-244                       "point",
-245                       "title",
-246                       "subtitle",
-247                       "icon",
-248                       "direction",
-249                       "nearby",
-250                       "instructions"
-251                     ],
-252                     "properties": {
-253                       "point": {
-254                         "$id": "#/properties/places/items/properties/beacons/items/properties/points/items/properties/point",
-255                         "type": "integer",
-256                         "title": "The Point Schema",
-257                         "default": 0,
-258                         "examples": [
-259                           12
-260                         ]
-261                       },
-262                       "title": {
-263                         "$id": "#/properties/places/items/properties/beacons/items/properties/points/items/properties/title",
-264                         "type": "string",
-265                         "title": "The Title Schema",
-266                         "default": "",
-267                         "examples": [
-268                           "Accessible toilets 1S"
-269                         ],
-270                         "pattern": "^(.*)$"
-271                       },
-272                       "subtitle": {
-273                         "$id": "#/properties/places/items/properties/beacons/items/properties/points/items/properties/subtitle",
-274                         "type": "string",
-275                         "title": "The Subtitle Schema",
-276                         "default": "",
-277                         "examples": [
-278                           "Accessible toilets (South, flr 1)"
-279                         ],
-280                         "pattern": "^(.*)$"
-281                       },
-282                       "icon": {
-283                         "$id": "#/properties/places/items/properties/beacons/items/properties/points/items/properties/icon",
-284                         "type": "string",
-285                         "title": "The Icon Schema",
-286                         "default": "",
-287                         "examples": [
-288                           "toilet"
-289                         ],
-290                         "pattern": "^(.*)$"
-291                       },
-292                       "direction": {
-293                         "$id": "#/properties/places/items/properties/beacons/items/properties/points/items/properties/direction",
-294                         "type": "integer",
-295                         "title": "The Direction Schema",
-296                         "default": 0,
-297                         "examples": [
-298                           125
-299                         ]
-300                       },
-301                       "nearby": {
-302                         "$id": "#/properties/places/items/properties/beacons/items/properties/points/items/properties/nearby",
-303                         "type": "boolean",
-304                         "title": "The Nearby Schema",
-305                         "default": false,
-306                         "examples": [
-307                           true
-308                         ]
-309                       },
-310                       "instructions": {
-311                         "$id": "#/properties/places/items/properties/beacons/items/properties/points/items/properties/instructions",
-312                         "type": "array",
-313                         "title": "The Instructions Schema",
-314                         "items": {
-315                           "$id": "#/properties/places/items/properties/beacons/items/properties/points/items/properties/instructions/items",
-316                           "type": "string",
-317                           "title": "The Items Schema",
-318                           "default": "",
-319                           "examples": [
-320                             "10 meters ahead\n",
-321                             "Entrance is 7 meters to your right.\n",
-322                             "Call 051-222-333 for assistance"
-323                           ],
-324                           "pattern": "^(.*)$"
-325                         }
-326                       }
-327                     }
-328                   }
-329                 }
-330               }
-331             }
-332           },
-333           "contactPhone": {
-334             "$id": "#/properties/places/items/properties/contactPhone",
-335             "type": "string",
-336             "title": "The Contactphone Schema",
-337             "default": "",
-338             "examples": [
-339               "029919366"
-340             ],
-341             "pattern": "^(.*)$"
-342           },
-343           "exits": {
-344             "$id": "#/properties/places/items/properties/exits",
-345             "type": "array",
-346             "title": "The Exits Schema",
-347             "items": {
-348               "$id": "#/properties/places/items/properties/exits/items",
-349               "type": "object",
-350               "title": "The Items Schema",
-351               "required": [
-352                 "beacon"
-353               ],
-354               "properties": {
-355                 "beacon": {
-356                   "$id": "#/properties/places/items/properties/exits/items/properties/beacon",
-357                   "type": "object",
-358                   "title": "The Beacon Schema",
-359                   "required": [
-360                     "id",
-361                     "instruction"
-362                   ],
-363                   "properties": {
-364                     "id": {
-365                       "$id": "#/properties/places/items/properties/exits/items/properties/beacon/properties/id",
-366                       "type": "integer",
-367                       "title": "The Id Schema",
-368                       "default": 0,
-369                       "examples": [
-370                         11
-371                       ]
-372                     },
-373                     "instruction": {
-374                       "$id": "#/properties/places/items/properties/exits/items/properties/beacon/properties/instruction",
-375                       "type": "string",
-376                       "title": "The Instruction Schema",
-377                       "default": "",
-378                       "examples": [
-379                         "Follow the hall to the north 20 steps and then to the left, out of the building"
-380                       ],
-381                       "pattern": "^(.*)$"
-382                     }
-383                   }
-384                 }
-385               }
-386             }
-387           }
-388         }
-389       }
-390     }
-391   }
-392 }
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://noamdata.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": ["places"],
+  "properties": {
+    "places": {
+      "$id": "#/properties/places",
+      "type": "array",
+      "title": "The Places Schema",
+      "items": {
+        "$id": "#/properties/places/items",
+        "type": "object",
+        "title": "The Items Schema",
+        "required": [
+          "place",
+          "placeType",
+          "fullName",
+          "shortName",
+          "inside",
+          "beacons",
+          "contactPhone",
+          "exits"
+        ],
+        "properties": {
+          "place": {
+            "$id": "#/properties/places/items/properties/place",
+            "type": "integer",
+            "title": "The Place Schema",
+            "default": 0,
+            "examples": [1]
+          },
+          "placeType": {
+            "$id": "#/properties/places/items/properties/placeType",
+            "type": "string",
+            "title": "The Placetype Schema",
+            "default": "building",
+            "examples": ["building", "park", "hospital"],
+            "pattern": "^(.*)$"
+          },
+          "fullName": {
+            "$id": "#/properties/places/items/properties/fullName",
+            "type": "string",
+            "title": "The Fullname Schema",
+            "default": "Full name",
+            "examples": ["Big Bet Shemesh"],
+            "pattern": "^(.*)$"
+          },
+          "shortName": {
+            "$id": "#/properties/places/items/properties/shortName",
+            "type": "string",
+            "title": "The Shortname Schema",
+            "default": "Short name",
+            "examples": ["Big BS"],
+            "pattern": "^(.*)$"
+          },
+          "inside": {
+            "$id": "#/properties/places/items/properties/inside",
+            "type": "array",
+            "title": "The Inside Schema",
+            "items": {
+              "$id": "#/properties/places/items/properties/inside/items",
+              "type": "object",
+              "title": "The Items Schema",
+              "required": ["point", "floor", "title", "subtitle", "content"],
+              "properties": {
+                "point": {
+                  "$id": "#/properties/places/items/properties/inside/items/properties/point",
+                  "type": "integer",
+                  "title": "The Point Schema",
+                  "default": 0,
+                  "examples": [1]
+                },
+                "floor": {
+                  "$id": "#/properties/places/items/properties/inside/items/properties/floor",
+                  "type": "integer",
+                  "title": "The Floor Schema",
+                  "default": 0,
+                  "examples": [1]
+                },
+                "title": {
+                  "$id": "#/properties/places/items/properties/inside/items/properties/title",
+                  "type": "string",
+                  "title": "Point Title Schema",
+                  "default": "point title",
+                  "examples": ["Amanda matchmaker"],
+                  "pattern": "^(.*)$"
+                },
+                "subtitle": {
+                  "$id": "#/properties/places/items/properties/inside/items/properties/subtitle",
+                  "type": "string",
+                  "title": "Point Subtitle Schema",
+                  "default": "point subtitle",
+                  "examples": ["office"],
+                  "pattern": "^(.*)$"
+                },
+                "content": {
+                  "$id": "#/properties/places/items/properties/inside/items/properties/content",
+                  "type": "array",
+                  "title": "The Content Schema",
+                  "items": {
+                    "$id": "#/properties/places/items/properties/inside/items/properties/content/items",
+                    "type": "string",
+                    "title": "The Items Schema",
+                    "default": "",
+                    "examples": [
+                      "2nd floor \nNear elevator C3 (south)\n",
+                      "Staff specializes in disabilities\n",
+                      "and we are hiring."
+                    ],
+                    "pattern": "^(.*)$"
+                  }
+                }
+              }
+            }
+          },
+          "beacons": {
+            "$id": "#/properties/places/items/properties/beacons",
+            "type": "array",
+            "title": "The Beacons Schema",
+            "items": {
+              "$id": "#/properties/places/items/properties/beacons/items",
+              "type": "object",
+              "title": "The Items Schema",
+              "required": [
+                "beacon",
+                "fullName",
+                "ktid",
+                "uuid",
+                "major",
+                "minor",
+                "details",
+                "points"
+              ],
+              "properties": {
+                "beacon": {
+                  "$id": "#/properties/places/items/properties/beacons/items/properties/beacon",
+                  "type": "integer",
+                  "title": "The Beacon Schema",
+                  "default": 0,
+                  "examples": [11]
+                },
+                "fullName": {
+                  "$id": "#/properties/places/items/properties/beacons/items/properties/fullName",
+                  "type": "string",
+                  "title": "The Fullname Schema",
+                  "default": "",
+                  "examples": ["Main Gate (South)"],
+                  "pattern": "^(.*)$"
+                },
+                "ktid": {
+                  "$id": "#/properties/places/items/properties/beacons/items/properties/ktid",
+                  "type": "string",
+                  "title": "The Ktid Schema",
+                  "default": "",
+                  "examples": ["uWWf"],
+                  "pattern": "^(.*)$"
+                },
+                "uuid": {
+                  "$id": "#/properties/places/items/properties/beacons/items/properties/uuid",
+                  "type": "string",
+                  "title": "The Uuid Schema",
+                  "default": "",
+                  "examples": [""],
+                  "pattern": "^(.*)$"
+                },
+                "major": {
+                  "$id": "#/properties/places/items/properties/beacons/items/properties/major",
+                  "type": "integer",
+                  "title": "The Major Schema",
+                  "default": 0,
+                  "examples": [28999]
+                },
+                "minor": {
+                  "$id": "#/properties/places/items/properties/beacons/items/properties/minor",
+                  "type": "integer",
+                  "title": "The Minor Schema",
+                  "default": 0,
+                  "examples": [64381]
+                },
+                "details": {
+                  "$id": "#/properties/places/items/properties/beacons/items/properties/details",
+                  "type": "array",
+                  "title": "The Details Schema",
+                  "items": {
+                    "$id": "#/properties/places/items/properties/beacons/items/properties/details/items",
+                    "type": "string",
+                    "title": "The Items Schema",
+                    "default": "",
+                    "examples": [
+                      "You are at the main gate\n",
+                      "There is an ATM outside"
+                    ],
+                    "pattern": "^(.*)$"
+                  }
+                },
+                "points": {
+                  "$id": "#/properties/places/items/properties/beacons/items/properties/points",
+                  "type": "array",
+                  "title": "The Points Schema",
+                  "items": {
+                    "$id": "#/properties/places/items/properties/beacons/items/properties/points/items",
+                    "type": "object",
+                    "title": "The Items Schema",
+                    "required": [
+                      "point",
+                      "title",
+                      "subtitle",
+                      "icon",
+                      "direction",
+                      "nearby",
+                      "instructions"
+                    ],
+                    "properties": {
+                      "point": {
+                        "$id": "#/properties/places/items/properties/beacons/items/properties/points/items/properties/point",
+                        "type": "integer",
+                        "title": "The Point Schema",
+                        "default": 0,
+                        "examples": [12]
+                      },
+                      "title": {
+                        "$id": "#/properties/places/items/properties/beacons/items/properties/points/items/properties/title",
+                        "type": "string",
+                        "title": "The Title Schema",
+                        "default": "",
+                        "examples": ["Accessible toilets 1S"],
+                        "pattern": "^(.*)$"
+                      },
+                      "subtitle": {
+                        "$id": "#/properties/places/items/properties/beacons/items/properties/points/items/properties/subtitle",
+                        "type": "string",
+                        "title": "The Subtitle Schema",
+                        "default": "",
+                        "examples": ["Accessible toilets (South, flr 1)"],
+                        "pattern": "^(.*)$"
+                      },
+                      "icon": {
+                        "$id": "#/properties/places/items/properties/beacons/items/properties/points/items/properties/icon",
+                        "type": "string",
+                        "title": "The Icon Schema",
+                        "default": "",
+                        "examples": ["toilet"],
+                        "pattern": "^(.*)$"
+                      },
+                      "direction": {
+                        "$id": "#/properties/places/items/properties/beacons/items/properties/points/items/properties/direction",
+                        "type": "integer",
+                        "title": "The Direction Schema",
+                        "default": 0,
+                        "examples": [125]
+                      },
+                      "nearby": {
+                        "$id": "#/properties/places/items/properties/beacons/items/properties/points/items/properties/nearby",
+                        "type": "boolean",
+                        "title": "The Nearby Schema",
+                        "default": false,
+                        "examples": [true]
+                      },
+                      "instructions": {
+                        "$id": "#/properties/places/items/properties/beacons/items/properties/points/items/properties/instructions",
+                        "type": "array",
+                        "title": "The Instructions Schema",
+                        "items": {
+                          "$id": "#/properties/places/items/properties/beacons/items/properties/points/items/properties/instructions/items",
+                          "type": "string",
+                          "title": "The Items Schema",
+                          "default": "",
+                          "examples": [
+                            "10 meters ahead\n",
+                            "Entrance is 7 meters to your right.\n",
+                            "Call 051-222-333 for assistance"
+                          ],
+                          "pattern": "^(.*)$"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "contactPhone": {
+            "$id": "#/properties/places/items/properties/contactPhone",
+            "type": "string",
+            "title": "The Contactphone Schema",
+            "default": "",
+            "examples": ["029919366"],
+            "pattern": "^(.*)$"
+          },
+          "exits": {
+            "$id": "#/properties/places/items/properties/exits",
+            "type": "array",
+            "title": "The Exits Schema",
+            "items": {
+              "$id": "#/properties/places/items/properties/exits/items",
+              "type": "object",
+              "title": "The Items Schema",
+              "required": ["beacon"],
+              "properties": {
+                "beacon": {
+                  "$id": "#/properties/places/items/properties/exits/items/properties/beacon",
+                  "type": "object",
+                  "title": "The Beacon Schema",
+                  "required": ["id", "instruction"],
+                  "properties": {
+                    "id": {
+                      "$id": "#/properties/places/items/properties/exits/items/properties/beacon/properties/id",
+                      "type": "integer",
+                      "title": "The Id Schema",
+                      "default": 0,
+                      "examples": [11]
+                    },
+                    "instruction": {
+                      "$id": "#/properties/places/items/properties/exits/items/properties/beacon/properties/instruction",
+                      "type": "string",
+                      "title": "The Instruction Schema",
+                      "default": "",
+                      "examples": [
+                        "Follow the hall to the north 20 steps and then to the left, out of the building"
+                      ],
+                      "pattern": "^(.*)$"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
