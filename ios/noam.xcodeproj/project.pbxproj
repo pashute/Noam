@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -55,6 +54,7 @@
 		E391CB5A20DB41A2009A01F0 /* KontaktSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E391CB5920DB41A2009A01F0 /* KontaktSDK.framework */; };
 		E391CB5B20DB41A2009A01F0 /* KontaktSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E391CB5920DB41A2009A01F0 /* KontaktSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FF6DBBE2CB4B41AD9E232BB1 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20DA0A69942A4082AA739483 /* FontAwesome.ttf */; };
+		B630E37662F042FA95102A99 /* libRNHockeyApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE3B2196DFB04EB3983D8A0A /* libRNHockeyApp.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -414,6 +414,8 @@
 		EEEFA2DC92B94658A461B97D /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		F8679360406748ECAC9272A8 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		FD4AE4FA679E49D0991E36F1 /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
+		5E5DE76E0F0F422A90BD977F /* RNHockeyApp.xcodeproj */ = {isa = PBXFileReference; name = "RNHockeyApp.xcodeproj"; path = "../node_modules/react-native-hockeyapp/RNHockeyApp/RNHockeyApp.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		EE3B2196DFB04EB3983D8A0A /* libRNHockeyApp.a */ = {isa = PBXFileReference; name = "libRNHockeyApp.a"; path = "libRNHockeyApp.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -445,6 +447,7 @@
 				38D366071067480193ADFC04 /* libRNVectorIcons.a in Frameworks */,
 				6B31363A45464920A746F948 /* libRNSimpleCompass.a in Frameworks */,
 				BB5C016B7019449789172971 /* libKontaktBeacons.a in Frameworks */,
+				B630E37662F042FA95102A99 /* libRNHockeyApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -634,6 +637,7 @@
 				CAB22ED3A1954F70A1ED20F0 /* RNVectorIcons.xcodeproj */,
 				4222E1799F2F4D9C95AB8879 /* RNSimpleCompass.xcodeproj */,
 				1D7F794CE9244B17A67537D0 /* KontaktBeacons.xcodeproj */,
+				5E5DE76E0F0F422A90BD977F /* RNHockeyApp.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -820,7 +824,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 940;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -1373,12 +1377,14 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-simple-compass/ios",
 					"$(SRCROOT)/../node_modules/react-native-kontaktio/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-hockeyapp/ios/**",
 				);
 				INFOPLIST_FILE = noamTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1403,12 +1409,14 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-simple-compass/ios",
 					"$(SRCROOT)/../node_modules/react-native-kontaktio/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-hockeyapp/ios/**",
 				);
 				INFOPLIST_FILE = noamTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1437,6 +1445,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-simple-compass/ios",
 					"$(SRCROOT)/../node_modules/react-native-kontaktio/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-hockeyapp/ios/**",
 				);
 				INFOPLIST_FILE = noam/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1465,6 +1474,7 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-simple-compass/ios",
 					"$(SRCROOT)/../node_modules/react-native-kontaktio/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-hockeyapp/ios/**",
 				);
 				INFOPLIST_FILE = noam/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1496,11 +1506,13 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-simple-compass/ios",
 					"$(SRCROOT)/../node_modules/react-native-kontaktio/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-hockeyapp/ios/**",
 				);
 				INFOPLIST_FILE = "noam-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1534,11 +1546,13 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-simple-compass/ios",
 					"$(SRCROOT)/../node_modules/react-native-kontaktio/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-hockeyapp/ios/**",
 				);
 				INFOPLIST_FILE = "noam-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1571,11 +1585,13 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-simple-compass/ios",
 					"$(SRCROOT)/../node_modules/react-native-kontaktio/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-hockeyapp/ios/**",
 				);
 				INFOPLIST_FILE = "noam-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1608,11 +1624,13 @@
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-simple-compass/ios",
 					"$(SRCROOT)/../node_modules/react-native-kontaktio/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-hockeyapp/ios/**",
 				);
 				INFOPLIST_FILE = "noam-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",

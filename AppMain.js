@@ -151,6 +151,11 @@ class AppMain extends React.Component {
     super(props);
     this.checkNav = this.checkNav.bind(this);
     this.setKontaktIo = this.setKontaktIo.bind(this);
+    this.lostBeacon = this.lostBeacon.bind(this);
+    this.checkNewBeacon = this.checkNewBeacon.bind(this);
+    this.checkSavedData = this.checkSavedData.bind(this);
+    this.checkServerData = this.checkServerData.bind(this);
+    this.checkSavedLanguage = this.checkSavedLanguage.bind(this);
     this.state = {
       isRTL: false, // I18nManager.isRTL,
       fontLoaded: false,
@@ -217,73 +222,14 @@ class AppMain extends React.Component {
         // console.log('dbg.Appmain.beaconDidAppear detected', newBeacon);
         // console.log('dbg.Appmain.bcnDid propsBcnRel', this.props.beaconPlaceRelation);
         // console.log('dbg.Appmain.bcnDid curbcn', this.props.currentBeacon);
-        if (
-          this.props.currentBeacon === {} ||
-          this.props.currentBeacon.ktid !== newBeacon.uniqueId
-        ) {
-          // console.log('dbg.Appmain.bcnDid bcnPlcFind');
-          const tempBeaconRelation = this.props.beaconPlaceRelation.find(
-            beaconRelation => {
-              return beaconRelation.major === newBeacon.major;
-              // newBeacon: uniqueId: "uWWf",major,minor, uuid: f7826da6-4fa2-4e98-8024-bc5b71e0893e
-            }
-          );
-          // console.log('dbg.Appmain.bcnDid tempbcnRel', tempBeaconRelation);
-          if (tempBeaconRelation !== undefined && tempBeaconRelation !== null) {
-            let finalBeacon = undefined;
-            let finalPlace = undefined;
-            // console.log('dbg.appmain.bcnDid finding point in', this.props.currentPlacesData);
-            const currentPlace = this.props.currentPlacesData.places.find(
-              place => {
-                return place.place.id === tempBeaconRelation.placeId;
-              }
-            );
-            if (currentPlace !== undefined && currentPlace !== null) {
-              finalPlace = currentPlace.place;
-              if (finalPlace !== undefined && finalPlace !== null) {
-                const tempBeacon = finalPlace.nearby.find(beacon => {
-                  // console.log('dbg.Appmain.bcnDid.bcnPoint bcn.bcn', beacon.beacon);
-                  return beacon.beacon.ktid === tempBeaconRelation.ktid;
-                });
-                // console.log('dbg.Appmain.bcnDid.beaconPoint tempBeacon', tempBeacon);
-                if (tempBeacon !== undefined && tempBeacon !== null) {
-                  finalBeacon = tempBeacon.beacon;
-                  // console.log('dbg.AppMain.bcnDid finalbcn', finalBeacon);
-                  if (
-                    this.props.currentPlace.id !== tempBeaconRelation.placeId
-                  ) {
-                    this.props.setCurrentPlace(finalPlace);
-                  }
-                  this.props.setCurrentBeacon(finalBeacon);
-                  // console.log(`new beacon ${finalBeacon.fullName}`);
-                  if (this.props.isInMainPage === true)
-                    Alert.alert(
-                      "New point reached",
-                      `You are at ${finalBeacon.fullName} in ${
-                        finalPlace.fullName
-                      }`,
-                      [{ text: "OK" }],
-                      { cancelable: true }
-                    );
-                }
-              }
-            }
-          }
-        }
+        this.checkNewBeacon(newBeacon);
       }
     );
     DeviceEventEmitter.addListener(
       "beaconDidDisappear",
       ({ beacon: lostBeacon, region }) => {
         console.log("beaconDidDisappear", lostBeacon, region);
-        if (this.props.currentBeacon.major === lostBeacon.major) {
-          Alert.alert(
-            "Leaving point",
-            "You have left " + this.props.currentBeacon.fullName,
-            [{ text: "OK" }],
-            { cancelable: true }
-          );
-        }
+        this.lostBeacon(lostBeacon);
       }
     );
   }
@@ -294,43 +240,75 @@ class AppMain extends React.Component {
   //     .catch(error => console.log('[startScanning] error:\n', error));
   // };
 
-  componentDidMount() {
-    AsyncStorage.getItem("preferences-language")
-      .then(value => {
-        let places = [];
-        let selectedValue = value == null ? "en" : value;
-        const savedLanguage = getLanguage(selectedValue).data;
-        this.setState({ language: savedLanguage });
-        const { placesData } = savedLanguage;
-        places = placesData.places;
-        // console.log('dbg.AppMain.savedLanguage: ', savedLanguage);
-        this.props.setCurrentLanguage(savedLanguage);
-        this.props.setCurrentPlacesData(placesData);
-        this.props.setCurrentPlace(places[0].place);
+  lostBeacon(lostBeacon) {
+    if (this.props.currentBeacon.major === lostBeacon.major) {
+      Alert.alert(
+        "Leaving point",
+        "You have left " + this.props.currentBeacon.fullName,
+        [{ text: "OK" }],
+        { cancelable: true }
+      );
+    }
+  }
 
-        const finalBeaconRelation = [];
-        for (let i = 0; i < places.length; i++) {
-          let tempPlace = places[i];
-          // console.log('dbg.appmain.finalBcnRel tempPlace i', tempPlace, i);
-          let nearbyBeacons = tempPlace.place.nearby;
-          for (let b = 0; b < nearbyBeacons.length; b++) {
-            let tempBeacon = nearbyBeacons[b];
-            if (tempBeacon.beacon !== undefined) {
-              // console.log('dbg.appmain.bcnDid nrby tempBeacon', tempBeacon);
-              const tempRelation = {
-                ktid: tempBeacon.beacon.ktid,
-                major: tempBeacon.beacon.major,
-                placeId: tempPlace.place.id
-              };
-              finalBeaconRelation.push(tempRelation);
+  checkNewBeacon(newBeacon) {
+    if (
+      this.props.currentBeacon === {} ||
+      this.props.currentBeacon.ktid !== newBeacon.uniqueId
+    ) {
+      // console.log('dbg.Appmain.bcnDid bcnPlcFind');
+      const tempBeaconRelation = this.props.beaconPlaceRelation.find(
+        beaconRelation => {
+          return beaconRelation.major === newBeacon.major;
+          // newBeacon: uniqueId: "uWWf",major,minor, uuid: f7826da6-4fa2-4e98-8024-bc5b71e0893e
+        }
+      );
+      // console.log('dbg.Appmain.bcnDid tempbcnRel', tempBeaconRelation);
+      if (tempBeaconRelation !== undefined && tempBeaconRelation !== null) {
+        let finalBeacon = undefined;
+        let finalPlace = undefined;
+        // console.log('dbg.appmain.bcnDid finding point in', this.props.currentPlacesData);
+        const currentPlace = this.props.currentPlacesData.places.find(place => {
+          return place.place.id === tempBeaconRelation.placeId;
+        });
+        if (currentPlace !== undefined && currentPlace !== null) {
+          finalPlace = currentPlace.place;
+          if (finalPlace !== undefined && finalPlace !== null) {
+            const tempBeacon = finalPlace.nearby.find(beacon => {
+              // console.log('dbg.Appmain.bcnDid.bcnPoint bcn.bcn', beacon.beacon);
+              return beacon.beacon.ktid === tempBeaconRelation.ktid;
+            });
+            // console.log('dbg.Appmain.bcnDid.beaconPoint tempBeacon', tempBeacon);
+            if (tempBeacon !== undefined && tempBeacon !== null) {
+              finalBeacon = tempBeacon.beacon;
+              // console.log('dbg.AppMain.bcnDid finalbcn', finalBeacon);
+              if (this.props.currentPlace.id !== tempBeaconRelation.placeId) {
+                this.props.setCurrentPlace(finalPlace);
+              }
+              this.props.setCurrentBeacon(finalBeacon);
+              // console.log(`new beacon ${finalBeacon.fullName}`);
+              if (this.props.isInMainPage === true)
+                Alert.alert(
+                  "New point reached",
+                  `You are at ${finalBeacon.fullName} in ${
+                    finalPlace.fullName
+                  }`,
+                  [{ text: "OK" }],
+                  { cancelable: true }
+                );
             }
           }
         }
+      }
+    }
+  }
 
-        // console.log('dbg.appmain.finalBcnRel finalbcnrel', finalBeaconRelation);
-        this.props.setAllBeaconsPlacesRelation(finalBeaconRelation);
-
-        this.setKontaktIo();
+  componentDidMount() {
+    AsyncStorage.getItem("preferences-language")
+      .then(value => {
+        console.log("success.AppMain.componentDidMount", value);
+        let selectedValue = value == null ? "en" : value;
+        this.checkSavedData(selectedValue);
       })
       .catch(error => {
         console.log("error.AppMain.scanPlaceAndPoint", error);
@@ -338,11 +316,93 @@ class AppMain extends React.Component {
 
     // HockeyApp.start();
     // HockeyApp.checkForUpdate(); optional
-
     // right to left
     I18nManager.forceRTL(false);
     this.setState({ isRTL: false });
     this.setState({ fontLoaded: true });
+  }
+
+  checkServerData(languageCode) {
+    AsyncStorage.getItem(languageCode + "_languageversion")
+      .then(value => {
+        console.log("success.AppMain.checkServerData", value);
+        //Check Saved Version
+        /*
+        api.GetVersionFor(languageCode).then(response => {
+          //Compare versions
+          if(value === null || value < response){
+            api.GetLanguage(languageCode).then(response => {
+              //Check the language from server
+              this.checkSavedLanguage(languageCode, response.data);
+              //Save the new Version
+               AsyncStorage.setItem(languageCode + "_languageversion", response.version)
+            })
+          }
+        })
+        */
+      })
+      .catch(error => {
+        console.log("error.AppMain.checkServerData", error);
+      });
+  }
+
+  checkSavedData(languageCode) {
+    //Check Version
+    AsyncStorage.getItem(languageCode + "_languagedata")
+      .then(value => {
+        console.log("success.AppMain.checkSavedData", value);
+        //Check Server no matter what
+        this.checkServerData(languageCode);
+        //Local Data
+        let savedLanguage = getLanguage(languageCode).data;
+        if (value !== null) {
+          //Saved stringify Data
+          savedLanguage = JSON.parse(value);
+        }
+        this.checkSavedLanguage(languageCode, savedLanguage);
+      })
+      .catch(error => {
+        console.log("error.AppMain.checkSavedData", error);
+      });
+  }
+
+  checkSavedLanguage(languageCode, savedLanguage) {
+    console.log("success.AppMain.checkSavedLanguage", languageCode);
+    console.log("success.AppMain.checkSavedLanguage", savedLanguage);
+    let places = [];
+    this.setState({ language: savedLanguage });
+    const { placesData } = savedLanguage;
+    places = placesData.places;
+    // console.log('dbg.AppMain.savedLanguage: ', savedLanguage);
+    this.props.setCurrentLanguage(savedLanguage);
+    this.props.setCurrentPlacesData(placesData);
+    this.props.setCurrentPlace(places[0].place);
+
+    const finalBeaconRelation = [];
+    for (let i = 0; i < places.length; i++) {
+      let tempPlace = places[i];
+      // console.log('dbg.appmain.finalBcnRel tempPlace i', tempPlace, i);
+      let nearbyBeacons = tempPlace.place.nearby;
+      for (let b = 0; b < nearbyBeacons.length; b++) {
+        let tempBeacon = nearbyBeacons[b];
+        if (tempBeacon.beacon !== undefined) {
+          // console.log('dbg.appmain.bcnDid nrby tempBeacon', tempBeacon);
+          const tempRelation = {
+            ktid: tempBeacon.beacon.ktid,
+            major: tempBeacon.beacon.major,
+            placeId: tempPlace.place.id
+          };
+          finalBeaconRelation.push(tempRelation);
+        }
+      }
+    }
+    // console.log('dbg.appmain.finalBcnRel finalbcnrel', finalBeaconRelation);
+    this.props.setAllBeaconsPlacesRelation(finalBeaconRelation);
+    this.setKontaktIo();
+    //Set the new language
+    const strinifyLanguage = JSON.stringify(savedLanguage);
+    console.log("success.AppMain.checkSavedLanguage", strinifyLanguage);
+    AsyncStorage.setItem(languageCode + "_languagedata", strinifyLanguage);
   }
 
   // onCompassUpdate = pointingTo => this.setState({ pointingTo });

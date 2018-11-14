@@ -150,6 +150,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-hockeyapp')
     compile project(':react-native-kontaktio')
     compile project(':react-native-simple-compass')
     compile project(':react-native-vector-icons')

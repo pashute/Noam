@@ -1,6 +1,6 @@
 // Import package from node modules
-import * as types from '../types';
-import { AsyncStorage } from 'react-native';
+import * as types from "../types";
+import { AsyncStorage } from "react-native";
 
 export const setAllBeaconsPlacesRelation = beaconPlaceRelation => {
   // console.log('dbg.dataActions.bcnPlcRel', beaconPlaceRelation);
