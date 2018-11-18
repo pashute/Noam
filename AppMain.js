@@ -219,9 +219,12 @@ class AppMain extends React.Component {
     DeviceEventEmitter.addListener(
       "beaconDidAppear",
       ({ beacon: newBeacon, region }) => {
-        // console.log('dbg.Appmain.beaconDidAppear detected', newBeacon);
-        // console.log('dbg.Appmain.bcnDid propsBcnRel', this.props.beaconPlaceRelation);
-        // console.log('dbg.Appmain.bcnDid curbcn', this.props.currentBeacon);
+        console.log("dbg.Appmain.beaconDidAppear detected", newBeacon);
+        console.log(
+          "dbg.Appmain.bcnDid propsBcnRel",
+          this.props.beaconPlaceRelation
+        );
+        console.log("dbg.Appmain.bcnDid curbcn", this.props.currentBeacon);
         this.checkNewBeacon(newBeacon);
       }
     );
@@ -233,12 +236,6 @@ class AppMain extends React.Component {
       }
     );
   }
-
-  // startKontaktIoScan = () => {
-  //   console.log('startKontaktIoScan called');
-  //     .then(() => console.log('started scanning'))
-  //     .catch(error => console.log('[startScanning] error:\n', error));
-  // };
 
   lostBeacon(lostBeacon) {
     if (this.props.currentBeacon.major === lostBeacon.major) {
@@ -252,6 +249,7 @@ class AppMain extends React.Component {
   }
 
   checkNewBeacon(newBeacon) {
+    console.log("dbg.Appmain.checkNewBeacon ", newBeacon);
     if (
       this.props.currentBeacon === {} ||
       this.props.currentBeacon.ktid !== newBeacon.uniqueId
@@ -396,9 +394,17 @@ class AppMain extends React.Component {
         }
       }
     }
-    // console.log('dbg.appmain.finalBcnRel finalbcnrel', finalBeaconRelation);
+    console.log("dbg.appmain.finalBcnRel finalbcnrel", finalBeaconRelation);
     this.props.setAllBeaconsPlacesRelation(finalBeaconRelation);
     this.setKontaktIo();
+    /*
+    TEST FIRST BEACON IN THE REALATION
+    */
+    const beaconTest = {
+      uniqueId: finalBeaconRelation[0].ktid,
+      major: finalBeaconRelation[0].major
+    };
+    this.checkNewBeacon(beaconTest);
     //Set the new language
     const strinifyLanguage = JSON.stringify(savedLanguage);
     console.log("success.AppMain.checkSavedLanguage", strinifyLanguage);
