@@ -321,9 +321,74 @@ class AppMain extends React.Component {
   }
 
   checkServerData(languageCode) {
+    const GitHubUrl =
+      "https://raw.githubusercontent.com/omarvgdev/noamjsons/master/" +
+      languageCode.toUpperCase() +
+      "/";
+
+    console.log("success.AppMain.checkServerData.URL", GitHubUrl);
     AsyncStorage.getItem(languageCode + "_languageversion")
       .then(value => {
-        console.log("success.AppMain.checkServerData", value);
+        return fetch(GitHubUrl + "index.json")
+          .then(reponseVersion => reponseVersion.json())
+          .then(reponseVersionJSON => {
+            console.log(
+              "success.AppMain.checkServerData.fetchVersion",
+              reponseVersionJSON
+            );
+            if (value === null || value < reponseVersionJSON.version) {
+              return fetch(GitHubUrl + "appData.json")
+                .then(responseApp => responseApp.json())
+                .then(responseAppJSON => {
+                  console.log(
+                    "success.AppMain.checkServerData.fetchApp",
+                    responseAppJSON
+                  );
+                  return fetch(GitHubUrl + "placesData.json")
+                    .then(responsePlaces => responsePlaces.json())
+                    .then(responsePlacesJSON => {
+                      console.log(
+                        "success.AppMain.checkServerData.fetchPlaces",
+                        responsePlacesJSON
+                      );
+                      return fetch(GitHubUrl + "stylesData.json")
+                        .then(responseStyles => responseStyles.json())
+                        .then(responseStylesJSON => {
+                          console.log(
+                            "success.AppMain.checkServerData.fetchStyles",
+                            responseStylesJSON
+                          );
+                          const fromServer = {
+                            appData: responseAppJSON,
+                            placesData: responsePlacesJSON,
+                            stylesData: responseStylesJSON
+                          };
+                          console.log(
+                            "success.AppMain.checkServerData.finalFetch",
+                            fromServer
+                          );
+                          this.checkSavedLanguage(languageCode, fromServer);
+                          AsyncStorage.setItem(
+                            languageCode + "_languageversion",
+                            reponseVersionJSON.version
+                          );
+                        })
+                        .catch(error => {
+                          console.error(error);
+                        });
+                    })
+                    .catch(error => {
+                      console.error(error);
+                    });
+                })
+                .catch(error => {
+                  console.error(error);
+                });
+            }
+          })
+          .catch(error => {
+            console.error(error);
+          });
         //Check Saved Version
         /*
         api.GetVersionFor(languageCode).then(response => {
